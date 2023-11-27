@@ -1,0 +1,32 @@
+{
+	"data": "Деректер",
+	"login": "Кіру",
+	"name": "Аты",
+	"surname": "Тегі",
+	"appointment": "Атағы",
+	"rank": "Лауазымы",
+
+	"geolocation": "Орналасқан жері",
+	"messenger": "Мессенджер",
+	"searchItems": "Тауарларды іздеу",
+	"updateTheme": "Түс тақырыбы",
+	"language": "Тіл",
+
+	"messengerInputPlaceholder": "Хабарламаны енгізіңіз",
+	"searchItemsInputPlaceholder": "Іздеу",
+
+	"order": "Тәртіп",
+	"chapter": "Бөлім",
+	"photo": "Фото",
+	"coinsidence": "Сәйкестік",
+	"application": "Қосымша",
+	"status": "Мәртебесі",
+
+	"password": "Құпия сөз",
+	"forgotMyPassword": "Құпия сөзді ұмыттыңыз ба",
+	"updateLanguage": "Тілді өзгерту",
+
+	"registration": "Тіркеу",
+	"phone": "Телефон нөмірі",
+	"access": "Қол жеткізу"
+}

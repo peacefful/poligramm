@@ -1,0 +1,32 @@
+{
+	"data": "Данные",
+	"login": "Логин",
+	"name": "Имя",
+	"surname": "Фамилия",
+	"appointment": "Звание",
+	"rank": "Должность",
+
+	"geolocation": "Местоположение",
+	"messenger": "Мессенджер",
+	"searchItems": "Поиск товаров",
+	"updateTheme": "Изменить тему",
+	"language": "Язык",
+
+	"messengerInputPlaceholder": "Введите сообщение",
+	"searchItemsInputPlaceholder": "Поиск",
+
+	"order": "Порядок",
+	"chapter": "Раздел",
+	"photo": "Фото",
+	"coinsidence": "Совпадение",
+	"application": "Приложение",
+	"status": "Статус",
+
+	"password": "Пароль",
+	"forgotMyPassword": "Забыли пароль",
+	"updateLanguage": "Сменить язык",
+
+	"registration": "Регистрация",
+	"phone": "Номер телефона",
+	"access": "Доступ"
+}
