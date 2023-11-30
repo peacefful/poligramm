@@ -5,14 +5,14 @@
 				<ProfileData />
 				<SelectGeolocation class="mt-2" />
 				<div class="flex justify-between mt-4">
-					<label>{{ t('messenger') }}</label>
+					<label>{{ t('chats') }}</label>
 					<input class="w-6 h-6" type="checkbox" v-model="toogleMessenger">
 				</div>
 				<ToogleThemes class="mt-[32px]" />
 				<ToogleLanguage class="mt-[100px]" />
 			</div>
 		</aside>
-		<article class="w-[90%] flex flex-col justify-between">
+		<article class="w-full flex flex-col justify-between">
 			<section v-if="toogleMessenger" class="bg-[#007ED2] flex flex-col justify-between h-full text-[17px]">
 				<Messenger />
 			</section>

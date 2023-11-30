@@ -25,23 +25,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
 import axios from "axios"
+import { ref } from 'vue';
+import type { iUser } from "@/interfaces/iUsers"
 import { useI18n } from "vue-i18n"
 
 const { t } = useI18n({ useScope: 'global' })
-
-interface iUser {
-	id: number
-	surname: string
-	name: string
-	appointment: string
-	rank: string
-	login: string
-	password: string
-	phone: string
-	role: string
-}
 
 const BASE_URL:string = 'http://localhost:3000/api/users'
 const user = ref<iUser>()
