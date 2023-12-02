@@ -1,22 +1,22 @@
 <template>
 	<div>
 		<div class="py-4 text-center">
-			<div v-if="user">
+			<div v-if="data.user">
 				<div class="bg-[#0054A8] rounded-md p-2">{{ $t('data') }}</div>
 				<div class="bg-[#0054A8] rounded-md p-2 mt-4">
-					{{ t('login') }}: {{ user?.login }}
+					{{ t('login') }}: {{ data.user.login }}
 				</div>
 				<div class="bg-[#0054A8] rounded-md p-2 mt-4">
-					{{ t('name') }}: {{ user?.name }}
+					{{ t('name') }}: {{ data.user.name }}
 				</div>
 				<div class="bg-[#0054A8] rounded-md p-2 mt-4">
-					{{ t('surname') }}: {{ user?.surname }}
+					{{ t('surname') }}: {{ data.user.surname }}
 				</div>
 				<div class="bg-[#0054A8] rounded-md p-2 mt-4">
-					{{ t('appointment') }}: {{ user?.appointment }}
+					{{ t('appointment') }}: {{ data.user.appointment }}
 				</div>
 				<div class="bg-[#0054A8] rounded-md p-2 mt-4">
-					{{ t('rank') }}: {{ user?.rank }}
+					{{ t('rank') }}: {{ data.user.rank }}
 				</div>
 			</div>
 			<div v-else class="bg-[#0054A8] rounded-md p-2 mt-4">Профиля нету</div>
@@ -29,17 +29,22 @@ import axios from "axios"
 import { ref } from 'vue';
 import type { iUser } from "@/interfaces/iUsers"
 import { useI18n } from "vue-i18n"
+import { useUserStore } from "@/stores/UserStore";
 
 const { t } = useI18n({ useScope: 'global' })
 
-const BASE_URL:string = 'http://localhost:3000/api/users'
-const user = ref<iUser>()
+const data = useUserStore()
 
-const id:string|null = localStorage.getItem("id")
+data.getUserData()
 
-const getUser = async () => {
-	user.value = (await axios.get(`${BASE_URL}/${id}`)).data
-}
+// const BASE_URL:string = 'http://localhost:3000/api/users'
+// const user = ref<iUser>()
 
-getUser()
+// const id:string|null = localStorage.getItem("id")
+
+// const getUser = async () => {
+// 	user.value = (await axios.get(`${BASE_URL}/${id}`)).data
+// }
+
+// getUser()
 </script>
