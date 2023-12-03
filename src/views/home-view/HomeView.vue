@@ -1,5 +1,5 @@
 <template>
-	<main>
+	<main v-if="accessToken">
 		<aside class="bg-blue-900 min-h-screen">
 			<div class="p-2 fixed w-[364px] bg-blue-900 min-h-screen">
 				<ProfileData />
@@ -16,26 +16,29 @@
 			</div>
 		</aside>
 		<article class="w-full flex flex-col justify-between">
-			<section v-if="toogleMessenger" class="bg-[#007ED2] flex flex-col justify-between h-full text-[17px]">
+			<section v-if="toogleMessenger">
 				<Messenger />
 			</section>
 			<section v-if="toogleInvitesInChats">
-				<InvitesInChats/>
+				<InvitesInChats />
 			</section>
 		</article>
 	</main>
+	<div v-else class="text-5xl flex justify-center items-center">
+		<router-link to="/">Войдите</router-link>
+	</div>
 </template>
 
 <script setup lang="ts">
 import ToogleLanguage from "@/components/ToogleLanguage.vue"
 import ToogleThemes from "@/components/ToogleThemes.vue"
-import SelectGeolocation from "@/components/SelectGeolocation.vue"
 import ProfileData from "@/components/ProfileData.vue"
 import Messenger from "@/components/Messenger.vue"
 import InvitesInChats from "@/components/InvitesInChats.vue"
 import { ref } from 'vue';
 import { useI18n } from "vue-i18n"
 
+const accessToken = localStorage.getItem("token")
 const { t } = useI18n({ useScope: 'global' })
 
 const toogleMessenger = ref<boolean>(false)

@@ -1,3 +1,5 @@
+import type { IChats } from "./iChats"
+
 export interface IUser {
 	id: number
 	surname: string
@@ -8,4 +10,5 @@ export interface IUser {
 	password: string
 	phone: string
 	role: string
+	chats: IChats[]
 }
