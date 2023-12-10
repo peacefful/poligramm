@@ -10,8 +10,8 @@
 </template>
 
 <script setup lang="ts">
+import socket from '@/utils/socket';
 import { ref } from 'vue';
 
 const invites = ref([])
-
 </script>

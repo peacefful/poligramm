@@ -1,10 +1,12 @@
 {
 	"data": "Деректер",
-	"login": "Кіру",
+	"authorization": "Авторизация",
+	"login": "Пайдаланушы аты",
 	"name": "Аты",
 	"surname": "Тегі",
 	"appointment": "Атағы",
 	"rank": "Лауазымы",
+	"signIn": "Кіру",
 
 	"geolocation": "Орналасқан жері",
 	"chats": "Чаттар",
@@ -19,7 +21,7 @@
 	"forgotMyPassword": "Құпия сөзді ұмыттыңыз ба",
 	"updateLanguage": "Тілді өзгерту",
 
-	"registration": "Тіркеу",
+	"signUp": "Тіркеу",
 	"phone": "Телефон нөмірі",
 	"access": "Қол жеткізу"
 }

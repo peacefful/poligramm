@@ -1,10 +1,13 @@
 {
+
 	"data": "Данные",
+	"authorization": "Авторизация",
 	"login": "Логин",
 	"name": "Имя",
 	"surname": "Фамилия",
 	"appointment": "Звание",
 	"rank": "Должность",
+	"signIn": "Войти",
 
 	"geolocation": "Местоположение",
 	"chats": "Чаты",
@@ -19,7 +22,7 @@
 	"forgotMyPassword": "Забыли пароль",
 	"updateLanguage": "Сменить язык",
 
-	"registration": "Регистрация",
+	"signUp": "Регистрация",
 	"phone": "Номер телефона",
 	"access": "Доступ"
 }

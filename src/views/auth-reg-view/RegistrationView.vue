@@ -1,6 +1,6 @@
 <template>
 	<main class="mt-5 p-1">
-		<h1 class="text-3xl text-center">{{ t("registration") }}</h1>
+		<h1 class="text-3xl text-center">{{ t("signUp") }}</h1>
 		<form class="flex flex-col max-w-sm" @submit.prevent="registration()">
 			<input type="text" v-model="surname" :placeholder="t('surname')">
 			<input type="text" v-model="name" :placeholder="t('name')">
@@ -36,7 +36,7 @@
 						<option value="Редактор">Редактор</option>
 						<option value="Участник">Участник</option>
 					</select>
-					<button class="w-full text-[18px] p-1.5 my-2 bg-polligrammBackground rounded-[10px]" type="submit">{{ t("registration") }}</button>
+					<button class="w-full text-[18px] p-1.5 my-2 bg-polligrammBackground rounded-[10px]" type="submit">{{ t("signUp") }}</button>
 				</div>
 			</div>
 		</form>

@@ -13,7 +13,7 @@
 				@click="updateLocale('ru')" 
 				:class="[locale === 'ru' ? 'select-lang' : '']" 
 				for="ru" 
-				class="cursor-pointer mr-3 p-2 rounded-md bg-blue-500 text-white">
+				class="cursor-pointer mr-3 p-2 rounded-md bg-blue-500 text-white  hover:bg-blue-400 ease-in duration-100">
 				RU
 			</label>
 			<input 
@@ -27,7 +27,7 @@
 				@click="updateLocale('kz')" 
 				:class="[locale === 'kz' ? 'select-lang' : '']" 
 				for="kz" 
-				class="cursor-pointer p-2 rounded-md bg-blue-500 text-white">
+				class="cursor-pointer p-2 rounded-md bg-blue-500 text-white hover:bg-blue-400 ease-in duration-100">
 				KZ
 			</label>
 		</div>

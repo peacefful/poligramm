@@ -10,5 +10,6 @@ export interface IUser {
 	password: string
 	phone: string
 	role: string
+	uuid: string,
 	chats: IChats[]
 }

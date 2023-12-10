@@ -1,6 +1,6 @@
 <template>
 	<main class="mt-5 p-1">
-		<h1 class="text-3xl text-center">{{ t('login') }}</h1>
+		<h1 class="text-3xl text-center">{{ t('authorization') }}</h1>
 		<form class="flex flex-col max-w-sm min-h-full" @submit.prevent="authorization()">
 			<input type="text" v-model="login" :placeholder="t('login')">
 			<input type="text" v-model="password" :placeholder="t('password')">
@@ -38,6 +38,7 @@ const authorization = async () => {
 		if (authUser) {
 			localStorage.setItem('token', authUser.data.token)
 			localStorage.setItem('id', authUser.data.id)
+			localStorage.setItem('uuid', authUser.data.uuid)
 			router.push("home")
 		} else {
 			new Error("Ошибка")

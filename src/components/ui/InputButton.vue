@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <template>
 	<div class="rounded-2xl bg-polligramBackground p-6 ml-4">
 		<input :type="inputType" :id="inputType" class="hidden">

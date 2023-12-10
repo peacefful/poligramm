@@ -3,13 +3,13 @@
 	<form class="ml-3" @submit.prevent="addChat()">
 		<div class="flex">
 			<input type="text" placeholder="Название чата" v-model="room">
-			<button type="submit"
-				class="bg-[#299fff] rounded-md p-2 ml-3 hover:bg-[#167ed3] ease-out duration-150">Создать</button>
+			<CustomButton type="submit" title="Создать" class="ml-3"/>
 		</div>
 	</form>
 </template>
 
 <script setup lang="ts">
+import CustomButton from './CustomButton.vue';
 import axios from 'axios';
 import { ref } from 'vue';
 import { v4 as uuidv4 } from 'uuid';

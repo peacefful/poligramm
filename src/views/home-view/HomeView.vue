@@ -17,7 +17,7 @@
 		</aside>
 		<article class="w-full flex flex-col justify-between">
 			<section v-if="toogleMessenger">
-				<Messenger />
+				<Chats />
 			</section>
 			<section v-if="toogleInvitesInChats">
 				<InvitesInChats />
@@ -33,16 +33,23 @@
 import ToogleLanguage from "@/components/ToogleLanguage.vue"
 import ToogleThemes from "@/components/ToogleThemes.vue"
 import ProfileData from "@/components/ProfileData.vue"
-import Messenger from "@/components/Messenger.vue"
+import Chats from "@/components/ChatsList.vue"
 import InvitesInChats from "@/components/InvitesInChats.vue"
 import { ref } from 'vue';
 import { useI18n } from "vue-i18n"
+import socket from "@/utils/socket"
 
 const accessToken = localStorage.getItem("token")
 const { t } = useI18n({ useScope: 'global' })
 
 const toogleMessenger = ref<boolean>(false)
 const toogleInvitesInChats = ref<boolean>(false)
+
+socket.emit('personalInvite', localStorage.getItem("uuid"));
+
+socket.on('messageInvite', (room) => {
+	console.log(`Приглашение в чат "${room}"`);
+})
 </script>
 
 <style scoped>
