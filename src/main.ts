@@ -1,4 +1,4 @@
-import './assets/styles/index.css'
+import './assets/styles/tailwind.css'
 import './assets/styles/normalize.css'
 
 import { languages } from "./i18n"

@@ -1,6 +1,5 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <template>
-	<form class="ml-3" @submit.prevent="addChat()">
+	<form @submit.prevent="addChat()">
 		<div class="flex">
 			<input type="text" placeholder="Название чата" v-model="room">
 			<CustomButton type="submit" title="Создать" class="ml-3"/>

@@ -29,8 +29,8 @@ body {
 input[type="text"], select {
 	border-radius: 10px;
 	background: #0054A8;
-	outline: none;
 	padding: 0% 1%;
+	outline: none;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 200;
 }

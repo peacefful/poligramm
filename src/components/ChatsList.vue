@@ -2,11 +2,14 @@
 	<div v-if="showChats === true">
 		<h1 class="text-center text-3xl mt-5">Ваши чаты</h1>
 		<div class="m-2">
-			<div class="flex items-center mt-3">
-				<CustomButton @click="showCreateChatForm = !showCreateChatForm" title="Создать новый чат" />
-				<FormChat v-if="showCreateChatForm" />
+			<div class="flex items-center mt-3 justify-between flex-wrap">
+				<div class="flex flex-wrap">
+					<CustomButton @click="showCreateChatForm = !showCreateChatForm" title="Создать новый чат" />
+					<FormChat class="ml-4" v-if="showCreateChatForm" />
+				</div>
+				<input type="text" style="padding: 0.9%;" placeholder="Поиск" v-model="findChat">
 			</div>
-			<ul class="mt-5" v-for="chat in data.user.chats" :key="chat.id">
+			<ul class="mt-5" v-for="chat in filterChats(data.user.chats, findChat)" :key="chat.id">
 				<li class="bg-blue-500 p-5 rounded-md flex justify-between items-center cursor-pointer hover:bg-blue-400 ease-in duration-100 mt-2"
 					@click="getChat(chat.uuid, chat.roomName)">
 					{{ chat.roomName }}
@@ -28,6 +31,9 @@ import FormChat from "@/components/ui/FormChat.vue"
 import Messenger from "./MessengerContainer.vue";
 import CustomButton from "./ui/CustomButton.vue";
 import { deleteChat } from "../api/chatApi"
+import { filterChats } from "@/utils/filterUsersAndChats";
+
+const findChat = ref<string>('')
 
 const data = useUsersStore()
 data.getUserData()
@@ -45,4 +51,4 @@ const getChat = (uuidRoom: string, roomName: string) => {
 	uuid = uuidRoom
 	room = roomName
 }
-</script>@/stores/UsersStore
+</script>

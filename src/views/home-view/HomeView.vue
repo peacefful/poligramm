@@ -38,6 +38,7 @@ import InvitesInChats from "@/components/InvitesInChats.vue"
 import { ref } from 'vue';
 import { useI18n } from "vue-i18n"
 import socket from "@/utils/socket"
+import Input from "@/components/ui/Input.vue"
 
 const accessToken = localStorage.getItem("token")
 const { t } = useI18n({ useScope: 'global' })
