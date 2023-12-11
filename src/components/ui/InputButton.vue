@@ -9,8 +9,8 @@
 
 <script setup lang="ts">
 defineProps<{
-	uiSrc?:string
-	inputType?:string
+	uiSrc:string
+	inputType:string
 }>()
 </script>
 

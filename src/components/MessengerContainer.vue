@@ -20,8 +20,8 @@
 				<form class="flex justify-center" autocomplete="off" @submit.prevent="sendMessage()">
 					<textarea @keydown.enter.prevent="sendMessage()" :placeholder="t('messengerInputPlaceholder')"
 						class="rounded-md p-2 w-full bg-[#09F] resize-none focus:outline-none" v-model="message"></textarea>
-					<InputButton ui-src="@/../public/paperClip.svg" input-type="file" />
-					<InputButton ui-src="@/../public/sendMessage.svg" input-type="submit" />
+					<InputButton :ui-src="paperClipIcon" input-type="file" />
+					<InputButton :ui-src="sendMessageIcon" input-type="submit" />
 				</form>
 			</div>
 		</div>
@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import InputButton from "@/components/ui/InputButton.vue"
+import InputButton from "./ui/InputButton.vue"
 import dayjs from "dayjs"
 import { useI18n } from "vue-i18n"
 import socket from "../utils/socket"
@@ -38,6 +38,8 @@ import type { IMessage } from "../interfaces/iMessage"
 import { ref } from "vue"
 import { useToogleModal } from "../hooks/useToggleModal"
 import Modal from "./ui/ModalAddUsers.vue"
+import paperClipIcon from "../assets/icons/paperClip.svg"
+import sendMessageIcon from "../assets/icons/sendMessage.svg"
 
 const chat = defineProps<{
 	roomName: string
