@@ -15,7 +15,7 @@
 				<ToogleLanguage class="mt-[100px]" />
 			</div>
 		</aside>
-		<article class="w-full flex flex-col justify-between">
+		<article v-if="showChats" class="w-full flex flex-col justify-between">
 			<section v-if="toogleMessenger">
 				<Chats />
 			</section>
@@ -23,10 +23,13 @@
 				<InvitesInChats />
 			</section>
 		</article>
+		<article v-else class="w-full flex flex-col justify-between">
+			<ChatContainer @close-chat="closeChat" :uuid="uuid" :name="room"/>
+		</article>
 		<transition>
 			<div v-if="isInviteRoom" class="fixed bottom-0 right-0 w-[380px] bg-blue-600 p-4 rounded-xl">
 				<p class="mb-2">Вас пригласили в чат</p>
-				<CustomButton title="Войти" @click.prevent="" />
+				<CustomButton title="Войти" @click.prevent="enterChat(inviteRoom.nameRoom, inviteRoom.uuidRoom)" />
 				<CustomButton @click.prevent="closeModal()" class="bg-red-600 hover:bg-red-700 ml-3" title="Закрыть" />
 			</div>
 		</transition>
@@ -50,8 +53,8 @@ import ChatContainer from "@/components/ChatContainer.vue"
 import { useEnterChat } from "@/hooks/useEnterChat";
 
 interface IInviteRoom {
-	nameRoom?: string
-	uuidRoom?: string
+	nameRoom: string
+	uuidRoom: string
 }
 
 const accessToken = localStorage.getItem("token")
@@ -62,15 +65,17 @@ const toogleInvitesInChats = ref<boolean>(false)
 
 const { enterChat, closeChat, showChats, uuid, room } = useEnterChat()
 
-const inviteRoom: IInviteRoom = reactive({})
-let isInviteRoom = ref<boolean>(false)
+const inviteRoom: IInviteRoom = reactive({
+	nameRoom: "",
+	uuidRoom: ""
+})
 
+let isInviteRoom = ref<boolean>(false)
 const closeModal = () => isInviteRoom.value = false
 
 socket.emit('personalInvite', localStorage.getItem("uuid"));
 
 socket.on('messageInvite', (nameRoom, uuidRoom) => {
-	
 	inviteRoom.nameRoom = nameRoom
 	inviteRoom.uuidRoom = uuidRoom
 

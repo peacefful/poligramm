@@ -68,18 +68,6 @@ const sendInvitation = (usersUuids: string[], uuidRoom: string, nameRoom: string
 		error.value = true
 	}
 }
-
-// const sendInvitation = (usersUuids: string[], roomName: string) => {
-// 	usersUuids.forEach(uuid => {
-// 		socket.emit('personalInvite', chat.updateRoom(uuid))
-// 		socket.emit('messageInvite', {
-// 			roomName, 
-// 			uuidRoom: uuid
-// 		})
-// 	})
-
-// 	uuids.value = [];
-// }
 </script>
 
 <style lang="scss" scoped>

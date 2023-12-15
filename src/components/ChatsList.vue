@@ -43,17 +43,4 @@ data.getUserData()
 const showCreateChatForm = ref<boolean>(false)
 
 const { enterChat, closeChat, showChats, uuid, room } = useEnterChat()
-
-// const showChats = ref<boolean>(true)
-
-// const closeChat = () => showChats.value = true
-
-// let uuid:string = ''
-// let room:string = ''
-
-// const getChat = (uuidRoom: string, roomName: string) => {
-// 	showChats.value = false
-// 	uuid = uuidRoom
-// 	room = roomName
-// }
 </script>
