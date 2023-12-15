@@ -23,6 +23,13 @@
 				<InvitesInChats />
 			</section>
 		</article>
+		<transition>
+			<div v-if="isInviteRoom" class="fixed bottom-0 right-0 w-[380px] bg-blue-600 p-4 rounded-xl">
+				<p class="mb-2">Вас пригласили в чат</p>
+				<CustomButton title="Войти" @click.prevent="" />
+				<CustomButton @click.prevent="closeModal()" class="bg-red-600 hover:bg-red-700 ml-3" title="Закрыть" />
+			</div>
+		</transition>
 	</main>
 	<div v-else class="text-5xl flex justify-center items-center">
 		<router-link to="/">Войдите</router-link>
@@ -35,10 +42,17 @@ import ToogleThemes from "@/components/ToogleThemes.vue"
 import ProfileData from "@/components/ProfileData.vue"
 import Chats from "@/components/ChatsList.vue"
 import InvitesInChats from "@/components/InvitesInChats.vue"
-import { ref } from 'vue';
+import CustomButton from "@/components/ui/UICustomButton.vue"
+import { ref, reactive } from 'vue';
 import { useI18n } from "vue-i18n"
 import socket from "@/utils/socket"
-import Input from "@/components/ui/Input.vue"
+import ChatContainer from "@/components/ChatContainer.vue"
+import { useEnterChat } from "@/hooks/useEnterChat";
+
+interface IInviteRoom {
+	nameRoom?: string
+	uuidRoom?: string
+}
 
 const accessToken = localStorage.getItem("token")
 const { t } = useI18n({ useScope: 'global' })
@@ -46,13 +60,37 @@ const { t } = useI18n({ useScope: 'global' })
 const toogleMessenger = ref<boolean>(false)
 const toogleInvitesInChats = ref<boolean>(false)
 
+const { enterChat, closeChat, showChats, uuid, room } = useEnterChat()
+
+const inviteRoom: IInviteRoom = reactive({})
+let isInviteRoom = ref<boolean>(false)
+
+const closeModal = () => isInviteRoom.value = false
+
 socket.emit('personalInvite', localStorage.getItem("uuid"));
 
-socket.on('messageInvite', (room) => {
-	console.log(`Приглашение в чат "${room}"`);
+socket.on('messageInvite', (nameRoom, uuidRoom) => {
+	
+	inviteRoom.nameRoom = nameRoom
+	inviteRoom.uuidRoom = uuidRoom
+
+	if (inviteRoom.nameRoom && inviteRoom.uuidRoom) {
+		isInviteRoom.value = true
+		setTimeout(() => isInviteRoom.value = false, 5000);
+	}
 })
 </script>
 
 <style scoped>
 @import "./styles.module.scss";
+
+.v-enter-active,
+.v-leave-active {
+	transition: opacity 0.2s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+	opacity: 0;
+}
 </style>

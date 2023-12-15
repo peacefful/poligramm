@@ -7,11 +7,11 @@
 					<CustomButton @click="showCreateChatForm = !showCreateChatForm" title="Создать новый чат" />
 					<FormChat class="ml-4" v-if="showCreateChatForm" />
 				</div>
-				<input type="text" style="padding: 0.9%;" placeholder="Поиск" v-model="findChat">
+				<UIInput class="p-2" bg="#0054A8" v-model:value="findChat" />
 			</div>
 			<ul class="mt-5" v-for="chat in filterChats(data.user.chats, findChat)" :key="chat.id">
 				<li class="bg-blue-500 p-5 rounded-md flex justify-between items-center cursor-pointer hover:bg-blue-400 ease-in duration-100 mt-2"
-					@click="getChat(chat.uuid, chat.roomName)">
+					@click="enterChat(chat.uuid, chat.roomName)">
 					{{ chat.roomName }}
 					<div class="flex w-20 justify-between">
 						<img title="Перейти в чат" src="../assets/icons/chat.svg" alt="">
@@ -21,17 +21,19 @@
 			</ul>
 		</div>
 	</div>
-	<Messenger @close-chat="closeChat" :uuid="uuid" :room-name="room" v-else />
+	<Chat @close-chat="closeChat" :uuid="uuid" :name="room" v-else />
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import { useUsersStore } from "@/stores/UsersStore";
 import FormChat from "@/components/ui/FormChat.vue"
-import Messenger from "./MessengerContainer.vue";
-import CustomButton from "./ui/CustomButton.vue";
+import Chat from "./ChatContainer.vue";
+import CustomButton from "./ui/UICustomButton.vue";
 import { deleteChat } from "../api/chatApi"
 import { filterChats } from "@/utils/filterUsersAndChats";
+import UIInput from "./ui/UIInput.vue";
+import { useEnterChat } from "@/hooks/useEnterChat";
 
 const findChat = ref<string>('')
 
@@ -39,16 +41,19 @@ const data = useUsersStore()
 data.getUserData()
 
 const showCreateChatForm = ref<boolean>(false)
-const showChats = ref<boolean>(true)
 
-const closeChat = () => showChats.value = true
+const { enterChat, closeChat, showChats, uuid, room } = useEnterChat()
 
-let uuid:string = ''
-let room:string = ''
+// const showChats = ref<boolean>(true)
 
-const getChat = (uuidRoom: string, roomName: string) => {
-	showChats.value = false
-	uuid = uuidRoom
-	room = roomName
-}
+// const closeChat = () => showChats.value = true
+
+// let uuid:string = ''
+// let room:string = ''
+
+// const getChat = (uuidRoom: string, roomName: string) => {
+// 	showChats.value = false
+// 	uuid = uuidRoom
+// 	room = roomName
+// }
 </script>

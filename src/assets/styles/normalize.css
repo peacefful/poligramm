@@ -26,13 +26,15 @@ body {
 	font-size: 20px;
 }
 
-input[type="text"], select {
+input[type="text"],select {
 	border-radius: 10px;
-	background: #0054A8;
-	padding: 0% 1%;
 	outline: none;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 200;
+}
+
+select {
+	background-color: #0054A8;
 }
 
 button {

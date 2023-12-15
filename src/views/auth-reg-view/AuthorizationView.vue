@@ -2,11 +2,11 @@
 	<main class="mt-5 p-1">
 		<h1 class="text-3xl text-center">{{ t('authorization') }}</h1>
 		<form class="flex flex-col max-w-sm min-h-full" @submit.prevent="authorization()">
-			<input type="text" v-model="login" :placeholder="t('login')">
-			<input type="text" v-model="password" :placeholder="t('password')">
+			<UIInput bg="#0054A8" class="px-1" v-model:value="login" :placeholder="t('login')"/>
+			<UIInput bg="#0054A8" class="px-1" v-model:value="password" :placeholder="t('password')"/>
 			<div class="flex">
-				<button class="w-full p-1.5 my-2 bg-polligrammBackground rounded-[10px]">{{ t('forgotMyPassword') }}</button>
-				<button type="submit" class="w-full p-1.5 my-2 bg-polligrammBackground rounded-[10px] ml-4">{{ t('login') }}</button>
+				<CustomButton class="w-full my-2" :title="t('forgotMyPassword')" />
+				<CustomButton class="w-full my-2 ml-4" :title="t('login')" />
 			</div>
 		</form>
 		<div @click="updateLocale()" class="text-center text-xm text-gray-400 hover:text-gray-100 ease-in duration-100 cursor-pointer">{{ t('updateLanguage') }}</div>
@@ -18,6 +18,8 @@ import { ref } from 'vue';
 import axios from "axios"
 import { useRouter } from 'vue-router';
 import { useToogleLanguage } from "@/hooks/useToogleLang"
+import CustomButton from '@/components/ui/UICustomButton.vue';
+import UIInput from '@/components/ui/UIInput.vue';
 
 const { t, updateLocale } = useToogleLanguage()
 

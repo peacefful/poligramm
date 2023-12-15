@@ -24,7 +24,7 @@
 import { useI18n } from "vue-i18n"
 import { useUsersStore } from "@/stores/UsersStore";
 import { useRouter } from "vue-router";
-import CustomButton from "./ui/CustomButton.vue";
+import CustomButton from "./ui/UICustomButton.vue";
 
 const router = useRouter()
 

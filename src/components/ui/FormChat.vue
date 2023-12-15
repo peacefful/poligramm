@@ -1,17 +1,18 @@
 <template>
 	<form @submit.prevent="addChat()">
 		<div class="flex">
-			<input type="text" placeholder="Название чата" v-model="room">
+			<UIInput class="px-2" bg="#0054A8" v-model:value="room" placeholder="Название чата"/>
 			<CustomButton type="submit" title="Создать" class="ml-3"/>
 		</div>
 	</form>
 </template>
 
 <script setup lang="ts">
-import CustomButton from './CustomButton.vue';
+import CustomButton from './UICustomButton.vue';
 import axios from 'axios';
 import { ref } from 'vue';
 import { v4 as uuidv4 } from 'uuid';
+import UIInput from './UIInput.vue';
 
 const room = ref<string>('')
 const CHAT_API: string = 'http://localhost:3000/api/chats'

@@ -2,8 +2,8 @@
 	<main class="mt-5 p-1">
 		<h1 class="text-3xl text-center">{{ t("signUp") }}</h1>
 		<form class="flex flex-col max-w-sm" @submit.prevent="registration()">
-			<input type="text" v-model="surname" :placeholder="t('surname')">
-			<input type="text" v-model="name" :placeholder="t('name')">
+			<UIInput v-model:value="surname" class="px-1" bg="#0054A8" :placeholder="t('surname')"/>
+			<UIInput v-model:value="name" class="px-1" bg="#0054A8" :placeholder="t('name')"/>
 			<select class="mt-5" v-model="rank">
 					<option disabled value="">{{ t('rank') }}</option>
 					<option value="Полицейский офицер">Полицейский офицер</option>
@@ -18,9 +18,9 @@
 				<option value="Лейтенант">Лейтенант</option>
 				<option value="Капитан">Капитан</option>
 			</select>
-			<input type="text" v-model="login" :placeholder="t('login')">
-			<input type="text" v-model="password" :placeholder="t('password')">
-			<input type="text" v-model="phone" :placeholder="t('phone')">
+			<UIInput v-model:value="login" class="px-1" bg="#0054A8" :placeholder="t('login')"/>
+			<UIInput v-model:value="password" class="px-1" bg="#0054A8" :placeholder="t('password')"/>
+			<UIInput v-model:value="phone" class="px-1" bg="#0054A8" :placeholder="t('phone')"/>
 			<div class="flex items-center content-between">
 				<div class="rounded-2xl bg-polligramBackground p-5 mt-1 bg-[#0054A8]">
 					<input type="file" id="fileInput" class="hidden">
@@ -36,7 +36,7 @@
 						<option value="Редактор">Редактор</option>
 						<option value="Участник">Участник</option>
 					</select>
-					<button class="w-full text-[18px] p-1.5 my-2 bg-polligrammBackground rounded-[10px]" type="submit">{{ t("signUp") }}</button>
+					<CustomButton class="w-full text-[18px] my-2" :title='t("signUp")' />
 				</div>
 			</div>
 		</form>
@@ -49,6 +49,8 @@ import { ref } from 'vue';
 import axios from "axios"
 import { useRouter } from 'vue-router';
 import { useToogleLanguage } from "@/hooks/useToogleLang"
+import CustomButton from '@/components/ui/UICustomButton.vue';
+import UIInput from '@/components/ui/UIInput.vue';
 
 const { t, updateLocale } = useToogleLanguage()
 
@@ -67,14 +69,14 @@ const BASE_URL:string = 'http://localhost:3000/api/users'
 
 const registration = async () => {
 	if (
-		surname.value && 
-		name.value && 
-		appointment.value && 
-		rank.value && 
-		login.value && 
-		password.value && 
-		role.value && 
-		phone.value
+		surname.value.trim() && 
+		name.value.trim() && 
+		appointment.value.trim() && 
+		rank.value.trim() && 
+		login.value.trim() && 
+		password.value.trim() && 
+		role.value.trim() && 
+		phone.value.trim()
 	) {
 		const user = await axios.post(BASE_URL, {
 			surname: surname.value,

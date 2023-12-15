@@ -2,12 +2,12 @@
 	<div class=" flex flex-col justify-between h-full text-xl">
 		<div class="bg-blue-900 sticky top-0 p-2">
 			<div class="flex items-center justify-between ">
-				<CustomButton @click="$emit('closeChat')" title="Назад" />
-				<h2>{{ roomName }}</h2>
+				<CustomButton @click="$emit('closeChat')" title="Закрыть" />
+				<h2>{{ name }}</h2>
 				<CustomButton @click="openModal" title="Добавить пользователя" />
 			</div>
 		</div>
-		<Modal @closeModal="closeModal" :is-open-modal="isOpenModal" :uuid-room="chat.roomName" />
+		<Modal @closeModal="closeModal" :is-open-modal="isOpenModal" :uuid-room="chat.uuid" :name-room="chat.name" />
 		<div>
 			<div class="p-2">
 				<div class="p-3 flex flex-col items-end justify-end rounded-2xl bg-blue-500 mt-3" v-for="user in messages"
@@ -33,7 +33,7 @@ import InputButton from "./ui/InputButton.vue"
 import dayjs from "dayjs"
 import { useI18n } from "vue-i18n"
 import socket from "../utils/socket"
-import CustomButton from "./ui/CustomButton.vue"
+import CustomButton from "./ui/UICustomButton.vue"
 import type { IMessage } from "../interfaces/iMessage"
 import { ref } from "vue"
 import { useToogleModal } from "../hooks/useToggleModal"
@@ -42,7 +42,7 @@ import paperClipIcon from "../assets/icons/paperClip.svg"
 import sendMessageIcon from "../assets/icons/sendMessage.svg"
 
 const chat = defineProps<{
-	roomName: string
+	name: string
 	uuid: string
 }>()
 
