@@ -51,13 +51,14 @@ import { useI18n } from "vue-i18n"
 import socket from "@/utils/socket"
 import ChatContainer from "@/components/ChatContainer.vue"
 import { useEnterChat } from "@/hooks/useEnterChat";
+import { storage } from "@/utils/storage"
 
 interface IInviteRoom {
 	nameRoom: string
 	uuidRoom: string
 }
 
-const accessToken = localStorage.getItem("token")
+const accessToken = storage.getData("token")
 const { t } = useI18n({ useScope: 'global' })
 
 const toogleMessenger = ref<boolean>(false)
@@ -73,7 +74,7 @@ const inviteRoom: IInviteRoom = reactive({
 let isInviteRoom = ref<boolean>(false)
 const closeModal = () => isInviteRoom.value = false
 
-socket.emit('personalInvite', localStorage.getItem("uuid"));
+socket.emit('personalInvite', storage.getData("uuid"));
 
 socket.on('messageInvite', (nameRoom, uuidRoom) => {
 	inviteRoom.nameRoom = nameRoom

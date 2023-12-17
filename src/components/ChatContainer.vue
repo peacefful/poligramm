@@ -10,11 +10,11 @@
 		<Modal @closeModal="closeModal" :is-open-modal="isOpenModal" :uuid-room="chat.uuid" :name-room="chat.name" />
 		<div>
 			<div class="p-2">
-				<div class="p-3 flex flex-col items-end justify-end rounded-2xl bg-blue-500 mt-3" v-for="user in messages"
-					:key="user.id">
-					<div class="mr-10">{{ user.message }}</div>
-					<span class="text-[13px] inline-block mt-[-1%] text-gray-300">{{ user.sendTime }}</span>
-				</div>
+				<UIMessages
+					v-for="user in messages" :key="user.id"
+					:id="user.id"
+					:message="user.message"
+					:time="user.sendTime"/>
 			</div>
 			<div class="w-full bg-blue-900 p-3 sticky bottom-0 mt-20">
 				<form class="flex justify-center" autocomplete="off" @submit.prevent="sendMessage()">
@@ -40,6 +40,8 @@ import { useToogleModal } from "../hooks/useToggleModal"
 import Modal from "./ui/ModalAddUsers.vue"
 import paperClipIcon from "../assets/icons/paperClip.svg"
 import sendMessageIcon from "../assets/icons/sendMessage.svg"
+import { storage } from "@/utils/storage"
+import UIMessages from "./ui/UIMessages.vue"
 
 const chat = defineProps<{
 	name: string
@@ -59,7 +61,7 @@ socket.emit('join', chat.uuid)
 
 const sendMessage = () => {
 	if (message.value) {
-		socket.emit('message', message.value, localStorage.getItem("id"), dayjs().format('HH:mm'), chat.uuid)
+		socket.emit('message', message.value, Number(storage.getData("id")), dayjs().format('HH:mm'), chat.uuid)
 		message.value = ''
 	}
 }

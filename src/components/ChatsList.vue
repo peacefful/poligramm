@@ -3,7 +3,7 @@
 		<h1 class="text-center text-3xl mt-5">Ваши чаты</h1>
 		<div class="m-2">
 			<div class="flex items-center mt-3 justify-between flex-wrap">
-				<div class="flex flex-wrap">
+				<div class="flex flex-wrap justify-center">
 					<CustomButton @click="showCreateChatForm = !showCreateChatForm" title="Создать новый чат" />
 					<FormChat class="ml-4" v-if="showCreateChatForm" />
 				</div>

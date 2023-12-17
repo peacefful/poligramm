@@ -20,6 +20,7 @@ import { useRouter } from 'vue-router';
 import { useToogleLanguage } from "@/hooks/useToogleLang"
 import CustomButton from '@/components/ui/UICustomButton.vue';
 import UIInput from '@/components/ui/UIInput.vue';
+import { storage } from '@/utils/storage';
 
 const { t, updateLocale } = useToogleLanguage()
 
@@ -38,9 +39,9 @@ const authorization = async () => {
 		})
 		
 		if (authUser) {
-			localStorage.setItem('token', authUser.data.token)
-			localStorage.setItem('id', authUser.data.id)
-			localStorage.setItem('uuid', authUser.data.uuid)
+			storage.setData('token', authUser.data.token)
+			storage.setData('id', authUser.data.id)
+			storage.setData('uuid', authUser.data.uuid)
 			router.push("home")
 		} else {
 			new Error("Ошибка")

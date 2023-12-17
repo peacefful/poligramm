@@ -37,12 +37,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useI18n } from "vue-i18n"
+import { storage } from '@/utils/storage';
 
 const { t, locale } = useI18n({ useScope: 'global' })
 
 const updateLocale = (newLocale:string) => {
 	locale.value = newLocale;
-	localStorage.setItem("lang", newLocale);
+	storage.setData("lang", newLocale);
 };
 
 const radio = ref<string>()

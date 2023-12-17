@@ -2,7 +2,6 @@ import { ref } from "vue"
 
 export const useEnterChat = () => {
 	const showChats = ref<boolean>(true)
-
 	const closeChat = () => showChats.value = true
 
 	const uuid = ref<string>('')
