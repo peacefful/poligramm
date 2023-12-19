@@ -10,11 +10,8 @@
 		<Modal @closeModal="closeModal" :is-open-modal="isOpenModal" :uuid-room="chat.uuid" :name-room="chat.name" />
 		<div>
 			<div class="p-2">
-				<UIMessages
-					v-for="user in messages" :key="user.id"
-					:id="user.id"
-					:message="user.message"
-					:time="user.sendTime"/>
+				<UIMessages v-for="user in messages" :key="user.id" :id="user.id" :message="user.message"
+					:time="user.sendTime" />
 			</div>
 			<div class="w-full bg-blue-900 p-3 sticky bottom-0 mt-20">
 				<form class="flex justify-center" autocomplete="off" @submit.prevent="sendMessage()">

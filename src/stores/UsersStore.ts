@@ -2,6 +2,13 @@ import { defineStore } from 'pinia'
 import type { IUser } from '@/interfaces/iUsers'
 import axios from 'axios'
 import { storage } from '@/utils/storage'
+import { USERS_API } from '@/api/usersApi'
+
+const users = axios.create({
+	baseURL: USERS_API,
+})
+
+users.defaults.headers.common['Authorization'] = storage.getData('token')
 
 export const useUsersStore = defineStore('users', {
 	state: () => {
@@ -15,10 +22,10 @@ export const useUsersStore = defineStore('users', {
 	},
 	actions: {
 		async getUserData() {
-			this.user = (await axios.get(`http://localhost:3000/api/users/${storage.getData("id")}`)).data
+			this.user = (await users.get(`http://localhost:3000/api/users/${storage.getData("id")}`)).data
 		},
 		async getUsersData() {
-			this.users = (await axios.get('http://localhost:3000/api/users')).data
+			this.users = (await users.get('http://localhost:3000/api/users')).data
 		}
 	}
 })

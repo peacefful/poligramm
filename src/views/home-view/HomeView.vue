@@ -24,7 +24,7 @@
 			</section>
 		</article>
 		<article v-else class="w-full flex flex-col justify-between">
-			<ChatContainer @close-chat="closeChat" :uuid="uuid" :name="room"/>
+			<ChatContainer @close-chat="closeChat" :uuid="uuid" :name="room" />
 		</article>
 		<transition>
 			<div v-if="isInviteRoom" class="fixed bottom-0 right-0 w-[380px] bg-blue-600 p-4 rounded-xl">
@@ -34,8 +34,8 @@
 			</div>
 		</transition>
 	</main>
-	<div v-else class="text-5xl flex justify-center items-center">
-		<router-link to="/">Войдите</router-link>
+	<div v-else class="text-5xl flex flex-col justify-center items-center">
+		<router-link to="/" class="mt-14">Войдите</router-link>
 	</div>
 </template>
 
