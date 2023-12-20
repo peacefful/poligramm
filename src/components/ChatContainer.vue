@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import InputButton from "./ui/InputButton.vue"
+import InputButton from "./ui/UIInputButton.vue"
 import dayjs from "dayjs"
 import { useI18n } from "vue-i18n"
 import socket from "../utils/socket"
@@ -34,7 +34,7 @@ import CustomButton from "./ui/UICustomButton.vue"
 import type { IMessage } from "../interfaces/iMessage"
 import { ref } from "vue"
 import { useToogleModal } from "../hooks/useToggleModal"
-import Modal from "./ui/ModalAddUsers.vue"
+import Modal from "./ui/UIModalAddUsers.vue"
 import paperClipIcon from "../assets/icons/paperClip.svg"
 import sendMessageIcon from "../assets/icons/sendMessage.svg"
 import { storage } from "@/utils/storage"

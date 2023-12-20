@@ -27,7 +27,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useUsersStore } from "@/stores/UsersStore";
-import FormChat from "@/components/ui/FormChat.vue"
+import FormChat from "@/components/ui/UIFormChat.vue"
 import Chat from "./ChatContainer.vue";
 import CustomButton from "./ui/UICustomButton.vue";
 import { deleteChat } from "../api/chatApi"

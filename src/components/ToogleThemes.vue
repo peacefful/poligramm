@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import InputRadio from './ui/InputRadio.vue';
+import InputRadio from './ui/UIInputRadio.vue';
 import { useI18n } from "vue-i18n"
 
 const { t } = useI18n({ useScope: 'global' })

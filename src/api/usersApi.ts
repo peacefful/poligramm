@@ -1,8 +1,8 @@
-import type { IUser } from "@/interfaces/iUsers"
 import router from "@/router"
 import { storage } from "@/utils/storage"
 import axios from "axios"
-import { ref, computed } from "vue"
+import type { IUser } from "@/interfaces/iUsers"
+import { validateRegistrationData } from "@/utils/validateData"
 
 export const USERS_API = 'http://localhost:3000/api/users'
 
@@ -12,9 +12,9 @@ const users = axios.create({
 
 users.defaults.headers.common['Authorization'] = storage.getData('token')
 
-export const authorization = async (login:string, password:string) => {
+export const authorization = async (login: string, password: string) => {
 	try {
-		if (login && password) {
+		if (login.trim() && password.trim()) {
 			const authUser = await axios.post(`${USERS_API}/auth`, {
 				login: login,
 				password: password,
@@ -34,46 +34,9 @@ export const authorization = async (login:string, password:string) => {
 	}
 }
 
-export const registration = async (
-	surname:string,
-	name:string,
-	appointment:string,
-	rank:string,
-	login:string,
-	password:string,
-	role:string,
-	phone:string,
-) => {
-	if (
-		surname.trim() && 
-		name.trim() && 
-		appointment.trim() && 
-		rank.trim() && 
-		login.trim() && 
-		password.trim() && 
-		role.trim() && 
-		phone.trim()
-	) {
-		const user = await axios.post(USERS_API, {
-			surname: surname,
-			name: name,
-			appointment: appointment,
-			rank: rank,
-			login: login,
-			password: password,
-			role: role,
-			phone: phone,
-		})
-
+export const registration = async (authUser: IUser) => {
+	if (validateRegistrationData(authUser)) {
+		const user = await axios.post(USERS_API, {...authUser})
 		user ? router.push("/") : new Error("Ошибка, регистрация не завершена")
 	}
 }
-
-export const getUsers = computed(async (): Promise<IUser[]>  => {
-	const allUsers = ref<IUser[]>([])
-	const result:IUser[] = (await users.get(USERS_API)).data
-
-	allUsers.value = result.filter(user => user.id !== Number(storage.getData("id")))
-
-	return allUsers.value
-})
