@@ -22,10 +22,10 @@ export const useUsersStore = defineStore('users', {
 	},
 	actions: {
 		async getUserData() {
-			this.user = (await users.get(`http://localhost:3000/api/users/${storage.getData("id")}`)).data
+			this.user = (await users.get(`${USERS_API}/${storage.getData("id")}`)).data
 		},
 		async getUsersData() {
-			this.users = (await users.get('http://localhost:3000/api/users')).data
+			this.users = (await users.get(USERS_API)).data
 		}
 	}
 })

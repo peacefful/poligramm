@@ -26,14 +26,14 @@
 		<article v-else class="w-full flex flex-col justify-between">
 			<ChatContainer @close-chat="closeChat()" :uuid="uuid" :name="room" />
 		</article>
-		<PushNotification :show-chats="showChats" @enter-chat="enterChat(inviteRoom.nameRoom, inviteRoom.uuidRoom)" />
-		<!-- <transition>
+		<!-- <PushNotification :show-chats="showChats" @enter-chat="enterChat(inviteRoom.nameRoom, inviteRoom.uuidRoom)" /> -->
+		<transition>
 			<div v-if="isInviteRoom && showChats" class="fixed bottom-0 right-0 w-[380px] bg-blue-600 p-4 rounded-xl">
 				<p class="mb-2">Вас пригласили в чат</p>
 				<CustomButton title="Войти" @click.prevent="enterChat(inviteRoom.nameRoom, inviteRoom.uuidRoom, isInviteRoom)" />
 				<CustomButton @click.prevent="closeNotification" class="bg-red-600 hover:bg-red-700 ml-3" title="Закрыть" />
 			</div>
-		</transition> -->
+		</transition>
 	</main>
 	<div v-else class="text-5xl flex flex-col justify-center items-center">
 		<router-link to="/" class="mt-14">Войдите</router-link>
@@ -51,7 +51,7 @@ import { ref, reactive } from 'vue';
 import { useI18n } from "vue-i18n"
 import socket from "@/utils/socket"
 import ChatContainer from "@/components/ChatContainer.vue"
-import { useEnterChat, useEnterChatFromNotification } from "@/hooks/useEnterChat";
+import { useEnterChat } from "@/hooks/useEnterChat";
 import { storage } from "@/utils/storage"
 import PushNotification from "@/components/PushNotification.vue"
 
@@ -74,19 +74,19 @@ const inviteRoom: IInviteRoom = reactive({
 socket.emit('personalInvite', storage.getData("uuid"));
 const { enterChat, closeChat, showChats, uuid, room } = useEnterChat()
 
-// let isInviteRoom = ref<boolean>(false)
-// const closeNotification = () => isInviteRoom.value = false
+let isInviteRoom = ref<boolean>(false)
+const closeNotification = () => isInviteRoom.value = false
 
 
-// socket.on('messageInvite', (nameRoom, uuidRoom) => {
-// 	inviteRoom.nameRoom = nameRoom
-// 	inviteRoom.uuidRoom = uuidRoom
+socket.on('messageInvite', (nameRoom, uuidRoom) => {
+	inviteRoom.nameRoom = nameRoom
+	inviteRoom.uuidRoom = uuidRoom
 
-// 	if (inviteRoom.nameRoom && inviteRoom.uuidRoom) {
-// 		isInviteRoom.value = true
-// 		setTimeout(() => isInviteRoom.value = false, 5000);
-// 	}
-// })
+	if (inviteRoom.nameRoom && inviteRoom.uuidRoom) {
+		isInviteRoom.value = true
+		setTimeout(() => isInviteRoom.value = false, 5000);
+	}
+})
 </script>
 
 <style scoped>

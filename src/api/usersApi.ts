@@ -4,13 +4,7 @@ import axios from "axios"
 import type { IUser } from "@/interfaces/iUsers"
 import { validateRegistrationData } from "@/utils/validateData"
 
-export const USERS_API = 'http://localhost:3000/api/users'
-
-const users = axios.create({
-	baseURL: USERS_API,
-})
-
-users.defaults.headers.common['Authorization'] = storage.getData('token')
+export const USERS_API = 'http://195.49.210.52:3000/api/users'
 
 export const authorization = async (login: string, password: string) => {
 	try {
