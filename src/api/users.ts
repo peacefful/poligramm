@@ -18,6 +18,7 @@ export const authorization = async (login: string, password: string) => {
 				storage.setData('token', authUser.data.token)
 				storage.setData('id', authUser.data.id)
 				storage.setData('uuid', authUser.data.uuid)
+				storage.setData('username', `${authUser.data.name} ${authUser.data.surname} `)
 				router.push("home")
 			} else {
 				new Error("Ошибка")

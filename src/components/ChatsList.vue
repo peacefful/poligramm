@@ -1,10 +1,10 @@
 <template>
 	<div v-if="showChats === true">
-		<h1 class="text-center text-3xl mt-5">Ваши чаты</h1>
+		<h1 class="text-center text-3xl mt-5">{{ t('chatsList') }}</h1>
 		<div class="m-2">
 			<div class="flex items-center mt-3 justify-between flex-wrap">
 				<div class="flex flex-wrap justify-center">
-					<CustomButton @click="showCreateChatForm = !showCreateChatForm" title="Создать новый чат" />
+					<CustomButton @click="showCreateChatForm = !showCreateChatForm" :title="t('createChat')" />
 					<FormChat class="ml-4" v-if="showCreateChatForm" />
 				</div>
 				<UIInput class="p-2" bg="#0054A8" v-model:value="findChat" />
@@ -14,8 +14,8 @@
 					@click="enterChat(chat.uuid, chat.roomName)">
 					{{ chat.roomName }}
 					<div class="flex w-20 justify-between">
-						<img title="Перейти в чат" src="../assets/icons/chat.svg" alt="">
-						<img title="Удалить чат" @click="deleteChat(chat.id)" src="../assets/icons/trash.svg" alt="">
+						<img :title="t('goChat')" src="../assets/icons/chat.svg" alt="">
+						<img :title="t('delete')" @click="deleteChat(chat.id)" src="../assets/icons/trash.svg" alt="">
 					</div>
 				</li>
 			</ul>
@@ -30,10 +30,13 @@ import { useUsersStore } from "@/stores/UsersStore";
 import FormChat from "@/components/ui/UIFormChat.vue"
 import Chat from "./ChatContainer.vue";
 import CustomButton from "./ui/UICustomButton.vue";
-import { deleteChat } from "../api/chatApi"
+import { deleteChat } from "../api/chats"
 import { filterChats } from "@/utils/filterUsersAndChats";
 import UIInput from "./ui/UIInput.vue";
 import { useEnterChat } from "@/hooks/useEnterChat";
+import { useI18n } from "vue-i18n"
+
+const { t } = useI18n({ useScope: 'global' })
 
 const findChat = ref<string>('')
 

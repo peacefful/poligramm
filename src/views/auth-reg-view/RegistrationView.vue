@@ -1,7 +1,7 @@
 <template>
-	<main class="mt-5 p-1">
-		<h1 class="text-3xl text-center">{{ t("signUp") }}</h1>
+	<main class="h-screen flex flex-col justify-center items-center">
 		<form class="flex flex-col max-w-sm" @submit.prevent="registration(dataRegistration)">
+			<h1 class="text-3xl text-center">{{ t("signUp") }}</h1>
 			<UIInput v-model:value="dataRegistration.surname" class="px-1" bg="#0054A8" :placeholder="t('surname')"/>
 			<UIInput v-model:value="dataRegistration.name" class="px-1" bg="#0054A8" :placeholder="t('name')"/>
 			<select class="mt-5" v-model="dataRegistration.rank">
@@ -39,8 +39,8 @@
 					<CustomButton class="w-full text-[18px] my-2" :title='t("signUp")' />
 				</div>
 			</div>
+			<div @click="updateLocale()" class="text-center text-xm text-gray-400 hover:text-gray-100 ease-in duration-100 cursor-pointer">{{ t('updateLanguage') }}</div>
 		</form>
-		<div @click="updateLocale()" class="text-center text-xm text-gray-400 hover:text-gray-100 ease-in duration-100 cursor-pointer">{{ t('updateLanguage') }}</div>
 	</main>
 </template>
 
@@ -50,7 +50,7 @@ import type { IUser } from '@/interfaces/iUsers';
 import { useToogleLanguage } from "@/hooks/useToogleLang"
 import CustomButton from '@/components/ui/UICustomButton.vue';
 import UIInput from '@/components/ui/UIInput.vue';
-import { registration } from '@/api/usersApi';
+import { registration } from '@/api/users';
 import type { IChats } from '@/interfaces/iChats';
 
 const { t, updateLocale } = useToogleLanguage()

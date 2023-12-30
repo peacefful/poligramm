@@ -2,9 +2,9 @@
 	<div class=" flex flex-col justify-between h-full text-xl">
 		<div class="bg-blue-900 sticky top-0 p-2">
 			<div class="flex items-center justify-between ">
-				<CustomButton @click="$emit('closeChat')" title="Закрыть" />
+				<CustomButton @click="$emit('closeChat')" :title="t('close')" />
 				<h2>{{ name }}</h2>
-				<CustomButton @click="openModal" title="Добавить пользователя" />
+				<CustomButton @click="openModal" :title="t('addUsers')" />
 			</div>
 		</div>
 		<Modal @closeModal="closeModal" :is-open-modal="isOpenModal" :uuid-room="chat.uuid" :name-room="chat.name" />

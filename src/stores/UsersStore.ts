@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import type { IUser } from '@/interfaces/iUsers'
 import axios from 'axios'
 import { storage } from '@/utils/storage'
-import { USERS_API } from '@/api/usersApi'
+import { USERS_API } from '@/api/users'
 
 const users = axios.create({
 	baseURL: USERS_API,

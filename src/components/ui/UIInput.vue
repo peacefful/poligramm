@@ -1,5 +1,5 @@
 <template>
-	<input :style="{ background: bg }" class="bg-zinc-900 text-zinc-300" type="text" v-model="value" placeholder="Поиск">
+	<input :style="{ background: bg }" class="bg-zinc-900 text-zinc-300 " type="text" v-model="value" placeholder="Поиск">
 </template>
 
 <script setup lang="ts">

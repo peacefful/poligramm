@@ -45,5 +45,9 @@ const logOut = () => {
 	padding: 0.5rem;
 	margin-top: 1rem;
 	border-radius: 0.375rem;
+	transition: background-color ease-in-out 0.1s;
+	&:hover {
+		background-color: #1a73cb;
+	}
 }
 </style>
