@@ -2,7 +2,11 @@ import type { IChats } from "@/interfaces/iChats"
 import type { IUser } from "@/interfaces/iUsers"
 
 export const filterChats = (chats: IChats[], findRoomName: string) => {
-	return chats.filter(chat => chat.roomName.includes(findRoomName))
+	if (chats) {
+		return chats.filter(chat => chat.roomName.includes(findRoomName));
+	} else {
+		return [];
+	}
 }
 
 export const filterUsers = (users: IUser[], findUserName: string) => {

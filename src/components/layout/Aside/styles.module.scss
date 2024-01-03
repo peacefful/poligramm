@@ -1,4 +1,4 @@
-main {
+.layout-aside {
 	display: flex;
 }
 
@@ -6,16 +6,17 @@ img {
 	cursor: pointer;
 }
 
-article{
+article {
 	margin-left: 364px;
 	font-size: 22px;
 }
 
 @media (max-width: 1155px) {
-	main{
+	.layout-aside {
 		flex-direction: column;
 		align-items: center;
-		aside,article {
+		aside,
+		article {
 			width: 100%;
 		}
 		aside {
@@ -35,7 +36,6 @@ article{
 				font-size: 15px;
 				padding: 4% 0%;
 			}
-			
 		}
 	}
 }

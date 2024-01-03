@@ -5,8 +5,8 @@
 			<UIInput bg="#0054A8" class="px-1" v-model:value="login" :placeholder="t('login')" />
 			<UIInput bg="#0054A8" class="px-1" v-model:value="password" :placeholder="t('password')" />
 			<div class="flex mt-3">
-				<CustomButton class="w-full" :title="t('forgotMyPassword')" />
-				<CustomButton class="w-full ml-4" :title="t('signIn')" />
+				<UIButton class="w-full" :title="t('forgotMyPassword')" />
+				<UIButton class="w-full ml-4" :title="t('signIn')" />
 			</div>
 		<div @click="updateLocale()"
 			class="text-center text-xm text-gray-400 hover:text-gray-100 ease-in duration-100 cursor-pointer">{{
@@ -18,7 +18,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useToogleLanguage } from "@/hooks/useToogleLang"
-import CustomButton from '@/components/ui/UICustomButton.vue';
+import UIButton from '@/components/ui/UIButton.vue';
 import UIInput from '@/components/ui/UIInput.vue';
 import { authorization } from "@/api/users"
 

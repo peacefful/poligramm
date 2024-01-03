@@ -15,8 +15,8 @@
 				</div>
 				</div>
 				<div>
-					<CustomButton @click.prevent="sendInvitation(uuids, uuidRoom, nameRoom)" class="mt-10" :title="t('add')" />
-				<CustomButton @click.prevent="$emit('closeModal')" class="ml-3 bg-red-600 hover:bg-red-700" :title="t('close')" />
+					<UIButton @click.prevent="sendInvitation(uuids, uuidRoom, nameRoom)" class="mt-10" :title="t('add')" />
+				<UIButton @click.prevent="$emit('closeModal')" class="ml-3" color="danger" :title="t('close')" />
 				<div v-if="error" class="text-red-600 mt-2">
 					{{ t("errorSelectUsers") }}
 				</div>
@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import CustomButton from './UICustomButton.vue';
+import UIButton from './UIButton.vue';
 import { useUsersStore } from '@/stores/UsersStore';
 import socket from '@/utils/socket';
 import { ref } from 'vue';

@@ -1,5 +1,5 @@
 import './assets/styles/tailwind.css'
-import './assets/styles/normalize.css'
+import './assets/styles/normalize.scss'
 
 import { languages } from "./i18n"
 import { defaultLocale } from "./i18n"

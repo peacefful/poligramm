@@ -2,9 +2,9 @@
 	<div class=" flex flex-col justify-between h-full text-xl">
 		<div class="bg-blue-900 sticky top-0 p-2">
 			<div class="flex items-center justify-between ">
-				<CustomButton @click="$emit('closeChat')" :title="t('close')" />
+				<UIButton @click="$emit('closeChat')" :title="t('close')" />
 				<h2>{{ name }}</h2>
-				<CustomButton @click="openModal" :title="t('addUsers')" />
+				<UIButton @click="openModal" :title="t('addUsers')" />
 			</div>
 		</div>
 		<Modal @closeModal="closeModal" :is-open-modal="isOpenModal" :uuid-room="chat.uuid" :name-room="chat.name" />
@@ -30,7 +30,7 @@ import InputButton from "./ui/UIInputButton.vue"
 import dayjs from "dayjs"
 import { useI18n } from "vue-i18n"
 import socket from "../utils/socket"
-import CustomButton from "./ui/UICustomButton.vue"
+import UIButton from "./ui/UIButton.vue"
 import type { IMessage } from "../interfaces/iMessage"
 import { ref } from "vue"
 import { useToogleModal } from "../hooks/useToggleModal"

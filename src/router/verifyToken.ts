@@ -7,5 +7,5 @@ export async function isVerifyToken(
 	next: NavigationGuardNext
 ) {
 	const token: boolean = Boolean(storage.getData('token'))
-	token ? next('/home') : next()
+	token ? next('/chats') : next()
 }

@@ -16,30 +16,20 @@
 		<div class="user-data">
 			{{ t('rank') }}: {{ data.user.rank }}
 		</div>
-		<CustomButton class="w-full mt-4" @click="logOut()" title="Выйти" />
 	</div>
 </template>
 
 <script setup lang="ts">
 import { useI18n } from "vue-i18n"
 import { useUsersStore } from "@/stores/UsersStore";
-import { useRouter } from "vue-router";
-import CustomButton from "./ui/UICustomButton.vue";
-
-const router = useRouter()
 
 const { t } = useI18n({ useScope: 'global' })
 
 const data = useUsersStore()
 data.getUserData()
-
-const logOut = () => {
-	localStorage.clear()
-	return router.push("/")
-}
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .user-data {
 	background-color: #0054A8;
 	padding: 0.5rem;

@@ -36,7 +36,7 @@
 						<option value="Редактор">Редактор</option>
 						<option value="Участник">Участник</option>
 					</select>
-					<CustomButton class="w-full text-[18px] my-2" :title='t("signUp")' />
+					<UIButton class="w-full text-[18px] my-2" :title='t("signUp")' />
 				</div>
 			</div>
 			<div @click="updateLocale()" class="text-center text-xm text-gray-400 hover:text-gray-100 ease-in duration-100 cursor-pointer">{{ t('updateLanguage') }}</div>
@@ -48,7 +48,7 @@
 import { reactive } from 'vue';
 import type { IUser } from '@/interfaces/iUsers';
 import { useToogleLanguage } from "@/hooks/useToogleLang"
-import CustomButton from '@/components/ui/UICustomButton.vue';
+import UIButton from '@/components/ui/UIButton.vue';
 import UIInput from '@/components/ui/UIInput.vue';
 import { registration } from '@/api/users';
 import type { IChats } from '@/interfaces/iChats';
