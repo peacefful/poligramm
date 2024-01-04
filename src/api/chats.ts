@@ -24,7 +24,7 @@ export const addChat = async (room: string) => {
 
 export const deleteChat = async (id:number) => {
 	try {
-		chats.delete(`${CHAT_API}/${id}`)
+		await chats.delete(`${CHAT_API}/${id}`)
 		location.reload()
 	} catch (error) {
 		console.log(error);

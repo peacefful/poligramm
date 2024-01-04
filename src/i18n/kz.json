@@ -7,24 +7,19 @@
 	"appointment": "Атағы",
 	"rank": "Лауазымы",
 	"signIn": "Кіру",
-
 	"geolocation": "Орналасқан жері",
 	"chats": "Чаттар",
 	"invites": "Шақырулар",
 	"searchItems": "Тауарларды іздеу",
 	"updateTheme": "Түс тақырыбы",
 	"language": "Тіл",
-
 	"messengerInputPlaceholder": "Хабарламаны енгізіңіз",
-
 	"password": "Құпия сөз",
 	"forgotMyPassword": "Құпия сөзді ұмыттыңыз ба",
 	"updateLanguage": "Тілді өзгерту",
-
 	"signUp": "Тіркеу",
 	"phone": "Телефон нөмірі",
 	"access": "Қол жеткізу",
-
 	"createChat": "Жаңа чат жасаңыз",
 	"search": "Іздеу",
 	"logout": "Шығу",
