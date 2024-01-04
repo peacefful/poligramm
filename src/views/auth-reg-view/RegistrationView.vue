@@ -19,10 +19,10 @@
 				<option value="Капитан">Капитан</option>
 			</select>
 			<UIInput v-model:value="dataRegistration.login" class="px-1" bg="#0054A8" :placeholder="t('login')"/>
-			<UIInput v-model:value="dataRegistration.password" class="px-1" bg="#0054A8" :placeholder="t('password')"/>
+			<UIInput v-model:value="dataRegistration.password" class="px-1" bg="#0054A8" :placeholder="t('password')" type="password"/>
 			<UIInput v-model:value="dataRegistration.phone" class="px-1" bg="#0054A8" :placeholder="t('phone')"/>
 			<div class="flex items-center content-between">
-				<div class="rounded-2xl bg-polligramBackground p-5 mt-1 bg-[#0054A8]">
+				<div class="rounded-2xl p-5 mt-1 bg-[#0054A8]">
 					<input type="file" id="fileInput" class="hidden">
 					<label for="fileInput">
 						<img style="cursor: pointer" src="../../assets/icons/image.svg" alt="">

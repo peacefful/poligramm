@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useUsersStore } from "@/stores/UsersStore";
 import FormChat from "@/components/ui/UIFormChat.vue"
 import Chat from "@/components/ChatContainer.vue";
@@ -41,7 +41,8 @@ const { t } = useI18n({ useScope: 'global' })
 const findChat = ref<string>('')
 
 const data = useUsersStore()
-data.getUserData()
+
+onMounted(async () => await data.getUserData())
 
 const showCreateChatForm = ref<boolean>(false)
 

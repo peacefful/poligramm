@@ -1,7 +1,7 @@
 <template>
-	<div class="rounded-2xl bg-polligramBackground p-6 ml-4">
-		<input :type="inputType" :id="inputType" class="hidden">
-		<label :for="inputType">
+	<div class="rounded-2xl bg-[#0054A8] p-6 ml-4">
+		<input :type="inputType" :id="inputType" class="hidden ">
+		<label :for="inputType" class="cursor-pointer">
 			<img :src="uiSrc" alt="">
 		</label>
 	</div>
@@ -13,12 +13,3 @@ defineProps<{
 	inputType:string
 }>()
 </script>
-
-<style scoped>
-div {
-	background: #0054A8;
-}
-img {
-	cursor: pointer
-}
-</style>

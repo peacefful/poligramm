@@ -16,15 +16,10 @@ const router = createRouter({
 			component: () => import('@/views/auth-reg-view/RegistrationView.vue'),
 			beforeEnter: isVerifyToken
 		},
-		// {
-		// 	path: '/home',
-		// 	name: 'home',
-		// 	component: () => import('@/views/home-view/HomeView.vue')
-		// },
 		{
 			path: '/chats',
 			name: 'chats',
-			component: () => import('@/views/chats-view/ChatsView.vue')
+			component: () => import('@/views/ChatsView.vue')
 		}
 	]
 })

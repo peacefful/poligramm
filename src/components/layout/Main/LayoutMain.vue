@@ -1,10 +1,10 @@
 <template>
 	<div class="layout-aside" v-if="accessToken">
-		<aside class="bg-blue-900 min-h-screen">
+		<aside class="bg-blue-900 min-h-screen ">
 			<div class="p-2 fixed w-[364px] bg-blue-900 min-h-screen">
 				<ProfileData />
 				<ToogleThemes class="mt-[32px]" />
-				<ToogleLanguage class="mt-[100px]" />
+				<ToogleLanguage class="mt-16" />
 				<UIButton class="w-full mt-6" color="danger" @click="logOut()" title="Выйти" />
 			</div>
 		</aside>
@@ -21,7 +21,7 @@
 				<p class="mb-2">{{ t('inviteToChat') }}</p>
 				<UIButton :title="t('signIn')"
 					@click.prevent="enterChat(inviteRoom.nameRoom, inviteRoom.uuidRoom, closeNotification)" />
-				<UIButton @click.prevent="closeNotification" color="danger" :title="t('close')" />
+				<UIButton @click.prevent="closeNotification" class="ml-3" color="danger" :title="t('close')" />
 			</div>
 		</transition>
 	</div>
