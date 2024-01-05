@@ -39,7 +39,7 @@ import ProfileData from "@/components/ProfileData.vue"
 import ChatContainer from "@/components/ChatContainer.vue"
 import UIButton from "@/components/ui/UIButton.vue"
 import socket from "@/utils/socket"
-import { useEnterChat } from "@/hooks/useEnterChat";
+import { useEnterChat } from "@/hooks/useEnter";
 import { storage } from "@/utils/storage"
 import router from "@/router"
 import { ref, reactive } from 'vue';

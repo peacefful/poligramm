@@ -47,13 +47,13 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
 import type { IUser } from '@/interfaces/iUsers';
-import { useToogleLanguage } from "@/hooks/useToogleLang"
+import { toogleLanguage } from "@/utils/toogleLang"
 import UIButton from '@/components/ui/UIButton.vue';
 import UIInput from '@/components/ui/UIInput.vue';
 import { registration } from '@/api/users';
 import type { IChats } from '@/interfaces/iChats';
 
-const { t, updateLocale } = useToogleLanguage()
+const { t, updateLocale } = toogleLanguage()
 
 const dataRegistration:IUser = reactive({
 	surname: "",
@@ -70,4 +70,4 @@ const dataRegistration:IUser = reactive({
 
 <style scoped>
 @import './styles.module.scss';
-</style>
+</style>@/utils/toogleLang

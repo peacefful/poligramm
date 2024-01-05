@@ -17,12 +17,12 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useToogleLanguage } from "@/hooks/useToogleLang"
+import { toogleLanguage } from "@/utils/toogleLang"
 import UIButton from '@/components/ui/UIButton.vue';
 import UIInput from '@/components/ui/UIInput.vue';
 import { authorization } from "@/api/users"
 
-const { t, updateLocale } = useToogleLanguage()
+const { t, updateLocale } = toogleLanguage()
 
 const login = ref<string>("")
 const password = ref<string>("")
@@ -30,4 +30,4 @@ const password = ref<string>("")
 
 <style scoped>
 @import './styles.module.scss';
-</style>
+</style>@/utils/toogleLang
