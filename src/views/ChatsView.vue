@@ -1,5 +1,5 @@
 <template>
-	<div ref="container" class="h-full overflow-hidden" v-if="showChats === true">
+	<div ref="body" class="h-full overflow-hidden" v-if="showChats === true">
 		<h1 class="text-center text-3xl mt-2">{{ t('chatsList') }}</h1>
 		<div class="m-2">
 			<div class="flex items-center mt-3 justify-between flex-wrap">
@@ -35,9 +35,9 @@ import { filterChats } from "@/utils/filterUsersAndChats";
 import UIInput from "@/components/ui/UIInput.vue";
 import { useEnterChat } from "@/hooks/useEnter";
 import { useI18n } from "vue-i18n"
-import { useToogleMenu } from "@/hooks/useToggle";
+import { useToogleMenu } from "@/hooks/useToogle";
 
-const { container, openMenu, toogleMenu } = useToogleMenu()
+const { body, openMenu, toogleMenu } = useToogleMenu()
 
 const { t } = useI18n({ useScope: 'global' })
 
@@ -49,4 +49,4 @@ onMounted(async () => await data.getUserData())
 const showCreateChatForm = ref<boolean>(false)
 
 const { enterChat, closeChat, showChats, uuid, room } = useEnterChat()
-</script>
+</script>@/hooks/useToogle

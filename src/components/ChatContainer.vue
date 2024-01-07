@@ -1,5 +1,5 @@
 <template>
-	<div ref="container" class="flex flex-col justify-between min-h-full">
+	<div ref="body" class="flex flex-col justify-between min-h-full">
 		<div class="bg-blue-900 sticky top-0 p-2">
 			<div class="flex items-center justify-between">
 				<div @click="$emit('closeChat')"
@@ -13,7 +13,8 @@
 				</div>
 			</div>
 		</div>
-		<Modal @closeModal="closeModal" :is-open-modal="isOpenModal" :uuid-room="chat.uuid" :name-room="chat.name" />
+		<Modal :title="t('selectUser')" @closeModal="closeModal" :is-open-modal="isOpenModal" :uuid-room="chat.uuid"
+			:name-room="chat.name"/>
 		<div>
 			<div class="p-2">
 				<UIMessages v-for="user in messages" :key="user.id" :id="user.id" :message="user.message"
@@ -40,15 +41,15 @@ import socket from "@/utils/socket"
 import UIButtonMenu from "./ui/UIButtonMenu.vue"
 import type { IMessage } from "@/interfaces/iMessage"
 import { ref } from "vue"
-import { useToogleModal } from "@/hooks/useToggle"
+import { useToogleModal } from "@/hooks/useToogle"
 import Modal from "./ui/UIModalAddUsers.vue"
 import paperClipIcon from "@/assets/icons/paperClip.svg"
 import sendMessageIcon from "@/assets/icons/sendMessage.svg"
 import { storage } from "@/utils/storage"
 import UIMessages from "./ui/UIMessages.vue"
-import { useToogleMenu } from "@/hooks/useToggle"
+import { useToogleMenu } from "@/hooks/useToogle"
 
-const { container, openMenu, toogleMenu } = useToogleMenu()
+const { t } = useI18n({ useScope: 'global' })
 
 const chat = defineProps<{
 	name: string
@@ -57,9 +58,8 @@ const chat = defineProps<{
 
 defineEmits(['closeChat'])
 
+const { body, openMenu, toogleMenu } = useToogleMenu()
 const { openModal, closeModal, isOpenModal } = useToogleModal()
-
-const { t } = useI18n({ useScope: 'global' })
 
 const message = ref<string>("")
 const messages = ref<IMessage[]>([])
@@ -79,4 +79,4 @@ socket.on('message', (message, id) => {
 		window.scrollTo(0, document.body.scrollHeight);
 	});
 });
-</script>
+</script>@/hooks/useToogle@/hooks/useToogle

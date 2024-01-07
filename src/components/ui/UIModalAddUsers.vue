@@ -3,23 +3,23 @@
 		<div v-if="isOpenModal" class="modal-form">
 			<div class="modal-form__box">
 				<div>
-					<h3 class="modal-form__title">{{ t('selectUser') }}</h3>
-				<div class="mb-5">
-					<UIInput class="p-3" v-model:value="findUser" />
-				</div>
-				<div class="modal-form__users" v-for="user in filterUsers(data.allUsers, findUser)" :key="user.id">
-					<label class="flex justify-between items-center" :for="user.name">
-						{{ user.name }} {{ user.surname }} ({{ user.rank }})
-						<input v-model="uuids" :id="user.name" :value="user.uuid" class="h-5 w-5" type="checkbox">
-					</label>
-				</div>
+					<h3 class="modal-form__title">{{ title }}</h3>
+					<div class="mb-5">
+						<UIInput class="p-3" v-model:value="findUser" />
+					</div>
+					<div class="modal-form__users" v-for="user in filterUsers(data.allUsers, findUser)" :key="user.id">
+						<label class="flex justify-between items-center" :for="user.name">
+							{{ user.name }} {{ user.surname }} ({{ user.rank }})
+							<input v-model="uuids" :id="user.name" :value="user.uuid" class="h-5 w-5" type="checkbox">
+						</label>
+					</div>
 				</div>
 				<div>
 					<UIButton @click.prevent="sendInvitation(uuids, uuidRoom, nameRoom)" class="mt-10" :title="t('add')" />
-				<UIButton @click.prevent="$emit('closeModal')" class="ml-3" color="danger" :title="t('close')" />
-				<div v-if="error" class="text-red-600 mt-2">
-					{{ t("errorSelectUsers") }}
-				</div>
+					<UIButton @click.prevent="$emit('closeModal')" class="ml-3" color="danger" :title="t('close')" />
+					<div v-if="error" class="text-red-600 mt-2">
+						{{ t("errorSelectUsers") }}
+					</div>
 				</div>
 			</div>
 		</div>
@@ -42,6 +42,7 @@ defineProps<{
 	uuidRoom: string
 	nameRoom: string
 	isOpenModal: boolean
+	title?: string
 }>()
 
 const modalEmits = defineEmits(["closeModal"])
@@ -102,10 +103,12 @@ const sendInvitation = (usersUuids: string[], uuidRoom: string, nameRoom: string
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+
 		.modal-form__title {
 			font-size: 30px;
 			margin-bottom: 2%;
 		}
+
 		.modal-form__users {
 			margin-top: 1%;
 		}

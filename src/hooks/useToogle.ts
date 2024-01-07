@@ -10,7 +10,7 @@ export const useToogleModal = () => {
 }
 
 export const useToogleMenu = () => {
-	const container = ref<HTMLInputElement | null>(null)
+	const body = ref<HTMLInputElement | null>(null)
 	const openMenu = ref<boolean>(false)
 
 	const toogleMenu = () => openMenu.value = !openMenu.value
@@ -24,11 +24,11 @@ export const useToogleMenu = () => {
 		};
 
 		if (openMenu.value) {
-			container.value?.addEventListener("click", clickHandler);
+			body.value?.addEventListener("click", clickHandler);
 		} else {
-			container.value?.removeEventListener("click", clickHandler);
+			body.value?.removeEventListener("click", clickHandler);
 		}
 	})
 
-	return { container, openMenu, toogleMenu }
+	return { body, openMenu, toogleMenu }
 }
