@@ -11,40 +11,6 @@ article {
 	font-size: 22px;
 }
 
-// @media (max-width: 1155px) {
-// 	.layout-aside {
-// 		flex-direction: column;
-// 		align-items: center;
-
-// 		aside,
-// 		article {
-// 			width: 100%;
-// 		}
-
-// 		aside {
-// 			div {
-// 				position: relative;
-// 				width: 100%;
-// 			}
-// 		}
-
-// 		article {
-// 			margin-left: 0;
-// 		}
-
-// 		article {
-// 			section {
-// 				font-size: 15px;
-// 			}
-
-// 			form {
-// 				font-size: 15px;
-// 				padding: 4% 0%;
-// 			}
-// 		}
-// 	}
-// }
-
 @media (max-width: 1400px) {
 	aside {
 		display: none;

@@ -60,7 +60,7 @@ import sendMessageIcon from "@/assets/icons/sendMessage.svg"
 import { storage } from "@/utils/storage"
 import UIMessages from "./ui/UIMessages.vue"
 import { useToogleMenu } from "@/hooks/useToogle"
-import { filterUsers } from '@/utils/filterUsersAndChats';
+import { filterUsers } from '@/utils/filterDatas';
 import { useUsersStore } from "@/stores/UsersStore"
 import { useChatsStore } from "@/stores/ChatsStore"
 

@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import LayoutMain from './components/layout/Main/LayoutMain.vue';
 import { RouterView, useRoute } from 'vue-router';
-import { checkTokenExpiration } from "./utils/checkTokenExpiration"
+import { checkTokenExpiration } from "./utils/isValidToken"
 
 checkTokenExpiration()
 </script>

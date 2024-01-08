@@ -13,16 +13,20 @@
 					<UIInput class="p-3" v-model:value="newChat" :placeholder="t('chatName')" />
 				</UIModal>
 			</div>
-			<ul class="mt-6" v-for="chat in filterChats(usersStore.user.chats, findChat)" :key="chat.id">
-				<li
-					class="bg-blue-500 p-5 rounded-md flex justify-between items-center cursor-pointer hover:bg-blue-400 ease-in duration-100 mt-2">
-					{{ chat.roomName }}
-					<div class="flex w-20 justify-between">
-						<img :title="t('goChat')" @click="enterChat(chat.uuid, chat.roomName)" src="@/assets/icons/chat.svg">
-						<img :title="t('delete')" @click="deleteChat(chat.id)" src="@/assets/icons/trash.svg">
-					</div>
-				</li>
-			</ul>
+			<div v-if="usersStore?.user?.chats?.length">
+				<ul class="mt-4" v-for="chat in filterChats(usersStore.user.chats, findChat)" :key="chat.id">
+					<li class="bg-blue-500 p-5 rounded-md flex justify-between items-center  mt-2">
+						{{ chat.roomName }}
+						<div class="flex w-20 justify-between">
+							<img class="cursor-pointer" :title="t('goChat')" @click="enterChat(chat.uuid, chat.roomName)"
+								src="@/assets/icons/chat.svg">
+							<img class="cursor-pointer" :title="t('delete')" @click="deleteChat(chat.id)"
+								src="@/assets/icons/trash.svg">
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="mt-6" v-else>Чатов пока нет.</div>
 		</div>
 	</div>
 	<Chat @close-chat="closeChat" :uuid="uuid" :name="room" v-else />
@@ -35,7 +39,7 @@ import { addChat } from '@/api/chats';
 import Chat from "@/components/ChatContainer.vue";
 import UIButtonMenu from "@/components/ui/UIButtonMenu.vue";
 import { deleteChat } from "@/api/chats"
-import { filterChats } from "@/utils/filterUsersAndChats";
+import { filterChats } from "@/utils/filterDatas";
 import UIInput from "@/components/ui/UIInput.vue";
 import { useEnterChat } from "@/hooks/useEnter";
 import { useI18n } from "vue-i18n"
@@ -54,4 +58,4 @@ const findChat = ref<string>('')
 
 const usersStore = useUsersStore()
 onMounted(async () => await usersStore.getUserData())
-</script>@/hooks/useToogle
+</script>

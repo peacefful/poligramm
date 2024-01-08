@@ -1,11 +1,15 @@
 <template>
 	<div class="layout-aside" v-if="accessToken">
 		<aside class="bg-blue-900 min-h-screen ">
-			<div class="p-2 fixed w-[364px] bg-blue-900 min-h-screen">
-				<ProfileData />
-				<ToogleThemes class="mt-[32px]" />
-				<ToogleLanguage class="mt-16" />
-				<UIButton class="w-full mt-6" color="danger" @click="logOut()" title="Выйти" />
+			<div class="p-2 fixed w-[364px] bg-blue-900 min-h-screen flex flex-col justify-between">
+				<div>
+					<ProfileData />
+					<!-- <ToogleThemes class="mt-[32px]" /> -->
+				</div>
+				<div class="mb-2">
+					<ToogleLanguage/>
+					<UIButton class="w-full mt-4" color="danger" @click="logOut()" title="Выйти" />
+				</div>
 			</div>
 		</aside>
 		<article v-if="showChats" class="w-full flex flex-col justify-between">
