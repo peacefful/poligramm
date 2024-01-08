@@ -1,11 +1,11 @@
 <template>
-	<div class="py-4 text-center">
+	<div class="py-4 text-center" v-if="usersStore.user">
 		<div class="user-data">{{ $t('data') }}</div>
-		<div class="user-data">{{ t('login') }}: {{ userStore.user.login }}</div>
-		<div class="user-data">{{ t('name') }}: {{ userStore.user.name }}</div>
-		<div class="user-data">{{ t('surname') }}: {{ userStore.user.surname }}</div>
-		<div class="user-data">{{ t('appointment') }}: {{ userStore.user.appointment }}</div>
-		<div class="user-data">{{ t('rank') }}: {{ userStore.user.rank }}</div>
+		<div class="user-data">{{ t('login') }}: {{ usersStore.user.login }}</div>
+		<div class="user-data">{{ t('name') }}: {{ usersStore.user.name }}</div>
+		<div class="user-data">{{ t('surname') }}: {{ usersStore.user.surname }}</div>
+		<div class="user-data">{{ t('appointment') }}: {{ usersStore.user.appointment }}</div>
+		<div class="user-data">{{ t('rank') }}: {{ usersStore.user.rank }}</div>
 	</div>
 </template>
 
@@ -16,8 +16,8 @@ import { onMounted } from "vue"
 
 const { t } = useI18n({ useScope: 'global' })
 
-const userStore = useUsersStore()
-onMounted(async () => await userStore.getUserData())
+const usersStore = useUsersStore()
+onMounted(async () => await usersStore.getUserData())
 </script>
 
 <style scoped lang="scss">
@@ -27,6 +27,7 @@ onMounted(async () => await userStore.getUserData())
 	margin-top: 1rem;
 	border-radius: 0.375rem;
 	transition: background-color ease-in-out 0.1s;
+
 	&:hover {
 		background-color: #1a73cb;
 	}

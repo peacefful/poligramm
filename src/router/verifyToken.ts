@@ -9,3 +9,4 @@ export async function isVerifyToken(
 	const token: boolean = Boolean(storage.getData('token'))
 	token ? next('/chats') : next()
 }
+

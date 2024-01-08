@@ -1,11 +1,11 @@
 <template>
-	<div class="bg-blue-500 p-3 flex flex-col items-end rounded-2xl mt-3" v-if="userId === id">
-		<div class="mb-1 max-w-md overflow-hidden overflow-ellipsis whitespace-pre-line break-words">{{ message }}</div>
-		<span class="text-[13px] mt-[-0.8%] inline-block text-gray-300">Вы {{ time }}</span>
+	<div class="bg-blue-500 items-end user-message" v-if="userId === id">
+		<div class="mb-1 user-message_message">{{ message }}</div>
+		<span class="user-message_time">Вы {{ time }}</span>
 	</div>
-	<div v-else class="bg-blue-400 p-3 flex flex-col justify-end rounded-2xl mt-3">
-		<div class="mr-10 max-w-md overflow-hidden overflow-ellipsis whitespace-pre-line break-words">{{ message }}</div>
-		<span class="text-[13px] mt-[-0.8%] inline-block  text-gray-300">{{ time }}</span>
+	<div v-else class="bg-blue-400 user-message">
+		<div class="mr-10 user-message_message">{{ message }}</div>
+		<span class="user-message_time">{{ time }}</span>
 	</div>
 </template>
 
@@ -21,3 +21,26 @@ defineProps<{
 
 const userId = ref<number>(Number(storage.getData('id')))
 </script>
+
+<style scoped lang="scss">
+.user-message {
+	padding: 0.75rem;
+	display: flex;
+	flex-direction: column;
+	border-radius: 1rem;
+	margin-top: 0.75rem;
+	&_message {
+		max-width: 28rem;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: pre-line;
+		overflow-wrap: break-word;
+	}
+	&_time {
+		font-size: 13px;
+		margin-top: 0.1%;
+		display: inline-block;
+		color: rgb(209 213 219);
+	}
+}
+</style>

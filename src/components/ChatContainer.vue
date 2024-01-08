@@ -13,8 +13,18 @@
 				</div>
 			</div>
 		</div>
-		<Modal :title="t('selectUser')" @closeModal="closeModal" :is-open-modal="isOpenModal" :uuid-room="chat.uuid"
-			:name-room="chat.name"/>
+		<UIModal :title="t('selectUser')" @closeModal="closeModal" @submit-modal="sendInvitation(uuids, chat.uuid, chat.name)"
+			:is-open-modal="isOpenModal" :error="error">
+			<div class="mb-5">
+				<UIInput class="p-3" v-model:value="findUser" />
+				<div class="modal-form__users" v-for="user in filterUsers(usersStore.allUsers, findUser)" :key="user.id">
+					<label class="flex justify-between items-center mt-5" :for="user.name">
+						{{ user.name }} {{ user.surname }} ({{ user.rank }})
+						<input v-model="uuids" :id="user.name" :value="user.uuid" class="h-5 w-5" type="checkbox">
+					</label>
+				</div>
+			</div>
+		</UIModal>
 		<div>
 			<div class="p-2">
 				<UIMessages v-for="user in messages" :key="user.id" :id="user.id" :message="user.message"
@@ -23,7 +33,8 @@
 			<div class="w-full bg-blue-900 p-3 sticky bottom-[-1%]">
 				<form class="flex justify-center" autocomplete="off" @submit.prevent="sendMessage()">
 					<textarea @keydown.enter.prevent="sendMessage()" :placeholder="t('messengerInputPlaceholder')"
-						class="rounded-md p-2 w-full bg-[#09F] resize-none focus:outline-none" v-model="message">
+						class="overflow-y-hidden rounded-md p-2 w-full bg-[#09F] resize-none focus:outline-none"
+						v-model="message">
 					</textarea>
 					<UIInputImg :ui-src="paperClipIcon" input-type="file" />
 					<UIInputImg :ui-src="sendMessageIcon" input-type="submit" />
@@ -35,6 +46,7 @@
 
 <script setup lang="ts">
 import UIInputImg from "./ui/UIInputImg.vue"
+import UIInput from "./ui/UIInput.vue"
 import dayjs from "dayjs"
 import { useI18n } from "vue-i18n"
 import socket from "@/utils/socket"
@@ -42,12 +54,15 @@ import UIButtonMenu from "./ui/UIButtonMenu.vue"
 import type { IMessage } from "@/interfaces/iMessage"
 import { ref } from "vue"
 import { useToogleModal } from "@/hooks/useToogle"
-import Modal from "./ui/UIModalAddUsers.vue"
+import UIModal from "./ui/UIModal.vue"
 import paperClipIcon from "@/assets/icons/paperClip.svg"
 import sendMessageIcon from "@/assets/icons/sendMessage.svg"
 import { storage } from "@/utils/storage"
 import UIMessages from "./ui/UIMessages.vue"
 import { useToogleMenu } from "@/hooks/useToogle"
+import { filterUsers } from '@/utils/filterUsersAndChats';
+import { useUsersStore } from "@/stores/UsersStore"
+import { useChatsStore } from "@/stores/ChatsStore"
 
 const { t } = useI18n({ useScope: 'global' })
 
@@ -57,6 +72,36 @@ const chat = defineProps<{
 }>()
 
 defineEmits(['closeChat'])
+
+const findUser = ref<string>('')
+
+const usersStore = useUsersStore()
+usersStore.getUsersData()
+
+const uuids = ref<string[]>([])
+const error = ref<boolean>(false)
+
+const chatsStore = useChatsStore()
+
+const sendInvitation = (usersUuids: string[], uuidRoom: string, nameRoom: string) => {
+	if (uuids.value.length) {
+		usersUuids.forEach(uuid => {
+			socket.emit('personalInvite', chatsStore.updateRoom(uuid))
+			socket.emit('messageInvite', {
+				nameRoom,
+				uuidRoom,
+				userUuid: uuid
+			})
+		})
+
+		error.value = false
+		uuids.value = [];
+
+		closeModal()
+	} else {
+		error.value = true
+	}
+}
 
 const { body, openMenu, toogleMenu } = useToogleMenu()
 const { openModal, closeModal, isOpenModal } = useToogleModal()
@@ -79,4 +124,4 @@ socket.on('message', (message, id) => {
 		window.scrollTo(0, document.body.scrollHeight);
 	});
 });
-</script>@/hooks/useToogle@/hooks/useToogle
+</script>
