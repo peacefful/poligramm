@@ -2,7 +2,7 @@ import axios from "axios"
 import { storage } from "@/utils/storage"
 import { v4 as uuidv4 } from 'uuid';
 
-export const CHAT_API = 'http://195.49.210.52:3000/api/chats'
+export const CHAT_API = 'https://srv.poligramm.kz/api/chats'
 
 const chats = axios.create({
 	baseURL: CHAT_API,

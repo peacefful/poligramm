@@ -1,5 +1,5 @@
 <template>
-	<div ref="body" class="h-full overflow-hidden" v-if="showChats === true">
+	<div ref="body" class="min-h-screen overflow-x-hidden" v-if="showChats === true">
 		<h1 class="text-center text-3xl mt-2">{{ t('chatsList') }}</h1>
 		<div class="m-2">
 			<div class="flex items-center mt-3 justify-between flex-wrap">
