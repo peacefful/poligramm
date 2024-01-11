@@ -11,24 +11,24 @@ export const useToogleModal = () => {
 
 export const useToogleMenu = () => {
 	const body = ref<HTMLInputElement | null>(null)
-	const openMenu = ref<boolean>(false)
+	const isOpenMenu = ref<boolean>(false)
 
-	const toogleMenu = () => openMenu.value = !openMenu.value
+	const toogleMenu = () => isOpenMenu.value = !isOpenMenu.value
 
 	onUpdated(() => {
 		const clickHandler = (event: MouseEvent) => {
 			if (!event.target || !(event.target instanceof Element) ||
 				(!event.target.closest('.bg-blue-600') && !event.target.closest('.p-1'))) {
-				openMenu.value = false;
+					isOpenMenu.value = false;
 			}
 		};
 
-		if (openMenu.value) {
+		if (isOpenMenu.value) {
 			body.value?.addEventListener("click", clickHandler);
 		} else {
 			body.value?.removeEventListener("click", clickHandler);
 		}
 	})
 
-	return { body, openMenu, toogleMenu }
+	return { body, isOpenMenu, toogleMenu }
 }

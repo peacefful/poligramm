@@ -51,3 +51,11 @@ button {
 section {
 	height: 100%;
 }
+
+img {
+	cursor: pointer;
+	opacity: 0.8;
+	&:hover {
+		opacity: 1;
+	}
+}

@@ -70,4 +70,4 @@ const dataRegistration:IUser = reactive({
 
 <style scoped>
 @import './styles.module.scss';
-</style>@/utils/toogleLang
+</style>

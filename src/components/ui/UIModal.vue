@@ -7,7 +7,7 @@
 					<slot></slot>
 				</div>
 				<div>
-					<UIButton class="mt-10" :title="t('add')" />
+					<UIButton class="mt-10" :title="titleSuccessButton" />
 					<UIButton @click.prevent="$emit('closeModal')" class="ml-3" color="danger" :title="t('close')" />
 					<div v-if="error" class="text-red-600 mt-2">
 						{{ t("errorSelectUsers") }}
@@ -28,6 +28,7 @@ defineProps<{
 	isOpenModal: boolean
 	error?: boolean
 	title: string
+	titleSuccessButton: string
 }>()
 
 defineEmits(["closeModal", "submitModal"])

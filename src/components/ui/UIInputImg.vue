@@ -1,15 +1,15 @@
 <template>
 	<div class="rounded-2xl bg-[#0054A8] p-6 ml-4">
-		<input :type="inputType" :id="inputType" class="hidden ">
-		<label :for="inputType" class="cursor-pointer">
-			<img :src="uiSrc" alt="">
+		<input :type="type" :id="type" class="hidden ">
+		<label :for="type" class="cursor-pointer">
+			<img :src="src" alt="">
 		</label>
 	</div>
 </template>
 
 <script setup lang="ts">
 defineProps<{
-	uiSrc:string
-	inputType:string
+	src:string
+	type:string
 }>()
 </script>

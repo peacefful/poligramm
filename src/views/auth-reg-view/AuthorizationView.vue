@@ -30,4 +30,4 @@ const password = ref<string>("")
 
 <style scoped>
 @import './styles.module.scss';
-</style>@/utils/toogleLang
+</style>

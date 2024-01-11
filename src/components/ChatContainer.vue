@@ -7,14 +7,14 @@
 					<img src="../assets/icons/arrow.svg" alt="">
 				</div>
 				<h2>{{ name }}</h2>
-				<UIButtonMenu @click="toogleMenu()" />
-				<div v-if="openMenu" class="text-lg absolute top-12 right-2 bg-blue-400 text-white p-2 rounded-sm">
+				<UIMenu :is-open-menu="isOpenMenu" @toogle-menu="toogleMenu" :menu="chatMenu" />
+				<!-- <div v-if="isOpenMenu" class="text-lg absolute top-12 right-2 bg-blue-400 text-white p-2 rounded-sm">
 					<p @click="openModal" class="cursor-pointer hover:bg-blue-300 p-2 rounded-md">{{ t('addUsers') }}</p>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<UIModal :title="t('selectUser')" @closeModal="closeModal" @submit-modal="sendInvitation(uuids, chat.uuid, chat.name)"
-			:is-open-modal="isOpenModal" :error="error">
+			:is-open-modal="isOpenModal" :title-success-button="t('add')" :error="error">
 			<div class="mb-5">
 				<UIInput class="p-3" v-model:value="findUser" />
 				<div class="modal-form__users" v-for="user in filterUsers(usersStore.allUsers, findUser)" :key="user.id">
@@ -27,7 +27,7 @@
 		</UIModal>
 		<div>
 			<div class="p-2">
-				<UIMessages v-for="user in messages" :key="user.id" :id="user.id" :message="user.message"
+				<Messages v-for="user in messages" :key="user.id" :id="user.id" :message="user.message"
 					:time="user.sendTime" />
 			</div>
 			<div class="w-full bg-blue-900 p-3 sticky bottom-[-1%]">
@@ -36,8 +36,8 @@
 						class="overflow-y-hidden rounded-md p-2 w-full bg-[#09F] resize-none focus:outline-none"
 						v-model="message">
 					</textarea>
-					<UIInputImg :ui-src="paperClipIcon" input-type="file" />
-					<UIInputImg :ui-src="sendMessageIcon" input-type="submit" />
+					<UIInputImg :src="paperClipIcon" type="file" />
+					<UIInputImg :src="sendMessageIcon" type="submit" />
 				</form>
 			</div>
 		</div>
@@ -50,7 +50,7 @@ import UIInput from "./ui/UIInput.vue"
 import dayjs from "dayjs"
 import { useI18n } from "vue-i18n"
 import socket from "@/utils/socket"
-import UIButtonMenu from "./ui/UIButtonMenu.vue"
+import UIMenu from "./ui/UIMenu.vue"
 import type { IMessage } from "@/interfaces/iMessage"
 import { ref } from "vue"
 import { useToogleModal } from "@/hooks/useToogle"
@@ -58,11 +58,12 @@ import UIModal from "./ui/UIModal.vue"
 import paperClipIcon from "@/assets/icons/paperClip.svg"
 import sendMessageIcon from "@/assets/icons/sendMessage.svg"
 import { storage } from "@/utils/storage"
-import UIMessages from "./ui/UIMessages.vue"
+import Messages from "./UsersMessages.vue"
 import { useToogleMenu } from "@/hooks/useToogle"
 import { filterUsers } from '@/utils/filterDatas';
 import { useUsersStore } from "@/stores/UsersStore"
 import { useChatsStore } from "@/stores/ChatsStore"
+import type { IMenu } from "@/interfaces/iMenu"
 
 const { t } = useI18n({ useScope: 'global' })
 
@@ -87,11 +88,7 @@ const sendInvitation = (usersUuids: string[], uuidRoom: string, nameRoom: string
 	if (uuids.value.length) {
 		usersUuids.forEach(uuid => {
 			socket.emit('personalInvite', chatsStore.updateRoom(uuid))
-			socket.emit('messageInvite', {
-				nameRoom,
-				uuidRoom,
-				userUuid: uuid
-			})
+			socket.emit('messageInvite', { nameRoom, uuidRoom, userUuid: uuid })
 		})
 
 		error.value = false
@@ -103,8 +100,12 @@ const sendInvitation = (usersUuids: string[], uuidRoom: string, nameRoom: string
 	}
 }
 
-const { body, openMenu, toogleMenu } = useToogleMenu()
+const { body, isOpenMenu, toogleMenu } = useToogleMenu()
 const { openModal, closeModal, isOpenModal } = useToogleModal()
+
+const chatMenu = ref<IMenu[]>([
+	{ title: t('addUsers'), onClick: openModal }
+])
 
 const message = ref<string>("")
 const messages = ref<IMessage[]>([])

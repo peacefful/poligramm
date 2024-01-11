@@ -1,46 +1,28 @@
 <template>
 	<transition>
-		<div v-if="isInviteRoom && showChats" class="fixed bottom-0 right-0 w-[380px] bg-blue-600 p-4 rounded-xl">
-			<p class="mb-2">Вас пригласили в чат</p>
-			<UIButton title="Войти" @click.prevent="$emit('enterChat')" />
-			<UIButton @click.prevent="closeModal()" class="bg-red-600 hover:bg-red-700 ml-3" title="Закрыть" />
+		<div v-if="isInviteRoom && showChats" class="fixed bottom-0 right-0 w-[400px] bg-blue-600 p-6 rounded-lg">
+			<div class="flex justify-between items-center">
+				<p>{{ t('inviteToChat') }}</p>
+				<img @click.prevent="$emit('closeNotification')" class="hover:rotate-90 transition ease-in duration-100"
+					src="@/assets/icons/close.svg">
+			</div>
+			<UIButton class="mt-5" :title="t('signIn')" @click.prevent="$emit('enterChat')" />
 		</div>
 	</transition>
 </template>
 
 <script setup lang="ts">
 import UIButton from "@/components/ui/UIButton.vue"
-import socket from "@/utils/socket"
-import { reactive, ref } from "vue";
+import { useI18n } from "vue-i18n"
+
+const { t } = useI18n({ useScope: 'global' })
 
 defineProps<{
+	isInviteRoom: boolean
 	showChats: boolean
 }>()
 
-defineEmits(['enterChat'])
-
-interface IInviteRoom {
-	nameRoom: string
-	uuidRoom: string
-}
-
-const inviteRoom: IInviteRoom = reactive({
-	nameRoom: "",
-	uuidRoom: ""
-})
-
-let isInviteRoom = ref<boolean>(false)
-const closeModal = () => isInviteRoom.value = false
-
-socket.on('messageInvite', (nameRoom, uuidRoom) => {
-	inviteRoom.nameRoom = nameRoom
-	inviteRoom.uuidRoom = uuidRoom
-
-	if (inviteRoom.nameRoom && inviteRoom.uuidRoom) {
-		isInviteRoom.value = true
-		setTimeout(() => isInviteRoom.value = false, 5000);
-	}
-})
+defineEmits(['enterChat', 'closeNotification'])
 </script>
 
 <style scoped>
