@@ -6,13 +6,13 @@
 				<img @click.prevent="$emit('closeNotification')" class="hover:rotate-90 transition ease-in duration-100"
 					src="@/assets/icons/close.svg">
 			</div>
-			<UIButton class="mt-5" :title="t('signIn')" @click.prevent="$emit('enterChat')" />
+			<Button class="mt-5" :title="t('signIn')" @click.prevent="$emit('enterChat')" />
 		</div>
 	</transition>
 </template>
 
 <script setup lang="ts">
-import UIButton from "@/components/ui/UIButton.vue"
+import Button from "@/components/ui/Button.vue"
 import { useI18n } from "vue-i18n"
 
 const { t } = useI18n({ useScope: 'global' })
@@ -24,15 +24,3 @@ defineProps<{
 
 defineEmits(['enterChat', 'closeNotification'])
 </script>
-
-<style scoped>
-.v-enter-active,
-.v-leave-active {
-	transition: opacity 0.2s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-	opacity: 0;
-}
-</style>

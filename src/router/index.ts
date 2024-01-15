@@ -7,19 +7,19 @@ const router = createRouter({
 		{
 			path: '/',
 			name: 'signin',
-			component: () => import('@/views/auth-reg-view/AuthorizationView.vue'),
+			component: () => import('@/views/auth-reg-view/Authorization.vue'),
 			beforeEnter: isVerifyToken
 		},
 		{
 			path: '/registration',
 			name: 'signup',
-			component: () => import('@/views/auth-reg-view/RegistrationView.vue'),
+			component: () => import('@/views/auth-reg-view/Registration.vue'),
 			beforeEnter: isVerifyToken
 		},
 		{
 			path: '/chats',
 			name: 'chats',
-			component: () => import('@/views/ChatsView.vue')
+			component: () => import('@/views/chats-view/Chats.vue')
 		}
 	]
 })

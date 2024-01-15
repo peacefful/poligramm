@@ -1,6 +1,6 @@
 <template>
 	<div class="py-4 text-center" v-if="usersStore.user">
-		<div class="user-data">{{ $t('data') }}</div>
+		<div class="user-data">{{ t('data') }}</div>
 		<div class="user-data">{{ t('login') }}: {{ usersStore.user.login }}</div>
 		<div class="user-data">{{ t('name') }}: {{ usersStore.user.name }}</div>
 		<div class="user-data">{{ t('surname') }}: {{ usersStore.user.surname }}</div>
@@ -12,12 +12,11 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n"
 import { useUsersStore } from "@/stores/UsersStore";
-import { onMounted } from "vue"
 
 const { t } = useI18n({ useScope: 'global' })
 
 const usersStore = useUsersStore()
-onMounted(async () => await usersStore.getUserData())
+usersStore.getUserData()
 </script>
 
 <style scoped lang="scss">

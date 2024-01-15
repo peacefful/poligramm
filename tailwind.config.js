@@ -1,5 +1,9 @@
 export default {
 	content: ["./src/**/*.{html,js,vue}"],
-	theme: {},
+	theme: {
+		screens: {
+			'ng': '1400px'
+		}
+	},
 	plugins: [],
 }

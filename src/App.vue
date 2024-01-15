@@ -1,7 +1,6 @@
 <template>
 	<main>
-		<LayoutMain v-if="useRoute().fullPath !== '/' &&
-			useRoute().fullPath !== '/registration'" />
+		<Main v-if="useRoute().fullPath !== '/' && useRoute().fullPath !== '/registration'" />
 		<div v-else>
 			<RouterView />
 		</div>
@@ -9,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import LayoutMain from './components/layout/Main/LayoutMain.vue';
+import Main from './components/layout/Main.vue';
 import { RouterView, useRoute } from 'vue-router';
 import { checkTokenExpiration } from "./utils/isValidToken"
 

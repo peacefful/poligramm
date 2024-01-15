@@ -1,10 +1,10 @@
 import router from "@/router"
-import { storage } from "@/utils/storage"
 import axios from "axios"
-import type { IUser } from "@/interfaces/iUsers"
+import { storage } from "@/utils/storage"
 import { validateRegistrationData } from "@/utils/validateData"
+import type { IUser } from "@/interfaces/iUsers"
 
-export const USERS_API = 'https://srv.poligramm.kz/api/users'
+export const USERS_API = 'http://localhost:3000/api/users'
 
 export const authorization = async (login: string, password: string) => {
 	try {
@@ -30,8 +30,12 @@ export const authorization = async (login: string, password: string) => {
 }
 
 export const registration = async (authUser: IUser) => {
-	if (validateRegistrationData(authUser)) {
-		const user = await axios.post(USERS_API, {...authUser})
-		user ? router.push("/") : new Error("Ошибка, регистрация не завершена")
+	try {
+		if (validateRegistrationData(authUser)) {
+			const user = await axios.post(USERS_API, { ...authUser })
+			user ? router.push("/") : new Error("Ошибка, регистрация не завершена")
+		}
+	} catch (error) {
+		console.log(error);
 	}
 }

@@ -8,11 +8,11 @@ import { reactive } from 'vue';
 
 const radio = defineProps<{
 	inputId: string
-	theme: string
+	color: string
 }>()
 
 const radioStyle = reactive({
-	"background-color": radio.theme
+	"background-color": radio.color
 })
 
 </script>

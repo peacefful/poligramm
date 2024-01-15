@@ -1,5 +1,10 @@
 <template>
-	<input :style="{ background: bg }" class="bg-zinc-900 text-zinc-300" :type="type" v-model="value" :placeholder="t('search')">
+	<input 
+		:style="{ background: bg }" 
+		class="bg-zinc-900 text-zinc-300" 
+		:type="type" 
+		v-model="value" 
+		:placeholder="t('search')">
 </template>
 
 <script setup lang="ts">

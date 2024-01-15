@@ -7,8 +7,8 @@
 					<slot></slot>
 				</div>
 				<div>
-					<UIButton class="mt-10" :title="titleSuccessButton" />
-					<UIButton @click.prevent="$emit('closeModal')" class="ml-3" color="danger" :title="t('close')" />
+					<Button class="mt-10" :title="titleSuccessButton" />
+					<Button @click.prevent="$emit('closeModal')" class="ml-3" color="danger" :title="t('close')" />
 					<div v-if="error" class="text-red-600 mt-2">
 						{{ t("errorSelectUsers") }}
 					</div>
@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import UIButton from './UIButton.vue';
+import Button from "./Button.vue";
 import { useI18n } from "vue-i18n"
 
 const { t } = useI18n({ useScope: 'global' })

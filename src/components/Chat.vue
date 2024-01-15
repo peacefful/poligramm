@@ -2,21 +2,17 @@
 	<div ref="body" class="flex flex-col justify-between min-h-full">
 		<div class="bg-blue-900 sticky top-0 p-2">
 			<div class="flex items-center justify-between">
-				<div @click="$emit('closeChat')"
-					class="rounded-full hover:bg-[#48adff] ease-in duration-100 active:bg-[#3090df] cursor-pointer">
+				<div @click="$emit('closeChat')" class="rounded-full active:bg-[#3090df] ease-in duration-100 cursor-pointer">
 					<img src="../assets/icons/arrow.svg" alt="">
 				</div>
 				<h2>{{ name }}</h2>
-				<UIMenu :is-open-menu="isOpenMenu" @toogle-menu="toogleMenu" :menu="chatMenu" />
-				<!-- <div v-if="isOpenMenu" class="text-lg absolute top-12 right-2 bg-blue-400 text-white p-2 rounded-sm">
-					<p @click="openModal" class="cursor-pointer hover:bg-blue-300 p-2 rounded-md">{{ t('addUsers') }}</p>
-				</div> -->
+				<Drobdown :is-open-menu="isOpenMenu" @toogle-menu="toogleMenu" :menu="chatMenu" />
 			</div>
 		</div>
-		<UIModal :title="t('selectUser')" @closeModal="closeModal" @submit-modal="sendInvitation(uuids, chat.uuid, chat.name)"
+		<Modal :title="t('selectUser')" @closeModal="closeModal" @submit-modal="sendInvitation(uuids, chat.uuid, chat.name)"
 			:is-open-modal="isOpenModal" :title-success-button="t('add')" :error="error">
 			<div class="mb-5">
-				<UIInput class="p-3" v-model:value="findUser" />
+				<Input class="p-3" v-model:value="findUser" />
 				<div class="modal-form__users" v-for="user in filterUsers(usersStore.allUsers, findUser)" :key="user.id">
 					<label class="flex justify-between items-center mt-5" :for="user.name">
 						{{ user.name }} {{ user.surname }} ({{ user.rank }})
@@ -24,7 +20,8 @@
 					</label>
 				</div>
 			</div>
-		</UIModal>
+			{{ uuids }}
+		</Modal>
 		<div>
 			<div class="p-2">
 				<Messages v-for="user in messages" :key="user.id" :id="user.id" :message="user.message"
@@ -36,8 +33,8 @@
 						class="overflow-y-hidden rounded-md p-2 w-full bg-[#09F] resize-none focus:outline-none"
 						v-model="message">
 					</textarea>
-					<UIInputImg :src="paperClipIcon" type="file" />
-					<UIInputImg :src="sendMessageIcon" type="submit" />
+					<InputImg :src="paperClipIcon" type="file" />
+					<InputImg :src="sendMessageIcon" type="submit" />
 				</form>
 			</div>
 		</div>
@@ -45,24 +42,23 @@
 </template>
 
 <script setup lang="ts">
-import UIInputImg from "./ui/UIInputImg.vue"
-import UIInput from "./ui/UIInput.vue"
+import InputImg from "./ui/InputImg.vue"
+import Input from "./ui/Input.vue"
 import dayjs from "dayjs"
-import { useI18n } from "vue-i18n"
 import socket from "@/utils/socket"
-import UIMenu from "./ui/UIMenu.vue"
-import type { IMessage } from "@/interfaces/iMessage"
-import { ref } from "vue"
-import { useToogleModal } from "@/hooks/useToogle"
-import UIModal from "./ui/UIModal.vue"
+import Drobdown from "./ui/Drobdown.vue"
+import Modal from "./ui/Modal.vue"
 import paperClipIcon from "@/assets/icons/paperClip.svg"
 import sendMessageIcon from "@/assets/icons/sendMessage.svg"
+import Messages from "./Messages.vue"
+import { useI18n } from "vue-i18n"
+import { ref } from "vue"
+import { useToogleModal } from "@/hooks/useToogle"
 import { storage } from "@/utils/storage"
-import Messages from "./UsersMessages.vue"
 import { useToogleMenu } from "@/hooks/useToogle"
 import { filterUsers } from '@/utils/filterDatas';
 import { useUsersStore } from "@/stores/UsersStore"
-import { useChatsStore } from "@/stores/ChatsStore"
+import type { IMessage } from "@/interfaces/iMessage"
 import type { IMenu } from "@/interfaces/iMenu"
 
 const { t } = useI18n({ useScope: 'global' })
@@ -74,6 +70,8 @@ const chat = defineProps<{
 
 defineEmits(['closeChat'])
 
+socket.emit('join', chat.uuid)
+
 const findUser = ref<string>('')
 
 const usersStore = useUsersStore()
@@ -82,13 +80,12 @@ usersStore.getUsersData()
 const uuids = ref<string[]>([])
 const error = ref<boolean>(false)
 
-const chatsStore = useChatsStore()
-
-const sendInvitation = (usersUuids: string[], uuidRoom: string, nameRoom: string) => {
+const sendInvitation = (usersUuids: string[], uuidRoom: string, titleRoom: string) => {
 	if (uuids.value.length) {
 		usersUuids.forEach(uuid => {
-			socket.emit('personalInvite', chatsStore.updateRoom(uuid))
-			socket.emit('messageInvite', { nameRoom, uuidRoom, userUuid: uuid })
+			socket.emit('personalInvite', uuid)
+			socket.emit('messageInvite', { titleRoom, uuidRoom, userUuid: uuid })
+			socket.emit('personalInvite', storage.getData('uuid'))
 		})
 
 		error.value = false
@@ -110,11 +107,14 @@ const chatMenu = ref<IMenu[]>([
 const message = ref<string>("")
 const messages = ref<IMessage[]>([])
 
-socket.emit('join', chat.uuid)
-
 const sendMessage = () => {
 	if (message.value) {
-		socket.emit('message', message.value, Number(storage.getData("id")), dayjs().format('HH:mm'), chat.uuid)
+		socket.emit(
+			'message', message.value,
+			Number(storage.getData("id")),
+			dayjs().format('HH:mm'),
+			chat.uuid
+		)
 		message.value = ''
 	}
 }

@@ -29,18 +29,32 @@ const userId = ref<number>(Number(storage.getData('id')))
 	flex-direction: column;
 	border-radius: 1rem;
 	margin-top: 0.75rem;
+
 	&_message {
-		max-width: 28rem;
+		max-width: 40rem;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: pre-line;
 		overflow-wrap: break-word;
 	}
+
 	&_time {
 		font-size: 13px;
 		margin-top: 0.1%;
 		display: inline-block;
 		color: rgb(209 213 219);
+	}
+}
+
+@media (max-width: 1400px) {
+	.user-message {
+		&_message {
+			max-width: 100%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: pre-line;
+			overflow-wrap: break-word;
+		}
 	}
 }
 </style>
