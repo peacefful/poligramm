@@ -1,4 +1,4 @@
-import { onUpdated, ref } from "vue";
+import { onUpdated, ref, type Ref } from "vue";
 
 export const useToogleModal = () => {
 	const isOpenModal = ref<boolean>(false)
@@ -9,26 +9,28 @@ export const useToogleModal = () => {
 	return { isOpenModal, openModal, closeModal }
 }
 
-export const useToogleMenu = () => {
-	const body = ref<HTMLInputElement | null>(null)
-	const isOpenMenu = ref<boolean>(false)
-
-	const toogleMenu = () => isOpenMenu.value = !isOpenMenu.value
+export const useToogleMenu = (isOpenElement: Ref<boolean>, targetElement: Ref<HTMLElement | null>) => {
+	const toogleMenu = () => isOpenElement.value = !isOpenElement.value;
 
 	onUpdated(() => {
 		const clickHandler = (event: MouseEvent) => {
-			if (!event.target || !(event.target instanceof Element) ||
-				(!event.target.closest('.bg-blue-600') && !event.target.closest('.p-1'))) {
-					isOpenMenu.value = false;
+			if (
+				!event.target ||
+				!(event.target instanceof Element) ||
+				!event.target.closest('.bg-blue-600') &&
+				!event.target.closest('.p-1') &&
+				event.target !== targetElement.value
+			) {
+				isOpenElement.value = false;
 			}
 		};
 
-		if (isOpenMenu.value) {
-			body.value?.addEventListener("click", clickHandler);
+		if (isOpenElement.value) {
+			document.body.addEventListener('click', clickHandler);
 		} else {
-			body.value?.removeEventListener("click", clickHandler);
+			document.body.removeEventListener('click', clickHandler);
 		}
-	})
+	});
 
-	return { body, isOpenMenu, toogleMenu }
-}
+	return { toogleMenu };
+};

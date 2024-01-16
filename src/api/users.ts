@@ -4,7 +4,7 @@ import { storage } from "@/utils/storage"
 import { validateRegistrationData } from "@/utils/validateData"
 import type { IUser } from "@/interfaces/iUsers"
 
-export const USERS_API = 'http://localhost:3000/api/users'
+export const USERS_API = 'https://srv.poligramm.kz/api/users'
 
 export const authorization = async (login: string, password: string) => {
 	try {

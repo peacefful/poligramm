@@ -1,5 +1,5 @@
 <template>
-	<main class="h-screen flex flex-col justify-center items-center">
+	<main class="h-screen flex flex-col justify-center items-center p-1">
 		<form class="max-w-sm" @submit.prevent="authorization(login, password)">
 			<h1 class="text-3xl text-center">{{ t('authorization') }}</h1>
 			<Input bg="#0054A8" class="px-1" v-model:value="login" :placeholder="t('login')" />

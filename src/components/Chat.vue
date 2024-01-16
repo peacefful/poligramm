@@ -1,12 +1,12 @@
 <template>
-	<div ref="body" class="flex flex-col justify-between min-h-full">
+	<div class="flex flex-col justify-between min-h-full">
 		<div class="bg-blue-900 sticky top-0 p-2">
 			<div class="flex items-center justify-between">
 				<div @click="$emit('closeChat')" class="rounded-full active:bg-[#3090df] ease-in duration-100 cursor-pointer">
 					<img src="../assets/icons/arrow.svg" alt="">
 				</div>
 				<h2>{{ name }}</h2>
-				<Drobdown :is-open-menu="isOpenMenu" @toogle-menu="toogleMenu" :menu="chatMenu" />
+				<Drobdown :is-open-menu="isOpenMenu" @toogle-menu="toogleDrobdown" :menu="chatMenu" />
 			</div>
 		</div>
 		<Modal :title="t('selectUser')" @closeModal="closeModal" @submit-modal="sendInvitation(uuids, chat.uuid, chat.name)"
@@ -20,7 +20,6 @@
 					</label>
 				</div>
 			</div>
-			{{ uuids }}
 		</Modal>
 		<div>
 			<div class="p-2">
@@ -81,10 +80,10 @@ const uuids = ref<string[]>([])
 const error = ref<boolean>(false)
 
 const sendInvitation = (usersUuids: string[], uuidRoom: string, titleRoom: string) => {
-	if (uuids.value.length) {
-		usersUuids.forEach(uuid => {
-			socket.emit('personalInvite', uuid)
-			socket.emit('messageInvite', { titleRoom, uuidRoom, userUuid: uuid })
+	if (usersUuids.length) {
+		usersUuids.forEach(userUuid => {
+			socket.emit('personalInvite', userUuid)
+			socket.emit('messageInvite', { uuidRoom, titleRoom, userUuid })
 			socket.emit('personalInvite', storage.getData('uuid'))
 		})
 
@@ -97,7 +96,10 @@ const sendInvitation = (usersUuids: string[], uuidRoom: string, titleRoom: strin
 	}
 }
 
-const { body, isOpenMenu, toogleMenu } = useToogleMenu()
+const isOpenMenu = ref<boolean>(false)
+const menuTarget = ref<HTMLElement | null>(null);
+
+const { toogleMenu: toogleDrobdown } = useToogleMenu(isOpenMenu, menuTarget)
 const { openModal, closeModal, isOpenModal } = useToogleModal()
 
 const chatMenu = ref<IMenu[]>([

@@ -10,8 +10,8 @@
 			<Chat @close-chat="closeChat()" :uuid="uuid" :name="room" />
 		</article>
 		<Notification 
-			@enter-chat="enterChat(invite.titleRoom, invite.uuidRoom, closeNotification)"
-			:show-chats="showChats" 
+			@enter-chat="enterChat(invite.uuidRoom, invite.titleRoom, closeNotification)" 
+			:show-chats="showChats"
 			:is-invite-room="isInviteRoom" 
 			@close-notification="closeNotification" />
 	</div>
@@ -35,9 +35,9 @@ import { ref, reactive } from 'vue';
 const accessToken = storage.getData("token")
 
 interface IInvite { uuidRoom: string, titleRoom: string, userUuid: boolean }
-const invite: IInvite = reactive({ 
-	uuidRoom: "", 
-	titleRoom: "", 
+const invite: IInvite = reactive({
+	uuidRoom: "",
+	titleRoom: "",
 	userUuid: false
 })
 
@@ -46,9 +46,9 @@ socket.emit('personalInvite', storage.getData("uuid"));
 let isInviteRoom = ref<boolean>(false)
 const closeNotification = () => isInviteRoom.value = false
 
-socket.on('messageInvite', (title, uuid, userUuid) => {
-	invite.titleRoom = title
-	invite.uuidRoom = uuid
+socket.on('messageInvite', (uuidRoom, titleRoom, userUuid) => {
+	invite.titleRoom = titleRoom
+	invite.uuidRoom = uuidRoom
 	invite.userUuid = userUuid === storage.getData('uuid')
 
 	if (invite.titleRoom && invite.uuidRoom && invite.userUuid) {
