@@ -1,17 +1,16 @@
 <template>
 	<div class="layout-main" v-if="accessToken">
-		<Aside class="layout-main_aside" />
+		<Aside class="hidden ng:block" />
 		<article v-if="showChats" class="w-full flex flex-col justify-between">
 			<section>
 				<RouterView />
 			</section>
 		</article>
 		<article v-else class="w-full flex flex-col justify-between">
-			<Chat @close-chat="closeChat()" :uuid="uuid" :name="room" />
+			<Chat @close-chat="closeChat" :uuid="uuid" :name="room" />
 		</article>
-		<Notification 
+		<Notification
 			@enter-chat="enterChat(invite.uuidRoom, invite.titleRoom, closeNotification)" 
-			:show-chats="showChats"
 			:is-invite-room="isInviteRoom" 
 			@close-notification="closeNotification" />
 	</div>
@@ -46,7 +45,7 @@ socket.emit('personalInvite', storage.getData("uuid"));
 let isInviteRoom = ref<boolean>(false)
 const closeNotification = () => isInviteRoom.value = false
 
-socket.on('messageInvite', (uuidRoom, titleRoom, userUuid) => {
+socket.on('messageInvite', async (uuidRoom, titleRoom, userUuid) => {
 	invite.titleRoom = titleRoom
 	invite.uuidRoom = uuidRoom
 	invite.userUuid = userUuid === storage.getData('uuid')
@@ -75,10 +74,6 @@ article {
 }
 
 @media (max-width: 1400px) {
-	.layout-main_aside {
-		display: none;
-	}
-
 	article {
 		height: 100vh;
 		margin-left: 0;

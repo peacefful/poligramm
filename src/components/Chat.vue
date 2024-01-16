@@ -99,7 +99,7 @@ const sendInvitation = (usersUuids: string[], uuidRoom: string, titleRoom: strin
 const isOpenMenu = ref<boolean>(false)
 const menuTarget = ref<HTMLElement | null>(null);
 
-const { toogleMenu: toogleDrobdown } = useToogleMenu(isOpenMenu, menuTarget)
+const { toogle: toogleDrobdown } = useToogleMenu(isOpenMenu, menuTarget)
 const { openModal, closeModal, isOpenModal } = useToogleModal()
 
 const chatMenu = ref<IMenu[]>([

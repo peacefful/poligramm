@@ -10,7 +10,7 @@ export const useToogleModal = () => {
 }
 
 export const useToogleMenu = (isOpenElement: Ref<boolean>, targetElement: Ref<HTMLElement | null>) => {
-	const toogleMenu = () => isOpenElement.value = !isOpenElement.value;
+	const toogle = () => isOpenElement.value = !isOpenElement.value;
 
 	onUpdated(() => {
 		const clickHandler = (event: MouseEvent) => {
@@ -32,5 +32,5 @@ export const useToogleMenu = (isOpenElement: Ref<boolean>, targetElement: Ref<HT
 		}
 	});
 
-	return { toogleMenu };
+	return { toogle };
 };

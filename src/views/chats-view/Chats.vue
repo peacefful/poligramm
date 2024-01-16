@@ -7,7 +7,7 @@
 					class="mr-auto rounded-full p-1 active:bg-[#3090df] ease-in duration-100 block ng:hidden">
 					<img src="@/assets/icons/burger-menu.svg">
 				</div>
-				<Aside v-if="isOpenAside" class="fixed top-0 left-0 bg-[#00000084] h-screen w-full z-10" />
+				<Aside v-if="isOpenAside" class="fixed top-0 left-0 bg-[#00000083] w-full z-10" />
 				<Input class="p-3 mr-1" bg="#0054A8" v-model:value="findChat" />
 				<Drobdown :is-open-menu="isOpenMenu" @toogle-menu="toogleDropdown" :menu="chatListMenu" />
 				<Modal @submit-modal="addChat(newChat)" @closeModal="closeModal" :is-open-modal="isOpenModal"
@@ -62,8 +62,8 @@ const isOpenMenu = ref<boolean>(false);
 const asideTarget = ref<HTMLElement | null>(null);
 const menuTarget = ref<HTMLElement | null>(null);
 
-const { toogleMenu: toogleAside } = useToogleMenu(isOpenAside, asideTarget);
-const { toogleMenu: toogleDropdown } = useToogleMenu(isOpenMenu, menuTarget);
+const { toogle: toogleAside } = useToogleMenu(isOpenAside, asideTarget);
+const { toogle: toogleDropdown } = useToogleMenu(isOpenMenu, menuTarget);
 
 const { openModal, closeModal, isOpenModal } = useToogleModal()
 const { enterChat, closeChat, showChats, uuid, room } = useEnterChat()

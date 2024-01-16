@@ -50,10 +50,6 @@ const userId = ref<number>(Number(storage.getData('id')))
 	.user-message {
 		&_message {
 			max-width: 100%;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: pre-line;
-			overflow-wrap: break-word;
 		}
 	}
 }
