@@ -1,5 +1,5 @@
 <template>
-	<aside class="bg-blue-900 min-h-screen">
+	<aside class="min-h-screen">
 		<div class="p-2 fixed w-[364px] bg-blue-900 min-h-screen flex flex-col justify-between">
 			<Profile />
 			<div class="mb-2">

@@ -7,9 +7,13 @@
 					class="mr-auto rounded-full p-1 active:bg-[#3090df] ease-in duration-100 block ng:hidden">
 					<img src="@/assets/icons/burger-menu.svg">
 				</div>
-				<Aside v-if="isOpenAside" class="fixed top-0 left-0 bg-[#00000083] w-full z-10" />
+				<transition name="aside">
+					<div v-if="isOpenAside" class="fixed top-0 left-0 bg-[#00000079] w-full h-screen z-10 ng:hidden wrapper">
+						<Aside class="aside" />
+					</div>
+				</transition>
 				<Input class="p-3 mr-1" bg="#0054A8" v-model:value="findChat" />
-				<Drobdown :is-open-menu="isOpenMenu" @toogle-menu="toogleDropdown" :menu="chatListMenu" />
+				<Drobdown @toogle-menu="toogleDropdown" :is-open-menu="isOpenMenu" :menu="chatListMenu" />
 				<Modal @submit-modal="addChat(newChat)" @closeModal="closeModal" :is-open-modal="isOpenModal"
 					title="Заполните поля" :title-success-button="t('create')">
 					<Input class="p-3" v-model:value="newChat" :placeholder="t('chatName')" />
@@ -51,7 +55,15 @@ import type { IMenu } from "@/interfaces/iMenu";
 const { t } = useI18n({ useScope: 'global' })
 
 const usersStore = useUsersStore()
-onMounted(async () => await usersStore.getUserData())
+usersStore.getUserData()
+
+onMounted(() => {
+	window.addEventListener('resize', () => {
+		if (window.innerWidth > 1400) {
+			isOpenAside.value = false
+		}
+	})
+})
 
 const newChat = ref<string>('')
 const findChat = ref<string>('')
@@ -72,3 +84,28 @@ const chatListMenu = ref<IMenu[]>([
 	{ title: t('createChat'), onClick: openModal }
 ])
 </script>
+
+<style scoped>
+.aside-enter-active,
+.aside-leave-active {
+	transition: all 0.3s ease-in-out;
+}
+
+.aside-leave-active {
+	transition-delay: 0.25s;
+}
+
+.aside-enter-from,
+.aside-leave-to {
+	opacity: 0;
+}
+.aside-enter-active .aside,
+.aside-leave-active .aside {
+	transition: all 0.3s ease-in;
+}
+
+.aside-enter-from .aside,
+.aside-leave-to .aside {
+	transform: translateX(-100%);
+}
+</style>

@@ -2,19 +2,19 @@ import type { IUser } from "@/interfaces/iUsers";
 
 const symbols: string[] = ["!", "@", "#", "$", "%", "&", "_", "+", "="];
 
-export const validateRegistrationData = (authUser: IUser): boolean => {
+export const validateRegistrationData = (user: IUser): boolean => {
 	let isValidate: boolean = false;
 
 	if (
-		authUser.surname.trim() && authUser.name.trim() &&
-		authUser.appointment.trim() && authUser.login.trim() &&
-		authUser.password.trim() && authUser.rank.trim() &&
-		authUser.role.trim() && authUser.phone.trim()
+		user.surname.trim() && user.name.trim() &&
+		user.appointment.trim() && user.login.trim() &&
+		user.password.trim() && user.rank.trim() &&
+		user.role.trim() && user.phone.trim()
 	) {
-		if (authUser.login.length >= 5) {
-			if (authUser.password.length >= 8) {
+		if (user.login.length >= 5) {
+			if (user.password.length >= 8) {
 				let hasSymbol = false;
-				for (const iterator of authUser.password) {
+				for (const iterator of user.password) {
 					if (symbols.includes(iterator)) {
 						hasSymbol = true;
 						break;
