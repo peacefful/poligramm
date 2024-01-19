@@ -8,7 +8,7 @@
 				<Button class="w-full" :title="t('forgotMyPassword')" />
 				<Button class="w-full ml-4" :title="t('signIn')" />
 			</div>
-		<div @click="updateLocale()"
+		<div @click="updateLocale"
 			class="text-center text-xm text-gray-400 hover:text-gray-100 ease-in duration-100 cursor-pointer">{{
 				t('updateLanguage') }}</div>
 		</form>

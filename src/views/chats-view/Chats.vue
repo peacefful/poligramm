@@ -13,9 +13,9 @@
 					</div>
 				</transition>
 				<Input class="p-3 mr-1" bg="#0054A8" v-model:value="findChat" />
-				<Drobdown @toogle-menu="toogleDropdown" :is-open-menu="isOpenMenu" :menu="chatListMenu" />
+				<Dropdown @toogle-menu="toogleDropdown" :is-open-menu="isOpenMenu" :menu="chatListMenu" />
 				<Modal @submit-modal="addChat(newChat)" @closeModal="closeModal" :is-open-modal="isOpenModal"
-					title="Заполните поля" :title-success-button="t('create')">
+					:title="t('fillField')" :title-success-button="t('create')">
 					<Input class="p-3" v-model:value="newChat" :placeholder="t('chatName')" />
 				</Modal>
 			</div>
@@ -38,7 +38,7 @@
 
 <script setup lang="ts">
 import Chat from "@/components/Chat.vue";
-import Drobdown from "@/components/ui/Drobdown.vue";
+import Dropdown from "@/components/ui/Dropdown.vue";
 import Input from "@/components/ui/Input.vue";
 import Modal from "@/components/ui/Modal.vue";
 import Aside from "@/components/layout/Aside.vue";
@@ -48,8 +48,8 @@ import { addChat } from '@/api/chats';
 import { deleteChat } from "@/api/chats"
 import { filterChats } from "@/utils/filterDatas";
 import { useEnterChat } from "@/hooks/useEnter";
-import { useI18n } from "vue-i18n"
 import { useToogleMenu, useToogleModal } from "@/hooks/useToogle";
+import { useI18n } from "vue-i18n"
 import type { IMenu } from "@/interfaces/iMenu";
 
 const { t } = useI18n({ useScope: 'global' })
@@ -59,7 +59,7 @@ usersStore.getUserData()
 
 onMounted(() => {
 	window.addEventListener('resize', () => {
-		if (window.innerWidth > 1400) {
+		if (window.innerWidth >= 1400) {
 			isOpenAside.value = false
 		}
 	})
@@ -99,6 +99,7 @@ const chatListMenu = ref<IMenu[]>([
 .aside-leave-to {
 	opacity: 0;
 }
+
 .aside-enter-active .aside,
 .aside-leave-active .aside {
 	transition: all 0.3s ease-in;

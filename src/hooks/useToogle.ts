@@ -14,12 +14,7 @@ export const useToogleMenu = (isOpenElement: Ref<boolean>, targetElement: Ref<HT
 
 	onUpdated(() => {
 		const clickHandler = (event: MouseEvent) => {
-			if (
-				!event.target ||
-				!(event.target instanceof Element) ||
-				!event.target.closest('.bg-blue-600') &&
-				!event.target.closest('.p-1') &&
-				event.target !== targetElement.value
+			if ( !event.target || !(event.target instanceof Element) || !event.target.closest('.bg-blue-600') && !event.target.closest('.p-1') && event.target !== targetElement.value
 			) {
 				isOpenElement.value = false;
 			}

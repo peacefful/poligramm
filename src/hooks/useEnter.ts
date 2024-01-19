@@ -8,7 +8,7 @@ export const useEnterChat = () => {
 
 	const closeChat = () => showChats.value = true
 
-	const enterChat = (uuidRoom: string, roomName: string, closeNotification?: Function) => {
+	const enterChat = (uuidRoom:string, roomName: string, closeNotification?: Function) => {
 		showChats.value = false
 
 		uuid.value = uuidRoom

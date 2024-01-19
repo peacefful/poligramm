@@ -6,7 +6,7 @@
 					<img src="../assets/icons/arrow.svg" alt="">
 				</div>
 				<h2>{{ name }}</h2>
-				<Drobdown :is-open-menu="isOpenMenu" @toogle-menu="toogleDrobdown" :menu="chatMenu" />
+				<Dropdown :is-open-menu="isOpenMenu" @toogle-menu="toogleDropdown" :menu="chatMenu" />
 			</div>
 		</div>
 		<Modal :title="t('selectUser')" @closeModal="closeModal" @submit-modal="sendInvitation(uuids, chat.uuid, chat.name)"
@@ -45,7 +45,7 @@ import InputImg from "./ui/InputImg.vue"
 import Input from "./ui/Input.vue"
 import dayjs from "dayjs"
 import socket from "@/utils/socket"
-import Drobdown from "./ui/Drobdown.vue"
+import Dropdown from "./ui/Dropdown.vue"
 import Modal from "./ui/Modal.vue"
 import paperClipIcon from "@/assets/icons/paperClip.svg"
 import sendMessageIcon from "@/assets/icons/sendMessage.svg"
@@ -99,7 +99,7 @@ const sendInvitation = (usersUuids: string[], uuidRoom: string, titleRoom: strin
 const isOpenMenu = ref<boolean>(false)
 const menuTarget = ref<HTMLElement | null>(null);
 
-const { toogle: toogleDrobdown } = useToogleMenu(isOpenMenu, menuTarget)
+const { toogle: toogleDropdown } = useToogleMenu(isOpenMenu, menuTarget)
 const { openModal, closeModal, isOpenModal } = useToogleModal()
 
 const chatMenu = ref<IMenu[]>([

@@ -1,16 +1,16 @@
 <template>
 	<div class="layout-main" v-if="accessToken">
 		<Aside class="hidden ng:block" />
-		<article v-if="showChats" class="w-full flex flex-col justify-between">
+		<article v-if="showChats">
 			<section>
 				<RouterView />
 			</section>
 		</article>
-		<article v-else class="w-full flex flex-col justify-between">
+		<article v-else >
 			<Chat @close-chat="closeChat" :uuid="uuid" :name="room" />
 		</article>
 		<Notification
-			@enter-chat="enterChat(invite.uuidRoom, invite.titleRoom, closeNotification)" 
+			@enter-chat="enterChat(inviteChat.uuid, inviteChat.title, closeNotification)" 
 			:is-invite-room="isInviteRoom" 
 			@close-notification="closeNotification" />
 	</div>
@@ -33,10 +33,10 @@ import { ref, reactive } from 'vue';
 
 const accessToken = storage.getData("token")
 
-interface IInvite { uuidRoom: string, titleRoom: string, userUuid: boolean }
-const invite: IInvite = reactive({
-	uuidRoom: "",
-	titleRoom: "",
+interface IInvite { uuid: string, title: string, userUuid: boolean }
+const inviteChat: IInvite = reactive({
+	uuid: "",
+	title: "",
 	userUuid: false
 })
 
@@ -46,11 +46,11 @@ let isInviteRoom = ref<boolean>(false)
 const closeNotification = () => isInviteRoom.value = false
 
 socket.on('messageInvite', async (uuidRoom, titleRoom, userUuid) => {
-	invite.titleRoom = titleRoom
-	invite.uuidRoom = uuidRoom
-	invite.userUuid = userUuid === storage.getData('uuid')
+	inviteChat.title = titleRoom
+	inviteChat.uuid = uuidRoom
+	inviteChat.userUuid = userUuid === storage.getData('uuid')
 
-	if (invite.titleRoom && invite.uuidRoom && invite.userUuid) {
+	if (inviteChat.title && inviteChat.uuid && inviteChat.userUuid) {
 		isInviteRoom.value = true
 		setTimeout(() => isInviteRoom.value = false, 5000);
 	}
@@ -71,6 +71,11 @@ img {
 article {
 	margin-left: 364px;
 	font-size: 22px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-height: 100vh;
 }
 
 @media (max-width: 1400px) {
