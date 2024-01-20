@@ -28,7 +28,8 @@
 			</div>
 			<div class="w-full bg-blue-900 p-3 sticky bottom-[-1%]">
 				<form class="flex justify-center" autocomplete="off" @submit.prevent="sendMessage()">
-					<textarea @keydown.enter.prevent="sendMessage()" :placeholder="t('messengerInputPlaceholder')"
+					<textarea ref="textarea" @keydown.enter.prevent="sendMessage()"
+						:placeholder="t('messengerInputPlaceholder')"
 						class="overflow-y-hidden rounded-md p-2 w-full bg-[#09F] resize-none focus:outline-none"
 						v-model="userMessage.text">
 					</textarea>
@@ -57,9 +58,10 @@ import { storage } from "@/utils/storage"
 import { useToogleMenu } from "@/hooks/useToogle"
 import { filterUsers } from '@/utils/filterDatas';
 import { useUsersStore } from "@/stores/UsersStore"
+import { reactive } from "vue"
+import { onMounted } from "vue"
 import type { IMessage } from "@/interfaces/iMessage"
 import type { IMenu } from "@/interfaces/iMenu"
-import { reactive } from "vue"
 
 const { t } = useI18n({ useScope: 'global' })
 
@@ -67,7 +69,6 @@ const chat = defineProps<{
 	name: string
 	uuid: string
 }>()
-
 defineEmits(['closeChat'])
 
 socket.emit('join', chat.uuid)
@@ -104,15 +105,17 @@ const { toogle: toogleDropdown } = useToogleMenu(isOpenMenu, menuTarget)
 const { openModal, closeModal, isOpenModal } = useToogleModal()
 
 const chatMenu = ref<IMenu[]>([
-	{ title: t('addUsers'), onClick: openModal }
+	{ title: 'addUsers', onClick: openModal },
 ])
 
-const userMessage:IMessage = reactive({
+const textarea = ref<HTMLElement | null>(null)
+
+const userMessage: IMessage = reactive({
 	text: '',
 	id: Number(storage.getData("id")),
 	sendTime: dayjs().format('HH:mm'),
-	uuid:chat.uuid,
-	username:storage.getData('username')
+	uuid: chat.uuid,
+	username: storage.getData('username')
 })
 
 const sendMessage = () => {
@@ -121,6 +124,8 @@ const sendMessage = () => {
 		userMessage.text = ''
 	}
 }
+
+onMounted(() => textarea.value?.blur())
 
 const messages = ref<IMessage[]>([])
 

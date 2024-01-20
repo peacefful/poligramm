@@ -1,7 +1,7 @@
 <template>
 	<div class="min-h-screen overflow-x-hidden" v-if="showChats === true">
 		<h1 class="text-center text-3xl mt-2">{{ t('chatsList') }}</h1>
-		<div class="m-2">
+		<div class="mx-2">
 			<div class="flex items-center mt-3 justify-between">
 				<div @click="toogleAside"
 					class="mr-auto rounded-full p-1 active:bg-[#3090df] ease-in duration-100 block ng:hidden">
@@ -81,7 +81,7 @@ const { openModal, closeModal, isOpenModal } = useToogleModal()
 const { enterChat, closeChat, showChats, uuid, room } = useEnterChat()
 
 const chatListMenu = ref<IMenu[]>([
-	{ title: t('createChat'), onClick: openModal }
+	{ title: 'createChat', onClick: openModal }
 ])
 </script>
 

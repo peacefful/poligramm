@@ -1,7 +1,7 @@
 <template>
 	<div class="bg-blue-500 items-end user-message" v-if="userId === id">
 		<div class="user-message_text">{{ message }}</div>
-		<span class="user-message_time">Вы {{ time }}</span>
+		<span class="user-message_time">{{ t('you') }} {{ time }}</span>
 	</div>
 	
 	<div v-else class="bg-blue-400 user-message">
@@ -12,6 +12,9 @@
 
 <script setup lang="ts">
 import { storage } from '@/utils/storage'
+import { useI18n } from "vue-i18n"
+
+const { t } = useI18n({ useScope: 'global' })
 
 defineProps<{
 	id: number

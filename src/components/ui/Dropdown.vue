@@ -6,7 +6,7 @@
 		<div v-if="isOpenMenu" class='text-lg absolute top-10 right-10 bg-blue-400 text-white p-2 rounded-sm z-10'>
 			<ul v-for="(m, i) in menu" :key="i">
 				<li @click="m.onClick" class="cursor-pointer hover:bg-blue-300 p-2 rounded-md">
-					{{ m.title }}
+					{{ t(`${ m.title }`) }}
 				</li>
 			</ul>
 		</div>
@@ -14,7 +14,10 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from "vue-i18n"
 import type { IMenu } from '@/interfaces/iMenu';
+
+const { t } = useI18n({ useScope: 'global' })
 
 defineProps<{
 	isOpenMenu: boolean

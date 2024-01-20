@@ -18,9 +18,9 @@
 				<option value="Лейтенант">Лейтенант</option>
 				<option value="Капитан">Капитан</option>
 			</select>
-			<Input v-model:value="dataRegistration.login" class="px-1" bg="#0054A8" :placeholder="t('login')"/>
-			<Input v-model:value="dataRegistration.password" class="px-1" bg="#0054A8" :placeholder="t('password')" type="password"/>
-			<Input v-model:value="dataRegistration.phone" class="px-1" bg="#0054A8" :placeholder="t('phone')"/>
+			<Input v-model:value="dataRegistration.login" bg="#0054A8" :placeholder="t('login')"/>
+			<Input v-model:value="dataRegistration.password" bg="#0054A8" :placeholder="t('password')" type="password"/>
+			<Input v-model:value="dataRegistration.phone" bg="#0054A8" :placeholder="t('phone')"/>
 			<div class="flex items-center content-between">
 				<div class="rounded-2xl p-5 mt-1 bg-[#0054A8]">
 					<input type="file" id="fileInput" class="hidden">
@@ -45,12 +45,12 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue';
-import type { IUser } from '@/interfaces/iUsers';
-import { toogleLanguage } from "@/utils/toogleLang"
 import Button from '@/components/ui/Button.vue';
 import Input from '@/components/ui/Input.vue';
+import { reactive } from 'vue';
+import { toogleLanguage } from "@/utils/toogleLang"
 import { registration } from '@/api/users';
+import type { IUser } from '@/interfaces/iUsers';
 import type { IChats } from '@/interfaces/iChats';
 
 const { t, updateLocale } = toogleLanguage()
