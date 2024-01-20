@@ -23,14 +23,14 @@
 		</Modal>
 		<div>
 			<div class="p-2">
-				<Messages v-for="user in messages" :key="user.id" :id="user.id" :message="user.message"
-					:time="user.sendTime" />
+				<Messages v-for="user in messages" :key="user.id" :id="user.id" :message="user.text" :time="user.sendTime"
+					:username="user.username" />
 			</div>
 			<div class="w-full bg-blue-900 p-3 sticky bottom-[-1%]">
 				<form class="flex justify-center" autocomplete="off" @submit.prevent="sendMessage()">
 					<textarea @keydown.enter.prevent="sendMessage()" :placeholder="t('messengerInputPlaceholder')"
 						class="overflow-y-hidden rounded-md p-2 w-full bg-[#09F] resize-none focus:outline-none"
-						v-model="message">
+						v-model="userMessage.text">
 					</textarea>
 					<InputImg :src="paperClipIcon" type="file" />
 					<InputImg :src="sendMessageIcon" type="submit" />
@@ -59,6 +59,7 @@ import { filterUsers } from '@/utils/filterDatas';
 import { useUsersStore } from "@/stores/UsersStore"
 import type { IMessage } from "@/interfaces/iMessage"
 import type { IMenu } from "@/interfaces/iMenu"
+import { reactive } from "vue"
 
 const { t } = useI18n({ useScope: 'global' })
 
@@ -106,23 +107,25 @@ const chatMenu = ref<IMenu[]>([
 	{ title: t('addUsers'), onClick: openModal }
 ])
 
-const message = ref<string>("")
-const messages = ref<IMessage[]>([])
+const userMessage:IMessage = reactive({
+	text: '',
+	id: Number(storage.getData("id")),
+	sendTime: dayjs().format('HH:mm'),
+	uuid:chat.uuid,
+	username:storage.getData('username')
+})
 
 const sendMessage = () => {
-	if (message.value) {
-		socket.emit(
-			'message', message.value,
-			Number(storage.getData("id")),
-			dayjs().format('HH:mm'),
-			chat.uuid
-		)
-		message.value = ''
+	if (userMessage.text.trim()) {
+		socket.emit('message', ...Object.values(userMessage))
+		userMessage.text = ''
 	}
 }
 
-socket.on('message', (message, id) => {
-	messages.value.push({ message, id, sendTime: dayjs().format('HH:mm') });
+const messages = ref<IMessage[]>([])
+
+socket.on('message', (text, id, sendTime, uuid, username) => {
+	messages.value.push({ text, id, sendTime, username });
 	requestAnimationFrame(() => {
 		window.scrollTo(0, document.body.scrollHeight);
 	});

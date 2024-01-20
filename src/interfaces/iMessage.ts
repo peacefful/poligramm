@@ -1,5 +1,7 @@
 export interface IMessage {
 	id: number
-	message: string
+	text: string
 	sendTime: string
+	uuid?:string,
+	username:string|null
 }

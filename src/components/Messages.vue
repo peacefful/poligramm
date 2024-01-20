@@ -3,23 +3,24 @@
 		<div class="user-message_text">{{ message }}</div>
 		<span class="user-message_time">Вы {{ time }}</span>
 	</div>
+	
 	<div v-else class="bg-blue-400 user-message">
 		<div class="user-message_text">{{ message }}</div>
-		<span class="user-message_time">{{ time }}</span>
+		<span class="user-message_time">{{ username }} {{ time }}</span>
 	</div>
 </template>
 
 <script setup lang="ts">
 import { storage } from '@/utils/storage'
-import { ref } from 'vue'
 
 defineProps<{
 	id: number
 	message: string
 	time: string
+	username: string|undefined|null
 }>()
 
-const userId = ref<number>(Number(storage.getData('id')))
+const userId:number|null = Number(storage.getData('id'))
 </script>
 
 <style scoped lang="scss">
