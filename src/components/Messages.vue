@@ -6,7 +6,7 @@
 		</div>
 		<div v-else-if="message.id === 0" class="user-message">
 			<div class="text-center p-2">
-				Пользователь {{ message.text }} зашел в чат
+				{{ message.text }} {{ t('joinChat') }}
 			</div>
 		</div>
 		<div v-else class="bg-blue-400 user-message">
