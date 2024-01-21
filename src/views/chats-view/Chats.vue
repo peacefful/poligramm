@@ -12,7 +12,7 @@
 						<Aside class="fade-aside" />
 					</div>
 				</transition>
-				<Input class="p-3 mr-1" bg="#0054A8" v-model:value="findChat" />
+				<Input class="p-3 w-56 mr-1" bg="#0054A8" v-model:value="findChat" />
 				<Dropdown @toogle-menu="toogleDropdown" :is-open-menu="isOpenMenu" :menu="chatListMenu" />
 				<Modal @submit-modal="addChat(newChat)" @closeModal="closeModal" :is-open-modal="isOpenModal"
 					:title="t('fillField')" :title-success-button="t('create')">

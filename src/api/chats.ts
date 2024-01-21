@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 // http://localhost:3000
 // https://srv.poligramm.kz
 
-export const CHAT_API = 'http://localhost:3000/api/chats'
+export const CHAT_API = 'https://srv.poligramm.kz/api/chats'
 
 const chats = axios.create({
 	baseURL: CHAT_API,
