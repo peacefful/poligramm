@@ -1,15 +1,23 @@
 <template>
-	<main class="h-screen flex flex-col justify-center items-center p-1">
+	<main class="wrapper">
 		<form class="max-w-sm" @submit.prevent="authorization(login, password)">
 			<h1 class="text-3xl text-center">{{ t('authorization') }}</h1>
-			<Input bg="#0054A8" class="p-1" v-model:value="login" :placeholder="t('login')" />
-			<Input bg="#0054A8" class="p-1" v-model:value="password" :placeholder="t('password')" type="password" />
+			<Input 
+				bg="#0054A8" 
+				class="p-1" 
+				v-model:value="login" 
+				:placeholder="t('login')" />
+			<Input 
+				bg="#0054A8" 
+				class="p-1" 
+				v-model:value="password" 
+				:placeholder="t('password')" 
+				type="password" />
 			<div class="flex mt-3">
 				<Button class="w-full" :title="t('forgotMyPassword')" />
 				<Button class="w-full ml-4" :title="t('signIn')" />
 			</div>
-		<div @click="updateLocale"
-			class="text-center text-xm text-gray-400 hover:text-gray-100 ease-in duration-100 cursor-pointer">{{
+		<div @click="updateLocale" class="wrapper__update-lang">{{
 				t('updateLanguage') }}</div>
 		</form>
 	</main>

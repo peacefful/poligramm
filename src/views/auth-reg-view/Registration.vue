@@ -1,5 +1,5 @@
 <template>
-	<main class="h-screen flex flex-col justify-center items-center">
+	<main class="wrapper">
 		<form class="flex flex-col max-w-sm" @submit.prevent="registration(dataRegistration)">
 			<h1 class="text-3xl text-center">{{ t("signUp") }}</h1>
 			<Input v-model:value="dataRegistration.surname" class="px-1" bg="#0054A8" :placeholder="t('surname')"/>
@@ -39,7 +39,9 @@
 					<Button class="w-full text-[18px] my-2" :title='t("signUp")' />
 				</div>
 			</div>
-			<div @click="updateLocale()" class="text-center text-xm text-gray-400 hover:text-gray-100 ease-in duration-100 cursor-pointer">{{ t('updateLanguage') }}</div>
+			<div @click="updateLocale()" class="wrapper__update-lang">
+				{{ t('updateLanguage') }}
+			</div>
 		</form>
 	</main>
 </template>

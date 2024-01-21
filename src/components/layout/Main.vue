@@ -1,6 +1,6 @@
 <template>
 	<div class="layout-main" v-if="accessToken">
-		<Aside class="hidden ng:block" />
+		<Aside class="hidden ng:flex" />
 		<article v-if="showChats">
 			<section>
 				<RouterView />
@@ -14,7 +14,7 @@
 			:is-invite-room="isInviteRoom" 
 			@close-notification="closeNotification" />
 	</div>
-	<div v-else class="h-screen flex flex-col justify-center items-center">
+	<div v-else class="signin">
 		<router-link to="/">
 			<Button class="text-4xl" title="Войдите" />
 		</router-link>
@@ -33,7 +33,12 @@ import { ref, reactive } from 'vue';
 
 const accessToken = storage.getData("token")
 
-interface IInvite { uuid: string, title: string, userUuid: boolean }
+interface IInvite { 
+	uuid: string, 
+	title: string, 
+	userUuid: boolean 
+}
+
 const inviteChat: IInvite = reactive({
 	uuid: "",
 	title: "",
@@ -61,34 +66,23 @@ const { enterChat, closeChat, showChats, uuid, room } = useEnterChat()
 
 <style scoped lang="scss">
 .layout-main {
-	display: flex;
+	@apply flex;
 }
-
-img {
-	cursor: pointer;
+.signin {
+	@apply h-screen flex flex-col justify-center items-center
 }
-
 article {
-	margin-left: 364px;
-	font-size: 22px;
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	min-height: 100vh;
+	@apply ml-[364px] text-[22px] w-full flex flex-col justify-center min-h-screen
 }
 
 @media (max-width: 1400px) {
 	article {
-		height: 100vh;
-		margin-left: 0;
-
+		@apply h-screen ml-0;
 		section {
-			font-size: 15px;
+			@apply text-[15px];
 		}
-
 		form {
-			font-size: 15px;
+			@apply text-[15px];
 			padding: 4% 0%;
 		}
 	}

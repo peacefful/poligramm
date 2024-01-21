@@ -1,11 +1,11 @@
 <template>
-	<aside>
-		<div class="p-2 fixed w-[364px] bg-blue-900 min-h-screen flex flex-col justify-between">
+	<aside >
+		<div class="aside">
 			<Profile />
 			<div class="mb-2">
 				<ToogleLanguage />
 				<Button 
-					class="w-full mt-4" 
+					class="w-full mt-4"
 					color="danger" 
 					@click="logOut()" 
 					:title="t('logout')" />
@@ -28,3 +28,9 @@ const logOut = () => {
 	return router.push("/")
 }
 </script>
+
+<style scoped>
+.aside {
+	@apply p-2 fixed w-[364px] bg-blue-900 min-h-screen flex flex-col justify-between
+}
+</style>

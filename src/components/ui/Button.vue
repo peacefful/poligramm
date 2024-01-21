@@ -19,28 +19,8 @@ withDefaults(defineProps<IButtonProps>(), {
 
 <style scoped lang="scss">
 .button {
-	background-color: #299fff;
-	border-radius: 8px;
-	transition: all ease-out 0.1s;
-	padding: 0.5rem;
-
-	&:hover {
-		background-color: #167ed3;
-	}
-
-	&:active {
-		background-color: #6fbeff;
-	}
-
+	@apply bg-[#299fff] rounded-lg transition-all ease-out duration-100 p-2 hover:bg-[#167ed3] active:bg-[#6fbeff];
 	&_danger {
-		background-color: rgb(220 38 38);
-
-		&:hover {
-			background-color: rgb(185 28 28);
-		}
-
-		&:active {
-			background-color: rgb(239 68 68);
-		}
+		@apply bg-[#dc2626] hover:bg-[#b91c1c] active:bg-[#ef4444];
 	}
 }</style>

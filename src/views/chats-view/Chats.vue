@@ -1,15 +1,15 @@
 <template>
-	<div class="min-h-screen overflow-x-hidden" v-if="showChats === true">
-		<h1 class="text-center text-3xl mt-2">{{ t('chatsList') }}</h1>
+	<div class="chats" v-if="showChats === true">
+		<h1 class="chats__title">{{ t('chatsList') }}</h1>
 		<div class="mx-2">
-			<div class="flex items-center mt-3 justify-between">
+			<div class="chats__dashboard">
 				<div @click="toogleAside"
 					class="mr-auto rounded-full p-1 active:bg-[#3090df] ease-in duration-100 block ng:hidden">
 					<img src="@/assets/icons/burger-menu.svg">
 				</div>
-				<transition name="aside">
-					<div v-if="isOpenAside" class="fixed top-0 left-0 bg-[#00000079] w-full h-screen z-10 ng:hidden wrapper">
-						<Aside class="aside" />
+				<transition name="fade">
+					<div v-if="isOpenAside" class="chats__aside-wrap wrapper">
+						<Aside class="fade-aside" />
 					</div>
 				</transition>
 				<Input class="p-3 mr-1" bg="#0054A8" v-model:value="findChat" />
@@ -21,7 +21,7 @@
 			</div>
 			<div v-if="usersStore?.user?.chats?.length">
 				<ul class="mt-4" v-for="chat in filterChats(usersStore.user.chats, findChat)" :key="chat.id">
-					<li class="bg-blue-500 p-5 rounded-md flex justify-between items-center mt-2">
+					<li class="chat__list">
 						{{ chat.roomName }}
 						<div class="flex w-20 justify-between">
 							<img :title="t('goChat')" @click="enterChat(chat.uuid, chat.roomName)" src="@/assets/icons/chat.svg">
@@ -85,28 +85,46 @@ const chatListMenu = ref<IMenu[]>([
 ])
 </script>
 
-<style scoped>
-.aside-enter-active,
-.aside-leave-active {
+<style scoped lang="scss">
+.chats {
+	@apply min-h-screen overflow-x-hidden;
+
+	&__title {
+		@apply text-center text-3xl mt-2;
+	}
+
+	&__dashboard {
+		@apply flex items-center mt-3 justify-between;
+		.chats__aside-wrap {
+			@apply fixed top-0 left-0 bg-[#00000079] w-full h-screen z-10 ng:hidden;
+		}
+	}
+
+	.chat__list {
+		@apply bg-blue-500 p-5 rounded-md flex justify-between items-center mt-2;
+	}
+}
+
+.fade-enter-active,
+.fade-leave-active {
 	transition: all 0.3s ease-in-out;
 }
 
-.aside-leave-active {
+.fade-leave-active {
 	transition-delay: 0.25s;
 }
 
-.aside-enter-from,
-.aside-leave-to {
+.fade-enter-from,
+.fade-leave-to {
 	opacity: 0;
 }
 
-.aside-enter-active .aside,
-.aside-leave-active .aside {
+.fade-enter-active .fade-aside,
+.fade-leave-active .fade-aside {
 	transition: all 0.3s ease-in;
 }
 
-.aside-enter-from .aside,
-.aside-leave-to .aside {
+.fade-enter-from .fade-aside,
+.fade-leave-to .fade-aside {
 	transform: translateX(-100%);
-}
-</style>
+}</style>

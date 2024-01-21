@@ -1,6 +1,7 @@
 <template>
 	<input type="radio" class="hidden custom-radio" :id="inputId" name="themeGroup">
-	<label :for="inputId" :style="radioStyle" class="cursor-pointer mt-2 ml-2 w-[30px] h-[30px] rounded-md"></label>
+	<label :for="inputId" :style="radioStyle" 
+	class="cursor-pointer mt-2 ml-2 w-[30px] h-[30px] rounded-md"></label>
 </template>
 
 <script setup lang="ts">

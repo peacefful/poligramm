@@ -1,10 +1,14 @@
+.wrapper {
+	@apply h-screen flex flex-col justify-center items-center;
+	&__update-lang {
+		@apply text-center text-gray-400 hover:text-gray-100 ease-in duration-100 cursor-pointer;
+	}
+}
+
 form {
-	margin: auto;
+	@apply m-auto;
 }
 
 input, select {
-	font-size: 26px;
-	margin-top: 10px;
-	width: 100%;
-	padding: 0.25rem
+	@apply text-[26px] w-full mt-2.5 p-1;
 }

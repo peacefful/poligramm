@@ -3,9 +3,9 @@
 		class="p-1 rounded-full active:bg-[#3090df] ease-in duration-100 cursor-pointer"
 		src="@/assets/icons/menu.svg">
 	<transition>
-		<div v-if="isOpenMenu" class='text-lg absolute top-10 right-10 bg-blue-400 text-white p-2 rounded-sm z-10'>
+		<div v-if="isOpenMenu" class='dropdown-menu'>
 			<ul v-for="(m, i) in menu" :key="i">
-				<li @click="m.onClick" class="cursor-pointer hover:bg-blue-300 p-2 rounded-md">
+				<li @click="m.onClick" class="dropdown-menu__list">
 					{{ t(`${ m.title }`) }}
 				</li>
 			</ul>
@@ -26,3 +26,12 @@ defineProps<{
 
 defineEmits(["toogleMenu"])
 </script>
+
+<style scoped lang="scss">
+.dropdown-menu {
+	@apply text-lg absolute top-10 right-10 bg-blue-400 text-white p-2 rounded-sm z-10;
+	.dropdown-menu__list {
+		@apply cursor-pointer hover:bg-blue-300 p-2 rounded-md;
+	}
+}
+</style>

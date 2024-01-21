@@ -1,8 +1,8 @@
 <template>
-	<div class="flex flex-col justify-between min-h-full">
-		<div class="bg-blue-900 sticky top-0 p-2">
-			<div class="flex items-center justify-between">
-				<div @click="$emit('closeChat')" class="rounded-full active:bg-[#3090df] ease-in duration-100 cursor-pointer">
+	<div class="chat">
+		<div class="chat-dashboard">
+			<div class="chat-dashboard__wpapper">
+				<div @click="$emit('closeChat')" class="chat-dashboard__toogle-menu">
 					<img src="../assets/icons/arrow.svg" alt="">
 				</div>
 				<h2>{{ name }}</h2>
@@ -14,7 +14,7 @@
 			<div class="mb-5">
 				<Input class="p-3" v-model:value="findUser" />
 				<div class="modal-form__users" v-for="user in filterUsers(usersStore.allUsers, findUser)" :key="user.id">
-					<label class="flex justify-between items-center mt-5" :for="user.name">
+					<label class="chat-modal__user" :for="user.name">
 						{{ user.name }} {{ user.surname }} ({{ user.rank }})
 						<input v-model="uuids" :id="user.name" :value="user.uuid" class="h-5 w-5" type="checkbox">
 					</label>
@@ -26,17 +26,13 @@
 				<Messages v-for="user in messages" :key="user.id" :id="user.id" :message="user.text" :time="user.sendTime"
 					:username="user.username" />
 			</div>
-			<div class="w-full bg-blue-900 p-3 sticky bottom-[-1%]">
-				<form class="flex justify-center" autocomplete="off" @submit.prevent="sendMessage()">
-					<textarea ref="textarea" @keydown.enter.prevent="sendMessage()"
-						:placeholder="t('messengerInputPlaceholder')"
-						class="overflow-y-hidden rounded-md p-2 w-full bg-[#09F] resize-none focus:outline-none"
-						v-model="userMessage.text">
+			<form class="chat-form" autocomplete="off" @submit.prevent="sendMessage()">
+				<textarea @keydown.enter.prevent="sendMessage()" :placeholder="t('messengerInputPlaceholder')"
+					class="chat-form__field" v-model="userMessage.text">
 					</textarea>
-					<InputImg :src="paperClipIcon" type="file" />
-					<InputImg :src="sendMessageIcon" type="submit" />
-				</form>
-			</div>
+				<InputImg :src="paperClipIcon" type="file" />
+				<InputImg :src="sendMessageIcon" type="submit" />
+			</form>
 		</div>
 	</div>
 </template>
@@ -59,7 +55,6 @@ import { useToogleMenu } from "@/hooks/useToogle"
 import { filterUsers } from '@/utils/filterDatas';
 import { useUsersStore } from "@/stores/UsersStore"
 import { reactive } from "vue"
-import { onMounted } from "vue"
 import type { IMessage } from "@/interfaces/iMessage"
 import type { IMenu } from "@/interfaces/iMenu"
 
@@ -108,8 +103,6 @@ const chatMenu = ref<IMenu[]>([
 	{ title: 'addUsers', onClick: openModal },
 ])
 
-const textarea = ref<HTMLElement | null>(null)
-
 const userMessage: IMessage = reactive({
 	text: '',
 	id: Number(storage.getData("id")),
@@ -125,8 +118,6 @@ const sendMessage = () => {
 	}
 }
 
-onMounted(() => textarea.value?.blur())
-
 const messages = ref<IMessage[]>([])
 
 socket.on('message', (text, id, sendTime, uuid, username) => {
@@ -136,3 +127,32 @@ socket.on('message', (text, id, sendTime, uuid, username) => {
 	});
 });
 </script>
+
+<style scoped lang="scss">
+.chat {
+	@apply flex flex-col justify-between min-h-full;
+
+	&-dashboard {
+		@apply bg-blue-900 sticky top-0 p-2;
+
+		.chat-dashboard__wpapper {
+			@apply flex items-center justify-between;
+
+			.chat-dashboard__toogle-menu {
+				@apply rounded-full active:bg-[#3090df] ease-in duration-100 cursor-pointer;
+			}
+		}
+	}
+
+	&-form {
+		@apply flex justify-center w-full bg-blue-900 p-3 sticky bottom-[-1%];
+
+		.chat-form__field {
+			@apply overflow-y-hidden rounded-md p-2 w-full bg-[#09F] resize-none focus:outline-none;
+		}
+	}
+	&-modal__user{
+		@apply flex justify-between items-center mt-5
+	}
+}
+</style>

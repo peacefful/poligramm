@@ -21,14 +21,6 @@ usersStore.getUserData()
 
 <style scoped lang="scss">
 .user-data {
-	background-color: #0054A8;
-	padding: 0.5rem;
-	margin-top: 1rem;
-	border-radius: 0.375rem;
-	transition: background-color ease-in-out 0.1s;
-
-	&:hover {
-		background-color: #1a73cb;
-	}
+	@apply bg-[#0054A8] p-2 mt-4 rounded-md transition ease-in-out duration-100 hover:bg-[#3c87d3];
 }
 </style>

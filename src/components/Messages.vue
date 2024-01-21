@@ -3,7 +3,6 @@
 		<div class="user-message_text">{{ message }}</div>
 		<span class="user-message_time">{{ t('you') }} {{ time }}</span>
 	</div>
-	
 	<div v-else class="bg-blue-400 user-message">
 		<div class="user-message_text">{{ message }}</div>
 		<span class="user-message_time">{{ username }} {{ time }}</span>
@@ -28,25 +27,19 @@ const userId:number|null = Number(storage.getData('id'))
 
 <style scoped lang="scss">
 .user-message {
-	padding: 0.75rem;
-	display: flex;
-	flex-direction: column;
-	border-radius: 1rem;
-	margin-top: 0.75rem;
+	@apply p-3 flex flex-col rounded-2xl mt-3;
 	&_text {
-		max-width: 36rem;
-		overflow-wrap: break-word;
+		@apply max-w-xl break-words;
 	}
 	&_time {
-		font-size: 13px;
-		color: rgb(209 213 219);
+		@apply text-[13px] text-[#d1d5db];
 	}
 }
 
 @media (max-width: 1400px) {
 	.user-message {
 		&_text {
-			max-width: 100%;
+			@apply max-w-full
 		}
 	}
 }

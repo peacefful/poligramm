@@ -21,8 +21,6 @@
 	</div>
 </template>
 
-cursor-pointer p-2 rounded-md bg-blue-500 text-white hover:bg-blue-400 ease-in duration-100
-
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useI18n } from "vue-i18n"
@@ -45,14 +43,9 @@ const radio = ref<string>()
 }
 
 label {
-	cursor: pointer;
-	padding: 0.5rem;
-	border-radius: 0.375rem;
-	background-color: #3b82f6;
-	transition: background-color ease-in 100ms;
-	
+	@apply cursor-pointer p-2 rounded-md bg-[#3b82f6] transition-all ease-in duration-100;
 	&:not(.select-lang):hover {
-		background-color: #60a5fa;
+		@apply bg-[#60a5fa]
 	}
 }
 </style>

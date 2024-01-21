@@ -38,7 +38,7 @@ const bg = computed(() => inputProps.bg || 'bg-zinc-900')
 </script>
 
 <style scoped lang="scss">
-input {
+.input {
 	&:focus {
 		outline: 1.5px solid rgb(0, 128, 255);
 	}
