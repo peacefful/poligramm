@@ -69,10 +69,10 @@ const { enterChat, closeChat, showChats, uuid, room } = useEnterChat()
 	@apply flex;
 }
 .signin {
-	@apply h-screen flex flex-col justify-center items-center
+	@apply h-screen flex flex-col justify-center items-center;
 }
 article {
-	@apply ml-[364px] text-[22px] w-full flex flex-col justify-center min-h-screen
+	@apply ml-[364px] text-[22px] w-full flex flex-col justify-center min-h-screen;
 }
 
 @media (max-width: 1400px) {

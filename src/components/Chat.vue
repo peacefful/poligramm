@@ -6,10 +6,10 @@
 					<img src="../assets/icons/arrow.svg" alt="">
 				</div>
 				<h2>{{ name }}</h2>
-				<Dropdown :is-open-menu="isOpenMenu" @toogle-menu="toogleDropdown" :menu="chatMenu" />
+				<Dropdown @toogle-menu="toogleDropdown" :is-open-menu="isOpenMenu" :menu="chatMenu" />
 			</div>
 		</div>
-		<Modal :title="t('selectUser')" @closeModal="closeModal" @submit-modal="sendInvitation(uuids, chat.uuid, chat.name)"
+		<Modal @closeModal="closeModal" @submit-modal="sendInvitation(uuids, chat.uuid, chat.name)" :title="t('selectUser')"
 			:is-open-modal="isOpenModal" :title-success-button="t('add')" :error="error">
 			<div class="mb-5">
 				<Input class="p-3" v-model:value="findUser" />
@@ -23,13 +23,14 @@
 		</Modal>
 		<div>
 			<div class="p-2">
-				<Messages v-for="user in messages" :key="user.id" :id="user.id" :message="user.text" :time="user.sendTime"
-					:username="user.username" />
+				<div class="text-center p-2">
+					{{ t('welcome') }} {{ userMessage.username }}
+				</div>
+				<Messages :messages="messages" />
 			</div>
 			<form class="chat-form" autocomplete="off" @submit.prevent="sendMessage()">
-				<textarea @keydown.enter.prevent="sendMessage()" :placeholder="t('messengerInputPlaceholder')"
-					class="chat-form__field" v-model="userMessage.text">
-					</textarea>
+				<textarea @keydown.enter.prevent="sendMessage" :placeholder="t('messengerInputPlaceholder')"
+					class="chat-form__field" v-model="userMessage.text" />
 				<InputImg :src="paperClipIcon" type="file" />
 				<InputImg :src="sendMessageIcon" type="submit" />
 			</form>
@@ -66,8 +67,16 @@ const chat = defineProps<{
 }>()
 defineEmits(['closeChat'])
 
-socket.emit('join', chat.uuid)
+const userMessage: IMessage = reactive({
+	text: '',
+	id: Number(storage.getData("id")),
+	sendTime: dayjs().format('HH:mm'),
+	uuid: chat.uuid,
+	username: storage.getData('username'),
+	joinUser: []
+})
 
+const messages = ref<IMessage[]>([])
 const findUser = ref<string>('')
 
 const usersStore = useUsersStore()
@@ -103,14 +112,6 @@ const chatMenu = ref<IMenu[]>([
 	{ title: 'addUsers', onClick: openModal },
 ])
 
-const userMessage: IMessage = reactive({
-	text: '',
-	id: Number(storage.getData("id")),
-	sendTime: dayjs().format('HH:mm'),
-	uuid: chat.uuid,
-	username: storage.getData('username')
-})
-
 const sendMessage = () => {
 	if (userMessage.text.trim()) {
 		socket.emit('message', ...Object.values(userMessage))
@@ -118,19 +119,27 @@ const sendMessage = () => {
 	}
 }
 
-const messages = ref<IMessage[]>([])
-
 socket.on('message', (text, id, sendTime, uuid, username) => {
 	messages.value.push({ text, id, sendTime, username });
 	requestAnimationFrame(() => {
 		window.scrollTo(0, document.body.scrollHeight);
 	});
 });
+
+socket.emit('join', chat.uuid)
+socket.emit('userJoin', chat.uuid, userMessage.username)
+
+socket.on('userJoin', username => {
+	const copyUserMessage = { ...userMessage };
+	copyUserMessage.id = 0
+	copyUserMessage.text = username;
+	messages.value.push(copyUserMessage);
+});
 </script>
 
 <style scoped lang="scss">
 .chat {
-	@apply flex flex-col justify-between min-h-full;
+	@apply flex flex-col justify-between min-h-full text-xl;
 
 	&-dashboard {
 		@apply bg-blue-900 sticky top-0 p-2;
@@ -151,7 +160,8 @@ socket.on('message', (text, id, sendTime, uuid, username) => {
 			@apply overflow-y-hidden rounded-md p-2 w-full bg-[#09F] resize-none focus:outline-none;
 		}
 	}
-	&-modal__user{
+
+	&-modal__user {
 		@apply flex justify-between items-center mt-5
 	}
 }

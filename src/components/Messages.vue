@@ -1,36 +1,43 @@
 <template>
-	<div class="bg-blue-500 items-end user-message" v-if="userId === id">
-		<div class="user-message_text">{{ message }}</div>
-		<span class="user-message_time">{{ t('you') }} {{ time }}</span>
-	</div>
-	<div v-else class="bg-blue-400 user-message">
-		<div class="user-message_text">{{ message }}</div>
-		<span class="user-message_time">{{ username }} {{ time }}</span>
+	<div v-for="message in messages" :key="message.id">
+		<div class="bg-blue-500 items-end user-message" v-if="userId === message.id">
+			<div class="user-message_text">{{ message.text }}</div>
+			<span class="user-message_time">{{ t('you') }} {{ message.sendTime }}</span>
+		</div>
+		<div v-else-if="message.id === 0" class="user-message">
+			<div class="text-center p-2">
+				Пользователь {{ message.text }} зашел в чат
+			</div>
+		</div>
+		<div v-else class="bg-blue-400 user-message">
+			<div class="user-message_text">{{ message.text }}</div>
+			<span class="user-message_time">{{ message.username }} {{ message.sendTime }}</span>
+		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
 import { storage } from '@/utils/storage'
 import { useI18n } from "vue-i18n"
+import type { IMessage } from "@/interfaces/iMessage"
 
 const { t } = useI18n({ useScope: 'global' })
 
 defineProps<{
-	id: number
-	message: string
-	time: string
-	username: string|undefined|null
+	messages: IMessage[]
 }>()
 
-const userId:number|null = Number(storage.getData('id'))
+const userId: number | null = Number(storage.getData('id'))
 </script>
 
 <style scoped lang="scss">
 .user-message {
 	@apply p-3 flex flex-col rounded-2xl mt-3;
+
 	&_text {
 		@apply max-w-xl break-words;
 	}
+
 	&_time {
 		@apply text-[13px] text-[#d1d5db];
 	}

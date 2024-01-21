@@ -1,5 +1,5 @@
 <template>
-	<div class="rounded-2xl bg-[#0054A8] p-6 ml-4">
+	<div class="input-img">
 		<input :type="type" :id="type" class="hidden">
 		<label :for="type" class="cursor-pointer">
 			<img :src="src" alt="">
@@ -13,3 +13,9 @@ defineProps<{
 	type:string
 }>()
 </script>
+
+<style scoped>
+.input-img {
+	@apply rounded-2xl bg-[#0054A8] p-6 ml-4;
+}
+</style>

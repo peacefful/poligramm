@@ -87,7 +87,7 @@ const chatListMenu = ref<IMenu[]>([
 
 <style scoped lang="scss">
 .chats {
-	@apply min-h-screen overflow-x-hidden;
+	@apply min-h-screen overflow-x-hidden text-xl;
 
 	&__title {
 		@apply text-center text-3xl mt-2;
