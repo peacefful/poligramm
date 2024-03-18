@@ -1,0 +1,45 @@
+.modal-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  background-color: rgba(21, 21, 21, 0.665);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  z-index: 3;
+
+  .modal-form__box {
+    padding: 2%;
+    width: 90%;
+    height: 80%;
+    border-radius: 15px;
+    background-color: black;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .modal-form__title {
+      font-size: 30px;
+      margin-bottom: 2%;
+    }
+
+    .modal-form__users {
+      margin-top: 1%;
+    }
+  }
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}

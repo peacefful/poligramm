@@ -1,0 +1,9 @@
+.form {
+  @apply bg-white 
+  rounded-xl 
+  p-20 
+  w-[600px];
+  .form__labels {
+    @apply mt-10;
+  }
+}

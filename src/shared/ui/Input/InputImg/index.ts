@@ -1,0 +1,1 @@
+export { default as InputImg } from './InputImg.vue'

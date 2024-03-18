@@ -1,6 +1,6 @@
 <template>
   <img
-    @click="$emit('toogleMenu')"
+    @click="$emit('toogle-menu')"
     class="p-1 rounded-full active:bg-[#3090df] ease-in duration-100 cursor-pointer"
     src="@/assets/icons/menu.svg"
   />
@@ -26,7 +26,7 @@ defineProps<{
   menu: IMenu[]
 }>()
 
-defineEmits(['toogleMenu'])
+defineEmits(['toogle-menu'])
 </script>
 
 <style scoped lang="scss">

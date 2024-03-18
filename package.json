@@ -13,14 +13,16 @@
   },
   "dependencies": {
     "@types/uuid": "^9.0.7",
+    "@vee-validate/valibot": "^4.12.6",
     "axios": "^1.6.2",
     "dayjs": "^1.11.10",
     "pinia": "^2.1.7",
     "sass": "^1.69.5",
     "socket.io-client": "^4.7.2",
     "uuid": "^9.0.1",
+    "vee-validate": "^4.12.6",
     "vue": "^3.3.4",
-    "vue-i18n": "^9.7.1",
+    "vue-i18n": "^9.10.2",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {

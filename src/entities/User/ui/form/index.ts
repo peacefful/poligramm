@@ -1,0 +1,1 @@
+export { default as VeeInputLogin } from './VeeInputLogin.vue'

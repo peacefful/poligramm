@@ -1,0 +1,15 @@
+.wrapper {
+  @apply min-h-screen flex flex-col;
+  &__update-lang {
+    @apply text-center mt-2 text-gray-400 hover:text-gray-100 ease-in duration-100 cursor-pointer;
+  }
+}
+
+form {
+  @apply m-auto;
+}
+
+input,
+select {
+  @apply text-[26px] w-full mt-2.5 p-1;
+}
