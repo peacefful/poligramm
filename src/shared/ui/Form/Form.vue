@@ -10,24 +10,13 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n({ useScope: 'global' })
+
 interface IForm {
   title: string
 }
 
-interface IUserData {
-  login: string
-  password: string
-}
-
-defineEmits({
-  loginForm(auth: IUserData) {
-
-  }
-})
-
 defineProps<IForm>()
-
-const { t } = useI18n({ useScope: 'global' })
 </script>
 
 <style scoped>
