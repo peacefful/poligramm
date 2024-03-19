@@ -1,5 +1,5 @@
-import "./styles/normalize.scss"
-import "./styles/tailwind.css"
+import './styles/normalize.scss'
+import './styles/tailwind.css'
 import { createApp } from 'vue'
 import { languages, defaultLocale } from './providers/i18n'
 import { createI18n, useI18n } from 'vue-i18n'
@@ -24,3 +24,5 @@ const app = createApp(App, {
 })
 
 export const application = app.use(i18n).use(router)
+
+export default i18n

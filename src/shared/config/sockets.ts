@@ -1,3 +1,3 @@
 import { io } from 'socket.io-client'
 
-export const sockets = io('http://localhost:3000')
+export const sockets = io(import.meta.env.BASE_URL)

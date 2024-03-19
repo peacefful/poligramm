@@ -1,8 +1,9 @@
 import axios from 'axios'
-import { type IUsersAuthData, type IUser } from '../model'
-import { storage, isEmptyObj } from '@/shared/lib/utils'
+import type { IUserAuthData, IUser } from '../model'
+import { storage } from '@/shared/lib/utils'
+import { isEmptyObj } from '../lib'
 
-export const authorization = async (authData: IUsersAuthData) => {
+export const authorization = async (authData: IUserAuthData) => {
   try {
     if (isEmptyObj(authData)) {
       const isAuthUser = await axios.post(`/api/users/auth`, { ...authData })
@@ -23,8 +24,8 @@ export const authorization = async (authData: IUsersAuthData) => {
 
 export const registration = async (user: IUser) => {
   try {
-    if (user) {
-      const isRegUser = await axios.post('/api/users', { ...user })
+    if (isEmptyObj(user)) {
+      await axios.post('/api/users', { ...user })
     }
   } catch (error) {
     console.log(error)

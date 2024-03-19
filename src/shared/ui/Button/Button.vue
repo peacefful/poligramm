@@ -17,5 +17,5 @@ withDefaults(defineProps<IButtonProps>(), {
 </script>
 
 <style scoped>
-@import url("./style.module.scss");
+@import url('./style.module.scss');
 </style>

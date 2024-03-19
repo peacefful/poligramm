@@ -1,6 +1,6 @@
 import kz from './kz.json'
 import ru from './ru.json'
-import { storage } from '@/utils/storage'
+import { storage } from '@/shared/lib'
 
 export const defaultLocale = storage.getData('lang') || 'ru'
 

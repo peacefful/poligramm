@@ -1,6 +1,20 @@
 .button {
-  @apply bg-[#242424] text-white rounded-lg transition-all ease-out duration-100 h-10 hover:bg-[#242424e7] text-[16px] flex justify-center items-center w-28;
+  @apply bg-default 
+  text-white
+  rounded-lg 
+  transition-all 
+  ease-out 
+  duration-100 
+  h-10
+  w-28
+  hover:bg-[#242424e7] 
+  text-[16px] 
+  flex 
+  justify-center 
+  items-center;
   &_danger {
-    @apply bg-[#299fff] hover:bg-[#167ed3] active:bg-[#6fbeff];
+    @apply bg-[#299fff] 
+    hover:bg-[#167ed3] 
+    active:bg-[#6fbeff];
   }
 }

@@ -18,7 +18,7 @@ export interface IUpdateUser extends IUser {
   id?: number
 }
 
-export interface IUsersAuthData {
+export interface IUserAuthData {
   login: string
   password: string
 }

@@ -1,5 +1,5 @@
 import { http } from '@/shared/api'
-import { type IUser, type IUpdateUser } from '../model/types'
+import type { IUser, IUpdateUser } from '../model'
 
 export const getUsers = async (): Promise<IUser[] | undefined> => {
   try {

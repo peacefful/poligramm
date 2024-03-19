@@ -4,6 +4,7 @@
     <div class="form__labels">
       <slot />
     </div>
+    <Button type="submit" class="mt-7" :title="t(buttonTitle)" />
   </form>
 </template>
 
@@ -14,6 +15,7 @@ const { t } = useI18n({ useScope: 'global' })
 
 interface IForm {
   title: string
+  buttonTitle:string
 }
 
 defineProps<IForm>()
