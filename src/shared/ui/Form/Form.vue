@@ -1,11 +1,12 @@
 <template>
-  <form @submit.prevent="" class="form">
+  <form @submit.prevent="handlerSubmit" class="form">
     <h1 class="text-5xl">{{ t(title) }}</h1>
     <div class="form__labels">
       <slot />
     </div>
     <Button type="submit" class="mt-7" :title="t(buttonTitle)" />
   </form>
+  <slot />
 </template>
 
 <script setup lang="ts">
@@ -14,8 +15,9 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n({ useScope: 'global' })
 
 interface IForm {
+  handlerSubmit: () => Promise<void>
   title: string
-  buttonTitle:string
+  buttonTitle: string
 }
 
 defineProps<IForm>()

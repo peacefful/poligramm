@@ -1,6 +1,6 @@
 import axios from 'axios'
 import type { IUserAuthData, IUser } from '../model'
-import { storage } from '@/shared/lib/utils'
+import { storage } from '@/shared/lib'
 import { isEmptyObj } from '../lib'
 
 export const authorization = async (authData: IUserAuthData) => {

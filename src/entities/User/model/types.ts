@@ -1,9 +1,4 @@
-export interface IChats {
-  id: number
-  roomName: string
-  uuid: string
-  userId: number
-}
+import type { IChat } from '@/entities/Chat'
 
 export interface IUser {
   surname: string
@@ -11,7 +6,7 @@ export interface IUser {
   login: string
   password: string
   phone: string
-  chats: IChats[]
+  chats: IChat[]
 }
 
 export interface IUpdateUser extends IUser {

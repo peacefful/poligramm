@@ -4,16 +4,15 @@ import { storage } from '@/shared/lib'
 export const switchLang = () => {
   const { locale } = useI18n({ useScope: 'global' })
 
-  const updateLang = (value: string) => {
+  const updateLang = (value: string): void => {
     locale.value = value
     storage.setData('lang', locale.value)
   }
 
-  const checkCurrentLang = (lang: string):string => {
+  const checkCurrentLang = (lang: string): string => {
     if (locale.value === lang) {
       return 'selected'
     }
-
     return ''
   }
 
