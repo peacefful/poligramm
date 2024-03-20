@@ -1,5 +1,6 @@
 import { http } from '@/shared/api'
-import type { IUser, IUpdateUser } from '../model'
+import type { IUpdateUser } from '@/entities/User'
+import type { IUser } from '@/shared/types'
 
 export const getUsers = async (): Promise<IUser[] | undefined> => {
   try {
@@ -14,14 +15,6 @@ export const getUser = async (id: string): Promise<IUser | undefined> => {
   try {
     const users: IUser = (await http.get(`/api/users/${id}`)).data
     return users
-  } catch (error) {
-    console.log(error)
-  }
-}
-
-export const createUser = async (newUser: IUser): Promise<void> => {
-  try {
-    await http.post('/api/users', { ...newUser })
   } catch (error) {
     console.log(error)
   }
