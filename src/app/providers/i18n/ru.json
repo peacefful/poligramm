@@ -37,5 +37,7 @@
   "welcome": "Добро пожаловать",
   "joinChat": "зашел в чат",
   "notAccount": "Нет аккаунта?",
-  "signUpText": "Зарегистрируйтесь"
+  "signUpText": "Зарегистрируйтесь",
+  "incorrectesLogin": "Логин слишком короткий",
+  "incorrectesPassword": "Пароль слишком короткий"
 }

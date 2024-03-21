@@ -1,4 +1,4 @@
-export interface IUserAuthData {
+export interface IAuthData {
   login: string
   password: string
 }

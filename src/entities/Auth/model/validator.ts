@@ -1,6 +1,11 @@
+import { useI18n } from 'vue-i18n'
 import { string, minLength } from 'valibot'
 
-export const authValidator = {
-  login: string([minLength(6, 'Логин слишком короткий')]),
-  password: string([minLength(12, 'Пароль слишком короткий')])
+export const validator = () => {
+  const { t } = useI18n({ useScope: 'global' })
+
+  return {
+    login: string([minLength(6, t('incorrectesLogin'))]),
+    password: string([minLength(12, t('incorrectesPassword'))])
+  }
 }

@@ -1,2 +1,2 @@
 export * as AuthApi from './api'
-export * from './model'
+export * as AuthModel from './model'

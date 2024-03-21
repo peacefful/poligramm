@@ -2,20 +2,23 @@
   <form @submit.prevent="handlerSubmit" class="form">
     <h1 class="text-5xl">{{ t(title) }}</h1>
     <div class="form__labels">
-      <slot />
+      <slot name="labels" />
     </div>
     <Button type="submit" class="mt-7" :title="t(buttonTitle)" />
+    <div class="text-center mt-10 opacity-75">
+      <slot name="hint" />
+    </div>
   </form>
-  <slot />
 </template>
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import { Button } from '@/shared/ui/Button';
 
 const { t } = useI18n({ useScope: 'global' })
 
 interface IForm {
-  handlerSubmit: (e: Event) => Promise<void>
+  handlerSubmit: (e?: Event | undefined) => Promise<Promise<void> | undefined>
   title: string
   buttonTitle: string
 }

@@ -1,11 +1,11 @@
-&__form {
+.form {
   @apply bg-white
   min-h-screen
   rounded-xl 
   p-14
   w-[580px]
   sm:min-h-0;
-  .signin__labels {
+  .form__labels {
     @apply mt-10;
   }
 }
