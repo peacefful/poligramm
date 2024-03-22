@@ -1,5 +1,5 @@
 import { http } from '@/shared/api'
-import { storage } from '@/shared/lib/utils/storage'
+import { storage } from '@/shared/lib/utils'
 import { v4 as uuidv4 } from 'uuid'
 
 export const addChat = async (room: string) => {

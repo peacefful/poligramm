@@ -1,4 +1,4 @@
-import { isVerifyToken } from "./isVerifyToken"
+import { isVerifyToken } from "@/shared/lib/utils"
 
 export const routes = [
   {

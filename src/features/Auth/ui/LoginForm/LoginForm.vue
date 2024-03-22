@@ -3,15 +3,21 @@
     <template #labels>
       <label>
         {{ t('login') }}
-        <VeeInput name="login" class="h-[60px] w-full" v-model="userData.login" />
+        <VeeInput
+          name="login"
+          class="vee-input"
+          error-name="incorrectesLogin"
+          v-model="userData.login"
+        />
       </label>
       <label class="block mt-4">
         {{ t('password') }}
         <VeeInput
           name="password"
-          v-model="userData.password"
-          class="h-[60px] w-full"
           type="password"
+          class="vee-input"
+          error-name="incorrectesPassword"
+          v-model="userData.password"
         />
       </label>
       <div class="mt-2">
@@ -47,7 +53,7 @@ const userData: AuthModel.IAuthData = reactive({
 const { handleSubmit } = useForm({
   validationSchema: toTypedSchema(
     object({
-      ...AuthModel.validator()
+      ...AuthModel.validator
     })
   )
 })
@@ -56,3 +62,7 @@ const onSubmit = handleSubmit(async () => {
   await AuthApi.authorization(userData)
 })
 </script>
+
+<style>
+@import url('./style.module.scss');
+</style>

@@ -1,5 +1,5 @@
 import { http } from '@/shared/api'
-import { storage } from '@/shared/lib'
+import { storage } from '@/shared/lib/utils'
 import { AuthModel } from '@/entities/Auth'
 import type { IUser } from '@/shared/types'
 
