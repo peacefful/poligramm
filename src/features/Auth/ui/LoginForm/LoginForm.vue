@@ -31,7 +31,7 @@
     <template #hint>
       {{ t('notAccount') }}
       <router-link class="underline" to="/signup">
-        {{ t('signUpText') }}
+        {{ t('signUp', 2) }}
       </router-link>
     </template>
   </Form>
@@ -55,7 +55,7 @@ const userData: AuthModel.IAuthData = reactive({
 
 const { handleSubmit } = useForm({
   validationSchema: yup.object({
-    ...AuthModel.validator
+    ...AuthModel.authValidator
   })
 })
 

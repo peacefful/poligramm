@@ -39,7 +39,7 @@
   "welcome": "Қош келдіңіз",
   "joinChat": "чатқа кірді",
   "notAccount": "Тіркелгі жоқ па?",
-  "signUpText": "Тіркелу",
   "incorrectesLogin": "Кіру тым қысқа",
-  "incorrectesPassword": "Құпия сөз тым қысқа"
+  "incorrectesPassword": "Құпия сөз тым қысқа",
+  "hasAccount": "Тіркелгі бар ма?"
 }

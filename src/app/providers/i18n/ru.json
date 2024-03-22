@@ -6,7 +6,7 @@
   "surname": "Фамилия",
   "appointment": "Звание",
   "rank": "Должность",
-  "signIn": "Войти",
+  "signIn": "Войти | Войдите",
   "chats": "Чаты",
   "invites": "Приглашения",
   "updateTheme": "Изменить тему",
@@ -15,7 +15,7 @@
   "password": "Пароль",
   "forgotPassword": "Забыли пароль",
   "updateLanguage": "Сменить язык",
-  "signUp": "Регистрация",
+  "signUp": "Регистрация | Зарегистрируйтесь",
   "phone": "Номер телефона",
   "access": "Доступ",
   "createChat": "Создать новый чат",
@@ -37,7 +37,7 @@
   "welcome": "Добро пожаловать",
   "joinChat": "зашел в чат",
   "notAccount": "Нет аккаунта?",
-  "signUpText": "Зарегистрируйтесь",
   "incorrectesLogin": "Логин слишком короткий",
-  "incorrectesPassword": "Пароль слишком короткий"
+  "incorrectesPassword": "Пароль слишком короткий",
+  "hasAccount": "Есть аккаунт?"
 }

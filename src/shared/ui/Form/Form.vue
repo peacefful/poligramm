@@ -4,7 +4,7 @@
     <div class="form__labels">
       <slot name="labels" />
     </div>
-    <Button type="submit" class="mt-7" :title="t(buttonTitle)" />
+    <Button type="submit" class="mt-7" :title="t(buttonTitle, 1)" />
     <div class="text-center mt-10 opacity-75">
       <slot name="hint" />
     </div>

@@ -1,11 +1,12 @@
 import './styles/normalize.scss'
 import './styles/tailwind.css'
+
 import { createApp } from 'vue'
-import { languages, defaultLocale } from './providers/i18n'
+import { languages, defaultLocale } from './providers'
 import { createI18n, useI18n } from 'vue-i18n'
 
 import App from './App.vue'
-import { router } from './providers/routes/index'
+import { router } from './providers'
 import { createPinia } from 'pinia'
 
 const messages = Object.assign(languages)
@@ -24,6 +25,4 @@ const app = createApp(App, {
   }
 })
 
-export const application = app.use(i18n).use(createPinia()).use(router)
-
-export default i18n
+export const application = app.use(i18n).use(router)

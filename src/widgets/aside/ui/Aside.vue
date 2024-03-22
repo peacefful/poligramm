@@ -18,7 +18,6 @@
 <script setup lang="ts">
 import ToogleLanguage from '@/components/ToogleLanguage.vue'
 import Profile from '@/components/Profile.vue'
-import router from '@/router'
 import { Button } from '@/shared/ui/Button'
 import { useI18n } from 'vue-i18n'
 
@@ -26,7 +25,6 @@ const { t } = useI18n({ useScope: 'global' })
 
 const logOut = () => {
   localStorage.clear()
-  return router.push('/')
 }
 </script>
 
