@@ -1,5 +1,9 @@
 <template>
-  <input v-bind="$attrs" v-model="value" :type="type || 'text'" />
+  <input 
+    v-bind="$attrs" 
+    v-model="value" 
+    :type="type || 'text'" 
+  />
   <div v-if="errorMessage" class="text-red-600">
     {{ t(errorName) }}
   </div>

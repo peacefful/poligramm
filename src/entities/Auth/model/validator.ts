@@ -1,6 +1,6 @@
-import { string, minLength } from 'valibot'
+import * as yup from 'yup';
 
 export const validator = {
-  login: string([minLength(6)]),
-  password: string([minLength(12)])
+  login: yup.string().min(6),
+  password: yup.string().min(12)
 }

@@ -1,5 +1,9 @@
 <template>
-  <Form title="authorization" button-title="signIn" :handler-submit="onSubmit">
+  <Form 
+    title="authorization" 
+    button-title="signIn" 
+    :handler-submit="onSubmit"
+  >
     <template #labels>
       <label>
         {{ t('login') }}
@@ -37,11 +41,10 @@
 import { AuthApi, AuthModel } from '@/entities/Auth'
 import { Form } from '@/shared/ui/Form'
 import { VeeInput } from '@/shared/ui/Input'
-import { toTypedSchema } from '@vee-validate/valibot'
 import { useForm } from 'vee-validate'
-import { object } from 'valibot'
 import { reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
+import * as yup from 'yup';
 
 const { t } = useI18n({ useScope: 'global' })
 
@@ -51,11 +54,9 @@ const userData: AuthModel.IAuthData = reactive({
 })
 
 const { handleSubmit } = useForm({
-  validationSchema: toTypedSchema(
-    object({
-      ...AuthModel.validator
-    })
-  )
+  validationSchema: yup.object({
+    ...AuthModel.validator
+  })
 })
 
 const onSubmit = handleSubmit(async () => {

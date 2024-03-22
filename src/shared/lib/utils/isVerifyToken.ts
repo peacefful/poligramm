@@ -1,5 +1,5 @@
 import type { RouteLocationNormalized, NavigationGuardNext } from 'vue-router'
-import { storage } from '@/shared/lib'
+import { storage } from '@/shared/lib/utils'
 
 export async function isVerifyToken(
   to: RouteLocationNormalized,
