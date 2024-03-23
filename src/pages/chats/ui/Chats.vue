@@ -1,5 +1,5 @@
 <template>
-  <div class="chats" v-if="showChats === true">
+  <!-- <div class="chats" v-if="showChats === true">
     <h1 class="chats__title">{{ t('chatsList') }}</h1>
     <div class="mx-2">
       <div class="chats__dashboard">
@@ -52,54 +52,55 @@
       <div class="mt-6" v-else>Чатов пока нет.</div>
     </div>
   </div>
-  <Chat @close-chat="closeChat" :uuid="uuid" :name="room" v-else />
+  <Chat @close-chat="closeChat" :uuid="uuid" :name="room" v-else /> -->
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, blanditiis commodi. Sint, suscipit? Incidunt, quod, illo dolore quisquam autem, quasi animi deleniti explicabo alias consequatur assumenda optio modi. In, quis!
 </template>
 
 <script setup lang="ts">
-import Chat from '@/components/Chat.vue'
-import Dropdown from '@/components/ui/Dropdown.vue'
-import Input from '@/components/ui/Input.vue'
-import Modal from '@/components/ui/Modal.vue'
-import Aside from '@/components/layout/Aside.vue'
-import { ref, onMounted } from 'vue'
-import { useUsersStore } from '@/stores/UsersStore'
-import { addChat } from '@/api/chats'
-import { deleteChat } from '@/api/chats'
-import { filterChats } from '@/utils/filterDatas'
-import { useEnterChat } from '@/hooks/useEnter'
-import { useToogleMenu, useToogleModal } from '@/hooks/useToogle'
-import { useI18n } from 'vue-i18n'
-import type { IMenu } from '@/interfaces/iMenu'
+// import Chat from '@/components/Chat.vue'
+// import Dropdown from '@/components/ui/Dropdown.vue'
+// import Input from '@/components/ui/Input.vue'
+// import Modal from '@/components/ui/Modal.vue'
+// import Aside from '@/components/layout/Aside.vue'
+// import { ref, onMounted } from 'vue'
+// import { useUsersStore } from '@/stores/UsersStore'
+// import { addChat } from '@/api/chats'
+// import { deleteChat } from '@/api/chats'
+// import { filterChats } from '@/utils/filterDatas'
+// import { useEnterChat } from '@/hooks/useEnter'
+// import { useToogleMenu, useToogleModal } from '@/hooks/useToogle'
+// import { useI18n } from 'vue-i18n'
+// import type { IMenu } from '@/interfaces/iMenu'
 
-const { t } = useI18n({ useScope: 'global' })
+// const { t } = useI18n({ useScope: 'global' })
 
-const usersStore = useUsersStore()
-usersStore.getUserData()
+// const usersStore = useUsersStore()
+// usersStore.getUserData()
 
-onMounted(() => {
-  window.addEventListener('resize', () => {
-    if (window.innerWidth >= 1400) {
-      isOpenAside.value = false
-    }
-  })
-})
+// onMounted(() => {
+//   window.addEventListener('resize', () => {
+//     if (window.innerWidth >= 1400) {
+//       isOpenAside.value = false
+//     }
+//   })
+// })
 
-const newChat = ref<string>('')
-const findChat = ref<string>('')
+// const newChat = ref<string>('')
+// const findChat = ref<string>('')
 
-const isOpenAside = ref<boolean>(false)
-const isOpenMenu = ref<boolean>(false)
+// const isOpenAside = ref<boolean>(false)
+// const isOpenMenu = ref<boolean>(false)
 
-const asideTarget = ref<HTMLElement | null>(null)
-const menuTarget = ref<HTMLElement | null>(null)
+// const asideTarget = ref<HTMLElement | null>(null)
+// const menuTarget = ref<HTMLElement | null>(null)
 
-const { toogle: toogleAside } = useToogleMenu(isOpenAside, asideTarget)
-const { toogle: toogleDropdown } = useToogleMenu(isOpenMenu, menuTarget)
+// const { toogle: toogleAside } = useToogleMenu(isOpenAside, asideTarget)
+// const { toogle: toogleDropdown } = useToogleMenu(isOpenMenu, menuTarget)
 
-const { openModal, closeModal, isOpenModal } = useToogleModal()
-const { enterChat, closeChat, showChats, uuid, room } = useEnterChat()
+// const { openModal, closeModal, isOpenModal } = useToogleModal()
+// const { enterChat, closeChat, showChats, uuid, room } = useEnterChat()
 
-const chatListMenu = ref<IMenu[]>([{ title: 'createChat', onClick: openModal }])
+// const chatListMenu = ref<IMenu[]>([{ title: 'createChat', onClick: openModal }])
 </script>
 
 <style>

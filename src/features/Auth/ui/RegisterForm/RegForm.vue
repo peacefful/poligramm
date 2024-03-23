@@ -1,7 +1,7 @@
 <template>
   <Form 
     title="signUp" 
-    button-title="signUp" 
+    button-title="signUp"
     :handler-submit="onSubmit"
   >
     <template #labels>

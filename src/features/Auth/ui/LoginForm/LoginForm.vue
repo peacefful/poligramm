@@ -1,7 +1,7 @@
 <template>
   <Form 
     title="authorization" 
-    button-title="signIn" 
+    button-title="signIn"
     :handler-submit="onSubmit"
   >
     <template #labels>

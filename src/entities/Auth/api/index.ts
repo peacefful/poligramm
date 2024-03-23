@@ -1,6 +1,7 @@
 import { http } from '@/shared/api'
 import { storage } from '@/shared/lib/utils'
 import { AuthModel } from '@/entities/auth'
+import { useMoveRoute } from '@/shared/lib/hooks'
 import type { IUser } from '@/shared/types'
 
 export const authorization = async (authData: AuthModel.IAuthData): Promise<void> => {
@@ -12,11 +13,9 @@ export const authorization = async (authData: AuthModel.IAuthData): Promise<void
       storage.setData('id', isAuthUser.data.id)
       storage.setData('uuid', isAuthUser.data.uuid)
       storage.setData('username', `${isAuthUser.data.name} ${isAuthUser.data.surname}`)
-
-      console.log(isAuthUser.data);
-      
+      useMoveRoute('/chats')
     } else {
-      new Error('Произошла ошибка')
+      new Error('Authorization error')
     }
   } catch (error) {
     console.log(error)
@@ -25,7 +24,8 @@ export const authorization = async (authData: AuthModel.IAuthData): Promise<void
 
 export const registration = async (user: IUser) => {
   try {
-    await http.post('/api/users', { ...user })
+    const newUser = await http.post('/api/users', { ...user })
+    return newUser ? useMoveRoute('/') : new Error('Error during registration')
   } catch (error) {
     console.log(error)
   }

@@ -5,7 +5,6 @@ import { v4 as uuidv4 } from 'uuid'
 export const addChat = async (room: string) => {
   try {
     const id: number = Number(storage.getData('id'))
-
     if (room.trim()) {
       await http.post('/api/chats', {
         roomName: room,
