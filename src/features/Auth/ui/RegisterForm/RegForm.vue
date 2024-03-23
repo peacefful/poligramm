@@ -5,35 +5,29 @@
     :handler-submit="onSubmit"
   >
     <template #labels>
-      <label>
-        {{ t('name') }}
-        <VeeInput
-          name="name"
-          class="vee-input"
-          error-name="incorrectesLogin"
-          v-model="userData.name"
-        />
-      </label>
-      <label class="block mt-4">
-        {{ t('surname') }}
+      <VeeInput
+        name="name"
+        class="vee-input"
+        error-name="incorrectesName"
+        v-model="userData.name"
+      />
+      <div class="mt">
         <VeeInput
           name="surname"
           class="vee-input"
-          error-name="incorrectesPassword"
+          error-name="incorrectesSurname"
           v-model="userData.surname"
         />
-      </label>
-      <label class="block mt-4">
-        {{ t('login') }}
+      </div>
+      <div class="mt">
         <VeeInput
           name="login"
           class="vee-input"
-          error-name="incorrectesPassword"
+          error-name="incorrectesLogin"
           v-model="userData.login"
         />
-      </label>
-      <label class="block mt-4">
-        {{ t('password') }}
+      </div>
+      <div class="mt">
         <VeeInput
           name="password"
           class="vee-input"
@@ -41,16 +35,7 @@
           error-name="incorrectesPassword"
           v-model="userData.password"
         />
-      </label>
-      <label class="block mt-4">
-        {{ t('phone') }}
-        <VeeInput
-          name="phone"
-          class="vee-input"
-          error-name="incorrectesPassword"
-          v-model="userData.phone"
-        />
-      </label>
+      </div>
     </template>
     <template #hint>
       {{ t('hasAccount') }}
@@ -62,8 +47,9 @@
 </template>
 
 <script setup lang="ts">
-import { Form } from '@/shared/ui/Form'
-import { AuthApi, AuthModel } from '@/entities/Auth'
+import { Form } from '@/shared/ui/form'
+import { AuthApi, AuthModel } from '@/entities/auth'
+import { VeeInput } from '@/shared/ui/input'
 import { useForm } from 'vee-validate'
 import { reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -90,3 +76,7 @@ const onSubmit = handleSubmit(async () => {
   await AuthApi.registration(userData)
 })
 </script>
+
+<style>
+@import url("@/shared/assets/styles/variables.scss");
+</style>

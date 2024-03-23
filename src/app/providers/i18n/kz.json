@@ -41,5 +41,7 @@
   "notAccount": "Тіркелгі жоқ па?",
   "incorrectesLogin": "Кіру тым қысқа",
   "incorrectesPassword": "Құпия сөз тым қысқа",
+  "incorrectesName": "Қате атау",
+  "incorrectesSurname": "Қате тегі",
   "hasAccount": "Тіркелгі бар ма?"
 }

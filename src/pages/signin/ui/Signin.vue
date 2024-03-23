@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import { Authorization } from '@/widgets/Authorization';
+import { Authorization } from '@/widgets/authorization';
 </script>

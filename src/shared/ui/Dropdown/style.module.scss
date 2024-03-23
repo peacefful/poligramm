@@ -1,6 +1,16 @@
 .dropdown-menu {
-  @apply text-lg absolute top-10 right-10 bg-blue-400 text-white p-2 rounded-sm z-10;
+  @apply text-lg 
+  absolute 
+  top-10 
+  right-10 
+  bg-blue-400 
+  text-white 
+  p-2 
+  rounded-sm z-10;
   .dropdown-menu__list {
-    @apply cursor-pointer hover:bg-blue-300 p-2 rounded-md;
+    @apply cursor-pointer 
+    hover:bg-blue-300 
+    p-2 
+    rounded-md;
   }
 }

@@ -1,6 +1,6 @@
 import { http } from '@/shared/api'
 import { storage } from '@/shared/lib/utils'
-import { AuthModel } from '@/entities/Auth'
+import { AuthModel } from '@/entities/auth'
 import type { IUser } from '@/shared/types'
 
 export const authorization = async (authData: AuthModel.IAuthData): Promise<void> => {

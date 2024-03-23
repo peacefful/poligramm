@@ -39,5 +39,7 @@
   "notAccount": "Нет аккаунта?",
   "incorrectesLogin": "Логин слишком короткий",
   "incorrectesPassword": "Пароль слишком короткий",
+  "incorrectesName": "Некорректное имя",
+  "incorrectesSurname": "Некорректная фамилия",
   "hasAccount": "Есть аккаунт?"
 }

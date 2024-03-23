@@ -5,17 +5,13 @@
     :handler-submit="onSubmit"
   >
     <template #labels>
-      <label>
-        {{ t('login') }}
-        <VeeInput
-          name="login"
-          class="vee-input"
-          error-name="incorrectesLogin"
-          v-model="userData.login"
-        />
-      </label>
-      <label class="block mt-4">
-        {{ t('password') }}
+      <VeeInput
+        name="login"
+        class="vee-input"
+        error-name="incorrectesLogin"
+        v-model="userData.login"
+      />
+      <div class="mt">
         <VeeInput
           name="password"
           type="password"
@@ -23,9 +19,6 @@
           error-name="incorrectesPassword"
           v-model="userData.password"
         />
-      </label>
-      <div class="mt-2">
-        <button>{{ t('forgotPassword') }}?</button>
       </div>
     </template>
     <template #hint>
@@ -38,13 +31,13 @@
 </template>
 
 <script setup lang="ts">
-import { AuthApi, AuthModel } from '@/entities/Auth'
-import { Form } from '@/shared/ui/Form'
-import { VeeInput } from '@/shared/ui/Input'
+import { AuthApi, AuthModel } from '@/entities/auth'
+import { Form } from '@/shared/ui/form'
+import { VeeInput } from '@/shared/ui/input'
 import { useForm } from 'vee-validate'
 import { reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
-import * as yup from 'yup';
+import * as yup from 'yup'
 
 const { t } = useI18n({ useScope: 'global' })
 
@@ -65,5 +58,5 @@ const onSubmit = handleSubmit(async () => {
 </script>
 
 <style>
-@import url('./style.module.scss');
+@import url("@/shared/assets/styles/variables.scss");
 </style>

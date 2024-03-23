@@ -1,12 +1,15 @@
 <template>
-  <input 
-    v-bind="$attrs" 
-    v-model="value" 
-    :type="type || 'text'" 
-  />
-  <div v-if="errorMessage" class="text-red-600">
-    {{ t(errorName) }}
-  </div>
+  <label>
+    {{ t(name) }}
+    <input 
+      v-bind="$attrs" 
+      v-model="value" 
+      :type="type || 'text'" 
+    />
+    <div v-if="errorMessage" class="text-red-600">
+      {{ t(errorName) }}
+    </div>
+  </label>
 </template>
 
 <script setup lang="ts">
