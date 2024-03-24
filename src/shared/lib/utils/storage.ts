@@ -1,4 +1,4 @@
-const prefix = '$finpol-'
+const prefix = '$polg-'
 
 export const storage = {
   getData: (name: string) => {

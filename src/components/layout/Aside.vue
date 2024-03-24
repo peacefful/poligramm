@@ -4,7 +4,12 @@
       <Profile />
       <div class="mb-2">
         <ToogleLanguage />
-        <Button class="w-full mt-4" color="danger" @click="logout" :title="t('logout')" />
+        <Button 
+          class="w-full mt-4" 
+          color="danger" 
+          @click="logout" 
+          :title="t('logout')" 
+        />
       </div>
     </div>
   </aside>

@@ -1,10 +1,11 @@
 import axios from 'axios'
+import { storage } from '@/shared/lib/utils'
 
-const token = localStorage.getItem('token')
+const token = storage.getData('token')
 
 export const http = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
   headers: {
-    Authorization: `Bearer ${token}`
+    Authorization: token
   }
 })

@@ -53,7 +53,6 @@
     </div>
   </div>
   <Chat @close-chat="closeChat" :uuid="uuid" :name="room" v-else /> -->
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, blanditiis commodi. Sint, suscipit? Incidunt, quod, illo dolore quisquam autem, quasi animi deleniti explicabo alias consequatur assumenda optio modi. In, quis!
 </template>
 
 <script setup lang="ts">

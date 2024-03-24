@@ -1,4 +1,5 @@
 import { onUpdated, ref, type Ref } from 'vue'
+import { type IMenu } from '@/shared/types'
 
 export const useToogleModal = () => {
   const isOpenModal = ref<boolean>(false)
@@ -9,11 +10,8 @@ export const useToogleModal = () => {
   return { isOpenModal, openModal, closeModal }
 }
 
-export const useToogleMenu = (
-  isOpenElement: Ref<boolean>,
-  targetElement: Ref<HTMLElement | null>
-) => {
-  const toogle = () => (isOpenElement.value = !isOpenElement.value)
+export const useToogleMenu = (menu: IMenu) => {
+  const toogle = () => (menu.isOpen = !menu.isOpen)
 
   onUpdated(() => {
     const clickHandler = (event: MouseEvent) => {
@@ -21,15 +19,13 @@ export const useToogleMenu = (
       if (
         !target ||
         !(target instanceof Element) ||
-        (!target.closest('.bg-blue-600') &&
-          !target.closest('.p-1') &&
-          target !== targetElement.value)
+        (!target.closest('.bg-blue-600') && !target.closest('.p-1') && target !== menu.target)
       ) {
-        isOpenElement.value = false
+        menu.isOpen = false
       }
     }
 
-    if (isOpenElement.value) {
+    if (menu.isOpen) {
       document.body.addEventListener('click', clickHandler)
     } else {
       document.body.removeEventListener('click', clickHandler)

@@ -1,11 +1,14 @@
 <template>
-  <div class="layout-main">
+  <main>
     <slot name="aside"></slot>
     <!-- <Aside class="hidden ng:flex" /> -->
-    
-    
-    
-    <slot name="main"></slot>
+
+    <slot name="header"></slot>
+
+    <div>
+      <router-view></router-view>
+    </div>
+    <!-- <slot name="main"></slot> -->
     <!-- <article v-if="showChats">
       <section>
         <RouterView />
@@ -19,15 +22,13 @@
       />
     </article> -->
 
-
-
     <slot name="notification"></slot>
     <!-- <Notification
       @enter-chat="enterChat(inviteChat.uuid, inviteChat.title, closeNotification)"
       :is-invite-room="isInviteRoom"
       @close-notification="closeNotification"
     /> -->
-  </div>
+  </main>
 </template>
 
 <!-- <script setup lang="ts">
@@ -74,5 +75,5 @@ const { enterChat, closeChat, showChats, uuid, room } = useEnterChat()
 </script> -->
 
 <style scoped>
-@import url("./style.module.scss");
+@import url('./style.module.scss');
 </style>

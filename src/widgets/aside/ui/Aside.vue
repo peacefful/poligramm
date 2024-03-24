@@ -1,33 +1,38 @@
 <template>
-  <aside class="aside">
-    <div class="aside__wrapper">
-      <Profile />
-      <div class="mb-2">
-        <ToogleLanguage />
-        <Button 
-          class="w-full mt-4"
-          color="danger"
-          @click="logOut"
-          :title="t('logout')"
-        />
+  <transition name="fade">
+    <aside v-if="isOpen" class="fixed top-0 left-0 bg-[#00000079] w-full h-screen z-10 ">
+      <div class="fixed bg-white h-screen w-96 flex flex-col justify-between">
+        <div>
+          <Card />
+          <hr />
+          <ul>
+            <li class="text-xl mt-2 ml-4" v-for="navigation in navigations" :key="navigation.id">
+              {{ t(`${navigation.title}`) }}
+            </li>
+          </ul>
+        </div>
+        <SwitcherLang class="ml-auto p-4" />
       </div>
-    </div>
-  </aside>
+    </aside>
+  </transition>
 </template>
 
 <script setup lang="ts">
-import ToogleLanguage from '@/components/ToogleLanguage.vue'
-import Profile from '@/components/Profile.vue'
-import { Button } from '@/shared/ui/button'
+import { Card } from '@/entities/user'
+import { SwitcherLang } from '@/features/switcher-lang'
+import { reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n({ useScope: 'global' })
 
-const logOut = () => {
-  localStorage.clear()
-}
-</script>
+defineProps<{
+  isOpen: boolean
+}>()
 
-<style>
-@import url("./style.module.scss");
-</style>
+const navigations = reactive([
+  {
+    id: 1,
+    title: 'createChat'
+  }
+])
+</script>

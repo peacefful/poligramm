@@ -1,9 +1,4 @@
-// @font-face {
-//   font-family: 'Montserrat';
-//   src: url('@/shared/assets/fonts/Montserrat-ExtraLight.ttf') format('truetype');
-//   font-weight: 200;
-//   font-style: normal;
-// }
+$font: 'Montserrat', sans-serif;
 
 @font-face {
   font-family: 'Montserrat';
@@ -11,15 +6,6 @@
   font-weight: 400;
   font-style: normal;
 }
-
-// @font-face {
-//   font-family: 'Montserrat';
-//   src: url('@/shared/assets/fonts/Montserrat-ExtraBold.ttf') format('truetype');
-//   font-weight: 800;
-//   font-style: normal;
-// }
-
-$font: 'Montserrat', sans-serif;
 
 * {
   box-sizing: border-box;
@@ -35,30 +21,13 @@ body {
 }
 
 input[type='password'],
-input[type='text'],
-select {
+input[type='text'] {
   border-radius: 5px;
   padding: 4px;
   border: 1px solid #0000001e;
   font-size: 18px;
   outline: none;
   font-family: $font;
-}
-
-select {
-  background-color: #0054a8;
-}
-
-section {
-  height: 100%;
-}
-
-img {
-  cursor: pointer;
-  opacity: 0.8;
-  &:hover {
-    opacity: 1;
-  }
 }
 
 textarea {

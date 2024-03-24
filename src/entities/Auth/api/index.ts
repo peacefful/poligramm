@@ -13,7 +13,9 @@ export const authorization = async (authData: AuthModel.IAuthData): Promise<void
       storage.setData('id', isAuthUser.data.id)
       storage.setData('uuid', isAuthUser.data.uuid)
       storage.setData('username', `${isAuthUser.data.name} ${isAuthUser.data.surname}`)
-      useMoveRoute('/chats')
+      console.log(isAuthUser.data.token);
+      
+      // useMoveRoute('/chats')
     } else {
       new Error('Authorization error')
     }
