@@ -17,12 +17,13 @@ export const useToogleMenu = (
 
   onUpdated(() => {
     const clickHandler = (event: MouseEvent) => {
+      const target: EventTarget | null = event.target
       if (
-        !event.target ||
-        !(event.target instanceof Element) ||
-        (!event.target.closest('.bg-blue-600') &&
-          !event.target.closest('.p-1') &&
-          event.target !== targetElement.value)
+        !target ||
+        !(target instanceof Element) ||
+        (!target.closest('.bg-blue-600') &&
+          !target.closest('.p-1') &&
+          target !== targetElement.value)
       ) {
         isOpenElement.value = false
       }

@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="handlerSubmit" class="form">
     <h1 class="text-5xl w-80">
-      {{ t(title) }}
+      {{ t(title, 0) }}
     </h1>
     <div class="form__labels">
       <slot name="labels" />
@@ -9,7 +9,7 @@
     <Button 
       type="submit" 
       class="mt-7" 
-      :title="t(buttonTitle, 1)" 
+      :title="t(buttonTitle, 3)" 
     />
     <div class="text-center mt-10 opacity-75">
       <slot name="hint" />

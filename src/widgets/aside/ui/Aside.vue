@@ -18,7 +18,7 @@
 <script setup lang="ts">
 import ToogleLanguage from '@/components/ToogleLanguage.vue'
 import Profile from '@/components/Profile.vue'
-import { Button } from '@/shared/ui/Button'
+import { Button } from '@/shared/ui/button'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n({ useScope: 'global' })
