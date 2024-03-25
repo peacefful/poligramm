@@ -1,1 +1,1 @@
-export { default as Aside } from './ui/Aside.vue'
+export * from './ui'

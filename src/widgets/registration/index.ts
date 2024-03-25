@@ -1,1 +1,1 @@
-export { default as Registration } from './ui/Registration.vue'
+export * from './ui'

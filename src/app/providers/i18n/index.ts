@@ -4,7 +4,4 @@ import { storage } from '@/shared/lib/utils'
 
 export const defaultLocale = storage.getData('lang') || 'ru'
 
-export const languages = {
-  kz,
-  ru
-}
+export const languages = { kz, ru }

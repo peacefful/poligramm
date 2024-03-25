@@ -1,17 +1,11 @@
 <template>
   <header class="flex justify-between p-1 bg-white shadow-lg">
-    <button @click="$emit('toogle-menu')">
-      <BurgerMenuIcon />
-    </button>
-    <button>
-      <LogoutIcon />
-    </button>
+    <BurgerMenu />
+    <Logout />
   </header>
 </template>
 
 <script setup lang="ts">
-import LogoutIcon from '@/shared/assets/icons/LogoutIcon.vue'
-import BurgerMenuIcon from '@/shared/assets/icons/BurgerMenuIcon.vue'
-
-defineEmits(['toogle-menu'])
+import { BurgerMenu } from '@/entities/common/ui'
+import { Logout } from '@/features/user'
 </script>

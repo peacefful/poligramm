@@ -1,7 +1,7 @@
 import { onMounted, ref } from 'vue'
 import { type IMenu } from '@/shared/types'
 
-export const useToogleModal = () => {
+export const useToggleModal = () => {
   const isOpenModal = ref<boolean>(false)
 
   const openModal = () => {
@@ -18,8 +18,8 @@ export const useToogleModal = () => {
   }
 }
 
-export const useToogleMenu = (menu: IMenu) => {
-  const toggle = () => (menu.isOpen = true)
+export const useToggleMenu = (menu: IMenu) => {
+  const toggle = (): boolean => (menu.isOpen = true)
 
   onMounted(() => {
     const handlerClick = (e: MouseEvent) => {
