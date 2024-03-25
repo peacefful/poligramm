@@ -4,7 +4,7 @@
       <Aside :is-open="aside.isOpen" />
     </template>
     <template #header>
-      <Header @toogle-menu="toogleAside" />
+      <Header @toogle-menu="toggleAside" />
     </template>
   </DefaultLayout>
   <div v-else>
@@ -16,17 +16,18 @@
 import { DefaultLayout } from '@/shared/ui/layouts'
 import { Aside } from '@/widgets/aside'
 import { Header } from '@/widgets/header'
-import { useRoute } from 'vue-router'
 import { useToogleMenu } from '@/shared/lib/hooks'
-import { reactive } from 'vue'
 import { type IMenu } from '@/shared/types'
+
+import { useRoute } from 'vue-router'
+import { reactive } from 'vue'
 
 const aside: IMenu = reactive({
   isOpen: false,
-  target: null
+  className: 'z-10'
 })
 
-const { toogle: toogleAside } = useToogleMenu(aside)
+const { toggle: toggleAside } = useToogleMenu(aside)
 
 const checkPath = () => {
   const currentRoute: string = useRoute().fullPath

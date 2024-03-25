@@ -1,9 +1,5 @@
 <template>
-  <Form 
-    title="authorization" 
-    button-title="signIn"
-    :handler-submit="onSubmit"
-  >
+  <Form title="authorization" button-title="signIn" :handler-submit="onSubmit">
     <template #labels>
       <VeeInput
         name="login"
@@ -58,5 +54,5 @@ const onSubmit = handleSubmit(async () => {
 </script>
 
 <style>
-@import url("@/shared/assets/styles/variables.scss");
+@import url('@/shared/assets/styles/variables.scss');
 </style>

@@ -1,8 +1,32 @@
-.aside__wrapper {
-  @apply p-2 
-  fixed w-[364px] 
-  bg-blue-900 
-  min-h-screen 
-  flex flex-col 
-  justify-between;
+// .aside__wrapper {
+//   @apply p-2
+//   fixed w-[364px]
+//   bg-blue-900
+//   min-h-screen
+//   flex flex-col
+//   justify-between;
+// }
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 100ms ease-in-out;
+}
+
+.fade-leave-active {
+  transition-delay: 100ms;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active .fade-aside,
+.fade-leave-active .fade-aside {
+  transition: all 100ms ease-in;
+}
+
+.fade-enter-from .fade-aside,
+.fade-leave-to .fade-aside {
+  transform: translateX(-100%);
 }

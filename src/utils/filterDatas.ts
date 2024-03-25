@@ -1,5 +1,5 @@
-import type { IChats } from '@/interfaces/iChats'
-import type { IUser } from '@/interfaces/iUsers'
+import { type IChats } from '@/interfaces/iChats'
+import { type IUser } from '@/interfaces/iUsers'
 
 export const filterChats = (chats: IChats[], findRoomName: string) => {
   if (chats) {

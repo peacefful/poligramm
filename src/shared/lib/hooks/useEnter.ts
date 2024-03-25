@@ -17,5 +17,11 @@ export const useEnterChat = () => {
     closeNotification ? closeNotification() : null
   }
 
-  return { showChats, closeChat, uuid, room, enterChat }
+  return {
+    showChats,
+    closeChat,
+    uuid,
+    room,
+    enterChat
+  }
 }

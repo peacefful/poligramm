@@ -1,36 +1,41 @@
-import { onUpdated, ref, type Ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { type IMenu } from '@/shared/types'
 
 export const useToogleModal = () => {
   const isOpenModal = ref<boolean>(false)
 
-  const openModal = () => (isOpenModal.value = true)
-  const closeModal = () => (isOpenModal.value = false)
+  const openModal = () => {
+    return (isOpenModal.value = true)
+  }
+  const closeModal = () => {
+    return (isOpenModal.value = false)
+  }
 
-  return { isOpenModal, openModal, closeModal }
+  return {
+    isOpenModal,
+    openModal,
+    closeModal
+  }
 }
 
 export const useToogleMenu = (menu: IMenu) => {
-  const toogle = () => (menu.isOpen = !menu.isOpen)
+  const toggle = () => (menu.isOpen = true)
 
-  onUpdated(() => {
-    const clickHandler = (event: MouseEvent) => {
-      const target: EventTarget | null = event.target
-      if (
-        !target ||
-        !(target instanceof Element) ||
-        (!target.closest('.bg-blue-600') && !target.closest('.p-1') && target !== menu.target)
-      ) {
-        menu.isOpen = false
+  onMounted(() => {
+    const handlerClick = (e: MouseEvent) => {
+      if (e.target instanceof Element) {
+        const lastClass = Object.values(e.target.classList).pop()
+        if (lastClass === menu.className) {
+          menu.isOpen = false
+        }
       }
     }
 
-    if (menu.isOpen) {
-      document.body.addEventListener('click', clickHandler)
-    } else {
-      document.body.removeEventListener('click', clickHandler)
+    if (!menu.isOpen) {
+      document.body.removeEventListener('click', handlerClick)
     }
+    document.body.addEventListener('click', handlerClick)
   })
 
-  return { toogle }
+  return { toggle }
 }

@@ -1,1 +1,3 @@
-export { sockets } from "./sockets"
+import { io } from 'socket.io-client'
+
+export const sockets = io(import.meta.env.BASE_URL)

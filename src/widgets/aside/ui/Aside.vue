@@ -1,12 +1,16 @@
 <template>
   <transition name="fade">
-    <aside v-if="isOpen" class="fixed top-0 left-0 bg-[#00000079] w-full h-screen z-10 ">
-      <div class="fixed bg-white h-screen w-96 flex flex-col justify-between">
+    <aside v-if="isOpen" class="fixed top-0 left-0 bg-[#00000079] w-full h-screen z-10">
+      <div class="fixed bg-white h-screen w-96 flex flex-col justify-between fade-aside">
         <div>
           <Card />
           <hr />
           <ul>
-            <li class="text-xl mt-2 ml-4" v-for="navigation in navigations" :key="navigation.id">
+            <li 
+              class="text-xl mt-2 ml-4" 
+              v-for="navigation in navigations" 
+              :key="navigation.id"
+            >
               {{ t(`${navigation.title}`) }}
             </li>
           </ul>
@@ -36,3 +40,7 @@ const navigations = reactive([
   }
 ])
 </script>
+
+<style scoped>
+@import url('./style.module.scss');
+</style>

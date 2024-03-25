@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import type { IChat } from '@/shared/types'
+import { type IChat } from '@/shared/types'
 
 interface IChatProps {
   chat: IChat
