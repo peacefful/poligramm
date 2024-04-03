@@ -1,4 +1,4 @@
-export interface IMenu {
+export interface TOption {
   title: string
   onClick: () => void
 }

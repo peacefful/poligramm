@@ -12,10 +12,12 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@types/js-cookie": "^3.0.6",
     "@types/uuid": "^9.0.7",
     "@vee-validate/yup": "^4.12.6",
     "axios": "^1.6.2",
     "dayjs": "^1.11.10",
+    "js-cookie": "^3.0.5",
     "pinia": "^2.1.7",
     "sass": "^1.69.5",
     "socket.io-client": "^4.7.2",

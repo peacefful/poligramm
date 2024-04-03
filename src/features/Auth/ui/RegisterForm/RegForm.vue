@@ -53,17 +53,16 @@ import { VeeInput } from '@/shared/ui/input'
 import { useForm } from 'vee-validate'
 import { reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { type IUser } from '@/shared/types'
+import { type TUser } from '@/shared/types'
 import * as yup from 'yup'
 
 const { t } = useI18n({ useScope: 'global' })
 
-const userData: IUser = reactive({
+const userData: TUser = reactive({
   login: '',
   password: '',
   name: '',
   surname: '',
-  phone: ''
 })
 
 const { handleSubmit } = useForm({

@@ -1,5 +1,5 @@
 <template>
-  <button :type="type" :class="['button', `button_${color}`]">
+  <button :type="type" :class="['button', `button_${color}`]" @click="$emit('click')">
     {{ title }}
   </button>
 </template>
@@ -14,6 +14,8 @@ interface IButtonProps {
 withDefaults(defineProps<IButtonProps>(), {
   type: 'submit'
 })
+
+defineEmits(['click'])
 </script>
 
 <style scoped>

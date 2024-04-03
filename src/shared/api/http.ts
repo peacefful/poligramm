@@ -1,11 +1,11 @@
 import axios from 'axios'
-import { storage } from '@/shared/lib/utils'
+import Cookies from 'js-cookie'
 
-const token = storage.getData('token')
+const accessToken: string | undefined = Cookies.get('accessToken')
 
 export const http = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
   headers: {
-    Authorization: token
+    Authorization: `Bearer ${accessToken}`
   }
 })

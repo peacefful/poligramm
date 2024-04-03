@@ -2,17 +2,17 @@ import { http } from '@/shared/api'
 import { storage } from '@/shared/lib/utils'
 import { AuthModel } from '@/entities/auth'
 import { useMoveRoute } from '@/shared/lib/hooks'
-import type { IUser } from '@/shared/types'
+import { type TUser } from '@/shared/types'
+import Cookies from 'js-cookie'
 
-export const authorization = async (authData: AuthModel.IAuthData): Promise<void> => {
+export const authorization = async (authData: AuthModel.TAuthData): Promise<void> => {
   try {
     const isAuthUser = await http.post(`/api/users/auth`, { ...authData })
 
     if (isAuthUser) {
-      storage.setData('token', isAuthUser.data.token)
+      Cookies.set('accessToken', isAuthUser.data.accessToken)
+      Cookies.set('uuid', isAuthUser.data.uuid)
       storage.setData('id', isAuthUser.data.id)
-      storage.setData('uuid', isAuthUser.data.uuid)
-      storage.setData('username', `${isAuthUser.data.name} ${isAuthUser.data.surname}`)
       useMoveRoute('/chats')
     } else {
       new Error('Authorization error')
@@ -22,7 +22,7 @@ export const authorization = async (authData: AuthModel.IAuthData): Promise<void
   }
 }
 
-export const registration = async (user: IUser) => {
+export const registration = async (user: TUser) => {
   try {
     const newUser = await http.post('/api/users', { ...user })
     return newUser ? useMoveRoute('/') : new Error('Error during registration')

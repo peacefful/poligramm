@@ -1,1 +1,1 @@
-export { default as Card } from "./Card.vue"
+export { default as Profile } from "./Profile.vue"

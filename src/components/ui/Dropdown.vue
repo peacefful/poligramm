@@ -37,3 +37,4 @@ defineEmits(['toogle-menu'])
   }
 }
 </style>
+@/shared/types/iMenu

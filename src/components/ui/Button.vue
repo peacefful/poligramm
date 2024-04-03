@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-interface IButtonProps {
+type IButtonProps = {
   title: string
   color?: string
   type?: 'submit' | 'reset'

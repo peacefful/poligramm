@@ -49,3 +49,4 @@ const userId: number | null = Number(storage.getData('id'))
   }
 }
 </style>
+@/shared/types/iMessage

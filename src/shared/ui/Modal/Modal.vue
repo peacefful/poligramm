@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { Button } from '../Button'
+import { Button } from '@/shared/ui/button'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n({ useScope: 'global' })

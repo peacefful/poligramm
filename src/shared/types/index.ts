@@ -1,3 +1,3 @@
-export * from "./chats"
-export * from "./users"
+export * from "./chat"
+export * from "./user"
 export * from "./menu"

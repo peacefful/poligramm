@@ -11,7 +11,6 @@ export const addChat = async (room: string) => {
         uuid: uuidv4(),
         userId: id
       })
-      location.reload()
     }
   } catch (error) {
     console.log(error)
@@ -21,7 +20,6 @@ export const addChat = async (room: string) => {
 export const deleteChat = async (id: number) => {
   try {
     await http.delete(`/api/chats/${id}`)
-    location.reload()
   } catch (error) {
     console.log(error)
   }

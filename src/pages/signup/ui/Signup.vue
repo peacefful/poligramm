@@ -1,11 +1,17 @@
 <template>
-  <Registration/>
+  <div class="signup">
+    <RegForm />
+  </div>
+  <div class="hidden sm:block">
+    <SwitcherLang class="flex justify-end mr-4" />
+  </div>
 </template>
 
 <script setup lang="ts">
-import { Registration } from '@/widgets/registration';
+import { RegForm } from '@/features/auth'
+import { SwitcherLang } from '@/features/switcher-lang';
 </script>
 
 <style scoped>
-@import './styles.module.scss';
+@import url('./styles.module.scss');
 </style>

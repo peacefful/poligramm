@@ -32,3 +32,4 @@ defineEmits(['toogle-menu'])
 <style scoped>
 @import url("./style.module.scss");
 </style>
+@/shared/types/iMenu

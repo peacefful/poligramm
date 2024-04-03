@@ -1,7 +1,17 @@
 <template>
-  <Authorization/>
+  <div class="signin">
+    <LoginForm />
+  </div>
+  <div class="hidden sm:block">
+    <SwitcherLang class="flex justify-end mr-4" />
+  </div>
 </template>
 
-<script setup>
-import { Authorization } from '@/widgets/authorization';
+<script setup lang="ts">
+import { LoginForm } from '@/features/auth'
+import { SwitcherLang } from '@/features/switcher-lang'
 </script>
+
+<style scoped>
+@import url('./styles.module.scss');
+</style>

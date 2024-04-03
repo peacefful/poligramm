@@ -14,7 +14,7 @@ import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n({ useScope: 'global' })
 
-interface IInputProps {
+type IInputProps = {
   value: string
   bg?: string
   type?: string

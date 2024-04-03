@@ -1,4 +1,4 @@
-export type IMenu = {
+export type TMenu = {
   isOpen: boolean
   className: string
 }

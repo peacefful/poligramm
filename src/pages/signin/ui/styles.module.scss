@@ -1,20 +1,28 @@
+// .signin {
+//   &__wrap {
+//     @apply min-h-[95vh]
+//     flex
+//     justify-center 
+//     items-center
+//     overflow-x-hidden;
+//   }
+//   &__form {
+//     @apply bg-white
+//     min-h-screen
+//     rounded-xl 
+//     p-14
+//     w-[580px]
+//     sm:min-h-0;
+//     .signin__labels {
+//       @apply mt-10;
+//     }
+//   }
+// }
+
 .signin {
-  &__wrap {
-    @apply min-h-[95vh]
-    flex
-    justify-center 
-    items-center
-    overflow-x-hidden;
-  }
-  &__form {
-    @apply bg-white
-    min-h-screen
-    rounded-xl 
-    p-14
-    w-[580px]
-    sm:min-h-0;
-    .signin__labels {
-      @apply mt-10;
-    }
-  }
+  @apply min-h-[95vh]
+  flex
+  justify-center 
+  items-center
+  overflow-x-hidden;
 }

@@ -1,5 +1,5 @@
-export interface IUser {
-  id: string
+export type TUser = {
+  id?: string
   surname: string
   name: string
   login: string

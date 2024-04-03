@@ -3,5 +3,5 @@
 </template>
 
 <script setup lang="ts">
-const value = defineModel('value')
+const value = defineModel<string>('value')
 </script>

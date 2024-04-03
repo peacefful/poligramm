@@ -1,4 +1,4 @@
-export interface IMessage {
+export type TMessage = {
   id: number
   text: string
   sendTime: string

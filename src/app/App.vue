@@ -17,12 +17,12 @@ import { DefaultLayout } from '@/shared/ui/layouts'
 import { Aside } from '@/widgets/aside'
 import { Header } from '@/widgets/header'
 import { useToggleMenu } from '@/shared/lib/hooks'
-import { type IMenu } from '@/shared/types'
+import { type TMenu } from '@/shared/types'
 
 import { useRoute } from 'vue-router'
 import { reactive, provide } from 'vue'
 
-const aside: IMenu = reactive({
+const aside: TMenu = reactive({
   isOpen: false,
   className: 'z-10'
 })
@@ -33,6 +33,6 @@ provide('toggleAside', { openAside })
 
 const checkPath = () => {
   const currentRoute: string = useRoute().fullPath
-  return currentRoute !== '/' && currentRoute !== '/registration'
+  return currentRoute !== '/' && currentRoute !== '/signup'
 }
 </script>

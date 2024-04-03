@@ -1,5 +1,9 @@
 <template>
-  <Form title="authorization" button-title="signIn" :handler-submit="onSubmit">
+  <Form 
+    title="authorization" 
+    button-title="signIn" 
+    :handler-submit="onSubmit"
+  >
     <template #labels>
       <VeeInput
         name="login"
@@ -37,7 +41,7 @@ import * as yup from 'yup'
 
 const { t } = useI18n({ useScope: 'global' })
 
-const userData: AuthModel.IAuthData = reactive({
+const userData: AuthModel.TAuthData = reactive({
   login: '',
   password: ''
 })
