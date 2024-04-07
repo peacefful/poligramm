@@ -87,11 +87,11 @@ onMounted(() => {
 const newChat = ref<string>('')
 const findChat = ref<string>('')
 
-const isOpenAside = ref<boolean>(false)
 const isOpenMenu = ref<boolean>(false)
-
-const asideTarget = ref<HTMLElement | null>(null)
 const menuTarget = ref<HTMLElement | null>(null)
+
+const isOpenAside = ref<boolean>(false)
+const asideTarget = ref<HTMLElement | null>(null)
 
 const { toogle: toogleAside } = useToogleMenu(isOpenAside, asideTarget)
 const { toogle: toogleDropdown } = useToogleMenu(isOpenMenu, menuTarget)
