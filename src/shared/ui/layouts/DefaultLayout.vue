@@ -1,9 +1,9 @@
 <template>
   <main>
-    <slot name="aside"></slot>
+    <slot name="burgerMenu"></slot>
     <!-- <Aside class="hidden ng:flex" /> -->
 
-    <slot name="header"></slot>
+    <slot name="aside"></slot>
 
     <div>
       <router-view></router-view>

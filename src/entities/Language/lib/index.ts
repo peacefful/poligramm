@@ -10,9 +10,7 @@ export const switchLang = () => {
   }
 
   const checkCurrentLang = (lang: string): string => {
-    if (locale.value === lang) {
-      return 'selected'
-    }
+    if (locale.value === lang) return 'selected'
     return ''
   }
 

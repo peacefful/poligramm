@@ -1,10 +1,10 @@
 <template>
   <DefaultLayout v-if="checkPath()">
-    <template #aside>
-      <Aside :is-open="aside.isOpen" />
+    <template #burgerMenu>
+      <BurgerMenu :is-open="burgerMenu.isOpen" />
     </template>
-    <template #header>
-      <Header />
+    <template #aside>
+      <Aside/>
     </template>
   </DefaultLayout>
   <div v-else>
@@ -14,22 +14,21 @@
 
 <script setup lang="ts">
 import { DefaultLayout } from '@/shared/ui/layouts'
+import { BurgerMenu } from '@/widgets/burgerMenu'
 import { Aside } from '@/widgets/aside'
-import { Header } from '@/widgets/header'
 import { useToggleMenu } from '@/shared/lib/hooks'
 import { type TMenu } from '@/shared/types'
-
 import { useRoute } from 'vue-router'
 import { reactive, provide } from 'vue'
 
-const aside: TMenu = reactive({
+const burgerMenu: TMenu = reactive({
   isOpen: false,
   className: 'z-10'
 })
 
-const { toggle: openAside } = useToggleMenu(aside)
+const { toggle: openBurgerMenu } = useToggleMenu(burgerMenu)
 
-provide('toggleAside', { openAside })
+provide('toggleBurgerMenu', { openBurgerMenu })
 
 const checkPath = () => {
   const currentRoute: string = useRoute().fullPath

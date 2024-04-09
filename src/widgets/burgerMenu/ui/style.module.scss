@@ -21,12 +21,12 @@
   opacity: 0;
 }
 
-.fade-enter-active .fade-aside,
-.fade-leave-active .fade-aside {
+.fade-enter-active .fade-burger,
+.fade-leave-active .fade-burger {
   transition: all 100ms ease-in;
 }
 
-.fade-enter-from .fade-aside,
-.fade-leave-to .fade-aside {
+.fade-enter-from .fade-burger,
+.fade-leave-to .fade-burger {
   transform: translateX(-100%);
 }

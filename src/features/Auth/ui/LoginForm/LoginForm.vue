@@ -53,7 +53,7 @@ const { handleSubmit } = useForm({
 
 const onSubmit = handleSubmit(async () => {
   const authUser: AuthModel.TAxiosAuthResponse | Error = await AuthApi.authorization(userData)
-  authUser && router.push('/chats')
+  authUser && (await router.push('/chats'))
 })
 </script>
 

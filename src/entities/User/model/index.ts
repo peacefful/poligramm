@@ -1,9 +1,6 @@
 import { defineStore } from 'pinia'
 import { ApiUser } from '@/entities/user'
-import { storage } from '@/shared/lib/utils'
 import { type TUser } from '@/shared/types'
-
-const id: string | null = storage.getData('id')
 
 export const useUsersStore = defineStore('userStore', {
   state: () => {
@@ -18,7 +15,7 @@ export const useUsersStore = defineStore('userStore', {
     }
   },
   actions: {
-    getUser() {
+    getUser(id: string | null) {
       ApiUser.fetchUser(id).then((res) => {
         if (res instanceof Error) return res.message
         this.user = res as TUser

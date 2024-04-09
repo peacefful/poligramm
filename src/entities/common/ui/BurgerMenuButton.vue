@@ -1,5 +1,5 @@
 <template>
-  <button @click="openAside">
+  <button @click="openBurgerMenu">
     <BurgerMenuIcon />
   </button>
 </template>
@@ -8,5 +8,5 @@
 import BurgerMenuIcon from '@/shared/assets/icons/BurgerMenuIcon.vue'
 import { inject } from 'vue'
 
-const { openAside } = inject('toggleAside') as () => boolean
+const { openBurgerMenu } = inject('toggleBurgerMenu') as () => boolean
 </script>

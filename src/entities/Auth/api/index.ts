@@ -19,6 +19,7 @@ export const authorization = async (
       Cookies.set('uuid', authUser.uuid)
       storage.setData('id', authUser.id)
     }
+
     return authUser
   } catch (error) {
     return new Error('Error authorization')
@@ -35,11 +36,7 @@ export const registration = async (user: TUser): Promise<TUser | Error> => {
 }
 
 export const logout = (): void => {
-  const cookies = Object.keys(Cookies.get())
-
-  for (const cookie of cookies) {
-    Cookies.remove(cookie)
-  }
-
+  Cookies.remove('refreshToken')
+  Cookies.remove('uuid')
   storage.clearData()
 }

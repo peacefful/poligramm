@@ -2,7 +2,7 @@
   <div class="flex items-center justify-between p-2">
     <div class="flex items-center cursor-pointer">
       <UserIcon />
-      <div class="text-xl ml-1">
+      <div class="text-xl font-bold ml-1">
         {{ usersStore.getUsername }}
       </div>
     </div>
@@ -13,7 +13,10 @@
 <script setup lang="ts">
 import UserIcon from '@/shared/assets/icons/UserIcon.vue'
 import { useUsersStore } from '@/entities/user'
+import { storage } from '@/shared/lib/utils'
+
+const id: string | null = storage.getData('id')
 
 const usersStore = useUsersStore()
-usersStore.getUser()
+usersStore.getUser(id)
 </script>
