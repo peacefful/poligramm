@@ -1,32 +1,45 @@
 import { http } from '@/shared/api'
 import { storage } from '@/shared/lib/utils'
 import { AuthModel } from '@/entities/auth'
-import { useMoveRoute } from '@/shared/lib/hooks'
 import { type TUser } from '@/shared/types'
 import Cookies from 'js-cookie'
 
-export const authorization = async (authData: AuthModel.TAuthData): Promise<void> => {
+export const authorization = async (
+  authData: AuthModel.TAuthData
+): Promise<AuthModel.TAxiosAuthResponse | Error> => {
   try {
-    const isAuthUser = await http.post(`/api/users/auth`, { ...authData })
-
-    if (isAuthUser) {
-      Cookies.set('accessToken', isAuthUser.data.accessToken)
-      Cookies.set('uuid', isAuthUser.data.uuid)
-      storage.setData('id', isAuthUser.data.id)
-      useMoveRoute('/chats')
-    } else {
-      new Error('Authorization error')
+    const authUser: AuthModel.TAxiosAuthResponse = (
+      await http.post(`/api/users/auth`, {
+        ...authData
+      })
+    ).data
+    if (authUser) {
+      Cookies.set('accessToken', authUser.accessToken)
+      Cookies.set('refreshToken', authUser.refreshToken)
+      Cookies.set('uuid', authUser.uuid)
+      storage.setData('id', authUser.id)
     }
+    return authUser
   } catch (error) {
-    console.log(error)
+    return new Error('Error authorization')
   }
 }
 
-export const registration = async (user: TUser) => {
+export const registration = async (user: TUser): Promise<TUser | Error> => {
   try {
-    const newUser = await http.post('/api/users', { ...user })
-    return newUser ? useMoveRoute('/') : new Error('Error during registration')
+    const regUser: TUser = (await http.post('/api/users', { ...user })).data
+    return regUser
   } catch (error) {
-    console.log(error)
+    return new Error('Error registration')
   }
+}
+
+export const logout = (): void => {
+  const cookies = Object.keys(Cookies.get())
+
+  for (const cookie of cookies) {
+    Cookies.remove(cookie)
+  }
+
+  storage.clearData()
 }

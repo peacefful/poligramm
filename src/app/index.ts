@@ -25,4 +25,4 @@ const app = createApp(App, {
   }
 })
 
-export const application = app.use(i18n).use(router)
+export const application = app.use(i18n).use(createPinia()).use(router)

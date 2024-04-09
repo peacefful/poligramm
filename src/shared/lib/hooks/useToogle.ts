@@ -1,5 +1,5 @@
 import { onMounted, ref } from 'vue'
-import { type IMenu } from '@/shared/types'
+import { type TMenu } from '@/shared/types'
 
 export const useToggleModal = () => {
   const isOpenModal = ref<boolean>(false)
@@ -18,7 +18,7 @@ export const useToggleModal = () => {
   }
 }
 
-export const useToggleMenu = (menu: IMenu) => {
+export const useToggleMenu = (menu: TMenu) => {
   const toggle = (): boolean => (menu.isOpen = true)
 
   onMounted(() => {

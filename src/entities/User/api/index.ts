@@ -2,20 +2,20 @@ import { http } from '@/shared/api'
 import { getOtherUsersById } from '@/entities/user'
 import type { TUser } from '@/shared/types'
 
-export const getUsers = async (): Promise<TUser[] | undefined> => {
+export const fetchUsers = async (): Promise<TUser[] | Error> => {
   try {
     const users: TUser[] = (await http.get('/api/users')).data
     return getOtherUsersById(users)
   } catch (error) {
-    console.log(error)
+    return new Error('Error fetch users')
   }
 }
 
-export const getUser = async (id: string | null): Promise<TUser | undefined> => {
+export const fetchUser = async (id: string | null): Promise<TUser | Error> => {
   try {
-    const user: TUser = (await http.get(`/api/users/${id}`)).data
-    return user
+    const userResponse: TUser = (await http.get(`/api/users/${id}`)).data
+    return userResponse
   } catch (error) {
-    console.log(error)
+    return new Error('Error fetching user')
   }
 }

@@ -26,7 +26,7 @@
 
 <script setup lang="ts">
 import { Profile } from '@/entities/user'
-import { Logout } from '@/features/user'
+import { Logout } from '@/features/auth'
 import { SwitcherLang } from '@/features/switcher-lang'
 import { reactive } from 'vue'
 import { useI18n } from 'vue-i18n'

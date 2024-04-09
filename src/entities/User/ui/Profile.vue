@@ -3,7 +3,7 @@
     <div class="flex items-center cursor-pointer">
       <UserIcon />
       <div class="text-xl ml-1">
-        {{ username }}
+        {{ usersStore.getUsername }}
       </div>
     </div>
     <slot />
@@ -11,15 +11,9 @@
 </template>
 
 <script setup lang="ts">
-import { ApiUser } from '@/entities/user'
-import { storage } from '@/shared/lib/utils'
-import { ref } from 'vue'
 import UserIcon from '@/shared/assets/icons/UserIcon.vue'
+import { useUsersStore } from '@/entities/user'
 
-const username = ref<string>()
-const id: string | null = storage.getData('id')
-
-ApiUser.getUser(id).then((user) => {
-  username.value = `${user?.name} ${user?.surname}`
-})
+const usersStore = useUsersStore()
+usersStore.getUser()
 </script>

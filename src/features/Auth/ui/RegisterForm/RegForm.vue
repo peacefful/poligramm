@@ -1,9 +1,5 @@
 <template>
-  <Form 
-    title="signUp" 
-    button-title="signUp"
-    :handler-submit="onSubmit"
-  >
+  <Form title="signUp" button-title="signUp" :handler-submit="onSubmit">
     <template #labels>
       <VeeInput
         name="name"
@@ -54,7 +50,10 @@ import { useForm } from 'vee-validate'
 import { reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { type TUser } from '@/shared/types'
+import { useRouter } from 'vue-router'
 import * as yup from 'yup'
+
+const router = useRouter()
 
 const { t } = useI18n({ useScope: 'global' })
 
@@ -62,7 +61,7 @@ const userData: TUser = reactive({
   login: '',
   password: '',
   name: '',
-  surname: '',
+  surname: ''
 })
 
 const { handleSubmit } = useForm({
@@ -72,10 +71,11 @@ const { handleSubmit } = useForm({
 })
 
 const onSubmit = handleSubmit(async () => {
-  await AuthApi.registration(userData)
+  const regUser: TUser | Error = await AuthApi.registration(userData)
+  regUser && router.push('/')
 })
 </script>
 
 <style>
-@import url("@/shared/assets/styles/variables.scss");
+@import url('@/shared/assets/styles/variables.scss');
 </style>

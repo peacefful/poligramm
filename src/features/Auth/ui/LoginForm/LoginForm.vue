@@ -1,9 +1,5 @@
 <template>
-  <Form 
-    title="authorization" 
-    button-title="signIn" 
-    :handler-submit="onSubmit"
-  >
+  <Form title="authorization" button-title="signIn" :handler-submit="onSubmit">
     <template #labels>
       <VeeInput
         name="login"
@@ -37,7 +33,10 @@ import { VeeInput } from '@/shared/ui/input'
 import { useForm } from 'vee-validate'
 import { reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 import * as yup from 'yup'
+
+const router = useRouter()
 
 const { t } = useI18n({ useScope: 'global' })
 
@@ -53,7 +52,8 @@ const { handleSubmit } = useForm({
 })
 
 const onSubmit = handleSubmit(async () => {
-  await AuthApi.authorization(userData)
+  const authUser: AuthModel.TAxiosAuthResponse | Error = await AuthApi.authorization(userData)
+  authUser && router.push('/chats')
 })
 </script>
 

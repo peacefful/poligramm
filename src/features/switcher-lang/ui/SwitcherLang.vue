@@ -17,7 +17,6 @@
 
 <script setup lang="ts">
 import { langLib } from '@/entities/language'
-import { Button } from '@/shared/ui/button';
 
 const { updateLang, checkCurrentLang } = langLib.switchLang()
 </script>

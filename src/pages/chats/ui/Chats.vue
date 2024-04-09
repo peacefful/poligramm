@@ -103,5 +103,5 @@
 </script>
 
 <style>
-@import url("./style.module.scss");
+@import url('./style.module.scss');
 </style>

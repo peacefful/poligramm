@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
+    "deploy": "gh-pages -d dist",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
@@ -17,6 +18,7 @@
     "@vee-validate/yup": "^4.12.6",
     "axios": "^1.6.2",
     "dayjs": "^1.11.10",
+    "gh-pages": "^6.1.1",
     "js-cookie": "^3.0.5",
     "pinia": "^2.1.7",
     "sass": "^1.69.5",
