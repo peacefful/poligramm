@@ -4,8 +4,7 @@
   left: 0;
   width: 100%;
   height: 100vh;
-
-  background-color: rgba(21, 21, 21, 0.665);
+  background-color: #151515aa;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,22 +13,25 @@
 
   .modal-form__box {
     padding: 2%;
-    width: 90%;
+    width: 60%;
     height: 80%;
     border-radius: 15px;
-    background-color: black;
+    background-color: rgb(255, 255, 255);
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
     .modal-form__title {
       font-size: 30px;
       margin-bottom: 2%;
     }
-
     .modal-form__users {
       margin-top: 1%;
+    }
+    @media (max-width: 900px) {
+      width: 100%;
+      height: 100vh;
+      border-radius: 0px;
     }
   }
 }

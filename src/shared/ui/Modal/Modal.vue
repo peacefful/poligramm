@@ -6,17 +6,16 @@
           <h3 class="modal-form__title">{{ title }}</h3>
           <slot></slot>
         </div>
-        <div>
-          <Button class="mt-10" :title="titleSuccessButton" />
+        <div class="flex gap-3 ml-auto">
           <Button
-            @click.prevent="$emit('closeModal')"
-            class="ml-3"
+            @click="$emit('closeModal')"
             color="danger"
             :title="t('close')"
           />
-          <div v-if="error" class="text-red-600 mt-2">
-            {{ t('errorSelectUsers') }}
-          </div>
+          <Button :title="titleSuccessButton" />
+        </div>
+        <div v-if="error" class="text-red-600 mt-2">
+          {{ t('errorSelectUsers') }}
         </div>
       </form>
     </div>

@@ -10,9 +10,10 @@
           <ul>
             <li class="px-3 text-lg" v-for="navigation in navigations" :key="navigation.id">
               <button
-                class="mt-2 flex items-center w-full hover:bg-blue-500 p-2 rounded-md ease-in-out duration-100"
+                class="mt-2 text-xl flex items-center w-full p-3 rounded-md hover:bg-[#f0f0f0] ease-out duration-200"
+                @click="navigation.openModal"
               >
-                <Icon class="h-5 w-5 mr-4" :name="navigation.icon" />
+                <Icon class="h-7 w-7 mr-4" :name="navigation.icon" />
                 {{ t(`${navigation.title}`) }}
               </button>
             </li>
@@ -20,6 +21,12 @@
         </div>
         <SwitcherLang class="ml-auto p-4" />
       </div>
+      <Modal
+        title="Создать новый чат"
+        titleSuccessButton="Создать"
+        @close-modal="closeModal"
+        :is-open-modal="isOpenModal"
+      />
     </div>
   </transition>
 </template>
@@ -31,6 +38,8 @@ import { SwitcherLang } from '@/features/switcher-lang'
 import { reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Icon } from '@/shared/ui/icon'
+import { Modal } from '@/shared/ui/modal'
+import { useToggleModal } from '@/shared/lib/hooks'
 
 const { t } = useI18n({ useScope: 'global' })
 
@@ -38,16 +47,20 @@ defineProps<{
   isOpen: boolean
 }>()
 
+const { isOpenModal, closeModal, openModal } = useToggleModal()
+
 const navigations = reactive([
   {
     id: 1,
     title: 'createChat',
-    icon: 'chat'
+    icon: 'chat',
+    openModal: openModal
   },
   {
     id: 2,
     title: 'chats',
-    icon: 'chats'
+    icon: 'chats',
+    openModal: openModal
   }
 ])
 </script>

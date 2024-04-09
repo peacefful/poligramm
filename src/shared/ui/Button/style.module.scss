@@ -12,8 +12,7 @@
   justify-center 
   items-center;
   &_danger {
-    @apply bg-[#299fff] 
-    hover:bg-[#167ed3] 
-    active:bg-[#6fbeff];
+    @apply bg-[#279eff] 
+    hover:bg-[#50b0ff]
   }
 }

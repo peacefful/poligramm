@@ -1,6 +1,6 @@
 <template>
   <div
-    class="p-3 flex justify-between cursor-pointer hover:bg-blue-500 hover:text-white ease-out duration-200"
+    class="p-3 flex justify-between cursor-pointer hover:bg-[#f0f0f0] ease-out duration-200"
   >
     <div class="flex items-center">
       <UserIcon />

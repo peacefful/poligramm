@@ -1,8 +1,8 @@
 <template>
-  <div class="flex items-center justify-between p-2">
+  <div class="flex items-center justify-between p-2 py-4">
     <div class="flex items-center cursor-pointer">
       <UserIcon />
-      <div class="text-xl font-bold ml-1">
+      <div class="text-2xl font-bold ml-1">
         {{ usersStore.getUsername }}
       </div>
     </div>
