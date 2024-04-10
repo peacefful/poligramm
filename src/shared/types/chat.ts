@@ -1,6 +1,6 @@
 export type TChat = {
-  id: number
-  chatName: string
+  id?: number
+  roomName: string
   uuid: string
   userId: number
 }

@@ -20,21 +20,6 @@ body {
   font-family: $font;
 }
 
-// input[type='password'],
-// input[type='text'] {
-//   border-radius: 20px;
-//   padding: 15px;
-//   font-size: 18px;
-//   outline: none;
-//   font-family: $font;
-//   background: #ededed;
-//   &:focus {
-//     outline: 1px solid rgb(181, 181, 181);
-//   }
-// }
-
-//default
-
 input[type='password'],
 input[type='text'] {
   border-radius: 5px;
@@ -46,15 +31,8 @@ input[type='text'] {
 }
 
 textarea {
-  overflow-y: hidden;
-  border-radius: 0.375rem;
-  padding: 0.5rem;
-  width: 100%;
-  background-color: #09f;
-  resize: none;
-  &:focus {
-    outline: none;
-  }
+  border: 1px solid #0000001e;
+  outline: none;
 }
 
 .v-enter-active,

@@ -8,21 +8,13 @@
         <SearchInput v-model="searchUser" />
       </div>
       <hr />
-      <ChatCard 
-        username="Иван Иванов" 
-        last-message="Привет, как дела?" 
-        time="12:43" 
-      />
-      <ChatCard 
-        username="Иван Иванов" 
-        last-message="Привет, как дела?" 
-        time="12:43" 
-      />
-      <ChatCard 
-        username="Иван Иванов" 
-        last-message="Привет, как дела?" 
-        time="12:43" 
-      />
+      <div v-for="chat in chatStore.chats" :key="chat.id">
+        <ChatCard 
+          :chatName="chat.roomName" 
+          last-message="Привет, как дела?" 
+          time="12:43" 
+        />
+      </div>
     </div>
   </aside>
 </template>
@@ -31,7 +23,11 @@
 import { BurgerMenuButton } from '@/entities/common'
 import { ChatCard } from '@/entities/chat'
 import { SearchInput } from '@/features/user'
+import { useChatsStore } from '@/entities/chat/model'
 import { ref } from 'vue'
 
 const searchUser = ref<string>('')
+
+const chatStore = useChatsStore()
+chatStore.getChats()
 </script>
