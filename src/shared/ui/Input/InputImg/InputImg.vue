@@ -1,5 +1,5 @@
 <template>
-  <div class="input-img">
+  <div class="rounded-full bg-default hover:bg-[#242424e7]">
     <input :type="type" :id="type" class="hidden" />
     <label :for="type" class="cursor-pointer">
       <slot/>
@@ -15,7 +15,3 @@ interface IInputImg {
 
 defineProps<IInputImg>()
 </script>
-
-<style scoped>
-@import url("./style.module.scss");
-</style>
