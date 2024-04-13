@@ -6,7 +6,7 @@
       <div class="bg-default p-2 rounded-full">
         <UserGroupIcon />
       </div>
-      <div class="ml-1">
+      <div class="ml-4">
         <p class="font-bold text-xl">{{ chatName }}</p>
         <p class="text-lx">{{ lastMessage }}</p>
       </div>

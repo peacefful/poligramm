@@ -1,6 +1,6 @@
 <template>
   <input 
-    class="my-2 w-full input search-input" 
+    class="w-full input search-input" 
     type="text" 
     placeholder="Поиск" 
     v-model="value" 

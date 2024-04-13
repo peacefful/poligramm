@@ -1,5 +1,5 @@
 <template>
-  <form class="flex flex-col justify-between" @submit.prevent="submitChat">
+  <form class="flex flex-col" @submit.prevent="submitChat">
     <div class="flex items-center mb-2">
       <InputImg class="p-3 mr-4" type="file">
         <ImageIcon />
@@ -14,7 +14,7 @@
       class="w-full my-3 h-24" 
       placeholder="Описание(необязательно)" 
     />
-    <div class="flex gap-3 ml-auto">
+    <div class="flex gap-3 ml-auto mt-auto">
       <Button 
         @click="$emit('close-modal')" 
         color="primary" 

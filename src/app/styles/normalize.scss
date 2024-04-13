@@ -30,11 +30,6 @@ input[type='text'] {
   font-family: $font;
 }
 
-textarea {
-  border: 1px solid #0000001e;
-  outline: none;
-}
-
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.2s ease;

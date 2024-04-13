@@ -1,9 +1,9 @@
 <template>
   <textarea
     v-bind="$attrs"
-    class="rounded-md p-1" 
-    :placeholder="placeholder" 
-    v-model="value" 
+    class="rounded-md p-1 outline-none border-solid border-[1px]"
+    :placeholder="placeholder"
+    v-model="value"
   />
 </template>
 
