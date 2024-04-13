@@ -67,3 +67,4 @@ const navigations = reactive([
 <style scoped>
 @import url('./style.module.scss');
 </style>
+@/shared/ui/button1

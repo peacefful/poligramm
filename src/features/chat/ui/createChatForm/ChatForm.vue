@@ -54,3 +54,4 @@ const submitChat = async () => {
   chat && chatFormEmit('close-modal'), chatsStore.getChats()
 }
 </script>
+@/shared/ui/button1

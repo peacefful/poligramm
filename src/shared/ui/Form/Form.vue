@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { Button } from '@/shared/ui/button'
+import { Button } from '@/shared/ui/button';
 
 const { t } = useI18n({ useScope: 'global' })
 
@@ -35,3 +35,4 @@ defineProps<IForm>()
 <style scoped>
 @import url('./style.module.scss');
 </style>
+@/shared/ui/button1
