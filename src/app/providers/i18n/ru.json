@@ -41,5 +41,6 @@
   "incorrectesPassword": "Пароль слишком короткий",
   "incorrectesName": "Некорректное имя",
   "incorrectesSurname": "Некорректная фамилия",
-  "hasAccount": "Есть аккаунт?"
+  "hasAccount": "Есть аккаунт?",
+  "noChats": "Чатов пока нету"
 }

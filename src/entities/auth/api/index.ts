@@ -6,13 +6,14 @@ import Cookies from 'js-cookie'
 
 export const authorization = async (
   authData: AuthModel.TAuthData
-): Promise<AuthModel.TAxiosAuthResponse | Error> => {
+): Promise<AuthModel.TAuthResponse | Error> => {
   try {
-    const authUser: AuthModel.TAxiosAuthResponse = (
+    const authUser: AuthModel.TAuthResponse = (
       await http.post(`/api/users/auth`, {
         ...authData
       })
     ).data
+
     if (authUser) {
       Cookies.set('accessToken', authUser.accessToken)
       Cookies.set('refreshToken', authUser.refreshToken)

@@ -1,10 +1,8 @@
+import { type TSearchChat } from '@/entities/chat'
 import { type TChat } from '@/shared/types'
 
-export const searchChats = (chats: TChat[], chatName: string): TChat[] | [] => {
-  if (chats) {
-    return chats.filter((chat) => {
-      return chat.chatName.includes(chatName)
-    })
-  }
-  return []
+export const searchChats = (searchData: TSearchChat): TChat[] => {
+  return searchData.chats.filter((chat) => {
+    return chat.roomName.includes(searchData.chatName)
+  })
 }

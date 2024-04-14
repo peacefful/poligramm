@@ -3,7 +3,7 @@ export type TAuthData = {
   password: string
 }
 
-export type TAxiosAuthResponse = {
+export type TAuthResponse = {
   id: string
   accessToken: string
   refreshToken: string

@@ -4,7 +4,7 @@
       <InputImg class="p-3 mr-4" type="file">
         <ImageIcon />
       </InputImg>
-      <DefaultInput 
+      <DefaultInput
         class="w-full" 
         :placeholder="t('chatName')" 
         v-model.trim="chatName" 
@@ -31,14 +31,14 @@
 
 <script setup lang="ts">
 import { Button } from '@/shared/ui/button'
-import { useI18n } from 'vue-i18n'
-import { ref } from 'vue'
 import { ApiChat } from '@/entities/chat'
 import { DefaultInput } from '@/shared/ui/input'
 import { Textarea } from '@/shared/ui/textarea'
 import { type TChat } from '@/shared/types'
 import { useChatsStore } from '@/entities/chat'
 import { InputImg } from '@/shared/ui/input'
+import { useI18n } from 'vue-i18n'
+import { ref } from 'vue'
 import ImageIcon from '@/shared/assets/icons/ImageIcon.vue'
 
 const { t } = useI18n({ useScope: 'global' })

@@ -1,14 +1,14 @@
 <template>
-  <aside class="bg-white h-screen shadow-lg flex w-auto sm:w-[440px]">
+  <aside class="bg-white h-screen shadow-lg flex w-full sm:w-[440px]">
     <div class="w-full">
       <div class="flex gap-2 p-4">
         <BurgerMenuButton />
-        <SearchInput v-model="searchUser" />
+        <SearchInput v-model="searchData.chatName" />
       </div>
       <hr />
-      <div
-        v-if="chatStore?.chats.length"
-        v-for="chat in chatStore.chats" 
+      <div 
+        v-if="chatStore?.chats.length" 
+        v-for="chat in searchChats(searchData)" 
         :key="chat.id"
       >
         <ChatCard 
@@ -18,7 +18,7 @@
         />
       </div>
       <div v-else class="text-center mt-2">
-        Чатов пока нету
+        {{ t('noChats') }}
       </div>
     </div>
   </aside>
@@ -28,11 +28,23 @@
 import { BurgerMenuButton } from '@/entities/common'
 import { ChatCard } from '@/entities/chat'
 import { SearchInput } from '@/features/user'
+import { searchChats } from '@/entities/chat'
 import { useChatsStore } from '@/entities/chat/model'
-import { ref } from 'vue'
+import { type TSearchChat } from '@/entities/chat'
+import { reactive, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 
-const searchUser = ref<string>('')
+const { t } = useI18n({ useScope: 'global' })
 
 const chatStore = useChatsStore()
 chatStore.getChats()
+
+const searchData = reactive<TSearchChat>({
+  chatName: '',
+  chats: chatStore.chats
+})
+
+watch(() => chatStore.chats,(newChats) => {
+  searchData.chats = newChats
+})
 </script>

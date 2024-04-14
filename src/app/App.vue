@@ -1,5 +1,5 @@
 <template>
-  <DefaultLayout v-if="checkPath()">
+  <DefaultLayout class="flex" v-if="checkPath()">
     <template #burgerMenu>
       <BurgerMenu :is-open="burgerMenu.isOpen" />
     </template>

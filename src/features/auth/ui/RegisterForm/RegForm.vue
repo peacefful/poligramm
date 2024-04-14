@@ -46,11 +46,11 @@
 import { Form } from '@/shared/ui/form'
 import { AuthApi, AuthModel } from '@/entities/auth'
 import { VeeInput } from '@/shared/ui/input'
+import { type TUser } from '@/shared/types'
+import { useRouter } from 'vue-router'
 import { useForm } from 'vee-validate'
 import { reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { type TUser } from '@/shared/types'
-import { useRouter } from 'vue-router'
 import * as yup from 'yup'
 
 const router = useRouter()

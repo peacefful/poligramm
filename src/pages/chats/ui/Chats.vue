@@ -53,7 +53,6 @@
     </div>
   </div>
   <Chat @close-chat="closeChat" :uuid="uuid" :name="room" v-else /> -->
-
   <!-- <aside class="bg-white h-screen shadow-lg flex w-auto sm:w-96">
     <div class="bg-black h-screen text-center w-12 py-8">
       <BurgerMenuButton />
@@ -66,6 +65,9 @@
       <ChatCard username="Иван Иванов" last-message="Привет, как дела?" time="12:43" />
     </div>
   </aside> -->
+  <div class="w-[800px]">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum nobis accusantium, maiores doloribus autem eius repudiandae a minima distinctio, soluta itaque debitis odit mollitia, blanditiis impedit sunt! Non, ea dolorum!
+  </div>
 </template>
 
 <script setup lang="ts">

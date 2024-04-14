@@ -43,5 +43,6 @@
   "incorrectesPassword": "Құпия сөз тым қысқа",
   "incorrectesName": "Қате атау",
   "incorrectesSurname": "Қате тегі",
-  "hasAccount": "Тіркелгі бар ма?"
+  "hasAccount": "Тіркелгі бар ма?",
+  "noChats": "Чаттар әлі жоқ"
 }
