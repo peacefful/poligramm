@@ -1,5 +1,5 @@
 <template>
-  <aside class="bg-white h-screen shadow-lg flex w-full sm:w-[440px]">
+  <aside class="fixed overflow-x-auto bg-white h-screen shadow-lg flex w-full sm:w-[440px]">
     <div class="w-full">
       <div class="flex gap-2 p-4">
         <BurgerMenuButton />
@@ -11,7 +11,7 @@
         v-for="chat in searchChats(searchData)" 
         :key="chat.id"
       >
-        <ChatCard 
+        <ChatCard
           :chatName="chat.roomName" 
           last-message="Привет, как дела?" 
           time="12:43" 

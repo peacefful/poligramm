@@ -65,9 +65,13 @@
       <ChatCard username="Иван Иванов" last-message="Привет, как дела?" time="12:43" />
     </div>
   </aside> -->
-  <div class="w-[800px]">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum nobis accusantium, maiores doloribus autem eius repudiandae a minima distinctio, soluta itaque debitis odit mollitia, blanditiis impedit sunt! Non, ea dolorum!
-  </div>
+  <main class="hidden sm:block">
+    <div class="min-h-screen flex justify-center items-center">
+      <div class="text-white rounded-md p-1 text-1xl bg-black">
+        Выберите чат
+      </div>
+    </div>
+  </main>
 </template>
 
 <script setup lang="ts">

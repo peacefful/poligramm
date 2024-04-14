@@ -1,5 +1,5 @@
 <template>
-  <div class="p-3 flex justify-between cursor-pointer hover:bg-[#f0f0f0] ease-out duration-200">
+  <div @click="$emit('getUuidChat')" class="p-3 flex justify-between cursor-pointer hover:bg-[#f0f0f0] ease-out duration-200">
     <div class="flex items-center">
       <div class="bg-default p-2 rounded-full">
         <UserGroupIcon />
@@ -24,4 +24,6 @@ type TUserCard = {
 }
 
 defineProps<TUserCard>()
+
+defineEmits(['getUuidChat'])
 </script>

@@ -5,7 +5,7 @@
 
     <slot name="aside"></slot>
 
-    <div>
+    <div class="ml-[440px]">
       <router-view></router-view>
     </div>
     <!-- <slot name="main"></slot> -->

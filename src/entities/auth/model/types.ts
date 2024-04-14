@@ -9,3 +9,8 @@ export type TAuthResponse = {
   refreshToken: string
   uuid: string
 }
+
+export type TRefreshTokenResponse = {
+  accessToken: string
+  refreshToken: string
+}

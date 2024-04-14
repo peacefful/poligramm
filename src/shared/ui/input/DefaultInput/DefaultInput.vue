@@ -1,5 +1,5 @@
 <template>
-  <input 
+  <input
     :type="type ?? 'text'" 
     :placeholder="placeholder" 
     v-bind="$attrs" 
