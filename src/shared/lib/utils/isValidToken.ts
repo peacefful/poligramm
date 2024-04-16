@@ -9,7 +9,7 @@ export const checkTokenExpiration = () => {
     const decodedToken = JSON.parse(atob(base64))
 
     if (decodedToken && decodedToken.exp * 1000 < Date.now()) {
-      localStorage.clear()
+      storage.clearData()
     }
   }
 }

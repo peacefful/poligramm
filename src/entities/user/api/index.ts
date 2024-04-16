@@ -1,6 +1,6 @@
 import { http } from '@/shared/api'
 import { getOtherUsersById } from '@/entities/user'
-import type { TUser } from '@/shared/types'
+import { type TUser } from '@/shared/types'
 
 export const fetchUsers = async (): Promise<TUser[] | Error> => {
   try {

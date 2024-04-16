@@ -44,7 +44,7 @@
 
 <script setup lang="ts">
 import { Form } from '@/shared/ui/form'
-import { AuthApi, AuthModel } from '@/entities/auth'
+import { ApiAuth, AuthModel } from '@/entities/auth'
 import { VeeInput } from '@/shared/ui/input'
 import { type TUser } from '@/shared/types'
 import { useRouter } from 'vue-router'
@@ -71,7 +71,7 @@ const { handleSubmit } = useForm({
 })
 
 const onSubmit = handleSubmit(async () => {
-  const regUser: TUser | Error = await AuthApi.registration(userData)
+  const regUser: TUser | Error = await ApiAuth.registration(userData)
   regUser && router.push('/')
 })
 </script>

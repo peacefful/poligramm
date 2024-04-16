@@ -12,6 +12,7 @@
         :key="chat.id"
       >
         <ChatCard
+          @get-uuid-chat="getChatByUuid(chat.uuid)"
           :chatName="chat.roomName" 
           last-message="Привет, как дела?" 
           time="12:43" 
@@ -28,7 +29,7 @@
 import { BurgerMenuButton } from '@/entities/common'
 import { ChatCard } from '@/entities/chat'
 import { SearchInput } from '@/features/user'
-import { searchChats } from '@/entities/chat'
+import { searchChats, getChatByUuid } from '@/entities/chat'
 import { useChatsStore } from '@/entities/chat/model'
 import { type TSearchChat } from '@/entities/chat'
 import { reactive, watch } from 'vue'

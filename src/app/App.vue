@@ -1,7 +1,7 @@
 <template>
   <DefaultLayout v-if="checkPath()">
     <template #burgerMenu>
-      <BurgerMenu :is-open="burgerMenu.isOpen" />
+      <BurgerMenu :is-open="burgerMenu.isOpenMenu" />
     </template>
     <template #aside>
       <Aside/>
@@ -22,7 +22,7 @@ import { useRoute } from 'vue-router'
 import { reactive, provide } from 'vue'
 
 const burgerMenu: TMenu = reactive({
-  isOpen: false,
+  isOpenMenu: false,
   className: 'z-10'
 })
 
@@ -33,5 +33,5 @@ provide('toggleBurgerMenu', { openBurgerMenu })
 const checkPath = () => {
   const currentRoute: string = useRoute().fullPath
   return currentRoute !== '/' && currentRoute !== '/signup'
-}
+} 
 </script>

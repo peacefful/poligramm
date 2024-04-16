@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import { AuthApi, AuthModel } from '@/entities/auth'
+import { ApiAuth, AuthModel } from '@/entities/auth'
 import { Form } from '@/shared/ui/form'
 import { VeeInput } from '@/shared/ui/input'
 import { useForm } from 'vee-validate'
@@ -52,8 +52,8 @@ const { handleSubmit } = useForm({
 })
 
 const onSubmit = handleSubmit(async () => {
-  const authUser: AuthModel.TAuthResponse | Error = await AuthApi.authorization(userData)
-  authUser && (await router.push('/chats'))
+  const authUser: AuthModel.TAuthResponse | Error = await ApiAuth.authorization(userData)
+  authUser ? router.push('/chats') : router.push('/')
 })
 </script>
 

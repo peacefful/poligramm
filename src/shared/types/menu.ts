@@ -1,4 +1,4 @@
 export type TMenu = {
-  isOpen: boolean
+  isOpenMenu: boolean
   className: string
 }

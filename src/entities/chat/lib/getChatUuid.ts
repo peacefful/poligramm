@@ -1,3 +1,1 @@
-export const getChatUuid = (uuid: string) => {
-  console.log(uuid);
-}
+export const getChatByUuid = (uuid: string) => uuid

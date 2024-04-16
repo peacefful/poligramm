@@ -1,1 +1,2 @@
-export { default as BurgerMenuButton } from "./BurgerMenuButton.vue"
+export * from './BurgerMenuButton'
+export * from './NavigateButton'

@@ -34,9 +34,9 @@ import { Button } from '@/shared/ui/button'
 import { ApiChat } from '@/entities/chat'
 import { DefaultInput } from '@/shared/ui/input'
 import { Textarea } from '@/shared/ui/textarea'
-import { type TChat } from '@/shared/types'
 import { useChatsStore } from '@/entities/chat'
 import { InputImg } from '@/shared/ui/input'
+import { type TChat } from '@/shared/types'
 import { useI18n } from 'vue-i18n'
 import { ref } from 'vue'
 import ImageIcon from '@/shared/assets/icons/ImageIcon.vue'
@@ -54,4 +54,3 @@ const submitChat = async () => {
   chat && chatFormEmit('close-modal'), chatsStore.getChats()
 }
 </script>
-@/shared/ui/button1

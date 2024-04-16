@@ -1,1 +1,1 @@
-export * as langLib from "./lib"
+export * from "./lib"
