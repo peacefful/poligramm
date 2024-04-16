@@ -8,7 +8,11 @@
           </Profile>
           <hr />
           <ul>
-            <li class="px-3 text-lg" v-for="navigation in navigations" :key="navigation.id">
+            <li 
+              class="px-3 text-lg" 
+              v-for="navigation in navigations" 
+              :key="navigation.id"
+            >
               <NavigateButton
                 @action="navigation.action"
                 :title="navigation.title"
@@ -35,6 +39,7 @@ import { Modal } from '@/shared/ui/modal'
 import { useToggleModal } from '@/shared/lib/hooks'
 import { ChatForm } from '@/features/chat'
 import { NavigateButton } from '@/entities/common'
+import type { TNavigate } from '@/shared/types'
 
 defineProps<{
   isOpen: boolean
@@ -42,7 +47,7 @@ defineProps<{
 
 const { isOpenModal, closeModal, openModal } = useToggleModal()
 
-const navigations = reactive([
+const navigations: TNavigate[] = reactive([
   {
     id: 1,
     title: 'createChat',

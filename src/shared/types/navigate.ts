@@ -1,5 +1,6 @@
-export type TNavigate = {
-  id: string
-  title: string
-  icon: string
+export interface TNavigate {
+  id: number;
+  title: string;
+  icon: string;
+  action: (() => boolean) | null;
 }

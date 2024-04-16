@@ -1,16 +1,16 @@
 <template>
-  <button 
-    :type="type" 
+  <button
+    :type="type"
     :class="['button', `button_${color}`]" 
     @click="$emit('click')"
   >
-    {{ title }}
+    <!-- {{ title }} -->
+    <slot/>
   </button>
 </template>
 
 <script setup lang="ts">
 interface IButtonProps {
-  title: string
   color?: string
   type?: 'submit' | 'reset'
 }

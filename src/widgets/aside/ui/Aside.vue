@@ -12,7 +12,7 @@
         :key="chat.id"
       >
         <ChatCard
-          @get-uuid-chat="getChatByUuid(chat.uuid)"
+          @login-chat="loginChat({ roomName: chat.roomName, uuid: chat.uuid })"
           :chatName="chat.roomName" 
           last-message="Привет, как дела?" 
           time="12:43" 
@@ -32,8 +32,12 @@ import { SearchInput } from '@/features/user'
 import { searchChats, getChatByUuid } from '@/entities/chat'
 import { useChatsStore } from '@/entities/chat/model'
 import { type TSearchChat } from '@/entities/chat'
+import { type TChat } from '@/shared/types'
 import { reactive, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const { t } = useI18n({ useScope: 'global' })
 
@@ -48,4 +52,15 @@ const searchData = reactive<TSearchChat>({
 watch(() => chatStore.chats,(newChats) => {
   searchData.chats = newChats
 })
+
+type TloginChat = Omit<TChat, "userId" | "id">
+
+const loginChat = (chatData: TloginChat) => {
+  getChatByUuid(chatData.uuid) && router.push({
+    name: "Chat",
+    params: {
+      chatName: chatData.roomName
+    }
+  })
+}
 </script>

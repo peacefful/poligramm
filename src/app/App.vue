@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { DefaultLayout } from '@/shared/ui/layouts'
+import { DefaultLayout } from '@/shared/ui/layouts/Default'
 import { BurgerMenu } from '@/widgets/burgerMenu'
 import { Aside } from '@/widgets/aside'
 import { useToggleMenu } from '@/shared/lib/hooks'
@@ -34,4 +34,4 @@ const checkPath = () => {
   const currentRoute: string = useRoute().fullPath
   return currentRoute !== '/' && currentRoute !== '/signup'
 } 
-</script>
+</script>@/shared/ui/layouts/DefaultLayout

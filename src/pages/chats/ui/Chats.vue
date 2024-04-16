@@ -65,16 +65,17 @@
       <ChatCard username="Иван Иванов" last-message="Привет, как дела?" time="12:43" />
     </div>
   </aside> -->
-  <main class="hidden sm:block">
+  <MainLayout>
     <div class="min-h-screen flex justify-center items-center">
       <div class="text-white rounded-md p-1 text-1xl bg-black">
         Выберите чат
       </div>
     </div>
-  </main>
+  </MainLayout>
 </template>
 
 <script setup lang="ts">
+import { MainLayout } from '@/shared/ui/layouts/Main'
 // import { BurgerMenuButton } from '@/entities/common'
 // import { ChatCard } from '@/entities/chat'
 // import { SearchInput } from '@/features/user'
