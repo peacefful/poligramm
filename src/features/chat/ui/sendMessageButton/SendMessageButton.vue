@@ -1,5 +1,5 @@
 <template>
-  <Button @click="$emit('send-message')" class="bg-default rounded-full p-2">
+  <Button @click="$emit('send-message')" :is-rounded-full="true">
     <SendMessageIcon />
   </Button>
 </template>

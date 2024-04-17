@@ -1,5 +1,9 @@
 <template>
-  <form @submit.prevent="" class="mx-20 mb-3 flex justify-center items-center rounded-2xl bg-white px-6 py-2">
+  <form
+    autocomplete="off"
+    @submit.prevent="" 
+    class="sticky bottom-0 mx-20 mb-3 flex justify-center items-center rounded-2xl bg-white px-6 "
+  >
     <SendFileButton/>
     <Textarea class="w-full pt-5" placeholder="Наберите сообщение..." />
     <SendMessageButton/>

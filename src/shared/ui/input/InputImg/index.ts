@@ -1,1 +1,1 @@
-export { default as InputImg } from './InputImg.vue'
+export { default as InputFile } from './InputFile.vue'

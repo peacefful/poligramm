@@ -1,5 +1,4 @@
-<template>
-  <svg
+<svg
     xmlns="http://www.w3.org/2000/svg"
     width="34"
     height="34"
@@ -14,4 +13,3 @@
     <circle cx="12" cy="5" r="1" />
     <circle cx="12" cy="19" r="1" />
   </svg>
-</template>

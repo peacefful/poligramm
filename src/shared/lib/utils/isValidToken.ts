@@ -1,15 +1,25 @@
-import { storage } from './storage'
+import { jwtDecode } from 'jwt-decode'
+import Cookies from 'js-cookie'
 
-export const checkTokenExpiration = () => {
-  const token: string | null = storage.getData('token')
+type TJwtDecode = {
+  id: string
+  login: string
+  password: string
+  iat: number
+  exp: number
+}
 
-  if (token) {
-    const base64Url = token.split('.')[1]
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/')
-    const decodedToken = JSON.parse(atob(base64))
+export const isValidToken = (): boolean => {
+  const thresholdMinutes = 5
+  const accessToken = Cookies.get('accessToken')
+  const currentTime = Date.now()
 
-    if (decodedToken && decodedToken.exp * 1000 < Date.now()) {
-      storage.clearData()
-    }
-  }
+  if (!accessToken) return false
+
+  const decodedToken: TJwtDecode = jwtDecode(accessToken)
+  const expirationTime = decodedToken.exp * 1000
+  const timeUntilExpiration = expirationTime - currentTime
+  const timeThreshold = thresholdMinutes * 60 * 1000
+
+  return timeUntilExpiration > timeThreshold
 }

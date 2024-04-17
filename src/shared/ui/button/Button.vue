@@ -1,25 +1,34 @@
 <template>
-  <button
-    :type="type"
-    :class="['button', `button_${color}`]" 
+  <button 
+    :type="type" 
+    :class="[buttonStyles, `button_${color}`]" 
     @click="$emit('click')"
   >
-    <!-- {{ title }} -->
-    <slot/>
+    <slot />
   </button>
 </template>
 
 <script setup lang="ts">
+import { reactive } from 'vue'
+
 interface IButtonProps {
+  isRoundedFull?: boolean
+  isRoundedLg?: boolean
   color?: string
   type?: 'submit' | 'reset'
 }
 
-withDefaults(defineProps<IButtonProps>(), {
+const buttonProps = withDefaults(defineProps<IButtonProps>(), {
   type: 'submit'
 })
 
 defineEmits(['click'])
+
+const buttonStyles = reactive({
+  button: true,
+  'rounded-full': buttonProps.isRoundedFull,
+  'rounded-lg': buttonProps.isRoundedLg
+})
 </script>
 
 <style scoped>

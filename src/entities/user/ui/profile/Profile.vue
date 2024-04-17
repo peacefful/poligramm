@@ -13,10 +13,17 @@
 <script setup lang="ts">
 import UserIcon from '@/shared/assets/icons/UserIcon.vue'
 import { useUsersStore } from '@/entities/user'
-import { storage } from '@/shared/lib/utils'
+import { isValidToken, storage } from '@/shared/lib/utils'
+import { ApiAuth } from '@/entities/auth'
 
 const id: string | null = storage.getData('id')
 
 const usersStore = useUsersStore()
-usersStore.getUser(id)
+
+if (isValidToken()) {
+  usersStore.getUser(id)
+} else {
+  ApiAuth.refreshToken()
+  usersStore.getUser(id)
+}
 </script>

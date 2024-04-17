@@ -4,7 +4,7 @@
       <BurgerMenu :is-open="burgerMenu.isOpenMenu" />
     </template>
     <template #aside>
-      <Aside/>
+      <Aside />
     </template>
   </DefaultLayout>
   <div v-else>
@@ -33,5 +33,5 @@ provide('toggleBurgerMenu', { openBurgerMenu })
 const checkPath = () => {
   const currentRoute: string = useRoute().fullPath
   return currentRoute !== '/' && currentRoute !== '/signup'
-} 
-</script>@/shared/ui/layouts/DefaultLayout
+}
+</script>
