@@ -19,6 +19,6 @@ import { Icon } from '@/shared/ui/icon'
 import { Button } from '@/shared/ui/button'
 
 defineProps<{
-  chatName: string
+  chatName?: string
 }>()
 </script>

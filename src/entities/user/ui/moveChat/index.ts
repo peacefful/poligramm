@@ -1,1 +1,0 @@
-export { default as MoveChat } from "./MoveChat.vue"

@@ -17,6 +17,7 @@ export const isValidToken = (): boolean => {
   if (!accessToken) return false
 
   const decodedToken: TJwtDecode = jwtDecode(accessToken)
+
   const expirationTime = decodedToken.exp * 1000
   const timeUntilExpiration = expirationTime - currentTime
   const timeThreshold = thresholdMinutes * 60 * 1000

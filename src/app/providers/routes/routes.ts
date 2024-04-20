@@ -19,7 +19,7 @@ export const routes = [
     component: () => import('@/pages/chats')
   },
   {
-    path: '/chats/:chatName',
+    path: '/chats/:chatName/:id',
     name: 'Chat',
     component: () => import('@/pages/chat')
   }

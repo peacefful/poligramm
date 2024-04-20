@@ -4,9 +4,16 @@
       <InputFile class="p-3 mr-4" type="file">
         <ImageIcon />
       </InputFile>
-      <DefaultInput class="w-full" :placeholder="t('chatName')" v-model.trim="chatName" />
+      <DefaultInput 
+        class="w-full" 
+        :placeholder="t('chatName')" 
+        v-model.trim="chatName" 
+      />
     </div>
-    <Textarea class="w-full my-3 h-24 border-[1px] rounded-md" placeholder="Описание(необязательно)" />
+    <Textarea 
+      class="w-full my-3 h-24 border-[1px] rounded-md" 
+      placeholder="Описание(необязательно)" 
+    />
     <div class="flex gap-3 ml-auto mt-auto">
       <Button 
         @click="$emit('close-modal')"

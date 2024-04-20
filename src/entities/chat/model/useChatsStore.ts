@@ -27,9 +27,7 @@ export const useChatsStore = defineStore('chatsStore', {
 
     setLoginChatData(chatData: TLoginChat): TLoginChat {
       this.currentChat = chatData
-
       this.getChat(chatData.id)
-
       return chatData
     }
   }

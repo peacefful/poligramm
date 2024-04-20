@@ -72,7 +72,8 @@ const loginChat = (loginChatData: TLoginChat) => {
     router.push({
       name: 'Chat',
       params: {
-        chatName: `${loginChatData.roomName}${loginChatData.id}`
+        chatName: loginChatData.roomName,
+        id: loginChatData.id
       }
     })
 }
