@@ -53,7 +53,9 @@ const { handleSubmit } = useForm({
 
 const onSubmit = handleSubmit(async () => {
   const authUser: AuthModel.TAuthResponse | Error = await ApiAuth.authorization(userData)
-  authUser ? router.push('/chats') : router.push('/')
+  if (!(authUser instanceof Error) && authUser.accessToken) {
+    router.push('/chats')
+  }
 })
 </script>
 

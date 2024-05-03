@@ -3,7 +3,7 @@
     <div class="flex items-center cursor-pointer text-white">
       <UserIcon />
       <div class="text-2xl font-bold ml-1">
-        {{ usersStore.getUsername }}
+        {{ usersStore.getUsername() }}
       </div>
     </div>
     <slot />
@@ -19,11 +19,5 @@ import { ApiAuth } from '@/entities/auth'
 const id: string | null = storage.getData('id')
 
 const usersStore = useUsersStore()
-
-if (isValidToken()) {
-  usersStore.getUser(id)
-} else {
-  ApiAuth.refreshToken()
-  usersStore.getUser(id)
-}
+usersStore.getUser(id)
 </script>

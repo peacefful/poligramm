@@ -13,8 +13,6 @@ export const authorization = async (
       })
     ).data
 
-    console.log(authUser.accessToken)
-
     if (authUser) {
       Cookies.set('accessToken', authUser.accessToken)
       Cookies.set('refreshToken', authUser.refreshToken)

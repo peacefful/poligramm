@@ -1,6 +1,6 @@
 <template>
   <DefaultInput 
-    class="w-full search-input " 
+    class="w-full search-input bg-[#242424]" 
     type="text" 
     :placeholder="t('search')" 
     v-model="value" 

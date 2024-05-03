@@ -11,8 +11,6 @@ export const refreshToken = async (): Promise<void | Error> => {
       })
     ).data
 
-    console.log(response.refreshToken);
-
     Cookies.set('refreshToken', response.refreshToken)
     Cookies.set('accessToken', response.accessToken)
   } catch (error) {

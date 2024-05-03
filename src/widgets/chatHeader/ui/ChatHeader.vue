@@ -1,11 +1,11 @@
 <template>
   <div class="flex-grow">
-    <div class="bg-white h-16 px-2 flex justify-between">
+    <div class="bg-white h-20 px-2 flex justify-between ">
       <button class="flex items-center">
         <div class="bg-default p-2 rounded-full mr-2">
           <Icon class="h-8 w-8" name="usersGroup" />
         </div>
-        <p class="font-bold">{{ chatName }}</p>
+        <p class="font-bold text-xl">{{ chatName }}</p>
       </button>
       <button>
         <Icon class="h-7 w-7" name="menu" />

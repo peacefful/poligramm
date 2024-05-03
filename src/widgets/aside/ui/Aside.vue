@@ -1,16 +1,12 @@
 <template>
   <aside class="fixed overflow-x-auto bg-white h-screen shadow-lg flex w-full sm:w-[440px]">
     <div class="w-full">
-      <div class="flex gap-2 p-4">
+      <div class="flex gap-2 p-4 bg-black text-white">
         <BurgerMenuButton />
         <SearchInput v-model="searchData.chatName" />
       </div>
       <hr />
-      <div 
-        v-if="chatStore?.chats.length" 
-        v-for="chat in searchChats(searchData)" 
-        :key="chat.id"
-      >
+      <div v-if="chatStore?.chats.length" v-for="chat in searchChats(searchData)" :key="chat.id">
         <ChatCard
           @login-chat="
             loginChat({
@@ -36,7 +32,7 @@ import { BurgerMenuButton } from '@/entities/common'
 import { ChatCard, searchChats, useChatsStore } from '@/entities/chat'
 import { SearchInput } from '@/features/user'
 import type { TSearchChat, TLoginChat } from '@/entities/chat'
-import { reactive, watch } from 'vue'
+import { onMounted, reactive, watch } from 'vue'
 import { isValidToken } from '@/shared/lib/utils'
 import { ApiAuth } from '@/entities/auth'
 import { useI18n } from 'vue-i18n'
@@ -48,12 +44,14 @@ const { t } = useI18n({ useScope: 'global' })
 
 const chatStore = useChatsStore()
 
-if (isValidToken()) {
-  chatStore.getChats()
-} else {
-  ApiAuth.refreshToken()
-  chatStore.getChats()
-}
+onMounted(() => chatStore.getChats())
+
+// if (isValidToken()) {
+//   chatStore.getChats()
+// } else {
+//   ApiAuth.refreshToken()
+//   chatStore.getChats()
+// }
 
 const searchData = reactive<TSearchChat>({
   chatName: '',

@@ -8,11 +8,7 @@
           </Profile>
           <hr />
           <ul>
-            <li 
-              class="px-3 text-lg" 
-              v-for="navigation in navigations" 
-              :key="navigation.id"
-            >
+            <li class="px-3 text-lg" v-for="navigation in navigations" :key="navigation.id">
               <NavigateButton
                 @action="navigation.action"
                 :title="navigation.title"

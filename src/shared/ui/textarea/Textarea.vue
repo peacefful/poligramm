@@ -2,7 +2,7 @@
   <textarea
     @keydown.enter.prevent=""
     v-bind="$attrs"
-    class="p-1 outline-none border-solid resize-none overflow-hidden"
+    class="outline-none border-solid resize-none overflow-hidden"
     :placeholder="placeholder"
     v-model="value"
   />

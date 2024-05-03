@@ -44,5 +44,6 @@
   "incorrectesName": "Қате атау",
   "incorrectesSurname": "Қате тегі",
   "hasAccount": "Тіркелгі бар ма?",
-  "noChats": "Чаттар әлі жоқ"
+  "noChats": "Чаттар әлі жоқ",
+  "writeMessage": "Хабарлама теріңіз..."
 }

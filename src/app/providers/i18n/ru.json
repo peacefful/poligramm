@@ -42,5 +42,6 @@
   "incorrectesName": "Некорректное имя",
   "incorrectesSurname": "Некорректная фамилия",
   "hasAccount": "Есть аккаунт?",
-  "noChats": "Чатов пока нету"
+  "noChats": "Чатов пока нету",
+  "writeMessage": "Наберите сообщение..."
 }

@@ -9,11 +9,6 @@ export const useUsersStore = defineStore('usersStore', {
       users: [] as TUser[]
     }
   },
-  getters: {
-    getUsername(state) {
-      return `${state.user.name} ${state.user.surname}`
-    }
-  },
   actions: {
     getUsers() {
       ApiUser.fetchUsers().then((res) => {
@@ -26,6 +21,9 @@ export const useUsersStore = defineStore('usersStore', {
         if (res instanceof Error) return res.message
         this.user = res as TUser
       })
+    },
+    getUsername() {
+      return `${this.user.name} ${this.user.surname}`
     }
   }
 })

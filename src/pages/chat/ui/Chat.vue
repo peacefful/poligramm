@@ -9,15 +9,15 @@
 
 <script setup lang="ts">
 import { MainLayout } from '@/shared/ui/layouts/Main'
-import { ChatHeader } from '@/widgets/chatHeader';
+import { ChatHeader } from '@/widgets/chatHeader'
 import { SendMessageForm } from '@/widgets/sendMessageForm'
-import { useChatsStore } from '@/entities/chat';
-import { getIdByRoutePath } from '@/entities/chat';
+import { useChatsStore } from '@/entities/chat'
+import { getIdByRoutePath } from '@/entities/chat'
+import { Messages } from '@/entities/chat'
 
 const chatStore = useChatsStore()
 
 const id = getIdByRoutePath()
 
 chatStore.getChat(id)
-
 </script>

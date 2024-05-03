@@ -20,6 +20,7 @@ import { useToggleMenu } from '@/shared/lib/hooks'
 import { type TMenu } from '@/shared/types'
 import { useRoute } from 'vue-router'
 import { reactive, provide } from 'vue'
+import Cookies from 'js-cookie'
 
 const burgerMenu: TMenu = reactive({
   isOpenMenu: false,
