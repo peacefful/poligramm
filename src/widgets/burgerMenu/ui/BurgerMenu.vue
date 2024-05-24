@@ -6,7 +6,6 @@
           <Profile>
             <Logout />
           </Profile>
-          <hr />
           <ul>
             <li class="px-3 text-lg" v-for="navigation in navigations" :key="navigation.id">
               <NavigateButton
@@ -35,7 +34,7 @@ import { Modal } from '@/shared/ui/modal'
 import { useToggleModal } from '@/shared/lib/hooks'
 import { ChatForm } from '@/features/chat'
 import { NavigateButton } from '@/entities/common'
-import type { TNavigate } from '@/shared/types'
+import { type TNavigate } from '@/shared/types'
 
 defineProps<{
   isOpen: boolean
@@ -49,12 +48,6 @@ const navigations: TNavigate[] = reactive([
     title: 'createChat',
     icon: 'chat',
     action: openModal
-  },
-  {
-    id: 2,
-    title: 'chats',
-    icon: 'chats',
-    action: null
   }
 ])
 </script>

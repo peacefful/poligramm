@@ -56,25 +56,25 @@
 </template>
 
 <script setup lang="ts">
-import InputImg from './ui/InputImg.vue'
-import Input from './ui/Input.vue'
 import dayjs from 'dayjs'
-import socket from '@/utils/socket'
+import { ref } from 'vue'
+import { reactive } from 'vue'
+import { useI18n } from 'vue-i18n'
+import Messages from './Messages.vue'
 import Dropdown from './ui/Dropdown.vue'
+import Input from './ui/Input.vue'
+import InputImg from './ui/InputImg.vue'
 import Modal from './ui/Modal.vue'
 import paperClipIcon from '@/assets/icons/paperClip.svg'
 import sendMessageIcon from '@/assets/icons/sendMessage.svg'
-import Messages from './Messages.vue'
-import { useI18n } from 'vue-i18n'
-import { ref } from 'vue'
-import { useToogleModal } from '@/hooks/useToogle'
-import { storage } from '@/utils/storage'
 import { useToogleMenu } from '@/hooks/useToogle'
-import { filterUsers } from '@/utils/filterDatas'
-import { useUsersStore } from '@/stores/UsersStore'
-import { reactive } from 'vue'
-import type { IMessage } from '@/interfaces/iMessage'
+import { useToogleModal } from '@/hooks/useToogle'
 import type { IMenu } from '@/interfaces/iMenu'
+import type { IMessage } from '@/interfaces/iMessage'
+import { useUsersStore } from '@/stores/UsersStore'
+import { filterUsers } from '@/utils/filterDatas'
+import socket from '@/utils/socket'
+import { storage } from '@/utils/storage'
 
 const { t } = useI18n({ useScope: 'global' })
 

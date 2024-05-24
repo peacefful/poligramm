@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { ApiUser } from '@/entities/user'
 import { type TUser } from '@/shared/types'
+import { onMounted } from 'vue'
 
 export const useUsersStore = defineStore('usersStore', {
   state: () => {

@@ -11,7 +11,7 @@
       />
     </div>
     <Textarea 
-      class="w-full my-3 h-24 border-[1px] rounded-md" 
+      class="w-full my-3 p-2 h-24 border-[1px] rounded-md" 
       placeholder="Описание(необязательно)" 
     />
     <div class="flex gap-3 ml-auto mt-auto">

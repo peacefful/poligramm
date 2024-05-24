@@ -1,6 +1,6 @@
 <template>
   <div class="flex-grow">
-    <div class="bg-white h-20 px-2 flex justify-between ">
+    <div class="bg-white h-[89px] px-2 flex justify-between fixed w-full">
       <button class="flex items-center">
         <div class="bg-default p-2 rounded-full mr-2">
           <Icon class="h-8 w-8" name="usersGroup" />

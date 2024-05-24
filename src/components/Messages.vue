@@ -15,9 +15,9 @@
 </template>
 
 <script setup lang="ts">
-import { storage } from '@/utils/storage'
 import { useI18n } from 'vue-i18n'
 import type { IMessage } from '@/interfaces/iMessage'
+import { storage } from '@/utils/storage'
 
 const { t } = useI18n({ useScope: 'global' })
 

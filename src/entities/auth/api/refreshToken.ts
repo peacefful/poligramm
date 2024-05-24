@@ -1,6 +1,6 @@
-import { http } from "@/shared/api";
-import { AuthModel } from "@/entities/auth";
 import Cookies from "js-cookie";
+import { AuthModel } from "@/entities/auth";
+import { http } from "@/shared/api";
 
 export const refreshToken = async (): Promise<void | Error> => {
   try {

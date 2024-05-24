@@ -1,7 +1,7 @@
+import Cookies from 'js-cookie'
+import { AuthModel } from '@/entities/auth'
 import { http } from '@/shared/api'
 import { storage } from '@/shared/lib/utils'
-import { AuthModel } from '@/entities/auth'
-import Cookies from 'js-cookie'
 
 export const authorization = async (
   authData: AuthModel.TAuthData

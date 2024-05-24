@@ -6,7 +6,11 @@
         <SearchInput v-model="searchData.chatName" />
       </div>
       <hr />
-      <div v-if="chatStore?.chats.length" v-for="chat in searchChats(searchData)" :key="chat.id">
+      <div 
+        v-if="chatStore?.chats.length" 
+        v-for="chat in searchChats(searchData)" 
+        :key="chat.id"
+      >
         <ChatCard
           @login-chat="
             loginChat({

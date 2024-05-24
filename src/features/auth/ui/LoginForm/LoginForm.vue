@@ -27,14 +27,14 @@
 </template>
 
 <script setup lang="ts">
-import { ApiAuth, AuthModel } from '@/entities/auth'
-import { Form } from '@/shared/ui/form'
-import { VeeInput } from '@/shared/ui/input'
 import { useForm } from 'vee-validate'
 import { reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import * as yup from 'yup'
+import { ApiAuth, AuthModel } from '@/entities/auth'
+import { Form } from '@/shared/ui/form'
+import { VeeInput } from '@/shared/ui/input'
 
 const router = useRouter()
 

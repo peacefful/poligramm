@@ -8,8 +8,11 @@ export const useMessagesStore = defineStore('messagesStore', {
     }
   },
   actions: {
-    sendMessages(messages: TMessage) {
+    setMessages(messages: TMessage) {
       this.messages.push(messages)
+    },
+    getMessages() {
+      return this.messages
     }
   }
 })

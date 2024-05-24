@@ -1,10 +1,7 @@
 <template>
-  <div 
-    v-if="message.id === userId" 
-    class="bg-default text-white rounded-2xl p-2 ml-auto mr-4 my-4"
-  >
-    <div>helsdgssdgsdlo</div>
-    <div class="text-xs text-right">12:53</div>
+  <div class="bg-default text-white rounded-2xl p-2 mr-4 my-4 ml-auto">
+    <div>{{ message.text }}</div>
+    <div class="text-xs text-right">{{ message.sendTime }}</div>
   </div>
 </template>
 
