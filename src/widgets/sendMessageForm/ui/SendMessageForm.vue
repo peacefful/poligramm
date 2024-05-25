@@ -2,7 +2,7 @@
   <form
     autocomplete="off"
     @submit.prevent="sendMessages"
-    class="sticky bottom-3 mx-4 mb-3 rounded-2xl flex justify-center items-center bg-white px-6"
+    class="relative bottom-0 mx-0 mb-0 rounded-none md:sticky md:bottom-3 md:mx-4 md:mb-3 md:rounded-2xl flex justify-center items-center bg-white px-6"
   >
     <SendFileButton />
     <textarea
