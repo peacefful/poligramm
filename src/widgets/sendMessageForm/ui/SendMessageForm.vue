@@ -2,7 +2,7 @@
   <form
     autocomplete="off"
     @submit.prevent="sendMessages"
-    class="sticky bottom-0 mx-4 mb-3 rounded-2xl flex justify-center items-center bg-white px-6"
+    class="sticky bottom-3 mx-4 mb-3 rounded-2xl flex justify-center items-center bg-white px-6"
   >
     <SendFileButton />
     <textarea
@@ -46,9 +46,10 @@ const messagesData: TMessage = reactive({
 
 const sendMessages = () => {
   if (messagesData.text.trim()) {
-    const messageToSend = { ...messagesData }
-    messagesStore.setMessages(messageToSend)
-    window.scrollTo(0, document.body.scrollHeight)
+    messagesStore.setMessages({ ...messagesData })
+    requestAnimationFrame(() => {
+      window.scrollTo(0, document.body.scrollHeight)
+    })
     messagesData.text = ''
   }
 }

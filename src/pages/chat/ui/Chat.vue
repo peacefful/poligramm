@@ -2,8 +2,8 @@
   <MainLayout>
     <div class="flex flex-col justify-between min-h-screen">
       <ChatHeader :chat-name="chatStore?.chat?.roomName" />
-      <Messages 
-        v-for="message in messagesStore.getMessages()" 
+      <Messages
+        v-for="message in messagesStore.getMessages()"
         :key="message.id"
         :message="message"
       />
