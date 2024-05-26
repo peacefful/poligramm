@@ -6,9 +6,9 @@
         <SearchInput v-model="searchData.chatName" />
       </div>
       <hr />
-      <div 
-        v-if="chatStore?.chats.length" 
-        v-for="chat in searchChats(searchData)" 
+      <div
+        v-if="userStore?.user?.chats?.length"
+        v-for="chat in searchChats(searchData)"
         :key="chat.id"
       >
         <ChatCard
@@ -36,38 +36,33 @@ import { BurgerMenuButton } from '@/entities/common'
 import { ChatCard, searchChats, useChatsStore } from '@/entities/chat'
 import { SearchInput } from '@/features/user'
 import type { TSearchChat, TLoginChat } from '@/entities/chat'
-import { onMounted, reactive, watch } from 'vue'
-import { isValidToken } from '@/shared/lib/utils'
-import { ApiAuth } from '@/entities/auth'
+import { useUsersStore } from '@/entities/user'
+import { reactive, watch } from 'vue'
+import { storage } from '@/shared/lib/utils'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-
 const { t } = useI18n({ useScope: 'global' })
 
-const chatStore = useChatsStore()
+const userId = storage.getData('id')
 
-onMounted(() => chatStore.getChats())
-
-// if (isValidToken()) {
-//   chatStore.getChats()
-// } else {
-//   ApiAuth.refreshToken()
-//   chatStore.getChats()
-// }
+const userStore = useUsersStore()
+userStore.getUser(userId)
 
 const searchData = reactive<TSearchChat>({
   chatName: '',
-  chats: chatStore.chats
+  chats: userStore.user.chats
 })
 
 watch(
-  () => chatStore.chats,
+  () => userStore.user.chats,
   (newChats) => {
     searchData.chats = newChats
   }
 )
+
+const chatStore = useChatsStore()
 
 const loginChat = (loginChatData: TLoginChat) => {
   chatStore.setLoginChatData(loginChatData) &&
