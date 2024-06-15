@@ -19,7 +19,7 @@ import { Aside } from '@/widgets/aside'
 import { BurgerMenu } from '@/widgets/burgerMenu'
 import { useToggleMenu } from '@/shared/lib/hooks'
 import { type TMenu } from '@/shared/types'
-import { DefaultLayout } from '@/shared/ui/layouts/d'
+import { DefaultLayout } from '@/shared/ui/layouts/default'
 
 const burgerMenu: TMenu = reactive({
   isOpenMenu: false,
