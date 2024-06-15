@@ -17,23 +17,29 @@
 </template>
 
 <script setup lang="ts">
-import { Textarea } from '@/shared/ui/textarea'
+import dayjs from 'dayjs'
+import { reactive, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { SendFileButton } from '@/features/chat'
 import { SendMessageButton } from '@/features/chat'
 import { useChatsStore, useMessagesStore } from '@/entities/chat'
-import { storage } from '@/shared/lib/utils'
 import { useUsersStore } from '@/entities/user'
+import { storage } from '@/shared/lib/utils'
 import { type TMessage } from '@/shared/types'
-import { useI18n } from 'vue-i18n'
-import { reactive, computed } from 'vue'
-import dayjs from 'dayjs'
+import { Textarea } from '@/shared/ui/textarea'
+import { ApiChat } from '@/entities/chat'
+import { SOCKETS } from '@/shared/api'
+
+// const sendMessageFormProps = defineProps<{
+//   uuid: string
+// }>()
 
 const { t } = useI18n({ useScope: 'global' })
 
-const userId: string = String(storage.getData('id'))
-
 const messagesStore = useMessagesStore()
 const usersStore = useUsersStore()
+
+const userId: string = String(storage.getData('id'))
 
 usersStore.getUser(userId)
 
@@ -41,7 +47,7 @@ const messagesData: TMessage = reactive({
   id: userId,
   text: '',
   sendTime: dayjs().format('HH:mm'),
-  username: usersStore.getUsername()
+  username: usersStore.getUsername(),
 })
 
 const sendMessages = () => {

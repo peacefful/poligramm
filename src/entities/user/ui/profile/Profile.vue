@@ -11,13 +11,8 @@
 </template>
 
 <script setup lang="ts">
-import UserIcon from '@/shared/assets/icons/UserIcon.vue'
 import { useUsersStore } from '@/entities/user'
-import { isValidToken, storage } from '@/shared/lib/utils'
-import { ApiAuth } from '@/entities/auth'
-
-const id: string | null = storage.getData('id')
+import UserIcon from '@/shared/assets/icons/UserIcon.vue'
 
 const usersStore = useUsersStore()
-usersStore.getUser(id)
 </script>

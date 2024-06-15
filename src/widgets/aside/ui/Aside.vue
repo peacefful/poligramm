@@ -32,23 +32,24 @@
 </template>
 
 <script setup lang="ts">
-import { BurgerMenuButton } from '@/entities/common'
-import { ChatCard, searchChats, useChatsStore } from '@/entities/chat'
-import { SearchInput } from '@/features/user'
-import type { TSearchChat, TLoginChat } from '@/entities/chat'
-import { useUsersStore } from '@/entities/user'
 import { reactive, watch } from 'vue'
-import { storage } from '@/shared/lib/utils'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
+import { SearchInput } from '@/features/user'
+import { ChatCard, searchChats, useChatsStore } from '@/entities/chat'
+import type { TSearchChat, TLoginChat } from '@/entities/chat'
+import { BurgerMenuButton } from '@/entities/common'
+import { useUsersStore } from '@/entities/user'
+import { storage } from '@/shared/lib/utils'
+import { v4 as uuidv4 } from 'uuid'
 
 const router = useRouter()
 const { t } = useI18n({ useScope: 'global' })
 
-const userId = storage.getData('id')
+const id: string | null = storage.getData('id')
 
 const userStore = useUsersStore()
-userStore.getUser(userId)
+userStore.getUser(id)
 
 const searchData = reactive<TSearchChat>({
   chatName: '',
@@ -70,7 +71,9 @@ const loginChat = (loginChatData: TLoginChat) => {
       name: 'Chat',
       params: {
         chatName: loginChatData.roomName,
-        id: loginChatData.id
+        // Было до этого так: id: loginChatData.id
+        id: loginChatData.id,
+        uuid: loginChatData.uuid
       }
     })
 }

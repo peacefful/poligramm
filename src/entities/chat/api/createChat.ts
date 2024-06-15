@@ -1,6 +1,6 @@
+import { v4 as uuidv4 } from 'uuid'
 import { http } from "@/shared/api"
 import { storage } from "@/shared/lib/utils"
-import { v4 as uuidv4 } from 'uuid'
 import type { TChat } from "@/shared/types"
 
 export const createChat = async (room: string): Promise<TChat | Error> => {

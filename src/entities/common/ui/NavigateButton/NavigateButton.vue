@@ -9,9 +9,9 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { type TNavigate } from '@/shared/types'
 import { Icon } from '@/shared/ui/icon'
-import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n({ useScope: 'global' })
 

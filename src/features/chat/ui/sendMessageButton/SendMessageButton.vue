@@ -5,8 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import { Button } from '@/shared/ui/button'
 import SendMessageIcon from '@/shared/assets/icons/SendMessageIcon.vue'
+import { Button } from '@/shared/ui/button'
 
 defineEmits(['send-message'])
 </script>

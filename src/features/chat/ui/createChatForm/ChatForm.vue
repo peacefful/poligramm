@@ -34,16 +34,17 @@
 </template>
 
 <script setup lang="ts">
-import { Button } from '@/shared/ui/button'
-import { ApiChat } from '@/entities/chat'
-import { DefaultInput } from '@/shared/ui/input'
-import { Textarea } from '@/shared/ui/textarea'
-import { useChatsStore } from '@/entities/chat'
-import { InputFile } from '@/shared/ui/input'
-import { type TChat } from '@/shared/types'
-import { useI18n } from 'vue-i18n'
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { ApiChat } from '@/entities/chat'
+import { useUsersStore } from '@/entities/user'
 import ImageIcon from '@/shared/assets/icons/ImageIcon.vue'
+import { storage } from '@/shared/lib/utils'
+import { type TChat } from '@/shared/types'
+import { Button } from '@/shared/ui/button'
+import { DefaultInput } from '@/shared/ui/input'
+import { InputFile } from '@/shared/ui/input'
+import { Textarea } from '@/shared/ui/textarea'
 
 const { t } = useI18n({ useScope: 'global' })
 
@@ -51,10 +52,11 @@ const chatFormEmit = defineEmits(['close-modal'])
 
 const chatName = ref<string>('')
 
-const chatsStore = useChatsStore()
+const id: string | null = storage.getData("id")
+const userStore = useUsersStore()
 
 const submitChat = async () => {
   const chat: TChat | Error = await ApiChat.createChat(chatName.value)
-  chat && chatFormEmit('close-modal'), chatsStore.getChats()
+  chat && chatFormEmit('close-modal'), userStore.getUser(id)
 }
 </script>

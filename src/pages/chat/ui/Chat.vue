@@ -16,14 +16,22 @@
 import { ChatHeader } from '@/widgets/chatHeader'
 import { SendMessageForm } from '@/widgets/sendMessageForm'
 import { useChatsStore, useMessagesStore } from '@/entities/chat'
-import { getIdByRoutePath } from '@/entities/chat'
+import { getIdUuidByRoutePath } from '@/entities/chat'
 import { Messages } from '@/entities/chat'
 import { MainLayout } from '@/shared/ui/layouts/Main'
+import { watch } from 'vue'
+import { useRoute } from 'vue-router'
+import { ApiChat } from '@/entities/chat'
+
+const route = useRoute()
 
 const chatStore = useChatsStore()
 const messagesStore = useMessagesStore()
 
-const id = getIdByRoutePath()
-
-chatStore.getChat(id)
+watch(route, () => {
+  const { id, uuid } = getIdUuidByRoutePath(route.fullPath)
+  console.log(uuid);
+  ApiChat.joinToChat(uuid)
+  chatStore.getChat(id)
+})
 </script>

@@ -1,22 +1,21 @@
 <template>
-  <div class="flex-grow">
-    <div class="bg-white h-[89px] px-2 flex justify-between fixed w-full">
+  <header class="flex-grow">
+    <div class="fixed top-0 left-[440px] right-0 bg-white h-[70px] px-4 flex justify-between items-center">
       <button class="flex items-center">
         <div class="bg-default p-2 rounded-full mr-2">
           <Icon class="h-8 w-8" name="usersGroup" />
         </div>
-        <p class="font-bold text-xl">{{ chatName }}</p>
+        <h1 class="font-bold text-xl">{{ chatName }}</h1>
       </button>
       <button>
         <Icon class="h-7 w-7" name="menu" />
       </button>
     </div>
-  </div>
+  </header>
 </template>
 
 <script setup lang="ts">
 import { Icon } from '@/shared/ui/icon'
-import { Button } from '@/shared/ui/button'
 
 defineProps<{
   chatName?: string

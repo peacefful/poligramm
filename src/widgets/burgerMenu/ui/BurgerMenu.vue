@@ -7,7 +7,11 @@
             <Logout />
           </Profile>
           <ul>
-            <li class="px-3 text-lg" v-for="navigation in navigations" :key="navigation.id">
+            <li 
+              class="px-3 text-lg" 
+              v-for="navigation in navigations" 
+              :key="navigation.id"
+            >
               <NavigateButton
                 @action="navigation.action"
                 :title="navigation.title"
@@ -18,7 +22,7 @@
         </div>
         <SwitcherLang class="ml-auto p-4" />
       </div>
-      <Modal @close-modal="closeModal" :is-open-modal="isOpenModal">
+      <Modal :is-open-modal="isOpenModal">
         <ChatForm @close-modal="closeModal" />
       </Modal>
     </div>
@@ -26,15 +30,15 @@
 </template>
 
 <script setup lang="ts">
-import { Profile } from '@/entities/user'
-import { Logout } from '@/features/auth'
-import { SwitcherLang } from '@/features/switcher-lang'
 import { reactive } from 'vue'
-import { Modal } from '@/shared/ui/modal'
-import { useToggleModal } from '@/shared/lib/hooks'
+import { Logout } from '@/features/auth'
 import { ChatForm } from '@/features/chat'
+import { SwitcherLang } from '@/features/switcher-lang'
 import { NavigateButton } from '@/entities/common'
+import { Profile } from '@/entities/user'
+import { useToggleModal } from '@/shared/lib/hooks'
 import { type TNavigate } from '@/shared/types'
+import { Modal } from '@/shared/ui/modal'
 
 defineProps<{
   isOpen: boolean

@@ -1,6 +1,6 @@
 import { http } from "@/shared/api"
-import { getOtherUsersById } from "../lib"
 import type { TUser } from "@/shared/types"
+import { getOtherUsersById } from "../lib"
 
 export const fetchUsers = async (): Promise<TUser[] | Error> => {
   try {

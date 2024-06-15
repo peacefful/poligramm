@@ -16,11 +16,11 @@
 </template>
 
 <script setup lang="ts">
-import ToogleLanguage from '@/components/ToogleLanguage.vue'
+import { useI18n } from 'vue-i18n'
 import Profile from '@/components/Profile.vue'
+import ToogleLanguage from '@/components/ToogleLanguage.vue'
 import Button from '@/components/ui/Button.vue'
 import router from '@/router'
-import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n({ useScope: 'global' })
 

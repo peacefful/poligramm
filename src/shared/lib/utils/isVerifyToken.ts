@@ -1,5 +1,5 @@
-import type { RouteLocationNormalized, NavigationGuardNext } from 'vue-router'
 import Cookies from 'js-cookie'
+import type { RouteLocationNormalized, NavigationGuardNext } from 'vue-router'
 
 export async function isVerifyToken(
   to: RouteLocationNormalized,

@@ -13,13 +13,13 @@
 </template>
 
 <script setup lang="ts">
-import { DefaultLayout } from '@/shared/ui/layouts/Default'
-import { BurgerMenu } from '@/widgets/burgerMenu'
+import { reactive, provide } from 'vue'
+import { useRoute } from 'vue-router'
 import { Aside } from '@/widgets/aside'
+import { BurgerMenu } from '@/widgets/burgerMenu'
 import { useToggleMenu } from '@/shared/lib/hooks'
 import { type TMenu } from '@/shared/types'
-import { useRoute } from 'vue-router'
-import { reactive, provide } from 'vue'
+import { DefaultLayout } from '@/shared/ui/layouts/Default'
 
 const burgerMenu: TMenu = reactive({
   isOpenMenu: false,

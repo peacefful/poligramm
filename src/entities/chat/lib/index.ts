@@ -1,3 +1,3 @@
 export * from "./chatOpeations"
 export * from "./searchChats"
-export * from "./getIdByRoutePath"
+export * from "./getIdUuidByRoutePath"

@@ -5,9 +5,9 @@
 </template>
 
 <script setup lang="ts">
-import LogoutIcon from '@/shared/assets/icons/LogoutIcon.vue'
-import { ApiAuth } from '@/entities/auth'
 import { useRouter } from 'vue-router'
+import { ApiAuth } from '@/entities/auth'
+import LogoutIcon from '@/shared/assets/icons/LogoutIcon.vue'
 
 const router = useRouter()
 

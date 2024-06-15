@@ -6,3 +6,8 @@ export type TSearchChat = {
 }
 
 export type TLoginChat = Omit<TChat, 'userId'>
+
+export type TUpdateChat = {
+  id: number,
+  data: TChat
+}

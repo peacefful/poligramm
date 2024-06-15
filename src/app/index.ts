@@ -1,13 +1,13 @@
 import './styles/normalize.scss'
 import './styles/tailwind.css'
 
+import { createPinia } from 'pinia'
 import { createApp } from 'vue'
-import { languages, defaultLocale } from './providers'
 import { createI18n, useI18n } from 'vue-i18n'
 
 import App from './App.vue'
+import { languages, defaultLocale } from './providers'
 import { router } from './providers'
-import { createPinia } from 'pinia'
 
 const messages = Object.assign(languages)
 

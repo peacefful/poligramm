@@ -13,5 +13,5 @@ import { SwitcherLang } from '@/features/switcher-lang';
 </script>
 
 <style scoped>
-@import url('./styles.module.scss');
+@import url('@/shared/assets/styles/auth-reg-layout.scss');
 </style>

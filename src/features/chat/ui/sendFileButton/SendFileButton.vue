@@ -5,6 +5,6 @@
 </template>
 
 <script setup lang="ts">
-import { InputFile } from '@/shared/ui/input'
 import UploadFileIcon from '@/shared/assets/icons/UploadFileIcon.vue'
+import { InputFile } from '@/shared/ui/input'
 </script>

@@ -8,8 +8,8 @@
 </template>
 
 <script setup lang="ts">
-import { DefaultInput } from '@/shared/ui/input';
 import { useI18n } from 'vue-i18n'
+import { DefaultInput } from '@/shared/ui/input';
 
 const { t } = useI18n({ useScope: 'global' })
 

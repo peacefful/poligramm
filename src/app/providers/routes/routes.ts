@@ -5,13 +5,11 @@ export const routes = [
     path: '/',
     name: 'Signin',
     component: () => import('@/pages/signin'),
-    beforeEnter: isVerifyToken
   },
   {
     path: '/signup',
     name: 'Signup',
     component: () => import('@/pages/signup'),
-    beforeEnter: isVerifyToken
   },
   {
     path: '/chats',
@@ -19,7 +17,7 @@ export const routes = [
     component: () => import('@/pages/chats')
   },
   {
-    path: '/chats/:chatName/:id',
+    path: '/chats/:chatName/:id/:uuid',
     name: 'Chat',
     component: () => import('@/pages/chat')
   }

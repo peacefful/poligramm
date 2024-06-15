@@ -23,14 +23,14 @@
 </template>
 
 <script setup lang="ts">
+import { ref, reactive } from 'vue'
 import Aside from './Aside.vue'
 import Chat from '@/components/Chat.vue'
 import Notification from '@/components/Notification.vue'
 import Button from '@/components/ui/Button.vue'
-import socket from '@/utils/socket'
 import { useEnterChat } from '@/hooks/useEnter'
+import socket from '@/utils/socket'
 import { storage } from '@/utils/storage'
-import { ref, reactive } from 'vue'
 
 const accessToken = storage.getData('token')
 
