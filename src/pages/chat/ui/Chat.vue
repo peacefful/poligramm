@@ -15,23 +15,24 @@
 <script setup lang="ts">
 import { ChatHeader } from '@/widgets/chatHeader'
 import { SendMessageForm } from '@/widgets/sendMessageForm'
-import { useChatsStore, useMessagesStore } from '@/entities/chat'
-import { getIdUuidByRoutePath } from '@/entities/chat'
+import { useChatsStore, useMessagesStore, type TJoinChat } from '@/entities/chat'
 import { Messages } from '@/entities/chat'
-import { MainLayout } from '@/shared/ui/layouts/Main'
-import { watch } from 'vue'
+import { MainLayout } from '@/shared/ui/layouts/m'
+import { reactive, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { ApiChat } from '@/entities/chat'
+import { joinChatByRoute } from '@/entities/chat'
 
 const route = useRoute()
 
-const chatStore = useChatsStore()
 const messagesStore = useMessagesStore()
+const chatStore = useChatsStore()
 
-watch(route, () => {
-  const { id, uuid } = getIdUuidByRoutePath(route.fullPath)
-  console.log(uuid);
-  ApiChat.joinToChat(uuid)
-  chatStore.getChat(id)
+const joinChat: TJoinChat = reactive({
+  route: route.fullPath,
+  getChat: chatStore.getChat
 })
+
+joinChatByRoute(joinChat)
+
+watch(route, () => joinChatByRoute(joinChat))
 </script>

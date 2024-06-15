@@ -1,2 +1,2 @@
-export * from "./store"
+export * from "./useUsersStore"
 export * from "./types"

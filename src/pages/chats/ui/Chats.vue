@@ -9,7 +9,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { isValidToken } from '@/shared/lib/utils'
-import { MainLayout } from '@/shared/ui/layouts/Main'
+import { MainLayout } from '@/shared/ui/layouts/m'
 
 const router = useRouter()
 

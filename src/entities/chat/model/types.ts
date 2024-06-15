@@ -11,3 +11,8 @@ export type TUpdateChat = {
   id: number,
   data: TChat
 }
+
+export type TJoinChat = {
+  route: string
+  getChat: (id: string) => void
+}

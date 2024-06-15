@@ -1,3 +1,3 @@
-export * from "./DefaultInput"
-export * from "./InputImg"
-export * from "./VeeInput"
+export * from "./di"
+export * from "./ii"
+export * from "./vi"
