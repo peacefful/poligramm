@@ -1,3 +1,3 @@
-export * from "./lf"
-export * from "./rf"
+export * from "./loginForm"
+export * from "./registerForm"
 export * from "./logout"
