@@ -1,2 +1,2 @@
-export * from './bmb'
-export * from './nb'
+export * from './burgerMenuButton'
+export * from './navigateButton'
