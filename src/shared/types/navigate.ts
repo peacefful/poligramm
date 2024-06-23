@@ -1,4 +1,4 @@
-export interface TNavigate {
+export type TNavigate = {
   id: number;
   title: string;
   icon: string;

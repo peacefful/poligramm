@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
 
-interface IButtonProps {
+type IButtonProps = {
   isRoundedFull?: boolean
   isRoundedLg?: boolean
   color?: string

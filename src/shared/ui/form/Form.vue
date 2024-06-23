@@ -21,7 +21,7 @@ import { Button } from '@/shared/ui/button'
 
 const { t } = useI18n({ useScope: 'global' })
 
-interface IForm {
+type IForm = {
   handlerSubmit: (e?: Event | undefined) => Promise<Promise<void> | undefined>
   title: string
   buttonTitle: string

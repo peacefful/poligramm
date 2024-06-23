@@ -1,5 +1,3 @@
-import { isVerifyToken } from '@/shared/lib/utils'
-
 export const routes = [
   {
     path: '/',

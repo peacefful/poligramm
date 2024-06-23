@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 
-interface IInputImg {
+type IInputImg = {
   type: string
 }
 

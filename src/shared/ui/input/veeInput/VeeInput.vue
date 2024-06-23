@@ -18,7 +18,7 @@ import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n({ useScope: 'global' })
 
-interface IVeeInput {
+type IVeeInput = {
   name: string
   type?: string
   errorName: string
