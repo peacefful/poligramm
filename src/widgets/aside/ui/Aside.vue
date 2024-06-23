@@ -1,5 +1,5 @@
 <template>
-  <aside class="fixed overflow-x-auto bg-white h-screen shadow-lg flex w-full sm:w-[440px]">
+  <aside class="fixed overflow-y-auto bg-white h-screen shadow-lg flex w-full sm:w-[440px]">
     <div class="w-full">
       <div class="flex gap-2 p-4 bg-black text-white">
         <BurgerMenuButton />

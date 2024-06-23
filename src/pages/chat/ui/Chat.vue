@@ -7,7 +7,7 @@
         :key="message.id"
         :message="message"
       />
-      <SendMessageForm />
+      <SendMessageForm :uuid="uuid" />
     </div>
   </MainLayout>
 </template>
@@ -32,7 +32,12 @@ const joinChat: TJoinChat = reactive({
   getChat: chatStore.getChat
 })
 
-joinChatByRoute(joinChat)
+const uuid: string = joinChatByRoute(joinChat)
 
-watch(route, () => joinChatByRoute(joinChat))
+watch(route, () =>
+  joinChatByRoute({
+    route: route.fullPath,
+    getChat: chatStore.getChat
+  })
+)
 </script>

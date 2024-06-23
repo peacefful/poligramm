@@ -1,5 +1,8 @@
 <template>
-  <div class="bg-default text-white rounded-2xl p-2 mr-4 my-4 ml-auto">
+  <div
+    class="bg-default text-white rounded-2xl p-2 my-4 mx-4"
+    :class="{ 'ml-auto': userId === message.id }"
+  >
     <div>{{ message.text }}</div>
     <div class="text-xs text-right">{{ message.sendTime }}</div>
   </div>

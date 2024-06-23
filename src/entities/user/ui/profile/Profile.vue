@@ -3,7 +3,7 @@
     <div class="flex items-center cursor-pointer text-white">
       <UserIcon />
       <div class="text-2xl font-bold ml-1">
-        {{ usersStore.getUsername() }}
+        {{ usersStore.username }}
       </div>
     </div>
     <slot />
