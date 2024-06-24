@@ -1,5 +1,5 @@
 <template>
-  <div class="signup">
+  <div class="signin">
     <RegForm />
   </div>
   <div class="hidden sm:block">
