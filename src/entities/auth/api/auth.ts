@@ -2,10 +2,11 @@ import Cookies from 'js-cookie'
 import { AuthModel } from '@/entities/auth'
 import { http } from '@/shared/api'
 import { storage } from '@/shared/lib/utils'
+import { AxiosError } from 'axios'
 
 export const authorization = async (
   authData: AuthModel.TAuthData
-): Promise<AuthModel.TAuthResponse | Error> => {
+): Promise<AuthModel.TAuthResponse | AxiosError> => {
   try {
     const authUser: AuthModel.TAuthResponse = (
       await http.post(`/api/users/auth`, {
@@ -22,6 +23,6 @@ export const authorization = async (
 
     return authUser
   } catch (error) {
-    return new Error('Error authorization')
+    return error as AxiosError
   }
 }

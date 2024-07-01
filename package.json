@@ -24,6 +24,7 @@
     "pinia": "^2.1.7",
     "sass": "^1.69.5",
     "socket.io-client": "^4.7.2",
+    "tailwindcss-animated": "^1.1.2",
     "uuid": "^9.0.1",
     "vee-validate": "^4.12.6",
     "vue": "^3.3.4",

@@ -16,6 +16,10 @@
           v-model="userData.password"
         />
       </div>
+      <ErrorMessage :isError>
+        <div v-if="errorStatus === 404">Пользователь с таким логином не найден</div>
+        <div v-else>Не правильный логин или пароль</div>
+      </ErrorMessage>
     </template>
     <template #hint>
       {{ t('notAccount') }}
@@ -27,14 +31,17 @@
 </template>
 
 <script setup lang="ts">
-import { useForm } from 'vee-validate'
-import { reactive } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { useRouter } from 'vue-router'
-import * as yup from 'yup'
 import { ApiAuth, AuthModel } from '@/entities/auth'
 import { Form } from '@/shared/ui/form'
 import { VeeInput } from '@/shared/ui/input'
+import { ErrorMessage } from '@/entities/auth'
+import { AxiosError } from 'axios'
+import { useRouter } from 'vue-router'
+import { useForm } from 'vee-validate'
+import { reactive } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { ref } from 'vue'
+import * as yup from 'yup'
 
 const router = useRouter()
 
@@ -45,6 +52,9 @@ const userData: AuthModel.TAuthData = reactive({
   password: ''
 })
 
+const isError = ref<boolean>(false)
+const errorStatus = ref<number | undefined>(0)
+
 const { handleSubmit } = useForm({
   validationSchema: yup.object({
     ...AuthModel.authValidator
@@ -52,9 +62,13 @@ const { handleSubmit } = useForm({
 })
 
 const onSubmit = handleSubmit(async () => {
-  const authUser: AuthModel.TAuthResponse | Error = await ApiAuth.authorization(userData)
-  if (!(authUser instanceof Error) && authUser.accessToken) {
+  const authUser: AuthModel.TAuthResponse | AxiosError = await ApiAuth.authorization(userData)
+  if (!(authUser instanceof AxiosError) && authUser.accessToken) {
     router.push('/chats')
+  } else {
+    isError.value = true
+    const error = authUser as AxiosError
+    errorStatus.value = error.response?.status
   }
 })
 </script>

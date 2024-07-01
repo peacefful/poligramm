@@ -1,22 +1,5 @@
-import { onMounted, ref } from 'vue'
-import { type TMenu } from '@/shared/types'
-
-export const useToggleModal = () => {
-  const isOpenModal = ref<boolean>(false)
-
-  const openModal = () => {
-    return (isOpenModal.value = true)
-  }
-  const closeModal = () => {
-    return (isOpenModal.value = false)
-  }
-
-  return {
-    isOpenModal,
-    openModal,
-    closeModal
-  }
-}
+import type { TMenu } from "@/shared/types"
+import { onMounted } from "vue"
 
 export const useToggleMenu = (menu: TMenu) => {
   const toggle = (): boolean => (menu.isOpenMenu = true)
