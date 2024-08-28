@@ -37,10 +37,10 @@ import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { SearchInput } from '@/features/user'
 import { ChatCard, searchChats, useChatsStore } from '@/entities/chat'
-import type { TSearchChat, TLoginChat } from '@/entities/chat'
 import { BurgerMenuButton } from '@/entities/common'
 import { useUsersStore } from '@/entities/user'
 import { storage } from '@/shared/lib/utils'
+import type { TSearchChat, TLoginChat } from '@/entities/chat'
 import { v4 as uuidv4 } from 'uuid'
 
 const router = useRouter()
