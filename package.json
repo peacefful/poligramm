@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite",
     "deploy": "gh-pages -d dist",
+    "deploy": "gh-pages -d dist",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
@@ -13,6 +14,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@types/js-cookie": "^3.0.6",
     "@types/js-cookie": "^3.0.6",
     "@types/uuid": "^9.0.7",
     "@vee-validate/yup": "^4.12.6",
