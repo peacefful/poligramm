@@ -1,6 +1,6 @@
 <template>
   <header class="flex-grow">
-    <div class="fixed top-0 left-[440px] right-0 bg-white h-[70px] px-4 flex justify-between items-center">
+    <div class="fixed top-0 left-[383px] right-0 bg-white h-[70px] px-4 flex justify-between items-center">
       <button class="flex items-center">
         <div class="bg-default p-2 rounded-full mr-2">
           <Icon class="h-8 w-8" name="usersGroup" />

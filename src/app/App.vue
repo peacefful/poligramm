@@ -22,7 +22,7 @@ import { type TMenu } from '@/shared/types'
 import { DefaultLayout } from '@/shared/ui/layouts/default'
 
 const burgerMenu: TMenu = reactive({
-  isOpenMenu: false,
+  isOpenMenu: true,
   className: 'z-10'
 })
 

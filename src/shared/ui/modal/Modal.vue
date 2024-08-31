@@ -1,6 +1,11 @@
 <template>
   <transition>
-    <div v-if="isOpenModal" class="modal-form">
+    <div 
+      @click.self="$emit('closeModal')"
+      v-if="isOpenModal"
+      @keyup.esc="$emit('closeModal')"
+      class="modal-form"
+    >
       <div class="modal-form__box">
         <slot></slot>
       </div>
@@ -14,6 +19,8 @@ type TModal = {
 }
 
 defineProps<TModal>()
+
+const modalEmit = defineEmits(['closeModal'])
 </script>
 
 <style scoped>

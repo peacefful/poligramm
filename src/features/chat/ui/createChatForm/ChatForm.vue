@@ -4,17 +4,17 @@
       <InputFile class="p-3 mr-4" type="file">
         <ImageIcon />
       </InputFile>
-      <DefaultInput 
+      <DefaultInput
         class="w-full" 
         :placeholder="t('chatName')" 
         v-model.trim="chatName" 
       />
     </div>
-    <Textarea 
+    <Textarea
       class="w-full my-3 p-2 h-24 border-[1px] rounded-md" 
       placeholder="Описание(необязательно)" 
     />
-    <div class="flex gap-3 ml-auto mt-auto">
+    <div class="flex gap-3 ml-auto mt-5">
       <Button 
         @click="$emit('close-modal')"
         :is-rounded-lg="true"
@@ -38,13 +38,13 @@ import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { ApiChat } from '@/entities/chat'
 import { useUsersStore } from '@/entities/user'
-import ImageIcon from '@/shared/assets/icons/ImageIcon.vue'
 import { storage } from '@/shared/lib/utils'
 import { type TChat } from '@/shared/types'
 import { Button } from '@/shared/ui/button'
 import { DefaultInput } from '@/shared/ui/input'
 import { InputFile } from '@/shared/ui/input'
 import { Textarea } from '@/shared/ui/textarea'
+import ImageIcon from '@/shared/assets/icons/ImageIcon.vue'
 
 const { t } = useI18n({ useScope: 'global' })
 
