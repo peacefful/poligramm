@@ -41,7 +41,6 @@ import { BurgerMenuButton } from '@/entities/common'
 import { useUsersStore } from '@/entities/user'
 import { storage } from '@/shared/lib/utils'
 import type { TSearchChat, TLoginChat } from '@/entities/chat'
-import { v4 as uuidv4 } from 'uuid'
 
 const router = useRouter()
 const { t } = useI18n({ useScope: 'global' })
@@ -71,7 +70,6 @@ const loginChat = (loginChatData: TLoginChat) => {
       name: 'Chat',
       params: {
         chatName: loginChatData.roomName,
-        // Было до этого так: id: loginChatData.id
         id: loginChatData.id,
         uuid: loginChatData.uuid
       }

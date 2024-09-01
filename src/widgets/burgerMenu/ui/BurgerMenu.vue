@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div v-if="isOpen" class="absolute top-0 left-0 bg-[#00000079] w-full h-screen z-10">
-      <div class="fixed bg-white h-screen w-[350px] flex flex-col justify-between fade-burger">
+      <div class="fixed bg-white h-screen w-[400px] flex flex-col justify-between fade-burger">
         <div>
           <Profile>
             <Logout />
@@ -20,7 +20,7 @@
             </li>
           </ul>
         </div>
-        <SwitcherLang class="ml-auto p-4" />
+        <SwitcherLang class="ml-auto p-6" />
       </div>
       <Modal @close-modal="closeModal" :is-open-modal="isOpenModal">
         <ChatForm @close-modal="closeModal" />
