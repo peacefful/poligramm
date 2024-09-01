@@ -20,9 +20,6 @@ import { BurgerMenu } from '@/widgets/burgerMenu'
 import { useToggleMenu } from '@/shared/lib/hooks'
 import { type TMenu } from '@/shared/types'
 import { DefaultLayout } from '@/shared/ui/layouts/default'
-import { useCloseChat } from "@/entities/common"
-
-useCloseChat()
 
 const burgerMenu: TMenu = reactive({
   isOpenMenu: false,

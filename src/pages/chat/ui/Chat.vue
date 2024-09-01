@@ -21,6 +21,9 @@ import { MainLayout } from '@/shared/ui/layouts/main'
 import { reactive, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { joinChatByRoute } from '@/entities/chat'
+import { useCloseChat } from "@/entities/chat"
+
+useCloseChat()
 
 const route = useRoute()
 
