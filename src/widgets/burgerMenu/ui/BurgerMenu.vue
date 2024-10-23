@@ -3,9 +3,9 @@
     <div v-if="isOpen" class="absolute top-0 left-0 bg-[#00000079] w-full h-screen z-10">
       <div class="fixed bg-white h-screen w-[400px] flex flex-col justify-between fade-burger">
         <div>
-          <Profile>
+          <ProfileHeader>
             <Logout />
-          </Profile>
+          </ProfileHeader>
           <ul>
             <li 
               class="px-3 text-lg" 
@@ -35,7 +35,7 @@ import { Logout } from '@/features/auth'
 import { ChatForm } from '@/features/chat'
 import { SwitcherLang } from '@/features/switcher-lang'
 import { NavigateButton } from '@/entities/common'
-import { Profile } from '@/entities/user'
+import { ProfileHeader } from '@/entities/user'
 import { useToggleModal } from '@/shared/lib/hooks'
 import { type TNavigate } from '@/shared/types'
 import { Modal } from '@/shared/ui/modal'

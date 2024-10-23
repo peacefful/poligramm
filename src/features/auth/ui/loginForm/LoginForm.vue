@@ -17,7 +17,7 @@
         />
       </div>
       <ErrorMessage :isError>
-        <div v-if="errorStatus === 404">Пользователь с таким логином не найден</div>
+        <div v-if="errorStatus === 404">{{ t('notAccount', 2) }}</div>
         <div v-else>Не правильный логин или пароль</div>
       </ErrorMessage>
     </template>

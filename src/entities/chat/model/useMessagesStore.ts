@@ -1,5 +1,5 @@
-import { defineStore } from "pinia";
-import type { TMessage } from "@/shared/types";
+import { defineStore } from 'pinia'
+import type { TMessage } from '@/shared/types'
 
 export const useMessagesStore = defineStore('messagesStore', {
   state: () => {
@@ -13,6 +13,9 @@ export const useMessagesStore = defineStore('messagesStore', {
     },
     getMessages() {
       return this.messages
+    },
+    clearMessages() {
+      this.messages = []
     }
   }
 })

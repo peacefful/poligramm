@@ -20,7 +20,7 @@
             })
           "
           :chatName="chat.roomName"
-          last-message="Привет, как дела?"
+          last-message="Новое сообщение"
           time="12:43"
         />
       </div>
@@ -41,11 +41,14 @@ import { BurgerMenuButton } from '@/entities/common'
 import { useUsersStore } from '@/entities/user'
 import { storage } from '@/shared/lib/utils'
 import type { TSearchChat, TLoginChat } from '@/entities/chat'
+import { useMessagesStore } from '@/entities/chat'
 
 const router = useRouter()
 const { t } = useI18n({ useScope: 'global' })
 
 const id: string | null = storage.getData('id')
+
+const messagesStore = useMessagesStore()
 
 const userStore = useUsersStore()
 userStore.getUser(id)
@@ -65,14 +68,16 @@ watch(
 const chatStore = useChatsStore()
 
 const loginChat = (loginChatData: TLoginChat) => {
-  chatStore.setLoginChatData(loginChatData) &&
-    router.push({
-      name: 'Chat',
-      params: {
-        chatName: loginChatData.roomName,
-        id: loginChatData.id,
-        uuid: loginChatData.uuid
-      }
-    })
+  chatStore.setLoginChatData(loginChatData)
+  router.push({
+    name: 'Chat',
+    params: {
+      chatName: loginChatData.roomName,
+      id: loginChatData.id,
+      uuid: loginChatData.uuid
+    }
+  })
+
+  messagesStore.clearMessages()
 }
 </script>

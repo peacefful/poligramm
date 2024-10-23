@@ -36,12 +36,13 @@
   "you": "Вы",
   "welcome": "Добро пожаловать",
   "joinChat": "зашел в чат",
-  "notAccount": "Нет аккаунта?",
+  "notAccount": "Нет аккаунта? | Пользователь с таким логином не найден",
   "incorrectesLogin": "Логин слишком короткий",
   "incorrectesPassword": "Пароль слишком короткий",
   "incorrectesName": "Некорректное имя",
   "incorrectesSurname": "Некорректная фамилия",
   "hasAccount": "Есть аккаунт?",
   "noChats": "Чатов пока нету",
-  "writeMessage": "Наберите сообщение..."
+  "writeMessage": "Наберите сообщение...",
+  "description": "Описание(необязательно)"
 }

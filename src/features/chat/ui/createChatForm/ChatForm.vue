@@ -4,29 +4,17 @@
       <InputFile class="p-3 mr-4" type="file">
         <ImageIcon />
       </InputFile>
-      <DefaultInput
-        class="w-full" 
-        :placeholder="t('chatName')" 
-        v-model.trim="chatName" 
-      />
+      <DefaultInput class="w-full" :placeholder="t('chatName')" v-model.trim="chatName" />
     </div>
     <Textarea
-      class="w-full my-3 p-2 h-24 border-[1px] rounded-md" 
-      placeholder="Описание(необязательно)" 
+      class="w-full my-3 p-2 h-24 border-[1px] rounded-md"
+      :placeholder="t('description')"
     />
     <div class="flex gap-3 ml-auto mt-5">
-      <Button 
-        @click="$emit('close-modal')"
-        :is-rounded-lg="true"
-        color="primary" 
-        type="reset"
-      >
+      <Button @click="$emit('close-modal')" :is-rounded-lg="true" color="primary" type="reset">
         {{ t('close') }}
       </Button>
-      <Button 
-        type="submit" 
-        :is-rounded-lg="true"
-      >
+      <Button type="submit" :is-rounded-lg="true">
         {{ t('create') }}
       </Button>
     </div>
@@ -52,7 +40,7 @@ const chatFormEmit = defineEmits(['close-modal'])
 
 const chatName = ref<string>('')
 
-const id: string | null = storage.getData("id")
+const id: string | null = storage.getData('id')
 const userStore = useUsersStore()
 
 const submitChat = async () => {

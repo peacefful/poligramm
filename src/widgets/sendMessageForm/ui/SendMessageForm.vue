@@ -17,8 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import dayjs from 'dayjs'
-import { reactive } from 'vue'
+import { onMounted, reactive, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { SendFileButton } from '@/features/chat'
 import { SendMessageButton } from '@/features/chat'
@@ -42,9 +41,13 @@ usersStore.getUser(userId)
 const messagesData: TMessage = reactive({
   id: userId,
   text: '',
-  sendTime: dayjs().format('HH:mm'),
+  sendTime: '',
   username: usersStore.username,
   uuid: sendMessageFormProps.uuid
+})
+
+watch(sendMessageFormProps, () => {
+  messagesData.uuid = sendMessageFormProps.uuid
 })
 
 ApiChat.getMessages()

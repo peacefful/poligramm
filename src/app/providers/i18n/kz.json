@@ -38,12 +38,13 @@
   "you": "Сіз",
   "welcome": "Қош келдіңіз",
   "joinChat": "чатқа кірді",
-  "notAccount": "Тіркелгі жоқ па?",
+  "notAccount": "Тіркелгі жоқ па? | Мұндай логині бар пайдаланушы табылмады",
   "incorrectesLogin": "Кіру тым қысқа",
   "incorrectesPassword": "Құпия сөз тым қысқа",
   "incorrectesName": "Қате атау",
   "incorrectesSurname": "Қате тегі",
   "hasAccount": "Тіркелгі бар ма?",
   "noChats": "Чаттар әлі жоқ",
-  "writeMessage": "Хабарлама теріңіз..."
+  "writeMessage": "Хабарлама теріңіз...",
+  "description": "Сипаттама (міндетті емес)"
 }

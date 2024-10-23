@@ -21,7 +21,7 @@ import { MainLayout } from '@/shared/ui/layouts/main'
 import { reactive, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { joinChatByRoute } from '@/entities/chat'
-import { useCloseChat } from "@/entities/chat"
+import { useCloseChat } from '@/entities/chat'
 
 useCloseChat()
 
@@ -35,12 +35,12 @@ const joinChat: TJoinChat = reactive({
   getChat: chatStore.getChat
 })
 
-const uuid: string = joinChatByRoute(joinChat)
+let uuid: string = joinChatByRoute(joinChat)
 
-watch(route, () =>
-  joinChatByRoute({
+watch(route, () => {
+  uuid = joinChatByRoute({
     route: route.fullPath,
     getChat: chatStore.getChat
   })
-)
+})
 </script>

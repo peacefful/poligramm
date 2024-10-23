@@ -1,7 +1,7 @@
 import { useI18n } from 'vue-i18n'
 import { storage } from '@/shared/lib/utils'
 
-export const switchLang = () => {
+export const useSwitchLang = () => {
   const { locale } = useI18n({ useScope: 'global' })
 
   const updateLang = (value: string): void => {

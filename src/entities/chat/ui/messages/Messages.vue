@@ -1,7 +1,10 @@
 <template>
   <div
-    class="bg-default text-white rounded-2xl p-2 my-4 mx-4"
-    :class="{ 'ml-auto': userId === message.id }"
+    class="bg-default text-white rounded-2xl p-3 my-4 mx-4 max-w-xl break-words"
+    :class="{
+      'ml-auto': userId === message.id,
+      'mr-auto': userId !== message.id
+    }"
   >
     <div>{{ message.text }}</div>
     <div class="text-xs text-right">{{ message.sendTime }}</div>
