@@ -1,4 +1,4 @@
-export * from "./chatOpeations"
+export * from "./addChat"
 export * from "./searchChats"
 export * from "./getIdUuidByRoutePath"
 export * from "./joinChatByRoute"

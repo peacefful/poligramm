@@ -23,3 +23,13 @@ export type TNotificationJoinChat = {
   userMessage: TMessage,
   setMessage: (messages: TMessage) => void
 }
+
+export type TDeleteChat = {
+  chats: TChat[]
+  index: number
+}
+
+export type TAddChat = {
+  chats: TChat[]
+  chat: TChat
+}

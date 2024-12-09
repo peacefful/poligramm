@@ -13,5 +13,5 @@ import { MainLayout } from '@/shared/ui/layouts/main'
 
 const router = useRouter()
 
-if (!isValidToken()) router.push('/')
+// if (!isValidToken()) router.push('/')
 </script>
