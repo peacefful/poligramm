@@ -22,7 +22,7 @@
         </div>
         <SwitcherLang class="ml-auto p-6" />
       </div>
-      <Modal @close-modal="closeModal" :is-open-modal="isOpenModal">
+      <Modal class="w-[600px]" @close-modal="closeModal" :is-open-modal="isOpenModal">
         <ChatForm @close-modal="closeModal" />
       </Modal>
     </div>

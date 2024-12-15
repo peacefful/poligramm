@@ -4,7 +4,7 @@
     fill="none"
     viewBox="0 0 24 24"
     stroke-width="1"
-    stroke="#242424"
+    stroke="white"
     class="w-8 h-8"
   >
     <path
@@ -14,3 +14,4 @@
     />
   </svg>
 </template>
+

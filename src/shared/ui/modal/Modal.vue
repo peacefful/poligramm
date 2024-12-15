@@ -6,7 +6,7 @@
       v-if="isOpenModal"
       class="modal-form"
     >
-      <div class="modal-form__box">
+      <div v-bind="$attrs" class="modal-form__box">
         <slot></slot>
       </div>
     </div>

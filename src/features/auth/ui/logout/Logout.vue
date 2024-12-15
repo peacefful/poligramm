@@ -1,5 +1,5 @@
 <template>
-  <button @click="logout" class="hover:bg-[#f0f0f0] p-2 rounded-full ease-out duration-200">
+  <button @click="logout" class="hover:bg-[#171717] p-2 rounded-full ease-out duration-200">
     <LogoutIcon />
   </button>
 </template>

@@ -8,7 +8,7 @@ export const useChatsStore = defineStore('chatsStore', {
     return {
       chat: {} as TChat,
       chats: [] as TChat[],
-      currentChat: {} as TLoginChat
+      currentSelectedChat: {} as TLoginChat
     }
   },
   actions: {
@@ -19,7 +19,7 @@ export const useChatsStore = defineStore('chatsStore', {
       })
     },
     setLoginChatData(chatData: TLoginChat): TLoginChat {
-      this.currentChat = chatData
+      this.currentSelectedChat = chatData
       this.getChat(chatData.id)
       return chatData
     }

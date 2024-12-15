@@ -42,6 +42,9 @@ import { reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { ref } from 'vue'
 import * as yup from 'yup'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
+
+ChartJS.register(Tooltip, Legend, ArcElement)
 
 const router = useRouter()
 

@@ -1,7 +1,7 @@
 <template>
   <DefaultLayout v-if="checkPath()">
     <template #burgerMenu>
-      <BurgerMenu :is-open="menuStore.burgerMenu.isOpenMenu" />
+      <BurgerMenu :is-open="burgerMenu.isOpenMenu" />
     </template>
     <template #aside>
       <Aside />
@@ -20,16 +20,14 @@ import { BurgerMenu } from '@/widgets/burgerMenu'
 import { useToggleMenu } from '@/shared/lib/hooks'
 import { type TMenu } from '@/shared/types'
 import { DefaultLayout } from '@/shared/ui/layouts/default'
-import { useMenuStore } from '@/entities/common'
 
-const menuStore = useMenuStore()
+const burgerMenu: TMenu = reactive({
+  isOpenMenu: false,
+  className: 'z-10',
+  name: 'burgerMenu'
+})
 
-// const burgerMenu: TMenu = reactive({
-//   isOpenMenu: false,
-//   className: 'z-10'
-// })
-
-const { toggle: openBurgerMenu } = useToggleMenu(menuStore.burgerMenu)
+const { toggle: openBurgerMenu } = useToggleMenu(burgerMenu)
 
 provide('toggleBurgerMenu', { openBurgerMenu })
 
