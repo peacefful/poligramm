@@ -4,11 +4,11 @@
       <ChatHeader @open-modal="openModal" :chat-name="chatStore?.chat?.roomName" />
       <div>
         <Messages
-          v-for="message in messagesStore.getMessages()"
+          v-for="message in messagesStore.getMessages(chatStore.chat.messages)"
           :key="message.userId"
           :message="message"
         />
-        <SendMessageForm :uuid="uuid" />
+        <SendMessageForm :chat-id="chatStore.chat.id" :uuid="uuid" />
       </div>
     </div>
     <Modal class="w-[900px] h-[800px]" @close-modal="closeModal" :is-open-modal="isOpenModal">

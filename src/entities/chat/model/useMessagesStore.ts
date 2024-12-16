@@ -11,7 +11,8 @@ export const useMessagesStore = defineStore('messagesStore', {
     setMessages(messages: TMessage) {
       this.messages.push(messages)
     },
-    getMessages() {
+    getMessages(messages: TMessage[]) {
+      this.messages = messages
       return this.messages
     },
     clearMessages() {

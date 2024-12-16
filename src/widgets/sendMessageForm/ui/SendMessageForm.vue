@@ -1,12 +1,12 @@
 <template>
   <form
     autocomplete="off"
-    @submit.prevent="ApiChat.sendMessage(messagesData)"
+    @submit.prevent="ApiChat.sendMessage(messagesData, chatId)"
     class="relative bottom-0 mx-0 mb-0 rounded-none md:sticky md:bottom-3 md:mx-4 md:mb-3 md:rounded-2xl flex justify-center items-center bg-white px-6"
   >
     <SendFileButton />
     <textarea
-      @keydown.enter.prevent="ApiChat.sendMessage(messagesData)"
+      @keydown.enter.prevent="ApiChat.sendMessage(messagesData, chatId)"
       v-bind="$attrs"
       class="outline-none border-solid resize-none overflow-hidden w-full pt-5"
       :placeholder="t('writeMessage')"
@@ -28,6 +28,7 @@ import { ApiChat } from '@/entities/chat'
 
 const sendMessageFormProps = defineProps<{
   uuid: string
+  chatId: number
 }>()
 
 const { t } = useI18n({ useScope: 'global' })
@@ -40,6 +41,7 @@ const userId: string = String(storage.getData('id'))
 
 const messagesData: TMessage = reactive({
   userId: userId,
+  chatId: sendMessageFormProps.chatId,
   text: '',
   sendTime: '',
   username: usersStore.username,
