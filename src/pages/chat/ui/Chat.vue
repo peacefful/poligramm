@@ -1,14 +1,19 @@
 <template>
   <MainLayout>
     <div class="flex flex-col justify-between min-h-screen">
-      <ChatHeader :chat-name="chatStore?.chat?.roomName" />
-      <Messages
-        v-for="message in messagesStore.getMessages()"
-        :key="message.id"
-        :message="message"
-      />
-      <SendMessageForm :uuid="uuid" />
+      <ChatHeader @open-modal="openModal" :chat-name="chatStore?.chat?.roomName" />
+      <div>
+        <Messages
+          v-for="message in messagesStore.getMessages()"
+          :key="message.userId"
+          :message="message"
+        />
+        <SendMessageForm :uuid="uuid" />
+      </div>
     </div>
+    <Modal class="w-[900px] h-[800px]" @close-modal="closeModal" :is-open-modal="isOpenModal">
+      <AnalysisChat @close-modal="closeModal" :chat="chatStore.chat"/>
+    </Modal>
   </MainLayout>
 </template>
 
@@ -22,10 +27,15 @@ import { Messages } from '@/entities/chat'
 import { joinChatByRoute } from '@/entities/chat'
 import { useCloseChat } from '@/entities/chat'
 import { MainLayout } from '@/shared/ui/layouts/main'
+import { useToggleModal } from '@/shared/lib/hooks'
+import { Modal } from '@/shared/ui/modal'
+import { AnalysisChat } from '@/widgets/analysisChat'
 
 useCloseChat()
 
 const route = useRoute()
+
+const { isOpenModal, closeModal, openModal } = useToggleModal()
 
 const messagesStore = useMessagesStore()
 const chatStore = useChatsStore()

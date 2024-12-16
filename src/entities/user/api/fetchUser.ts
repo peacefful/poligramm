@@ -1,7 +1,7 @@
 import { http } from "@/shared/api"
 import type { TUser } from "@/shared/types"
 
-export const fetchUser = async (id: string | null): Promise<TUser | Error> => {
+export const fetchUser = async (id: number): Promise<TUser | Error> => {
   try {
     const user: TUser = (await http.get(`/api/users/${id}`)).data
     return user

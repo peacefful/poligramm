@@ -1,5 +1,5 @@
 <template>
-  <header @click="openModal" class="cursor-pointer">
+  <header @click="$emit('openModal')" class="cursor-pointer mb-20">
     <div
       class="fixed top-0 left-[383px] right-0 bg-white h-[70px] px-4 flex justify-between items-center"
     >
@@ -11,22 +11,11 @@
       </div>
     </div>
   </header>
-  <Modal class="w-[900px] h-[800px]" @close-modal="closeModal" :is-open-modal="isOpenModal">
-    <PreviewCard @close-modal="closeModal" :chat="chatsStore.chat" />
-  </Modal>
 </template>
 
 <script setup lang="ts">
-import { useToggleModal } from '@/shared/lib/hooks'
 import { Icon } from '@/shared/ui/icon'
-import { Modal } from '@/shared/ui/modal'
-import { useChatsStore } from '@/entities/chat'
-import { PreviewCard } from '@/entities/chat'
 
 defineProps<{ chatName?: string }>()
-
-const chatsStore = useChatsStore()
-
-
-const { isOpenModal, closeModal, openModal } = useToggleModal()
+defineEmits(['openModal'])
 </script>

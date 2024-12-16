@@ -17,6 +17,7 @@
     "@types/uuid": "^9.0.7",
     "@vee-validate/yup": "^4.12.6",
     "axios": "^1.6.2",
+    "chart.js": "^4.4.7",
     "dayjs": "^1.11.10",
     "gh-pages": "^6.1.1",
     "js-cookie": "^3.0.5",
@@ -28,6 +29,7 @@
     "uuid": "^9.0.1",
     "vee-validate": "^4.12.6",
     "vue": "^3.3.4",
+    "vue-chartjs": "^5.3.2",
     "vue-i18n": "^9.10.2",
     "vue-router": "^4.2.5"
   },

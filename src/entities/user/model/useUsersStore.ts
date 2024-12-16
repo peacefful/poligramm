@@ -17,7 +17,7 @@ export const useUsersStore = defineStore('usersStore', {
         this.users = res as TUserChat[]
       })
     },
-    getUser(id: string | null) {
+    getUser(id: number) {
       ApiUser.fetchUser(id).then((res) => {
         if (res instanceof Error) return res.message
         this.user = res as TUserChat

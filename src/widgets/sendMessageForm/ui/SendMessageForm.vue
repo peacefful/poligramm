@@ -36,10 +36,10 @@ const usersStore = useUsersStore()
 
 const userId: string = String(storage.getData('id'))
 
-usersStore.getUser(userId)
+// usersStore.getUser(userId)
 
 const messagesData: TMessage = reactive({
-  id: userId,
+  userId: userId,
   text: '',
   sendTime: '',
   username: usersStore.username,

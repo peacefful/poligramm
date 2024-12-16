@@ -3,5 +3,6 @@ export type TUser = {
   surname: string
   name: string
   login: string
+  uuid: string
   password: string
 }

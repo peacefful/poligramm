@@ -1,13 +1,15 @@
 <template>
-  <div
-    class="bg-default text-white rounded-2xl p-3 my-4 mx-4 max-w-xl break-words"
-    :class="{
-      'ml-auto': userId === message.id,
-      'mr-auto': userId !== message.id
-    }"
-  >
-    <div>{{ message.text }}</div>
-    <div class="text-xs text-right">{{ message.sendTime }}</div>
+  <div class="flex flex-col">
+    <div
+      class="bg-default text-white rounded-2xl my-2  p-3 break-words inline-block max-w-xl"
+      :class="{
+        'ml-auto mr-4': checkUserMessage(userId) === +message.userId,
+        'mr-auto ml-4': checkUserMessage(userId) !== +message.userId
+      }"
+    >
+      <div>{{ message.text }}</div>
+      <div class="text-xs text-right">{{ message.sendTime }}</div>
+    </div>
   </div>
 </template>
 
@@ -22,4 +24,8 @@ type TPropsMessages = {
 defineProps<TPropsMessages>()
 
 const userId: string | null = storage.getData('id')
+
+const checkUserMessage = (userId: string | null) => {
+  return userId !== null ? +userId : 0
+}
 </script>

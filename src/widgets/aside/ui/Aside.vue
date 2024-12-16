@@ -24,10 +24,13 @@
           time="12:43"
         />
       </div>
-      <div v-else class="text-center mt-2">
-        {{ t('noChats') }}
+      <div v-else class="mt-4 flex justify-center">
+        <Button @click="openModal" color="primary" :is-rounded-lg="true">Создайте чат</Button>
       </div>
     </div>
+    <Modal class="w-[600px]" @close-modal="closeModal" :is-open-modal="isOpenModal">
+      <ChatForm @close-modal="closeModal" />
+    </Modal>
   </aside>
 </template>
 
@@ -40,18 +43,23 @@ import { ChatCard, searchChats, useChatsStore } from '@/entities/chat'
 import { BurgerMenuButton } from '@/entities/common'
 import { useUsersStore } from '@/entities/user'
 import { storage } from '@/shared/lib/utils'
+import { Button } from '@/shared/ui/button'
 import type { TSearchChat, TLoginChat } from '@/entities/chat'
 import { useMessagesStore } from '@/entities/chat'
+import { Modal } from '@/shared/ui/modal'
+import { ChatForm } from '@/features/chat'
+import { useToggleModal } from '@/shared/lib/hooks'
 
 const router = useRouter()
-const { t } = useI18n({ useScope: 'global' })
 
 const id: string | null = storage.getData('id')
 
-const messagesStore = useMessagesStore()
+const { isOpenModal, closeModal, openModal } = useToggleModal()
 
+const messagesStore = useMessagesStore()
 const userStore = useUsersStore()
-userStore.getUser(id)
+
+userStore.getUser(id !== null ? +id : 0)
 
 const searchData = reactive<TSearchChat>({
   chatName: '',

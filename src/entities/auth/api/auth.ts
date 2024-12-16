@@ -17,7 +17,7 @@ export const authorization = async (
     if (authUser) {
       Cookies.set('accessToken', authUser.accessToken)
       Cookies.set('refreshToken', authUser.refreshToken)
-      Cookies.set('uuid', authUser.uuid)
+      Cookies.set('uuid',authUser.uuid)
       storage.setData('id', authUser.id)
     }
 

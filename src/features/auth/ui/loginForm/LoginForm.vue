@@ -16,10 +16,10 @@
           v-model="userData.password"
         />
       </div>
-      <ErrorMessage :isError>
+      <ToastMessage v-if="isError" type-toast="error">
         <div v-if="errorStatus === 404">{{ t('notAccount', 2) }}</div>
         <div v-else>Не правильный логин или пароль</div>
-      </ErrorMessage>
+      </ToastMessage>
     </template>
     <template #hint>
       {{ t('notAccount') }}
@@ -34,7 +34,7 @@
 import { ApiAuth, AuthModel } from '@/entities/auth'
 import { Form } from '@/shared/ui/form'
 import { VeeInput } from '@/shared/ui/input'
-import { ErrorMessage } from '@/entities/auth'
+import { ToastMessage } from '@/entities/auth'
 import { AxiosError } from 'axios'
 import { useRouter } from 'vue-router'
 import { useForm } from 'vee-validate'

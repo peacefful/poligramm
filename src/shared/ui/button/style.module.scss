@@ -14,4 +14,8 @@
     @apply bg-[#279eff] 
     hover:bg-[#50b0ff]
   }
+  &_danger {
+    @apply bg-[#f00] 
+    hover:bg-[#ff4f4f]
+  }
 }

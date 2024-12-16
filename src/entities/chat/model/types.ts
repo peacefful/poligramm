@@ -5,6 +5,11 @@ export type TSearchChat = {
   chats: TChat[]
 }
 
+export type TCreateChat = {
+  roomName: string
+  description: string
+}
+
 export type TLoginChat = Omit<TChat, 'userId'>
 
 export type TUpdateChat = {
@@ -14,7 +19,7 @@ export type TUpdateChat = {
 
 export type TJoinChat = {
   route: string
-  getChat: (id: string) => void
+  getChat: (id: number) => void
 }
 
 export type TNotificationJoinChat = {
@@ -26,10 +31,15 @@ export type TNotificationJoinChat = {
 
 export type TDeleteChat = {
   chats: TChat[]
-  index: number
+  id: number
 }
 
 export type TAddChat = {
   chats: TChat[]
   chat: TChat
+}
+
+export type TConfirmDeleteChat = {
+  isOpenModal: boolean
+  chatId: number
 }

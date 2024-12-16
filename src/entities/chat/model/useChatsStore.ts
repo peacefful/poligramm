@@ -12,15 +12,18 @@ export const useChatsStore = defineStore('chatsStore', {
     }
   },
   actions: {
-    getChat(id: string | null) {
+    getChat(id: number) {
       ApiChat.fetchChat(id).then((res) => {
         if (res instanceof Error) return res.message
         this.chat = res as TChat
       })
     },
+    removeChat(id: number) {
+      ApiChat.deleteChat(id)
+    },
     setLoginChatData(chatData: TLoginChat): TLoginChat {
       this.currentSelectedChat = chatData
-      this.getChat(chatData.id)
+      // this.getChat(chatData.id)
       return chatData
     }
   }

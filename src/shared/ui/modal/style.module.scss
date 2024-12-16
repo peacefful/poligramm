@@ -11,6 +11,13 @@
   overflow-y: auto;
   z-index: 3;
 
+  /* Скрыть скролл */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; /* Для IE и Edge */
+  scrollbar-width: none; /* Для Firefox */
+
   .modal-form__box {
     padding: 2%;
     border-radius: 15px;
@@ -22,14 +29,4 @@
       border-radius: 0px;
     }
   }
-}
-
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
 }
