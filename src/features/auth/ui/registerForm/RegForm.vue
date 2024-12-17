@@ -61,7 +61,8 @@ const userData: TUser = reactive({
   login: '',
   password: '',
   name: '',
-  surname: ''
+  surname: '',
+  uuid: ''
 })
 
 const { handleSubmit } = useForm({

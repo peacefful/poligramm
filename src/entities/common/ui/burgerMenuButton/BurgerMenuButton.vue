@@ -8,5 +8,5 @@
 import { inject } from 'vue'
 import BurgerMenuIcon from '@/shared/assets/icons/BurgerMenuIcon.vue'
 
-const { openBurgerMenu } = inject('toggleBurgerMenu') as () => boolean
+const { openBurgerMenu } = inject('toggleBurgerMenu') as any
 </script>

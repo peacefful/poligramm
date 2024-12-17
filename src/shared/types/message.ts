@@ -5,5 +5,6 @@ export type TMessage = {
   sendTime: string
   username: string | null
   joinUser?: string[]
+  file: string
   uuid?: string
 }

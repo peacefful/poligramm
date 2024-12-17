@@ -9,7 +9,7 @@
       </div>
       <div class="ml-4">
         <p class="font-bold text-xl">{{ chatName }}</p>
-        <p class="text-lx">{{ lastMessage }}</p>
+        <!-- <p class="text-lx">{{ lastMessage }}</p> -->
       </div>
     </div>
     <div>{{ time }}</div>

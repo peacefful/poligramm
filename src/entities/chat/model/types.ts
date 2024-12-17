@@ -10,7 +10,7 @@ export type TCreateChat = {
   description: string
 }
 
-export type TLoginChat = Omit<TChat, 'userId'>
+export type TLoginChat = Omit<TChat, 'userId' | 'description' | 'messages'>
 
 export type TUpdateChat = {
   id: number,

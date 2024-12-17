@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <img
     @click="$emit('toogle-menu')"
     class="p-1 rounded-full active:bg-[#3090df] ease-in duration-100 cursor-pointer"
@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { type IMenu } from '@/interfaces/iMenu'
+// import { type IMenu } from '@/interfaces/iMenu'
 
 const { t } = useI18n({ useScope: 'global' })
 
@@ -31,5 +31,4 @@ defineEmits(['toogle-menu'])
 
 <style scoped>
 @import url("./style.module.scss");
-</style>
-@/shared/types/iMenu
+</style> -->

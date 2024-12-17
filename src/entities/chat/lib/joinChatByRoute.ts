@@ -5,6 +5,6 @@ import { type TJoinChat } from '@/entities/chat'
 export const joinChatByRoute = (joinData: TJoinChat): string => {
   const { id, uuid } = getIdUuidByRoutePath(joinData.route)
   ApiChat.joinToChat(uuid)
-  joinData.getChat(id)
+  joinData.getChat(+id)
   return uuid
 }

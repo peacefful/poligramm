@@ -6,7 +6,7 @@ export const notificationJoinChat = (notificationJoinChatData: TNotificationJoin
 
   SOCKETS.on('userJoin', (username) => {
     const copyUserMessage = { ...notificationJoinChatData.userMessage }
-    copyUserMessage.id = '0'
+    // copyUserMessage.id = '0'
     copyUserMessage.text = username
     notificationJoinChatData.setMessage(copyUserMessage)
   })

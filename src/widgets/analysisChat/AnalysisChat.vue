@@ -12,19 +12,21 @@
           <div>
             <Doughnut class="chart" :options="options" :data="chartData2" />
           </div>
-          <div>
-            <Doughnut class="chart" :options="options" :data="chartData2" />
-          </div>
         </div>
       </div>
       <div class="h-[0.5px] mt-4 bg-slate-400"></div>
       <div class="mt-4">
-        <Button @click="openAddUser" class="gap-2" :is-rounded-lg="true">
+        <Button
+          v-if="userId ? +userId === chat.userId : null"
+          @click="openAddUser"
+          class="gap-2"
+          :is-rounded-lg="true"
+        >
           Пригласить пользователей <AddUsersIcon />
         </Button>
       </div>
     </div>
-    <div class="mt-auto ml-auto flex gap-2">
+    <div v-if="userId ? +userId === chat.userId : null" class="mt-auto ml-auto flex gap-2">
       <Button @click="$emit('closeModal')" class="w-32" color="primary" :is-rounded-lg="true">
         Закрыть
       </Button>
