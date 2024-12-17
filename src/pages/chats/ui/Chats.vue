@@ -21,7 +21,7 @@ import { useRouter } from 'vue-router'
 import { MainLayout } from '@/shared/ui/layouts/main'
 import { SOCKETS } from '@/shared/api'
 import { reactive, ref } from 'vue'
-import Notification from '@/components/Notification.vue'
+import { Notification } from '@/entities/chat'
 import Cookies from 'js-cookie'
 import { useEnterChat } from '@/shared/lib/hooks'
 
