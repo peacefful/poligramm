@@ -1,6 +1,6 @@
 <template>
   <MainLayout>
-    <div class="flex flex-col justify-between min-h-screen">
+    <div v-if="chatStore?.chat" class="flex flex-col justify-between min-h-screen">
       <ChatHeader @open-modal="openModal" :chat-name="chatStore?.chat?.roomName" />
       <div>
         <Messages
@@ -11,8 +11,11 @@
         <SendMessageForm :chat-id="chatStore.chat.id" :uuid="uuid" />
       </div>
     </div>
+    <div v-else class="flex flex-col justify-center items-center min-h-screen">
+      <p class="text-white bg-black p-2">Чата был удален</p>
+    </div>
     <Modal class="w-[900px] h-[800px]" @close-modal="closeModal" :is-open-modal="isOpenModal">
-      <AnalysisChat @close-modal="closeModal" :chat="chatStore.chat"/>
+      <AnalysisChat @close-modal="closeModal" :chat="chatStore.chat" />
     </Modal>
   </MainLayout>
 </template>
