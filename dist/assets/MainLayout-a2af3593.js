@@ -1,1 +1,0 @@
-import{_ as o,o as s,n,O as t}from"./index-48391db5.js";const c={},a={class:"hidden sm:block"};function r(e,_){return s(),n("main",a,[t(e.$slots,"default")])}const d=o(c,[["render",r]]);export{d as M};
