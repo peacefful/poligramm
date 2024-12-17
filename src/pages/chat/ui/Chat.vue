@@ -12,16 +12,24 @@
       </div>
     </div>
     <div v-else class="flex flex-col justify-center items-center min-h-screen">
-      <p class="text-white bg-black p-2">Чата был удален</p>
+      <p class="text-white bg-black p-2 rounded-xl">Чата был удален</p>
     </div>
     <Modal class="w-[900px] h-[800px]" @close-modal="closeModal" :is-open-modal="isOpenModal">
       <AnalysisChat @close-modal="closeModal" :chat="chatStore.chat" />
     </Modal>
+    <Notification
+      :is-invite-room="isInviteRoom"
+      :chatTitle="inviteChat.title"
+      @enter-chat="
+        enterChat(inviteChat.uuid, inviteChat.title, inviteChat.roomId, closeNotification)
+      "
+      @close-notification="closeNotification"
+    />
   </MainLayout>
 </template>
 
 <script setup lang="ts">
-import { reactive, watch } from 'vue'
+import { reactive, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { ChatHeader } from '@/widgets/chatHeader'
 import { SendMessageForm } from '@/widgets/sendMessageForm'
@@ -30,9 +38,11 @@ import { Messages } from '@/entities/chat'
 import { joinChatByRoute } from '@/entities/chat'
 import { useCloseChat } from '@/entities/chat'
 import { MainLayout } from '@/shared/ui/layouts/main'
-import { useToggleModal } from '@/shared/lib/hooks'
+import { useEnterChat, useToggleModal } from '@/shared/lib/hooks'
 import { Modal } from '@/shared/ui/modal'
 import { AnalysisChat } from '@/widgets/analysisChat'
+import { SOCKETS } from '@/shared/api'
+import Cookies from 'js-cookie'
 
 useCloseChat()
 
@@ -56,4 +66,30 @@ watch(route, () => {
     getChat: chatStore.getChat
   })
 })
+
+const isInviteRoom = ref(false)
+const inviteChat = reactive({
+  title: '',
+  uuid: '',
+  userUuid: false,
+  roomId: null
+})
+
+const closeNotification = () => (isInviteRoom.value = false)
+
+SOCKETS.emit('personalInvite', Cookies.get('uuid'))
+
+SOCKETS.on('messageInvite', async (uuidRoom, titleRoom, userUuid, roomId) => {
+  inviteChat.title = titleRoom
+  inviteChat.uuid = uuidRoom
+  inviteChat.roomId = roomId
+  inviteChat.userUuid = userUuid === Cookies.get('uuid')
+
+  if (inviteChat.title && inviteChat.uuid && inviteChat.userUuid) {
+    isInviteRoom.value = true
+    setTimeout(() => (isInviteRoom.value = false), 5000)
+  }
+})
+
+const { enterChat } = useEnterChat()
 </script>
