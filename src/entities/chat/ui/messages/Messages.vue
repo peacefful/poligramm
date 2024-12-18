@@ -12,7 +12,7 @@
       </a>
       <div v-else>{{ message.text }}</div>
       <div class="text-xs text-right">
-        {{ checkUserMessage(userId) === +message.userId ? 'Вы' : message.username }}
+        {{ checkUserMessage(userId) === +message.userId ? t('you') : message.username }}
         {{ message.sendTime }}
       </div>
     </div>
@@ -23,6 +23,9 @@
 import { storage } from '@/shared/lib/utils'
 import { type TMessage } from '@/shared/types'
 import DownloadFileIcon from '@/shared/assets/icons/DownloadFileIcon.vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n({ useScope: 'global' })
 
 type TPropsMessages = {
   message: TMessage

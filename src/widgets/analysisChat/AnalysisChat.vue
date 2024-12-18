@@ -3,17 +3,15 @@
     <div>
       <h1 class="text-3xl font-bold">{{ chat.roomName }}</h1>
       <p class="mt-4">{{ chat.description }}</p>
-      <div class="mt-12">
-        <h2 class="text-2xl">Анализ чата:</h2>
+      <div class="mt-12" v-if="analiseData.textLength">
+        <h2 class="text-2xl">{{ t('analiseChat') }}:</h2>
         <div class="mt-4 grid grid-cols-3 gap-1">
           <div>
-            <Doughnut class="chart" :options="options" :data="chartData1" />
-          </div>
-          <div>
-            <Doughnut class="chart" :options="options" :data="chartData2" />
+            <Doughnut class="chart" :options="options" :data="chartData1" :key="chartKey" />
           </div>
         </div>
       </div>
+      <div v-else>Статистики пока нету</div>
       <div class="h-[0.5px] mt-4 bg-slate-400"></div>
       <div class="mt-4">
         <Button
@@ -22,16 +20,16 @@
           class="gap-2"
           :is-rounded-lg="true"
         >
-          Пригласить пользователей <AddUsersIcon />
+          {{ t('inviteUsers') }} <AddUsersIcon />
         </Button>
       </div>
     </div>
     <div v-if="userId ? +userId === chat.userId : null" class="mt-auto ml-auto flex gap-2">
       <Button @click="$emit('closeModal')" class="w-32" color="primary" :is-rounded-lg="true">
-        Закрыть
+        {{ t('close') }}
       </Button>
       <Button @click="openConfirmDeleteChat" class="w-32" color="danger" :is-rounded-lg="true">
-        Удалить чат
+        {{ t('deleteChat') }}
       </Button>
     </div>
     <ConfirmDeleteChatModal
@@ -55,7 +53,7 @@
 import { type TChat } from '@/shared/types'
 import { Doughnut } from 'vue-chartjs'
 import { Button } from '@/shared/ui/button'
-import { ref } from 'vue'
+import { onMounted, reactive, ref, watch } from 'vue'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import { useToggleModal } from '@/shared/lib/hooks'
 import { useUsersStore } from '@/entities/user'
@@ -65,8 +63,12 @@ import { storage } from '@/shared/lib/utils'
 import { ConfirmDeleteChatModal } from '@/features/chat'
 import { InviteUsers } from '../inviteUsers'
 import AddUsersIcon from '@/shared/assets/icons/AddUsersIcon.vue'
+import { http } from '@/shared/api'
+import { useI18n } from 'vue-i18n'
 
-defineProps<{ chat: TChat }>()
+const { t } = useI18n({ useScope: 'global' })
+
+const props = defineProps<{ chat: TChat }>()
 defineEmits(['closeModal'])
 
 const {
@@ -98,24 +100,36 @@ const deleteCurrentChat = (id: number) => {
   router.push('/chats')
 }
 
-ChartJS.register(Tooltip, Legend, ArcElement)
-
-const chartData1 = ref({
-  labels: ['Text', 'Files', 'Others'],
-  datasets: [
-    {
-      backgroundColor: ['#242424', '#bc0ce8', '#279eff'],
-      data: [50, 2, 27]
-    }
-  ]
+const analiseData = reactive({
+  fileLength: 0,
+  textLength: 0
 })
 
-const chartData2 = ref({
-  labels: ['Images', 'Videos'],
+ChartJS.register(Tooltip, Legend, ArcElement)
+
+const fetchChat = async (): Promise<void | Error> => {
+  try {
+    const analiseChat = (await http.post(`/api/analise/${props.chat.id}`)).data
+
+    analiseData.fileLength = analiseChat.fileLength
+    analiseData.textLength = analiseChat.textLength
+  } catch (error) {
+    return new Error('Error fetching chat')
+  }
+}
+
+onMounted(() => {
+  fetchChat()
+})
+
+console.log(analiseData)
+
+const chartData1 = ref({
+  labels: [t('textMessage'), t('files')],
   datasets: [
     {
-      backgroundColor: ['#242424', '#279eff'],
-      data: [30, 10]
+      backgroundColor: ['#242424', '#bc0ce8'],
+      data: [analiseData.textLength, analiseData.fileLength]
     }
   ]
 })
@@ -124,6 +138,16 @@ const options = {
   responsive: true,
   maintainAspectRatio: false
 }
+
+const chartKey = ref(0)
+
+watch(
+  () => [analiseData.textLength, analiseData.fileLength],
+  ([textLength, fileLength]) => {
+    chartData1.value.datasets[0].data = [textLength, fileLength]
+    chartKey.value += 1
+  }
+)
 </script>
 
 <style scoped>

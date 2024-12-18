@@ -1,6 +1,6 @@
 <template>
   <Modal @close-modal="$emit('closeModal')" :is-open-modal="isOpenModal">
-    <h3>Вы уверены что хотите удалить данный чат?</h3>
+    <h3>{{ t('confirmDelete') }}</h3>
     <div class="flex justify-center gap-3 mt-4">
       <Button
         @click="$emit('deleteCurrentChat', chatId)"
@@ -8,14 +8,14 @@
         color="primary"
         :is-rounded-lg="true"
       >
-        Да
+        {{ t('yes') }}
       </Button>
       <Button 
         @click="$emit('closeModal')" 
         class="w-20" 
         :is-rounded-lg="true"
       >
-        Нет 
+        {{t('no')}} 
       </Button>
     </div>
   </Modal>
@@ -25,6 +25,9 @@
 import { Modal } from '@/shared/ui/modal';
 import { Button } from '@/shared/ui/button';
 import { type TConfirmDeleteChat } from '@/entities/chat';
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n({ useScope: 'global' })
 
 defineProps<TConfirmDeleteChat>()
 

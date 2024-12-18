@@ -5,7 +5,7 @@ export const useMessagesStore = defineStore('messagesStore', {
   state: () => {
     return {
       messagesData: {
-        userId: '',
+        userId: 0,
         chatId: 0,
         text: '',
         sendTime: '',

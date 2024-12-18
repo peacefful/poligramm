@@ -1,7 +1,7 @@
 <template>
   <Modal class="w-[440px]" @close-modal="$emit('closeAddUser')" :is-open-modal="isOpenAddUser">
     <ul>
-      <p class="font-bold text-[20px]">Выберите пользователей</p>
+      <p class="font-bold text-[20px]">{{ t('selectUser') }}</p>
       <li class="mt-4" v-for="user in users" :key="user.id">
         <div class="flex justify-between">
           {{ user.name }} {{ user.surname }}
@@ -9,12 +9,12 @@
         </div>
       </li>
     </ul>
-    <Button @click="inviteUsers" class="mt-7 w-full" :is-rounded-lg="true"> Добавить </Button>
+    <Button @click="inviteUsers" class="mt-7 w-full" :is-rounded-lg="true"> {{ t('add') }} </Button>
     <ToastMessage v-if="isError" class="text-center mt-2" type-toast="error">
-      Ошибка, вы не выбрали пользователей
+      {{ t('inviteError') }}
     </ToastMessage>
     <ToastMessage v-if="isSuccess" class="text-center mt-2" type-toast="success">
-      Пользователям отправлены приглашения
+      {{ t('inviteSuccess') }}
     </ToastMessage>
   </Modal>
 </template>
@@ -27,6 +27,9 @@ import { type TInviteUser } from '@/entities/user'
 import { ToastMessage } from '@/entities/auth'
 import { SOCKETS } from '@/shared/api'
 import { storage } from '@/shared/lib/utils'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n({ useScope: 'global' })
 
 const props = defineProps<TInviteUser>()
 

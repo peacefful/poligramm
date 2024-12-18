@@ -59,5 +59,6 @@ const userStore = useUsersStore()
 const submitChat = async () => {
   const chat: TChat | Error = await ApiChat.createChat(dataChat)
   chat && chatFormEmit('close-modal'), userStore.getUser(id !== null ? +id : 0)
+  location.reload()
 }
 </script>

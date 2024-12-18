@@ -43,6 +43,7 @@ import { Modal } from '@/shared/ui/modal'
 import { AnalysisChat } from '@/widgets/analysisChat'
 import { SOCKETS } from '@/shared/api'
 import Cookies from 'js-cookie'
+import { Notification } from '@/entities/chat'
 
 useCloseChat()
 
