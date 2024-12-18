@@ -1,4 +1,4 @@
-var dn=Object.defineProperty;var fn=(i,t,e)=>t in i?dn(i,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):i[t]=e;var S=(i,t,e)=>(fn(i,typeof t!="symbol"?t+"":t,e),e);import{d as un,o as gn,n as pn,O as mn,$ as bn}from"./index-f8fe02d2.js";const Za=un({__name:"ToastMessage",props:{typeToast:{}},setup(i){return(t,e)=>(gn(),pn("div",{class:bn(["animate-fade-down animate-once animate-duration-150",{"text-red-500":t.typeToast==="error","text-green-500":t.typeToast==="success"}])},[mn(t.$slots,"default")],2))}});/*!
+var dn=Object.defineProperty;var fn=(i,t,e)=>t in i?dn(i,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):i[t]=e;var S=(i,t,e)=>(fn(i,typeof t!="symbol"?t+"":t,e),e);import{d as un,o as gn,n as pn,O as mn,$ as bn}from"./index-fe7542b4.js";const Za=un({__name:"ToastMessage",props:{typeToast:{}},setup(i){return(t,e)=>(gn(),pn("div",{class:bn(["animate-fade-down animate-once animate-duration-150",{"text-red-500":t.typeToast==="error","text-green-500":t.typeToast==="success"}])},[mn(t.$slots,"default")],2))}});/*!
  * @kurkle/color v0.3.4
  * https://github.com/kurkle/color#readme
  * (c) 2024 Jukka Kurkela
