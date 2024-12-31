@@ -9,6 +9,24 @@
           <div>
             <Doughnut class="chart" :options="options" :data="chartData1" :key="chartKey" />
           </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Категории</th>
+                <th>Количество</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Текстовые сообщения</td>
+                <td>{{ analiseData.textLength }}</td>
+              </tr>
+              <tr>
+                <td>Файловые сообщения</td>
+                <td>{{ analiseData.fileLength }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
       <div v-else>Статистики пока нету</div>
@@ -118,9 +136,7 @@ const fetchChat = async (): Promise<void | Error> => {
   }
 }
 
-onMounted(() => {
-  fetchChat()
-})
+onMounted(() => fetchChat())
 
 console.log(analiseData)
 

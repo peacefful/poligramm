@@ -5,7 +5,7 @@
     >
       <div class="flex items-center">
         <div class="bg-default p-2 rounded-full mr-2">
-          <Icon class="h-8 w-8" name="usersGroup" />
+          <UsersGroupIcon class="h-8 w-8" />
         </div>
         <h1 class="font-bold text-xl">{{ chatName }}</h1>
       </div>
@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { Icon } from '@/shared/ui/icon'
+import UsersGroupIcon from '@/shared/assets/icons/UsersGroupIcon.vue';
 
 defineProps<{ chatName?: string }>()
 defineEmits(['openModal'])

@@ -1,0 +1,28 @@
+.layout-main {
+  @apply flex;
+}
+.signin {
+  @apply h-screen flex flex-col justify-center items-center;
+}
+article {
+  @apply ml-[364px] 
+  text-[22px] 
+  w-full 
+  flex 
+  flex-col 
+  justify-center 
+  min-h-screen;
+}
+
+@media (max-width: 1400px) {
+  article {
+    @apply h-screen ml-0;
+    section {
+      @apply text-[15px];
+    }
+    form {
+      @apply text-[15px];
+      padding: 4% 0%;
+    }
+  }
+}

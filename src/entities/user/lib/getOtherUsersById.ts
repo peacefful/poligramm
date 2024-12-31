@@ -1,8 +1,7 @@
-import { storage } from '@/shared/lib/utils'
-import { type TUser } from '@/shared/types'
+import { storage } from "@/shared/lib/utils";
+import { type TUser } from "@/shared/types";
 
-const id: string | null = storage.getData('id')
-
-export const getOtherUsersById = (users: TUser[]): TUser[] => {
-  return users.filter((user) => user.id !== id)
-}
+export const getOtherUsersById = (users: TUser[]): TUser[] | null => {
+  const userId = useCookie("userId");
+  return users.filter((user) => user.id !== userId.value);
+};

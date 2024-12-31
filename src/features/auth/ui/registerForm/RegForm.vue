@@ -78,5 +78,5 @@ const onSubmit = handleSubmit(async () => {
 </script>
 
 <style>
-@import url('@/shared/assets/styles/auth-reg-form.scss');
+/* @import url('@/shared/assets/styles/auth-reg-form.scss'); */
 </style>

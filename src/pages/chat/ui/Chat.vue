@@ -42,7 +42,6 @@ import { useEnterChat, useToggleModal } from '@/shared/lib/hooks'
 import { Modal } from '@/shared/ui/modal'
 import { AnalysisChat } from '@/widgets/analysisChat'
 import { SOCKETS } from '@/shared/api'
-import Cookies from 'js-cookie'
 import { Notification } from '@/entities/chat'
 
 useCloseChat()
@@ -78,13 +77,13 @@ const inviteChat = reactive({
 
 const closeNotification = () => (isInviteRoom.value = false)
 
-SOCKETS.emit('personalInvite', Cookies.get('uuid'))
+SOCKETS.emit('personalInvite', useCookie('uuid').value)
 
 SOCKETS.on('messageInvite', async (uuidRoom, titleRoom, userUuid, roomId) => {
   inviteChat.title = titleRoom
   inviteChat.uuid = uuidRoom
   inviteChat.roomId = roomId
-  inviteChat.userUuid = userUuid === Cookies.get('uuid')
+  inviteChat.userUuid = userUuid === useCookie('uuid').value
 
   if (inviteChat.title && inviteChat.uuid && inviteChat.userUuid) {
     isInviteRoom.value = true

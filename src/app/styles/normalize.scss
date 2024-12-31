@@ -1,8 +1,8 @@
-$font: 'Montserrat', sans-serif;
+$font: "Montserrat", sans-serif;
 
 @font-face {
-  font-family: 'Montserrat';
-  src: url('@/shared/assets/fonts/Montserrat-Regular.ttf') format('truetype');
+  font-family: "Montserrat";
+  src: url("@/shared/assets/fonts/Montserrat-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
@@ -20,8 +20,8 @@ body {
   font-family: $font;
 }
 
-input[type='password'],
-input[type='text'] {
+input[type="password"],
+input[type="text"] {
   border-radius: 5px;
   padding: 4px;
   border: 1px solid #0000001e;

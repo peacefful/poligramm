@@ -26,6 +26,7 @@ import { storage } from '@/shared/lib/utils'
 import { type TMessage } from '@/shared/types'
 import { ApiChat } from '@/entities/chat'
 import { useMessagesStore } from '@/entities/chat'
+import { useRoute } from 'vue-router'
 
 const sendMessageFormProps = defineProps<{
   uuid: string
@@ -39,6 +40,8 @@ const messagesStore = useMessagesStore()
 
 const userId: string = String(storage.getData('id'))
 
+const route = useRoute()
+
 // const messagesData: TMessage = reactive({
 //   userId: userId,
 //   chatId: sendMessageFormProps.chatId,
@@ -51,7 +54,7 @@ const userId: string = String(storage.getData('id'))
 
 messagesStore.setMessagesData({
   userId: userId,
-  chatId: sendMessageFormProps.chatId,
+  chatId: +route.params.id,
   text: '',
   sendTime: '',
   file: '',

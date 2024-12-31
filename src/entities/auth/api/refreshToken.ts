@@ -1,19 +1,21 @@
-import Cookies from "js-cookie";
 import { AuthModel } from "@/entities/auth";
 import { http } from "@/shared/api";
 
 export const refreshToken = async (): Promise<void | Error> => {
-  try {
-    const currentRefreshToken: string | undefined = Cookies.get('refreshToken')
-    const response: AuthModel.TRefreshTokenResponse = (
-      await http.post('/api/users/refresh', {
-        currentRefreshToken
-      })
-    ).data
+  const refreshToken = useCookie("refreshToken");
+  const accessToken = useCookie("refreshToken");
 
-    Cookies.set('refreshToken', response.refreshToken)
-    Cookies.set('accessToken', response.accessToken)
+  try {
+    const currentRefreshToken: string | null | undefined = refreshToken.value;
+    const response: AuthModel.TRefreshTokenResponse = (
+      await http.post("/api/users/refresh", {
+        currentRefreshToken,
+      })
+    ).data;
+
+    refreshToken.value = response.refreshToken;
+    accessToken.value = response.accessToken;
   } catch (error) {
-    return new Error('Error when receiving an updated access token')
+    return new Error("Error when receiving an updated access token");
   }
-}
+};
