@@ -1,4 +1,4 @@
-$font: "Montserrat", sans-serif;
+$font: 'Montserrat', sans-serif;
 
 //@font-face {
 //  font-family: 'Montserrat';
@@ -17,7 +17,9 @@ body {
   background-color: #ebebeb;
   color: #242424;
   font-family: $font;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 body.dark {
@@ -25,8 +27,8 @@ body.dark {
   background-color: #111111;
 }
 
-input[type="password"],
-input[type="text"] {
+input[type='password'],
+input[type='text'] {
   border-radius: 5px;
   padding: 4px;
   border: 1px solid #0000001e;

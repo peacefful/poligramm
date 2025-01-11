@@ -1,2 +1,2 @@
-export * from "./getOtherUsersById"
-export * from "./useRedirectProfilePage"
+export * from './getOtherUsersById'
+export * from './useRedirectProfilePage'

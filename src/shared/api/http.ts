@@ -1,23 +1,23 @@
-import axios from "axios";
+import axios from 'axios'
 
 const getAccessToken = () => {
-  const accessToken = useCookie("accessToken");
-  return accessToken.value;
-};
+  const accessToken = useCookie('accessToken')
+  return accessToken.value
+}
 
 export const http = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL,
-});
+  baseURL: import.meta.env.VITE_BASE_URL
+})
 
 http.interceptors.request.use(
   (config) => {
-    const accessToken = getAccessToken();
+    const accessToken = getAccessToken()
     if (accessToken) {
-      config.headers.Authorization = `Bearer ${accessToken}`;
+      config.headers.Authorization = `Bearer ${accessToken}`
     }
-    return config;
+    return config
   },
   (error) => {
-    return Promise.reject(error);
+    return Promise.reject(error)
   }
-);
+)

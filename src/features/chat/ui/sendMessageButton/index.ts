@@ -1,1 +1,1 @@
-export { default as SendMessageButton } from "./SendMessageButton.vue"
+export { default as SendMessageButton } from './SendMessageButton.vue'

@@ -1,1 +1,1 @@
-export { default as SwitchTheme } from './SwitchTheme.vue';
+export { default as SwitchTheme } from './SwitchTheme.vue'

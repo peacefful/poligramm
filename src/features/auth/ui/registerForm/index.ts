@@ -1,1 +1,1 @@
-export { default as RegForm } from "./RegForm.vue"
+export { default as RegForm } from './RegForm.vue'

@@ -1,6 +1,6 @@
-import type { TMessage } from "@/shared/types"
-import { useMessagesStore } from "../model"
-import { SOCKETS } from "@/shared/api"
+import type { TMessage } from '@/shared/types'
+import { useMessagesStore } from '../model'
+import { SOCKETS } from '@/shared/api'
 
 export const getMessages = async () => {
   const messagesStore = useMessagesStore()

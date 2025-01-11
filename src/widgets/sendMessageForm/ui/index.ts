@@ -1,1 +1,1 @@
-export { default as SendMessageForm } from "./SendMessageForm.vue"
+export { default as SendMessageForm } from './SendMessageForm.vue'

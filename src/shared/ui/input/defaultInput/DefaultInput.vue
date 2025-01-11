@@ -1,15 +1,15 @@
 <template>
   <input
     ref="inputFocus"
-    :type="type ?? 'text'" 
-    :placeholder="placeholder" 
-    v-bind="$attrs" 
-    v-model="value" 
+    :type="type ?? 'text'"
+    :placeholder="placeholder"
+    v-bind="$attrs"
+    v-model="value"
   />
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue"
+import { onMounted, ref } from 'vue'
 
 type TInput = {
   placeholder?: string
@@ -22,7 +22,7 @@ const value = defineModel<string>('value')
 
 const inputFocus = ref<null | HTMLInputElement>(null)
 
-onMounted(() => {  
+onMounted(() => {
   if (inputFocus.value) inputFocus.value.focus()
 })
 </script>

@@ -4,11 +4,7 @@
       <InputFile class="p-3 mr-4" type="file">
         <ImageIcon />
       </InputFile>
-      <DefaultInput 
-        class="w-full" 
-        :placeholder="t('chatName')" 
-        v-model.trim="dataChat.roomName" 
-      />
+      <DefaultInput class="w-full" :placeholder="t('chatName')" v-model.trim="dataChat.roomName" />
     </div>
     <Textarea
       class="w-full my-3 p-2 h-24 border-[1px] rounded-md"
@@ -16,12 +12,7 @@
       v-model.trim="dataChat.description"
     />
     <div class="flex gap-3 ml-auto mt-5">
-      <Button 
-        @click="$emit('close-modal')" 
-        :is-rounded-lg="true"
-        color="primary" 
-        type="reset"
-      >
+      <Button @click="$emit('close-modal')" :is-rounded-lg="true" color="primary" type="reset">
         {{ t('close') }}
       </Button>
       <Button type="submit" :is-rounded-lg="true">
@@ -48,9 +39,9 @@ const { t } = useI18n({ useScope: 'global' })
 
 const chatFormEmit = defineEmits(['close-modal'])
 
-const dataChat:TCreateChat = reactive({
+const dataChat: TCreateChat = reactive({
   roomName: '',
-  description: '',
+  description: ''
 })
 
 const id: string | null = storage.getData('id')

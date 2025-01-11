@@ -5,9 +5,9 @@ export type TUserChat = TUser & {
 }
 
 export type TInviteUser = {
-  isOpenAddUser:boolean
-  users:TUser[]
-  chatName:string
+  isOpenAddUser: boolean
+  users: TUser[]
+  chatName: string
   chatUuid: string
   chat: TChat
 }

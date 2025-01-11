@@ -1,1 +1,1 @@
-export { default as Messages } from "./Messages.vue"
+export { default as Messages } from './Messages.vue'

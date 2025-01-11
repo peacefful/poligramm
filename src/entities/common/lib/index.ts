@@ -1,2 +1,2 @@
-export * from "./useCheckThemeMode"
-export * from "./useSwitchLang";
+export * from './useCheckThemeMode'
+export * from './useSwitchLang'

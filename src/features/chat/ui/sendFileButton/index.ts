@@ -1,1 +1,1 @@
-export { default as SendFileButton } from "./SendFileButton.vue"
+export { default as SendFileButton } from './SendFileButton.vue'

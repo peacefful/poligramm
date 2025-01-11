@@ -1,1 +1,1 @@
-export { default as InviteUsers } from "./inviteUsers.vue"
+export { default as InviteUsers } from './inviteUsers.vue'

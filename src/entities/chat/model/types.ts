@@ -13,7 +13,7 @@ export type TCreateChat = {
 export type TLoginChat = Omit<TChat, 'userId' | 'description' | 'messages'>
 
 export type TUpdateChat = {
-  id: number,
+  id: number
   data: TChat
 }
 
@@ -25,7 +25,7 @@ export type TJoinChat = {
 export type TNotificationJoinChat = {
   uuid: string
   username: string
-  userMessage: TMessage,
+  userMessage: TMessage
   setMessage: (messages: TMessage) => void
 }
 

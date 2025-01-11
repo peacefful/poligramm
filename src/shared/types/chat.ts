@@ -1,4 +1,4 @@
-import type { TMessage } from "./message"
+import type { TMessage } from './message'
 
 export type TChat = {
   id: number

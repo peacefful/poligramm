@@ -1,5 +1,5 @@
-import { http } from "@/shared/api"
-import type { TUser } from "@/shared/types"
+import { http } from '@/shared/api'
+import type { TUser } from '@/shared/types'
 
 export const registration = async (user: TUser): Promise<TUser | Error> => {
   try {

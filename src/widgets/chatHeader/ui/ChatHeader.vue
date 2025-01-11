@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import UsersGroupIcon from '@/shared/assets/icons/UsersGroupIcon.vue';
+import UsersGroupIcon from '@/shared/assets/icons/UsersGroupIcon.vue'
 
 defineProps<{ chatName?: string }>()
 defineEmits(['openModal'])

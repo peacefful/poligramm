@@ -1,2 +1,2 @@
-export * from "./fetchUser"
-export * from "./fetchUsers"
+export * from './fetchUser'
+export * from './fetchUsers'

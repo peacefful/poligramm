@@ -1,5 +1,3 @@
 <template>
-  <main>
-    Profile Page
-  </main>
+  <main>Profile Page</main>
 </template>

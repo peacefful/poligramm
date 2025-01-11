@@ -1,4 +1,4 @@
-import { http } from "@/shared/api"
+import { http } from '@/shared/api'
 
 export const deleteChat = async (id: number) => {
   try {

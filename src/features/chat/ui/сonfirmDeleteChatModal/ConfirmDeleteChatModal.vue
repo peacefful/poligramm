@@ -10,21 +10,17 @@
       >
         {{ t('yes') }}
       </Button>
-      <Button 
-        @click="$emit('closeModal')" 
-        class="w-20" 
-        :is-rounded-lg="true"
-      >
-        {{t('no')}} 
+      <Button @click="$emit('closeModal')" class="w-20" :is-rounded-lg="true">
+        {{ t('no') }}
       </Button>
     </div>
   </Modal>
 </template>
 
 <script setup lang="ts">
-import { Modal } from '@/shared/ui/modal';
-import { Button } from '@/shared/ui/button';
-import { type TConfirmDeleteChat } from '@/entities/chat';
+import { Modal } from '@/shared/ui/modal'
+import { Button } from '@/shared/ui/button'
+import { type TConfirmDeleteChat } from '@/entities/chat'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n({ useScope: 'global' })

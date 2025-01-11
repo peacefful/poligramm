@@ -1,11 +1,11 @@
 <template>
-  <NuxtPage/>
+  <NuxtPage />
 </template>
 
 <script setup lang="ts">
-import {useSwitchTheme} from "@/entities/common";
+import { useSwitchTheme } from '@/entities/common'
 
-const {useCheckThemeMode} = useSwitchTheme()
+const { useCheckThemeMode } = useSwitchTheme()
 
 useCheckThemeMode()
 </script>

@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { type TNavigate } from '@/shared/types'
-import Chat from '@/shared/assets/icons/Chat.vue';
+import Chat from '@/shared/assets/icons/Chat.vue'
 
 const { t } = useI18n({ useScope: 'global' })
 

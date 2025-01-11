@@ -1,1 +1,1 @@
-export * from "./useMenuStore"
+export * from './useMenuStore'

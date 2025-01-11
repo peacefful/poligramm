@@ -8,11 +8,16 @@ export const useEnterChat = () => {
 
   const uuid = ref<string>('')
   const room = ref<string>('')
-  const chatId = ref<number|null>(null)
+  const chatId = ref<number | null>(null)
 
   const closeChat = () => (showChats.value = true)
 
-  const enterChat = (uuidRoom: string, roomName: string, roomId: number | null, closeNotification?: Function,) => {
+  const enterChat = (
+    uuidRoom: string,
+    roomName: string,
+    roomId: number | null,
+    closeNotification?: Function
+  ) => {
     showChats.value = false
     uuid.value = uuidRoom
     room.value = roomName

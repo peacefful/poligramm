@@ -10,27 +10,27 @@
 </template>
 
 <script setup lang="ts">
-import { Aside } from "@/widgets/aside";
-import { BurgerMenu } from "@/widgets/burgerMenu";
-import { useToggleMenu } from "@/shared/lib/hooks";
-import { type TMenu } from "@/shared/types";
-import {useSwitchTheme} from "~/entities/common";
+import { Aside } from '@/widgets/aside'
+import { BurgerMenu } from '@/widgets/burgerMenu'
+import { useToggleMenu } from '@/shared/lib/hooks'
+import { type TMenu } from '@/shared/types'
+import { useSwitchTheme } from '~/entities/common'
 
-const {useCheckThemeMode} = useSwitchTheme()
+const { useCheckThemeMode } = useSwitchTheme()
 
 useCheckThemeMode()
 
 const burgerMenu: TMenu = reactive({
   isOpenMenu: false,
-  className: "z-10",
-  name: "burgerMenu",
-});
+  className: 'z-10',
+  name: 'burgerMenu'
+})
 
-const { toggle: openBurgerMenu } = useToggleMenu(burgerMenu);
+const { toggle: openBurgerMenu } = useToggleMenu(burgerMenu)
 
-provide("toggleBurgerMenu", { openBurgerMenu });
+provide('toggleBurgerMenu', { openBurgerMenu })
 </script>
 
 <style scoped>
-@import url("style.module.scss");
+@import url('style.module.scss');
 </style>

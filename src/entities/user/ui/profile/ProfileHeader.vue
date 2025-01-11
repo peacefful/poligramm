@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
 import { useUsersStore } from '@/entities/user'
-import { useRedirectProfilePage } from "@/entities/user"
+import { useRedirectProfilePage } from '@/entities/user'
 import UserIcon from '@/shared/assets/icons/UserIcon.vue'
 
 const usersStore = useUsersStore()

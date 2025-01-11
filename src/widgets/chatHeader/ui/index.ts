@@ -1,1 +1,1 @@
-export { default as ChatHeader } from "./ChatHeader.vue"
+export { default as ChatHeader } from './ChatHeader.vue'

@@ -13,16 +13,16 @@
   transition: background-color 0.3s;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
   display: none;
 }
 
-input[type="checkbox"]:checked + .switch {
+input[type='checkbox']:checked + .switch {
   background: #7400e8;
 }
 
 .switch::before {
-  content: "";
+  content: '';
   position: absolute;
   width: 18px;
   height: 18px;
@@ -33,7 +33,7 @@ input[type="checkbox"]:checked + .switch {
   transition: transform 0.3s;
 }
 
-input[type="checkbox"]:checked + .switch::before {
+input[type='checkbox']:checked + .switch::before {
   transform: translateX(20px);
   background: #fff;
 }

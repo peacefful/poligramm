@@ -1,9 +1,5 @@
 <template>
-  <button 
-    :type="type" 
-    :class="[buttonStyles, `button_${color}`]" 
-    @click="$emit('click')"
-  >
+  <button :type="type" :class="[buttonStyles, `button_${color}`]" @click="$emit('click')">
     <slot />
   </button>
 </template>

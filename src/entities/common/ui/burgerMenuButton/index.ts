@@ -1,1 +1,1 @@
-export { default as BurgerMenuButton } from "./BurgerMenuButton.vue"
+export { default as BurgerMenuButton } from './BurgerMenuButton.vue'

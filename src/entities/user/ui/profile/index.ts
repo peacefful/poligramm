@@ -1,1 +1,1 @@
-export { default as ProfileHeader } from "./ProfileHeader.vue"
+export { default as ProfileHeader } from './ProfileHeader.vue'

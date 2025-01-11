@@ -31,5 +31,8 @@
     "vue-chartjs": "^5.3.2",
     "vue-router": "latest",
     "yup": "^1.6.1"
+  },
+  "devDependencies": {
+    "prettier": "3.4.2"
   }
 }

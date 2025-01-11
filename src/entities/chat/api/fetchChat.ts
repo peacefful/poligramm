@@ -1,5 +1,5 @@
-import { http } from "@/shared/api"
-import type { TChat } from "@/shared/types"
+import { http } from '@/shared/api'
+import type { TChat } from '@/shared/types'
 
 export const fetchChat = async (id: number): Promise<TChat | Error> => {
   try {
