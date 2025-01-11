@@ -6,6 +6,6 @@ export const fetchChats = async (): Promise<TChat[] | Error> => {
     const chats: TChat[] = (await http.get('/api/chats')).data
     return chats
   } catch (error) {
-    return new Error('Error fetch chats')
+    return new Error('Error fetch chat')
   }
 }

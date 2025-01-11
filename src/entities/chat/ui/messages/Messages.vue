@@ -33,7 +33,7 @@ type TPropsMessages = {
 
 defineProps<TPropsMessages>()
 
-const userId: string | null = storage.getData('id')
+const userId = useCookie('userId')
 
 const checkUserMessage = (userId: string | null) => {
   return userId !== null ? +userId : 0

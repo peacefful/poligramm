@@ -5,11 +5,13 @@
   ease-out 
   duration-100 
   p-2
-  hover:bg-[#242424e7] 
+  hover:bg-[#242424e7]
   text-[16px] 
   flex 
   justify-center 
-  items-center;
+  items-center
+  dark:bg-[#6b00d6]
+  dark:hover:bg-[#7400e8];
   &_primary {
     @apply bg-[#279eff] 
     hover:bg-[#50b0ff]

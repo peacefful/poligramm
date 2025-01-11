@@ -1,12 +1,12 @@
 import { v4 as uuidv4 } from 'uuid'
 import { http } from "@/shared/api"
-import { storage } from "@/shared/lib/utils"
 import type { TChat } from "@/shared/types"
 import type { TCreateChat } from '../model'
 
 export const createChat = async (dataChat: TCreateChat): Promise<TChat | Error> => {
+  const userId = useCookie("userId");
   try {
-    const id: number = Number(storage.getData('id'))
+    const id: number = Number(userId.value)
     let chat = {} as TChat
 
     if (dataChat.roomName.trim()) {

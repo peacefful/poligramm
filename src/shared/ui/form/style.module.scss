@@ -4,7 +4,8 @@
   rounded-xl 
   p-14
   w-[580px]
-  sm:min-h-0;
+  sm:min-h-0
+  dark:bg-[#151515];
   .form__labels {
     @apply mt-10;
   }

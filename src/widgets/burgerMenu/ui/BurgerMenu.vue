@@ -42,7 +42,7 @@
 import { reactive } from "vue";
 import { Logout } from "@/features/auth";
 import { ChatForm } from "@/features/chat";
-import { SwitcherLang } from "@/features/switcher-lang";
+import { SwitcherLang } from "../../../features/switcherLang";
 import { NavigateButton } from "@/entities/common";
 import { ProfileHeader } from "@/entities/user";
 import { useToggleModal } from "@/shared/lib/hooks";

@@ -4,7 +4,8 @@
     <input 
       v-bind="$attrs" 
       v-model="value" 
-      :type="type || 'text'" 
+      :type="type || 'text'"
+        class="dark:bg-[#212121]"
     />
     <div v-if="errorMessage" class="text-red-600">
       {{ t(errorName) }}

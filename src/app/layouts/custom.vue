@@ -3,7 +3,7 @@
     <BurgerMenu :is-open="burgerMenu.isOpenMenu" />
     <Aside />
     <div class="ml-[382px]">
-      <slot />
+      <NuxtPage />
     </div>
     <slot name="notification"></slot>
   </main>
@@ -14,6 +14,11 @@ import { Aside } from "@/widgets/aside";
 import { BurgerMenu } from "@/widgets/burgerMenu";
 import { useToggleMenu } from "@/shared/lib/hooks";
 import { type TMenu } from "@/shared/types";
+import {useSwitchTheme} from "~/entities/common";
+
+const {useCheckThemeMode} = useSwitchTheme()
+
+useCheckThemeMode()
 
 const burgerMenu: TMenu = reactive({
   isOpenMenu: false,
@@ -27,5 +32,5 @@ provide("toggleBurgerMenu", { openBurgerMenu });
 </script>
 
 <style scoped>
-@import url("./style.module.scss");
+@import url("style.module.scss");
 </style>

@@ -1,12 +1,11 @@
 $font: "Montserrat", sans-serif;
 
-@font-face {
-  font-family: "Montserrat";
-  src: url("@/shared/assets/fonts/Montserrat-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-}
-
+//@font-face {
+//  font-family: 'Montserrat';
+//  src: url('/_fonts/Montserrat-Regular.ttf') format('truetype');
+//  font-weight: normal;
+//  font-style: normal;
+//}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -18,6 +17,12 @@ body {
   background-color: #ebebeb;
   color: #242424;
   font-family: $font;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark {
+  color: white;
+  background-color: #111111;
 }
 
 input[type="password"],
@@ -28,6 +33,10 @@ input[type="text"] {
   font-size: 18px;
   outline: none;
   font-family: $font;
+}
+
+textarea {
+  border: 1px solid #0000001e;
 }
 
 .v-enter-active,

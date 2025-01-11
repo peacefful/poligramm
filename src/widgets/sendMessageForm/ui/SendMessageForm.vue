@@ -38,7 +38,7 @@ const { t } = useI18n({ useScope: 'global' })
 const usersStore = useUsersStore()
 const messagesStore = useMessagesStore()
 
-const userId: string = String(storage.getData('id'))
+const userId = useCookie('userId')
 
 const route = useRoute()
 
@@ -53,7 +53,7 @@ const route = useRoute()
 // })
 
 messagesStore.setMessagesData({
-  userId: userId,
+  userId: userId.value,
   chatId: +route.params.id,
   text: '',
   sendTime: '',

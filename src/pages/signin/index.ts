@@ -1,2 +1,2 @@
-import Signin from './ui/Signin.vue'
+import Signin from './ui/index.vue'
 export default Signin

@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { useSwitchLang } from '@/entities/language'
+import { useSwitchLang } from '@/entities/common'
 
 const { updateLang, checkCurrentLang } = useSwitchLang()
 </script>

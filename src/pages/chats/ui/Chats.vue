@@ -4,7 +4,7 @@
       <div class="text-white rounded-md p-1 text-1xl bg-black">
         Выберите чат
       </div>
-      <div c v-if="isInviteRoom">
+      <div v-if="isInviteRoom">
         <Notification
           :is-invite-room="isInviteRoom"
           :chatTitle="inviteChat.title"

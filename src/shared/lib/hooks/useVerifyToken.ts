@@ -6,5 +6,5 @@ export async function useVerifyToken(
   next: NavigationGuardNext
 ) {
   const refreshToken = useCookie("refreshToken");
-  refreshToken ? next("/chats") : next();
+  refreshToken ? next("/chat") : next();
 }
