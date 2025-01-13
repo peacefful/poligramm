@@ -49,11 +49,11 @@ const dataChat: TCreateChat = reactive({
   description: ''
 })
 
-const id: string | null = storage.getData('id')
+const userId = useCookie('userId')
 const userStore = useUsersStore()
 
 const submitChat = async () => {
   const chat: TChat | Error = await ApiChat.createChat(dataChat)
-  chat && chatFormEmit('close-modal'), userStore.getUser(id !== null ? +id : 0)
+  chat && chatFormEmit('close-modal'), userStore.getUser(userId.value !== null ? +userId.value : 0)
 }
 </script>

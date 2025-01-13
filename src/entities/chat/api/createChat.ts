@@ -9,6 +9,8 @@ export const createChat = async (dataChat: TCreateChat): Promise<TChat | Error> 
     const id: number = Number(userId.value)
     let chat = {} as TChat
 
+    console.log('data', dataChat, uuidv4(),id)
+
     if (dataChat.roomName.trim()) {
       chat = await http.post('/api/chats', {
         ...dataChat,
