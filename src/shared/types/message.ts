@@ -1,5 +1,5 @@
 export type TMessage = {
-  userId: string | number
+  userId: string | number | null
   chatId: number
   text: string
   sendTime: string

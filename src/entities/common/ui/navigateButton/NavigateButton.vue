@@ -1,6 +1,6 @@
 <template>
   <button
-    class="mt-2 text-xl flex items-center w-full p-3 rounded-md hover:bg-[#f0f0f0] ease-out duration-200"
+    class="mt-2 text-xl flex items-center w-full p-3 rounded-md hover:bg-[#f0f0f0] dark:hover:bg-[#171717] ease-out duration-200"
     @click="$emit('action')"
   >
     <Chat class="h-7 w-7 mr-4" />

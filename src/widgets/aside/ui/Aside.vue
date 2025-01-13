@@ -1,5 +1,5 @@
 <template>
-  <aside class="fixed overflow-y-auto bg-white h-screen shadow-lg flex w-full sm:w-[383px]">
+  <aside class="fixed overflow-y-auto bg-white h-screen shadow-lg flex dark:bg-black w-full sm:w-[383px]">
     <div class="w-full">
       <div class="flex gap-2 p-4 bg-black text-white">
         <BurgerMenuButton />
@@ -78,7 +78,7 @@ const loginChat = (loginChatData: TLoginChat) => {
   const { roomName, id, uuid } = loginChatData
 
   router.push({
-    name: 'chat-chatName-id-uuid',
+    name: 'Chat',
     params: {
       chatName: roomName,
       id,

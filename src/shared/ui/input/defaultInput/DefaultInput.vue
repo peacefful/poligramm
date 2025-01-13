@@ -3,6 +3,7 @@
     ref="inputFocus"
     :type="type ?? 'text'"
     :placeholder="placeholder"
+    class="dark:bg-[#212121]"
     v-bind="$attrs"
     v-model="value"
   />

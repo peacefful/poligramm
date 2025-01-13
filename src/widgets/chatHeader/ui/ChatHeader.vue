@@ -1,7 +1,7 @@
 <template>
   <header @click="$emit('openModal')" class="cursor-pointer mb-20">
     <div
-      class="fixed top-0 left-[383px] right-0 bg-white h-[70px] px-4 flex justify-between items-center"
+      class="fixed top-0 left-[383px] right-0 bg-white h-[70px] dark:bg-black px-4 flex justify-between items-center"
     >
       <div class="flex items-center">
         <div class="bg-default p-2 rounded-full mr-2">

@@ -2,7 +2,7 @@
   <InputFile
     @on-file-change="onFileChange"
     type="file"
-    class="p-2 mr-4 hover:rotate-90 ease-in duration-150"
+    class="p-2 mr-4 hover:rotate-90 ease-in duration-150 dark:bg-black"
   >
     <UploadFileIcon />
   </InputFile>

@@ -1,13 +1,13 @@
 <template>
   <transition name="fade">
     <div v-if="isOpen" class="fixed top-0 left-0 bg-[#00000079] w-full h-screen z-10">
-      <div class="fixed bg-white h-screen w-[400px] flex flex-col justify-between fade-burger">
+      <div class="fixed bg-white h-screen w-[400px] flex flex-col justify-between fade-burger dark:bg-[#111111]">
         <div>
           <ProfileHeader>
             <Logout />
           </ProfileHeader>
           <ul>
-            <li class="px-3 text-lg" v-for="navigation in navigations" :key="navigation.id">
+            <li class="text-lg" v-for="navigation in navigations" :key="navigation.id">
               <NavigateButton
                 @action="navigation.action"
                 :title="navigation.title"
@@ -16,9 +16,12 @@
             </li>
           </ul>
         </div>
-        <SwitcherLang class="ml-auto p-6" />
+        <div class="flex items-center justify-between p-5">
+          <SwitchTheme/>
+          <SwitcherLang/>
+        </div>
       </div>
-      <Modal class="w-[600px]" @close-modal="closeModal" :is-open-modal="isOpenModal">
+      <Modal class="w-[600px] " @close-modal="closeModal" :is-open-modal="isOpenModal">
         <ChatForm @close-modal="closeModal" />
       </Modal>
     </div>
@@ -29,7 +32,8 @@
 import { reactive } from 'vue'
 import { Logout } from '@/features/auth'
 import { ChatForm } from '@/features/chat'
-import { SwitcherLang } from '../../../features/switcherLang'
+import { SwitcherLang } from '@/features/switcherLang'
+import { SwitchTheme } from '@/features/switchTheme'
 import { NavigateButton } from '@/entities/common'
 import { ProfileHeader } from '@/entities/user'
 import { useToggleModal } from '@/shared/lib/hooks'

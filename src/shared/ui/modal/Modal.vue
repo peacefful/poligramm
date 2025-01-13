@@ -1,8 +1,14 @@
 <template>
   <transition>
-    <!-- @keyup.esc="$emit('closeModal')" -->
-    <div @click.self="$emit('closeModal')" v-if="isOpenModal" class="modal-form">
-      <div v-bind="$attrs" class="modal-form__box">
+    <div
+        v-if="isOpenModal"
+        class="fixed inset-0 flex items-center justify-center h-screen w-full bg-black/70 overflow-y-auto z-30"
+        @click.self="$emit('closeModal')"
+    >
+      <div
+          v-bind="$attrs"
+          class="p-6 bg-white dark:bg-[#0f0f0f] rounded-lg overflow-y-auto "
+      >
         <slot></slot>
       </div>
     </div>
@@ -20,5 +26,14 @@ const modalEmit = defineEmits(['closeModal'])
 </script>
 
 <style scoped>
-@import url('./style.module.scss');
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
 </style>

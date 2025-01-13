@@ -12,8 +12,8 @@
           <table>
             <thead>
               <tr>
-                <th>Категории</th>
-                <th>Количество</th>
+                <th class="dark:bg-[#1c1c1c]">Категории</th>
+                <th class="dark:bg-[#1c1c1c]">Количество</th>
               </tr>
             </thead>
             <tbody>
@@ -38,7 +38,8 @@
           class="gap-2"
           :is-rounded-lg="true"
         >
-          {{ t('inviteUsers') }} <AddUsersIcon />
+          {{ t('inviteUsers') }}
+          <AddUsersIcon />
         </Button>
       </div>
     </div>
@@ -101,7 +102,7 @@ const {
   openModal: openAddUser
 } = useToggleModal()
 
-const userId: string | null = storage.getData('id')
+const userId = useCookie('userId')
 
 const chatsStore = useChatsStore()
 const userStore = useUsersStore()
@@ -168,4 +169,6 @@ watch(
 
 <style scoped>
 @import url('./style.module.scss');
+
+
 </style>

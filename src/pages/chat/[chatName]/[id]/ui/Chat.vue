@@ -14,7 +14,7 @@
     <div v-else class="flex flex-col justify-center items-center min-h-screen">
       <p class="text-white bg-black p-2 rounded-xl">Чата был удален</p>
     </div>
-    <Modal class="w-[900px] h-[800px]" @close-modal="closeModal" :is-open-modal="isOpenModal">
+    <Modal class="w-[1300px] h-[800px]" @close-modal="closeModal" :is-open-modal="isOpenModal">
       <AnalysisChat @close-modal="closeModal" :chat="chatStore.chat" />
     </Modal>
     <Notification
@@ -31,18 +31,18 @@
 <script setup lang="ts">
 import { reactive, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { ChatHeader } from '@/widgets/chatHeader'
-import { SendMessageForm } from '@/widgets/sendMessageForm'
-import { useChatsStore, useMessagesStore, type TJoinChat } from '@/entities/chat'
-import { Messages } from '@/entities/chat'
-import { joinChatByRoute } from '@/entities/chat'
-import { useCloseChat } from '@/entities/chat'
-import { MainLayout } from '@/shared/ui/layouts/main'
-import { useEnterChat, useToggleModal } from '@/shared/lib/hooks'
-import { Modal } from '@/shared/ui/modal'
-import { AnalysisChat } from '@/widgets/analysisChat'
-import { SOCKETS } from '@/shared/api'
-import { Notification } from '@/entities/chat'
+import { ChatHeader } from '~/widgets/chatHeader'
+import { SendMessageForm } from '~/widgets/sendMessageForm'
+import { useChatsStore, useMessagesStore, type TJoinChat } from '~/entities/chat'
+import { Messages } from '~/entities/chat'
+import { joinChatByRoute } from '~/entities/chat'
+import { useCloseChat } from '~/entities/chat'
+import { MainLayout } from '~/shared/ui/layouts/main'
+import { useEnterChat, useToggleModal } from '~/shared/lib/hooks'
+import { Modal } from '~/shared/ui/modal'
+import { AnalysisChat } from '~/widgets/analysisChat'
+import { SOCKETS } from '~/shared/api'
+import { Notification } from '~/entities/chat'
 
 useCloseChat()
 

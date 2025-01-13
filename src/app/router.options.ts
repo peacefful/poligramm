@@ -28,10 +28,10 @@ export default {
     },
     {
       name: 'Chat',
-      path: '/chats/:chatName/:id/:uuid',
-      component: () => import('@/pages/chat'),
+      path: '/chat/:chatName/:id/:uuid',
+      component: () => import('~/pages/chat/[chatName]/[id]'),
       meta: {
-        layout: 'default'
+        layout: 'custom'
       }
     },
     {
