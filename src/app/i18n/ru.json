@@ -18,7 +18,7 @@
   "updateLanguage": "Сменить язык",
   "phone": "Номер телефона",
   "access": "Доступ",
-  "createChat": "Создать чат",
+  "createChat": "Создать чат | Создайте чат",
   "search": "Поиск",
   "logout": "Выйти",
   "create": "Создать",
@@ -55,5 +55,13 @@
   "confirmDelete": "Вы уверены что хотите удалить данный чат?",
   "yes": "Да",
   "no": "Нет",
-  "selectChat": "Выберите чат"
+  "selectChat": "Выберите чат",
+
+  "categories": "Категории",
+  "quantity": "Колличество",
+  "textsMessages": "Текстовые сообщения",
+  "filesMessages": "Файловые сообщение",
+
+  "notUsers": "Пользователей нету",
+  "notVerifyLoginOrPassword": "Не правильный логин или пароль"
 }

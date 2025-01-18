@@ -1,17 +1,17 @@
 <template>
   <form class="flex flex-col dark:bg-[#0f0f0f]" @submit.prevent="submitChat">
-    <div class="flex items-center mb-2">
+    <section class="flex items-center mb-2">
       <InputFile class="p-3 mr-4" type="file">
         <ImageIcon />
       </InputFile>
       <DefaultInput class="w-full" :placeholder="t('chatName')" v-model.trim="dataChat.roomName" />
-    </div>
+    </section>
     <Textarea
       class="w-full my-3 p-2 h-24 border border-black/10 rounded-md dark:bg-[#212121]"
       :placeholder="t('description')"
       v-model.trim="dataChat.description"
     />
-    <div class="flex gap-3 ml-auto mt-5">
+    <section class="flex gap-3 ml-auto mt-5">
       <Button
           @click="$emit('close-modal')"
           :is-rounded-lg="true"
@@ -23,7 +23,7 @@
       <Button type="submit" :is-rounded-lg="true">
         {{ t('create') }}
       </Button>
-    </div>
+    </section>
   </form>
 </template>
 

@@ -26,6 +26,11 @@ import { useEnterChat } from '@/shared/lib/hooks'
 
 // if (!isValidToken()) router.push('/')
 
+useSeoMeta({
+  title: 'Список чатов',
+  description: 'Выбор чата из списка'
+})
+
 const router = useRouter()
 
 const isInviteRoom = ref(false)

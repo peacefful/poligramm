@@ -1,5 +1,5 @@
 <template>
-  <Button @click="$emit('send-message')" :is-rounded-full="true">
+  <Button aria-label="send-message" @click="$emit('send-message')" :is-rounded-full="true">
     <SendMessageIcon />
   </Button>
 </template>

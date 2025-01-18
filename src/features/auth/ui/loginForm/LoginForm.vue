@@ -7,7 +7,7 @@
         error-name="incorrectesLogin"
         v-model="userData.login"
       />
-      <div class="mt">
+      <section class="mt">
         <VeeInput
           name="password"
           type="password"
@@ -15,10 +15,10 @@
           error-name="incorrectesPassword"
           v-model="userData.password"
         />
-      </div>
+      </section>
       <ToastMessage v-if="isError" type-toast="error">
-        <div v-if="errorStatus === 404">{{ t('notAccount', 2) }}</div>
-        <div v-else>Не правильный логин или пароль</div>
+        <template v-if="errorStatus === 404">{{ t('notAccount', 2) }}</template>
+        <template v-else>{{ t('notVerifyLoginOrPassword') }}</template>
       </ToastMessage>
     </template>
     <template #hint>

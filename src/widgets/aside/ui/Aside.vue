@@ -1,12 +1,12 @@
 <template>
   <aside class="fixed overflow-y-auto bg-white h-screen shadow-lg flex dark:bg-black w-full sm:w-[383px]">
-    <div class="w-full">
-      <div class="flex gap-2 p-4 bg-black text-white">
+    <section class="w-full">
+      <section class="flex gap-2 p-4 bg-black text-white">
         <BurgerMenuButton />
         <SearchInput v-model="searchData.chatName" />
-      </div>
+      </section>
       <hr />
-      <div
+      <section
         v-if="userStore?.user?.chats?.length"
         v-for="chat in searchChats(searchData)"
         :key="chat.id"
@@ -23,11 +23,11 @@
           last-message="Новое сообщение"
           time="12:43"
         />
-      </div>
+      </section>
       <div v-else class="mt-4 flex justify-center">
-        <Button @click="openModal" color="primary" :is-rounded-lg="true">Создайте чат </Button>
+        <Button @click="openModal" color="primary" :is-rounded-lg="true">{{t('createChat', 2)}}</Button>
       </div>
-    </div>
+    </section>
     <Modal class="w-[600px]" @close-modal="closeModal" :is-open-modal="isOpenModal">
       <ChatForm @close-modal="closeModal" />
     </Modal>
@@ -47,12 +47,15 @@ import { useMessagesStore } from '@/entities/chat'
 import { Modal } from '@/shared/ui/modal'
 import { ChatForm } from '@/features/chat'
 import { useToggleModal } from '@/shared/lib/hooks'
+import {useI18n} from "vue-i18n";
 
 const router = useRouter()
 
 const id = useCookie('userId')
 
 const { isOpenModal, closeModal, openModal } = useToggleModal()
+
+const { t } = useI18n({ useScope: 'global' })
 
 const messagesStore = useMessagesStore()
 const userStore = useUsersStore()

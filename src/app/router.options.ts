@@ -8,7 +8,7 @@ export default {
       component: () => import('@/pages/signin'),
       meta: {
         layout: 'default'
-      }
+      },
     },
     {
       name: 'Signup',

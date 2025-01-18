@@ -1,8 +1,8 @@
 <template>
-  <div class="flex gap-2">
+  <section class="flex gap-2">
     <button @click="updateLang('kz')" :class="checkCurrentLang('kz')">KZ</button>
     <button @click="updateLang('ru')" :class="checkCurrentLang('ru')">RU</button>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">

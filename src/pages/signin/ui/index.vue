@@ -14,6 +14,11 @@
 import { LoginForm } from '@/features/auth'
 import { SwitcherLang } from '@/features/switcherLang'
 import { SwitchTheme } from '@/features/switchTheme'
+
+useSeoMeta({
+  title: 'Вход',
+  description: 'Авторизация существующих пользователей'
+})
 </script>
 
 <style scoped>

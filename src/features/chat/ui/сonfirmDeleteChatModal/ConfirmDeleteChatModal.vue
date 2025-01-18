@@ -1,7 +1,7 @@
 <template>
   <Modal @close-modal="$emit('closeModal')" :is-open-modal="isOpenModal">
     <h3>{{ t('confirmDelete') }}</h3>
-    <div class="flex justify-center gap-3 mt-4">
+    <section class="flex justify-center gap-3 mt-4">
       <Button
         @click="$emit('deleteCurrentChat', chatId)"
         class="w-20"
@@ -13,7 +13,7 @@
       <Button @click="$emit('closeModal')" class="w-20" :is-rounded-lg="true">
         {{ t('no') }}
       </Button>
-    </div>
+    </section>
   </Modal>
 </template>
 

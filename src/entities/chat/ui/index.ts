@@ -1,3 +1,4 @@
 export * from './chatCard'
 export * from './messages'
 export * from './notifications'
+export * from './statisticsTable'

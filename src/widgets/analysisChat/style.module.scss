@@ -2,23 +2,3 @@
   height: 200px;
   width: 200px;
 }
-
-table {
-  margin-top: 2%;
-  width: 150%;
-  border-collapse: collapse;
-}
-th,
-td {
-  padding: 10px;
-  text-align: center;
-  border: 2px solid #1c1c1c;
-  transition: all ease 0.3s;
-  cursor: pointer;
-  &:hover {
-    background-color: rgba(31, 31, 31, 0.24);
-  }
-}
-th {
-  background-color: #f4f4f4;
-}

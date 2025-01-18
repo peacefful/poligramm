@@ -1,37 +1,23 @@
 <template>
   <section class="flex flex-col h-full">
-    <div>
+    <section>
       <h1 class="text-3xl font-bold">{{ chat.roomName }}</h1>
       <p class="mt-4">{{ chat.description }}</p>
-      <div class="mt-12" v-if="analiseData.textLength">
+      <section class="mt-12" v-if="analiseData.textLength">
         <h2 class="text-2xl">{{ t('analiseChat') }}:</h2>
         <div class="mt-4 grid grid-cols-3 gap-1">
           <div>
-            <Doughnut class="chart" :options="options" :data="chartData1" :key="chartKey" />
+            <Doughnut class="chart" :options="options" :data="chartData" :key="chartKey" />
           </div>
-          <table>
-            <thead>
-              <tr>
-                <th class="dark:bg-[#1c1c1c]">Категории</th>
-                <th class="dark:bg-[#1c1c1c]">Количество</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Текстовые сообщения</td>
-                <td>{{ analiseData.textLength }}</td>
-              </tr>
-              <tr>
-                <td>Файловые сообщения</td>
-                <td>{{ analiseData.fileLength }}</td>
-              </tr>
-            </tbody>
-          </table>
+          <StatisticsTable
+            :file-length="analiseData.fileLength"
+            :text-length="analiseData.textLength"
+          />
         </div>
-      </div>
-      <div v-else>Статистики пока нету</div>
-      <div class="h-[0.5px] mt-4 bg-slate-400"></div>
-      <div class="mt-4">
+      </section>
+      <p v-else>Статистики пока нету</p>
+      <p class="h-[0.5px] mt-4 bg-[#1c1c1c]"></p>
+      <section class="mt-4">
         <Button
           v-if="userId ? +userId === chat.userId : null"
           @click="openAddUser"
@@ -41,16 +27,16 @@
           {{ t('inviteUsers') }}
           <AddUsersIcon />
         </Button>
-      </div>
-    </div>
-    <div v-if="userId ? +userId === chat.userId : null" class="mt-auto ml-auto flex gap-2">
+      </section>
+    </section>
+    <section v-if="checkUserId" class="mt-auto ml-auto flex gap-2">
       <Button @click="$emit('closeModal')" class="w-32" color="primary" :is-rounded-lg="true">
         {{ t('close') }}
       </Button>
       <Button @click="openConfirmDeleteChat" class="w-32" color="danger" :is-rounded-lg="true">
         {{ t('deleteChat') }}
       </Button>
-    </div>
+    </section>
     <ConfirmDeleteChatModal
       :is-open-modal="isOpenConfirmDeleteChat"
       :chatId="chat.id"
@@ -69,21 +55,21 @@
 </template>
 
 <script setup lang="ts">
-import { type TChat } from '@/shared/types'
-import { Doughnut } from 'vue-chartjs'
+import AddUsersIcon from '@/shared/assets/icons/AddUsersIcon.vue'
+import { ConfirmDeleteChatModal } from '@/features/chat'
 import { Button } from '@/shared/ui/button'
-import { onMounted, reactive, ref, watch } from 'vue'
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import { useToggleModal } from '@/shared/lib/hooks'
 import { useUsersStore } from '@/entities/user'
-import { useChatsStore, deleteChatByIndex } from '@/entities/chat'
-import { useRouter } from 'vue-router'
-import { storage } from '@/shared/lib/utils'
-import { ConfirmDeleteChatModal } from '@/features/chat'
+import {useChatsStore, deleteChatByIndex, type TAnaliseChat} from '@/entities/chat'
 import { InviteUsers } from '../inviteUsers'
-import AddUsersIcon from '@/shared/assets/icons/AddUsersIcon.vue'
-import { http } from '@/shared/api'
+import { useRouter } from 'vue-router'
+import { Doughnut } from 'vue-chartjs'
+import { onMounted, reactive, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { type TChat } from '@/shared/types'
+import { useChartChat } from '@/entities/chat'
+import { StatisticsTable } from '@/entities/chat'
+import { ApiChat } from '@/entities/chat'
 
 const { t } = useI18n({ useScope: 'global' })
 
@@ -104,12 +90,32 @@ const {
 
 const userId = useCookie('userId')
 
+const router = useRouter()
+
+const analiseData = reactive({
+  fileLength: 0,
+  textLength: 0
+})
+
 const chatsStore = useChatsStore()
 const userStore = useUsersStore()
 
 userStore.getUsers()
 
-const router = useRouter()
+const checkUserId = computed(() => {
+  return userId.value && +userId.value === props.chat.userId
+})
+
+onMounted( () => {
+  ApiChat.getAnaliseChat(props.chat.id).then((res) => {
+    if ('fileLength' in res && 'textLength' in res) {
+      analiseData.fileLength = res.fileLength
+      analiseData.textLength = res.textLength
+    }
+  })
+})
+
+const { chartData, options, chartKey } = useChartChat(analiseData)
 
 const deleteCurrentChat = (id: number) => {
   chatsStore.removeChat(id)
@@ -118,57 +124,8 @@ const deleteCurrentChat = (id: number) => {
   closeConfirmDeleteChat()
   router.push('/chats')
 }
-
-const analiseData = reactive({
-  fileLength: 0,
-  textLength: 0
-})
-
-ChartJS.register(Tooltip, Legend, ArcElement)
-
-const fetchChat = async (): Promise<void | Error> => {
-  try {
-    const analiseChat = (await http.post(`/api/analise/${props.chat.id}`)).data
-
-    analiseData.fileLength = analiseChat.fileLength
-    analiseData.textLength = analiseChat.textLength
-  } catch (error) {
-    return new Error('Error fetching chat')
-  }
-}
-
-onMounted(() => fetchChat())
-
-console.log(analiseData)
-
-const chartData1 = ref({
-  labels: [t('textMessage'), t('files')],
-  datasets: [
-    {
-      backgroundColor: ['#242424', '#bc0ce8'],
-      data: [analiseData.textLength, analiseData.fileLength]
-    }
-  ]
-})
-
-const options = {
-  responsive: true,
-  maintainAspectRatio: false
-}
-
-const chartKey = ref(0)
-
-watch(
-  () => [analiseData.textLength, analiseData.fileLength],
-  ([textLength, fileLength]) => {
-    chartData1.value.datasets[0].data = [textLength, fileLength]
-    chartKey.value += 1
-  }
-)
 </script>
 
 <style scoped>
 @import url('./style.module.scss');
-
-
 </style>

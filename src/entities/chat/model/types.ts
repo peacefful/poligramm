@@ -43,3 +43,9 @@ export type TConfirmDeleteChat = {
   isOpenModal: boolean
   chatId: number
 }
+
+export type TAnaliseChat = {
+  id?: number
+  fileLength: number
+  textLength: number
+}

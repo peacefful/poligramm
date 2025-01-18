@@ -1,6 +1,6 @@
 <template>
   <MainLayout>
-    <div v-if="chatStore?.chat" class="flex flex-col justify-between min-h-screen">
+    <section v-if="chatStore?.chat" class="flex flex-col justify-between min-h-screen">
       <ChatHeader @open-modal="openModal" :chat-name="chatStore?.chat?.roomName" />
       <div>
         <Messages
@@ -10,10 +10,10 @@
         />
         <SendMessageForm :chat-id="chatStore.chat.id" :uuid="uuid" />
       </div>
-    </div>
-    <div v-else class="flex flex-col justify-center items-center min-h-screen">
+    </section>
+    <section v-else class="flex flex-col justify-center items-center min-h-screen">
       <p class="text-white bg-black p-2 rounded-xl">Чата был удален</p>
-    </div>
+    </section>
     <Modal class="w-[1300px] h-[800px]" @close-modal="closeModal" :is-open-modal="isOpenModal">
       <AnalysisChat @close-modal="closeModal" :chat="chatStore.chat" />
     </Modal>
@@ -31,22 +31,26 @@
 <script setup lang="ts">
 import { reactive, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { ChatHeader } from '~/widgets/chatHeader'
-import { SendMessageForm } from '~/widgets/sendMessageForm'
-import { useChatsStore, useMessagesStore, type TJoinChat } from '~/entities/chat'
-import { Messages } from '~/entities/chat'
-import { joinChatByRoute } from '~/entities/chat'
-import { useCloseChat } from '~/entities/chat'
-import { MainLayout } from '~/shared/ui/layouts/main'
-import { useEnterChat, useToggleModal } from '~/shared/lib/hooks'
-import { Modal } from '~/shared/ui/modal'
-import { AnalysisChat } from '~/widgets/analysisChat'
-import { SOCKETS } from '~/shared/api'
-import { Notification } from '~/entities/chat'
+import { ChatHeader } from '@/widgets/chatHeader'
+import { SendMessageForm } from '@/widgets/sendMessageForm'
+import { useChatsStore, useMessagesStore, type TJoinChat } from '@/entities/chat'
+import { Messages } from '@/entities/chat'
+import { joinChatByRoute } from '@/entities/chat'
+import { useCloseChat } from '@/entities/chat'
+import { MainLayout } from '@/shared/ui/layouts/main'
+import { useEnterChat, useToggleModal } from '@/shared/lib/hooks'
+import { Modal } from '@/shared/ui/modal'
+import { AnalysisChat } from '@/widgets/analysisChat'
+import { SOCKETS } from '@/shared/api'
+import { Notification } from '@/entities/chat'
 
 useCloseChat()
 
 const route = useRoute()
+
+useSeoMeta({
+  title: typeof route.params.chatName === 'string' ? route.params.chatName : 'Чат'
+})
 
 const { isOpenModal, closeModal, openModal } = useToggleModal()
 

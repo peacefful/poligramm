@@ -1,5 +1,5 @@
 <template>
-  <div
+  <p
     class="animate-fade-down animate-once animate-duration-150"
     :class="{
       'text-red-500': typeToast === 'error',
@@ -7,7 +7,7 @@
     }"
   >
     <slot />
-  </div>
+  </p>
 </template>
 
 <script setup lang="ts">

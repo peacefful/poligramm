@@ -36,3 +36,22 @@ input[type='text'] {
   outline: none;
   font-family: $font;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #292929;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #151515;
+  border-radius: 4px;
+}

@@ -1,8 +1,8 @@
 <template>
   <transition name="fade">
-    <div v-if="isOpen" class="fixed top-0 left-0 bg-[#00000079] w-full h-screen z-10">
+    <section v-if="isOpen" class="fixed top-0 left-0 bg-[#00000079] w-full h-screen z-10">
       <div class="fixed bg-white h-screen w-[400px] flex flex-col justify-between fade-burger dark:bg-[#111111]">
-        <div>
+        <section>
           <ProfileHeader>
             <Logout />
           </ProfileHeader>
@@ -15,16 +15,16 @@
               />
             </li>
           </ul>
-        </div>
-        <div class="flex items-center justify-between p-5">
+        </section>
+        <section class="flex items-center justify-between p-5">
           <SwitchTheme/>
           <SwitcherLang/>
-        </div>
+        </section>
       </div>
       <Modal class="w-[600px] " @close-modal="closeModal" :is-open-modal="isOpenModal">
         <ChatForm @close-modal="closeModal" />
       </Modal>
-    </div>
+    </section>
   </transition>
 </template>
 

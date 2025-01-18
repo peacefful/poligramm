@@ -3,15 +3,15 @@
     <h1 class="text-5xl w-80">
       {{ t(title, 0) }}
     </h1>
-    <div class="form__labels">
+    <section class="form__labels">
       <slot name="labels" />
-    </div>
+    </section>
     <Button type="submit" class="mt-7" :is-rounded-lg="true">
       {{ t(buttonTitle, 3) }}
     </Button>
-    <div class="text-center mt-10 opacity-75">
+    <section class="text-center mt-10 opacity-75">
       <slot name="hint" />
-    </div>
+    </section>
   </form>
 </template>
 

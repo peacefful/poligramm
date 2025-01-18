@@ -1,0 +1,9 @@
+.notification {
+  @apply fixed bottom-0 right-0 bg-default text-white p-6 rounded-t-lg w-full sm:w-[400px];
+  &__wrapper {
+    @apply flex justify-between items-center;
+    .notification__close {
+      @apply hover:bg-zinc-700 p-2 rounded-full transition ease-in duration-100;
+    }
+  }
+}

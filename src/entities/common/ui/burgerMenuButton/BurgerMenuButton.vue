@@ -1,5 +1,5 @@
 <template>
-  <button @click="openBurgerMenu">
+  <button aria-label="open-burger-menu" @click="openBurgerMenu">
     <BurgerMenuIcon />
   </button>
 </template>

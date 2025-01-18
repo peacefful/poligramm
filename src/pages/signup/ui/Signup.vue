@@ -12,8 +12,13 @@
 
 <script setup lang="ts">
 import { RegForm } from '@/features/auth'
-import { SwitcherLang } from '../../../features/switcherLang'
-import { SwitchTheme } from '~/features/switchTheme'
+import { SwitcherLang } from '@/features/switcherLang'
+import { SwitchTheme } from '@/features/switchTheme'
+
+useSeoMeta({
+  title: 'Регистрация',
+  description: 'Регистрация новых пользователей',
+})
 </script>
 
 <style scoped>
