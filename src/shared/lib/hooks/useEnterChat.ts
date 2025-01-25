@@ -1,5 +1,6 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import {SOCKETS} from "~/shared/api";
 
 export const useEnterChat = () => {
   const router = useRouter()
@@ -31,6 +32,8 @@ export const useEnterChat = () => {
         uuid: uuid.value
       }
     })
+
+    SOCKETS.emit('saveChat', chatId.value)
 
     closeNotification ? closeNotification() : null
   }

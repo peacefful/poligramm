@@ -17,21 +17,16 @@
 </template>
 
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
 import { MainLayout } from '@/shared/ui/layouts/main'
 import { SOCKETS } from '@/shared/api'
 import { reactive, ref } from 'vue'
 import { Notification } from '@/entities/chat'
 import { useEnterChat } from '@/shared/lib/hooks'
 
-// if (!isValidToken()) router.push('/')
-
 useSeoMeta({
   title: 'Список чатов',
   description: 'Выбор чата из списка'
 })
-
-const router = useRouter()
 
 const isInviteRoom = ref(false)
 const inviteChat = reactive({

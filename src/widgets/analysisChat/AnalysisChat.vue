@@ -60,7 +60,7 @@ import { ConfirmDeleteChatModal } from '@/features/chat'
 import { Button } from '@/shared/ui/button'
 import { useToggleModal } from '@/shared/lib/hooks'
 import { useUsersStore } from '@/entities/user'
-import {useChatsStore, deleteChatByIndex, type TAnaliseChat} from '@/entities/chat'
+import { useChatsStore, deleteChatByIndex, type TAnaliseChat } from '@/entities/chat'
 import { InviteUsers } from '../inviteUsers'
 import { useRouter } from 'vue-router'
 import { Doughnut } from 'vue-chartjs'
@@ -106,7 +106,7 @@ const checkUserId = computed(() => {
   return userId.value && +userId.value === props.chat.userId
 })
 
-onMounted( () => {
+onMounted(() => {
   ApiChat.getAnaliseChat(props.chat.id).then((res) => {
     if ('fileLength' in res && 'textLength' in res) {
       analiseData.fileLength = res.fileLength
@@ -119,8 +119,9 @@ const { chartData, options, chartKey } = useChartChat(analiseData)
 
 const deleteCurrentChat = (id: number) => {
   chatsStore.removeChat(id)
-  deleteChatByIndex({ chats: userStore.user.chats, id })
-  userStore.getUser(userId !== null ? +userId : 0)
+  userStore.deleteChat(id)
+  // deleteChatByIndex({ chats: userStore.user.chats, id })
+  if (userId?.value) userStore.getUser(+userId.value)
   closeConfirmDeleteChat()
   router.push('/chats')
 }

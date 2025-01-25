@@ -23,6 +23,9 @@ export const useUsersStore = defineStore('usersStore', {
         this.user = res as TUserChat
         this.username = `${this.user.name} ${this.user.surname}`
       })
+    },
+    deleteChat(id: number | null) {
+      return this.user.chats.filter(chat => chat.id !== id)
     }
   }
 })
