@@ -7,7 +7,7 @@ export default {
       path: '/',
       component: () => import('@/pages/signin'),
       meta: {
-        layout: 'default'
+        layout: 'default',
       },
     },
     {
@@ -23,7 +23,11 @@ export default {
       path: '/chats',
       component: () => import('@/pages/chats'),
       meta: {
-        layout: 'custom'
+        layout: 'custom',
+        middleware: function(to, from) {
+          const accessToken = useCookie('accessToken')
+          if (!accessToken.value) return navigateTo('/')
+        },
       }
     },
     {
@@ -31,7 +35,11 @@ export default {
       path: '/chat/:chatName/:id/:uuid',
       component: () => import('~/pages/chat/[chatName]/[id]'),
       meta: {
-        layout: 'custom'
+        layout: 'custom',
+        middleware: function(to, from) {
+          const accessToken = useCookie('accessToken')
+          if (!accessToken.value) return navigateTo('/')
+        },
       }
     },
     {

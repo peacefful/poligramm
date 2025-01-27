@@ -27,10 +27,6 @@ export default defineNuxtConfig({
     'shadcn-nuxt',
     '@nuxtjs/color-mode',
   ],
-  shadcn: {
-    prefix: '',
-    componentDir: '../src/shared/ui'
-  },
   i18n: {
     vueI18n: './src/app/i18n/i18n.config.ts'
   },
