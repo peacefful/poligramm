@@ -1,4 +1,5 @@
 import type { RouterConfig } from '@nuxt/schema'
+import { useValidToken } from '@/shared/lib/hooks'
 
 export default {
   routes: (_routes) => [
@@ -7,8 +8,8 @@ export default {
       path: '/',
       component: () => import('@/pages/signin'),
       meta: {
-        layout: 'default',
-      },
+        layout: 'default'
+      }
     },
     {
       name: 'Signup',
@@ -24,10 +25,11 @@ export default {
       component: () => import('@/pages/chats'),
       meta: {
         layout: 'custom',
-        middleware: function(to, from) {
-          const accessToken = useCookie('accessToken')
-          if (!accessToken.value) return navigateTo('/')
-        },
+        middleware: function (to, from) {
+          console.log(useValidToken())
+
+          if (!useValidToken()) return navigateTo('/')
+        }
       }
     },
     {
@@ -36,10 +38,9 @@ export default {
       component: () => import('~/pages/chat/[chatName]/[id]'),
       meta: {
         layout: 'custom',
-        middleware: function(to, from) {
-          const accessToken = useCookie('accessToken')
-          if (!accessToken.value) return navigateTo('/')
-        },
+        middleware: function (to, from) {
+          if (!useValidToken()) return navigateTo('/')
+        }
       }
     },
     {
@@ -47,7 +48,10 @@ export default {
       path: '/profile',
       component: () => import('@/pages/profile'),
       meta: {
-        layout: 'default'
+        layout: 'default',
+        middleware: function (to, from) {
+          if (!useValidToken()) return navigateTo('/')
+        }
       }
     }
   ]

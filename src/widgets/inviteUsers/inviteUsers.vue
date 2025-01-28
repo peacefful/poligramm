@@ -33,7 +33,6 @@ import { Button } from '@/shared/ui/button'
 import { type TInviteUser } from '@/entities/user'
 import { ToastMessage } from '@/entities/auth'
 import { SOCKETS } from '@/shared/api'
-import { storage } from '@/shared/lib/utils'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n({ useScope: 'global' })

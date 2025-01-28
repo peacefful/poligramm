@@ -12,5 +12,5 @@
 </template>
 
 <script setup lang="ts">
-import {Skeleton} from "@/shared/ui/skeleton";
+import { Skeleton } from "@/shared/ui/skeleton";
 </script>
