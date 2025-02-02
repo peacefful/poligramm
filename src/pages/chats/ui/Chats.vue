@@ -7,7 +7,7 @@
           :is-invite-room="isInviteRoom"
           :chatTitle="inviteChat.title"
           @enter-chat="
-            enterChat(inviteChat.uuid, inviteChat.title, inviteChat.roomId, closeNotification)
+            enterChat(inviteChat.uuid, inviteChat.title, inviteChat.roomId, inviteChat.adminId, closeNotification)
           "
           @close-notification="closeNotification"
         />
@@ -33,7 +33,8 @@ const inviteChat = reactive({
   title: '',
   uuid: '',
   userUuid: false,
-  roomId: null
+  roomId: null,
+  adminId: 0
 })
 
 const closeNotification = () => (isInviteRoom.value = false)
@@ -42,11 +43,12 @@ const uuidUser = useCookie('uuid')
 
 SOCKETS.emit('personalInvite', uuidUser.value)
 
-SOCKETS.on('messageInvite', async (uuidRoom, titleRoom, userUuid, roomId) => {
+SOCKETS.on('messageInvite', async (uuidRoom, titleRoom, userUuid, roomId, adminId) => {
   inviteChat.title = titleRoom
   inviteChat.uuid = uuidRoom
   inviteChat.roomId = roomId
   inviteChat.userUuid = userUuid === uuidUser.value
+  inviteChat.adminId = adminId
 
   if (inviteChat.title && inviteChat.uuid && inviteChat.userUuid) {
     isInviteRoom.value = true
@@ -54,5 +56,5 @@ SOCKETS.on('messageInvite', async (uuidRoom, titleRoom, userUuid, roomId) => {
   }
 })
 
-const { enterChat, closeChat, showChats, uuid, room } = useEnterChat()
+const { enterChat } = useEnterChat()
 </script>

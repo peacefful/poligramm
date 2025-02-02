@@ -8,7 +8,7 @@
           :key="message.userId"
           :message="message"
         />
-        <SendMessageForm :chat-id="chatStore.chat.id" :uuid="uuid" />
+        <SendMessageForm :admin-id="chatStore.chat.adminId" :chat-id="chatStore.chat.id" :uuid="uuid" />
       </div>
     </section>
     <section v-else class="flex flex-col justify-center items-center min-h-screen">

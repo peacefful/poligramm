@@ -8,7 +8,10 @@ export default {
       path: '/',
       component: () => import('@/pages/signin'),
       meta: {
-        layout: 'default'
+        layout: 'default',
+        middleware: function (to, from) {
+          if (useValidToken()) return navigateTo('/chats')
+        }
       }
     },
     {
@@ -16,7 +19,10 @@ export default {
       path: '/signup',
       component: () => import('@/pages/signup'),
       meta: {
-        layout: 'default'
+        layout: 'default',
+        middleware: function (to, from) {
+          if (useValidToken()) return navigateTo('/chats')
+        }
       }
     },
     {
@@ -26,8 +32,6 @@ export default {
       meta: {
         layout: 'custom',
         middleware: function (to, from) {
-          console.log(useValidToken())
-
           if (!useValidToken()) return navigateTo('/')
         }
       }

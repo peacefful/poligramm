@@ -11,7 +11,8 @@ export const useMessagesStore = defineStore('messagesStore', {
         sendTime: '',
         file: '',
         username: '',
-        uuid: ''
+        uuid: '',
+        adminId: 0
       } as TMessage,
       messages: [] as TMessage[]
     }
@@ -29,6 +30,7 @@ export const useMessagesStore = defineStore('messagesStore', {
       this.messagesData.chatId = messages.chatId
       this.messagesData.username = messages.username
       this.messagesData.uuid = messages.uuid
+      this.messagesData.adminId = messages.adminId
     },
     clearMessages() {
       this.messages = []

@@ -5,6 +5,8 @@ import {SOCKETS} from "~/shared/api";
 export const useEnterChat = () => {
   const router = useRouter()
 
+  const userId = useCookie('userId')
+
   const showChats = ref<boolean>(true)
 
   const uuid = ref<string>('')
@@ -17,6 +19,7 @@ export const useEnterChat = () => {
     uuidRoom: string,
     roomName: string,
     roomId: number | null,
+    adminId: number,
     closeNotification?: Function
   ) => {
     showChats.value = false
@@ -33,7 +36,7 @@ export const useEnterChat = () => {
       }
     })
 
-    SOCKETS.emit('saveChat', chatId.value)
+    SOCKETS.emit('saveChat', adminId, userId.value, uuid.value)
 
     closeNotification ? closeNotification() : null
   }

@@ -1,5 +1,5 @@
 <template>
-  <article class="flex flex-col">
+  <div class="flex flex-col">
     <div
       class="bg-default text-white rounded-2xl my-2 p-3 break-words inline-block max-w-xl dark:bg-black"
       :class="{
@@ -10,13 +10,13 @@
       <a v-if="message.file" target="_blank" class="cursor-pointer" :href="message.file">
         <DownloadFileIcon />
       </a>
-      <template v-else>{{ message.text }}</template>
-      <p class="text-xs text-right">
-        {{ checkUserMessage(userId) ? t('you') : message.username }}
+      <div v-else>{{ message.text }}</div>
+      <div class="text-xs text-right">
+        {{ checkUserMessage(userId) === +message.userId ? t('you') : message.username }}
         {{ message.sendTime }}
-      </p>
+      </div>
     </div>
-  </article>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -30,15 +30,11 @@ type TPropsMessages = {
   message: TMessage
 }
 
-const props = defineProps<TPropsMessages>()
+defineProps<TPropsMessages>()
 
 const userId = useCookie('userId')
 
-// const checkUserMessage = () => {
-//   if (userId.value) return +userId.value === +props.message.userId
-// }
-
-const checkUserMessage = (userId: string | null) => {
-  return userId !== null ? +userId : 0
+const checkUserMessage = (userId?: string | null) => {
+  return (userId !== null && !!userId) ? +userId : 0
 }
 </script>

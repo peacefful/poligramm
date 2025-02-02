@@ -6,5 +6,6 @@ export type TChat = {
   description: string
   uuid: string
   userId: number
+  adminId: number
   messages: TMessage[]
 }

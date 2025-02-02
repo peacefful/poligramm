@@ -32,7 +32,6 @@ import { reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { ApiChat, type TCreateChat } from '@/entities/chat'
 import { useUsersStore } from '@/entities/user'
-import { storage } from '@/shared/lib/utils'
 import { type TChat } from '@/shared/types'
 import { Button } from '@/shared/ui/button'
 import { DefaultInput } from '@/shared/ui/input'
@@ -42,14 +41,17 @@ import ImageIcon from '@/shared/assets/icons/ImageIcon.vue'
 
 const { t } = useI18n({ useScope: 'global' })
 
+const userId = useCookie('userId')
+
 const chatFormEmit = defineEmits(['close-modal'])
 
 const dataChat: TCreateChat = reactive({
   roomName: '',
-  description: ''
+  description: '',
+  adminId: userId.value
 })
 
-const userId = useCookie('userId')
+
 const userStore = useUsersStore()
 
 const submitChat = async () => {

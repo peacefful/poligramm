@@ -12,8 +12,8 @@ export const useChatsStore = defineStore('chatsStore', {
     }
   },
   actions: {
-    getChat(id: number) {
-      ApiChat.fetchChat(id).then((res) => {
+    getChat(id: number | string) {
+      ApiChat.fetchChat(+id).then((res) => {
         if (res instanceof Error) return res.message
         this.chat = res as TChat
       })

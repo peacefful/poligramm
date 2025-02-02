@@ -8,6 +8,7 @@ export type TSearchChat = {
 export type TCreateChat = {
   roomName: string
   description: string
+  adminId: number
 }
 
 export type TLoginChat = Omit<TChat, 'userId' | 'description' | 'messages'>
@@ -19,7 +20,7 @@ export type TUpdateChat = {
 
 export type TJoinChat = {
   route: string
-  getChat: (id: number) => void
+  getChat: (id: number | string) => void
 }
 
 export type TNotificationJoinChat = {

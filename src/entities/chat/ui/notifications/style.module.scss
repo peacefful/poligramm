@@ -1,5 +1,5 @@
 .notification {
-  @apply fixed bottom-0 right-0 bg-default text-white p-6 rounded-t-lg w-full sm:w-[400px];
+  @apply fixed bottom-0 right-0 bg-default text-white p-6 rounded-t-lg w-full sm:w-[400px] dark:bg-black;
   &__wrapper {
     @apply flex justify-between items-center;
     .notification__close {

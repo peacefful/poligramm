@@ -46,6 +46,13 @@ const userUuids = ref([])
 const isError = ref(false)
 const isSuccess = ref(false)
 
+const userId = useCookie('userId')
+const uuid = useCookie('uuid')
+
+onMounted(() => {
+  console.log(userId.value)
+})
+
 const inviteUsers = () => {
   if (userUuids.value.length) {
     userUuids.value.forEach((userUuid) => {
@@ -54,9 +61,10 @@ const inviteUsers = () => {
         uuidRoom: props.chat.uuid,
         titleRoom: props.chat.roomName,
         roomId: props.chat.id,
-        userUuid
+        userUuid,
+        adminId: userId.value
       })
-      SOCKETS.emit('personalInvite', storage.getData('uuid'))
+      SOCKETS.emit('personalInvite', uuid.value)
     })
 
     userUuids.value.length = 0
