@@ -4,8 +4,8 @@
       <ChatHeader @open-modal="openModal" :chat-name="chatStore?.chat?.roomName" />
       <div>
         <Messages
-          v-for="message in messagesStore.getMessages(chatStore.chat.messages)"
-          :key="message.userId"
+          v-for="(message, index) in messagesStore.getMessages(chatStore.chat.messages)"
+          :key="`${index}-${message.userId}`"
           :message="message"
         />
         <SendMessageForm

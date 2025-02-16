@@ -3,6 +3,18 @@
     <section>
       <h1 class="text-3xl font-bold">{{ chat.roomName }}</h1>
       <p class="mt-4">{{ chat.description }}</p>
+      <section class="mt-4">
+        <Button
+          v-if="userId ? +userId === chat.userId : null"
+          @click="openAddUser"
+          class="gap-2"
+          :is-rounded-lg="true"
+        >
+          {{ t('inviteUsers') }}
+          <AddUsersIcon />
+        </Button>
+      </section>
+      <p class="h-[0.5px] mt-4 bg-[#1c1c1c]"></p>
       <section class="mt-12" v-if="analiseData.textLength">
         <h2 class="text-2xl">{{ t('analiseChat') }}:</h2>
         <div class="mt-4 grid grid-cols-3 gap-1">
@@ -16,18 +28,6 @@
         </div>
       </section>
       <p v-else>Статистики пока нету</p>
-      <p class="h-[0.5px] mt-4 bg-[#1c1c1c]"></p>
-      <section class="mt-4">
-        <Button
-          v-if="userId ? +userId === chat.userId : null"
-          @click="openAddUser"
-          class="gap-2"
-          :is-rounded-lg="true"
-        >
-          {{ t('inviteUsers') }}
-          <AddUsersIcon />
-        </Button>
-      </section>
     </section>
     <section v-if="checkUserId" class="mt-auto ml-auto flex gap-2">
       <Button @click="$emit('closeModal')" class="w-32" color="primary" :is-rounded-lg="true">

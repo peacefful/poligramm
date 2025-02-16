@@ -5,12 +5,13 @@ import { type TMessage } from '@/shared/types'
 export const sendMessage = async (message: TMessage, chatId: number, adminId: number) => {
   message.sendTime = dayjs().format('HH:mm')
 
-  if (message.text.trim() || message.file.trim()) {
+  console.log('message', message)
+
+  if (message.text.trim() || !!message.file) {
     message.chatId = chatId
     message.adminId = adminId
-    console.log('adminId', adminId)
-    console.log('message', message)
     SOCKETS.emit('message', message)
     message.text = ''
+    message.file = ''
   }
 }

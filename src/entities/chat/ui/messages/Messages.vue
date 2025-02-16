@@ -3,8 +3,8 @@
     <div
       class="bg-default text-white rounded-2xl my-2 p-3 break-words inline-block max-w-xl dark:bg-black"
       :class="{
-        'ml-auto mr-4': checkUserMessage(userId) === +message.userId,
-        'mr-auto ml-4': checkUserMessage(userId) !== +message.userId
+        'ml-auto mr-4': message.userId !== null && checkUserMessage(userId) === +message.userId,
+        'mr-auto ml-4': message.userId !== null && checkUserMessage(userId) !== +message.userId
       }"
     >
       <a v-if="message.file" target="_blank" class="cursor-pointer" :href="message.file">
@@ -12,7 +12,11 @@
       </a>
       <div v-else>{{ message.text }}</div>
       <div class="text-xs text-right">
-        {{ checkUserMessage(userId) === +message.userId ? t('you') : message.username }}
+        {{
+          message.userId !== null && checkUserMessage(userId) === +message.userId
+            ? t('you')
+            : message.username
+        }}
         {{ message.sendTime }}
       </div>
     </div>
@@ -35,6 +39,6 @@ defineProps<TPropsMessages>()
 const userId = useCookie('userId')
 
 const checkUserMessage = (userId?: string | null) => {
-  return (userId !== null && !!userId) ? +userId : 0
+  return userId !== null && !!userId ? +userId : 0
 }
 </script>
