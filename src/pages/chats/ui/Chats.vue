@@ -7,7 +7,13 @@
           :is-invite-room="isInviteRoom"
           :chatTitle="inviteChat.title"
           @enter-chat="
-            enterChat(inviteChat.uuid, inviteChat.title, inviteChat.roomId, inviteChat.adminId, closeNotification)
+            enterChat(
+              inviteChat.uuid,
+              inviteChat.title,
+              inviteChat.roomId,
+              inviteChat.adminId,
+              closeNotification
+            )
           "
           @close-notification="closeNotification"
         />
@@ -22,6 +28,8 @@ import { SOCKETS } from '@/shared/api'
 import { reactive, ref } from 'vue'
 import { Notification } from '@/entities/chat'
 import { useEnterChat } from '@/shared/lib/hooks'
+import { useCustomFetch } from '@/shared/api'
+import { Skeleton } from '~/shared/ui/skeleton'
 
 useSeoMeta({
   title: 'Список чатов',

@@ -2,7 +2,7 @@ import { http } from '@/shared/api'
 import type { TUser } from '@/shared/types'
 import { getOtherUsersById } from '../lib'
 
-export const fetchUsers = async (): Promise<TUser[] | Error> => {
+export const fetchUsers = async (): Promise<TUser[] | Error | null> => {
   try {
     const users: TUser[] = (await http.get('/api/users')).data
     return getOtherUsersById(users)

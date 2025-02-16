@@ -21,3 +21,16 @@ http.interceptors.request.use(
     return Promise.reject(error)
   }
 )
+
+export const useCustomFetch = <T>(endpoint: string, options: any = {}) => {
+  const token = useCookie('accessToken')
+
+  options.headers = {
+    ...options.headers,
+    Authorization: `Bearer ${token.value}`
+  }
+
+  return useFetch<T>(`${import.meta.env.VITE_BASE_URL}${endpoint}`, options)
+
+  return useFetch<T>(endpoint, options)
+}
