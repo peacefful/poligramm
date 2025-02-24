@@ -4,8 +4,9 @@ import { type TMessage } from '@/shared/types'
 
 export const sendMessage = async (message: TMessage, chatId: number, adminId: number) => {
   message.sendTime = dayjs().format('HH:mm')
+  message.sendDate = dayjs().format('MMM')
 
-  console.log('message', message)
+  console.log('message', message);
 
   if (message.text.trim() || !!message.file) {
     message.chatId = chatId

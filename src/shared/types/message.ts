@@ -3,6 +3,7 @@ export type TMessage = {
   chatId: number
   text: string
   sendTime: string
+  sendDate: string
   username: string | null
   joinUser?: string[]
   file: string

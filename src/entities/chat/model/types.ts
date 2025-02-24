@@ -45,8 +45,19 @@ export type TConfirmDeleteChat = {
   chatId: number
 }
 
-export type TAnaliseChat = {
-  id?: number
-  fileLength: number
-  textLength: number
+export type IAnaliseUserMessage = {
+  username: string
+  fileLength: number 
+  textLength:number
 }
+
+export type IAnaliseChatOfMounth = {
+  mounthName: string
+  userAnaliseMessage?: IAnaliseUserMessage[]
+}
+
+export type TAnaliseChat = {
+  analiseOfMounth?: IAnaliseChatOfMounth
+} & Pick<IAnaliseUserMessage, 'fileLength' | 'textLength'>
+
+export type TAnaliseChatDiagram = Pick<IAnaliseUserMessage, 'fileLength' | 'textLength'>

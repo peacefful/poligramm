@@ -14,11 +14,15 @@
 import { LoginForm } from '@/features/auth'
 import { SwitcherLang } from '@/features/switcherLang'
 import { SwitchTheme } from '@/features/switchTheme'
+import dayjs from 'dayjs'
 
 useSeoMeta({
   title: 'Вход',
   description: 'Авторизация существующих пользователей'
 })
+
+console.log(dayjs().format('MMM'));
+
 </script>
 
 <style scoped>

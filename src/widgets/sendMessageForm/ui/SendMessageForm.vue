@@ -14,7 +14,7 @@
     />
     <SendMessageButton />
   </form>
-</template>
+</template> 
 
 <script setup lang="ts">
 import { reactive, watch } from 'vue'
@@ -22,7 +22,6 @@ import { useI18n } from 'vue-i18n'
 import { SendFileButton } from '@/features/chat'
 import { SendMessageButton } from '@/features/chat'
 import { useUsersStore } from '@/entities/user'
-import { type TMessage } from '@/shared/types'
 import { ApiChat } from '@/entities/chat'
 import { useMessagesStore } from '@/entities/chat'
 import { useRoute } from 'vue-router'
@@ -42,21 +41,12 @@ const userId = useCookie('userId')
 
 const route = useRoute()
 
-// const messagesData: TMessage = reactive({
-//   userId: userId,
-//   chatId: sendMessageFormProps.chatId,
-//   text: '',
-//   sendTime: '',
-//   file: '',
-//   username: usersStore.username,
-//   uuid: sendMessageFormProps.uuid
-// })
-
 messagesStore.setMessagesData({
   userId: userId.value ? userId.value : null,
   chatId: sendMessageFormProps.chatId,
   text: '',
   sendTime: '',
+  sendDate: '',
   file: '',
   username: usersStore.username,
   uuid: sendMessageFormProps.uuid,

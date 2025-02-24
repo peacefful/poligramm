@@ -15,8 +15,9 @@
         </Button>
       </section>
       <p class="h-[0.5px] mt-4 bg-[#1c1c1c]"></p>
-      <section class="mt-12" v-if="analiseData.textLength">
+      <section class="mt-12" v-if="analiseData?.textLength">
         <h2 class="text-2xl">{{ t('analiseChat') }}:</h2>
+        {{ analiseData }}
         <div class="mt-4 grid grid-cols-3 gap-1">
           <div>
             <Doughnut class="chart" :options="options" :data="chartData" :key="chartKey" />
@@ -92,9 +93,11 @@ const userId = useCookie('userId')
 
 const router = useRouter()
 
-const analiseData = reactive({
+const analiseData = ref<TAnaliseChat>()
+
+const data = reactive({
   fileLength: 0,
-  textLength: 0
+  textLength: 0,
 })
 
 const chatsStore = useChatsStore()
@@ -109,13 +112,15 @@ const checkUserId = computed(() => {
 onMounted(() => {
   ApiChat.getAnaliseChat(props.chat.id).then((res) => {
     if ('fileLength' in res && 'textLength' in res) {
-      analiseData.fileLength = res.fileLength
-      analiseData.textLength = res.textLength
+      console.log('res', res);
+      analiseData.value = res
+      data.fileLength = res.fileLength
+      data.textLength = res.textLength
     }
   })
 })
 
-const { chartData, options, chartKey } = useChartChat(analiseData)
+const { chartData, options, chartKey } = useChartChat(data);
 
 const deleteCurrentChat = (id: number) => {
   chatsStore.removeChat(id)
