@@ -17,7 +17,6 @@
       <p class="h-[0.5px] mt-4 bg-[#1c1c1c]"></p>
       <section class="mt-12" v-if="analiseData?.textLength">
         <h2 class="text-2xl">{{ t('analiseChat') }}:</h2>
-        {{ analiseData }}
         <div class="mt-4 grid grid-cols-3 gap-1">
           <div>
             <Doughnut class="chart" :options="options" :data="chartData" :key="chartKey" />
@@ -29,6 +28,10 @@
         </div>
       </section>
       <p v-else>Статистики пока нету</p>
+      <AnaliseChatByMonth
+        v-if="analiseData?.analiseOfMounth"
+        :analiseChatByMounth="analiseData.analiseOfMounth"
+      />
     </section>
     <section v-if="checkUserId" class="mt-auto ml-auto flex gap-2">
       <Button @click="$emit('closeModal')" class="w-32" color="primary" :is-rounded-lg="true">
@@ -56,21 +59,22 @@
 </template>
 
 <script setup lang="ts">
-import AddUsersIcon from '@/shared/assets/icons/AddUsersIcon.vue'
-import { ConfirmDeleteChatModal } from '@/features/chat'
-import { Button } from '@/shared/ui/button'
-import { useToggleModal } from '@/shared/lib/hooks'
-import { useUsersStore } from '@/entities/user'
-import { useChatsStore, deleteChatByIndex, type TAnaliseChat } from '@/entities/chat'
-import { InviteUsers } from '../inviteUsers'
+import AddUsersIcon from '~/shared/assets/icons/AddUsersIcon.vue'
+import { ConfirmDeleteChatModal } from '~/features/chat'
+import { Button } from '~/shared/ui/button'
+import { useToggleModal } from '~/shared/lib/hooks'
+import { useUsersStore } from '~/entities/user'
+import { useChatsStore, deleteChatByIndex, type TAnaliseChat } from '~/entities/chat'
+import { InviteUsers } from '../../inviteUsers'
 import { useRouter } from 'vue-router'
 import { Doughnut } from 'vue-chartjs'
 import { onMounted, reactive, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { type TChat } from '@/shared/types'
-import { useChartChat } from '@/entities/chat'
-import { StatisticsTable } from '@/entities/chat'
-import { ApiChat } from '@/entities/chat'
+import { type TChat } from '~/shared/types'
+import { useChartChat } from '~/entities/chat'
+import { StatisticsTable } from '~/entities/chat'
+import { ApiChat } from '~/entities/chat'
+import { AnaliseChatByMonth } from '~/entities/chat'
 
 const { t } = useI18n({ useScope: 'global' })
 
@@ -97,7 +101,7 @@ const analiseData = ref<TAnaliseChat>()
 
 const data = reactive({
   fileLength: 0,
-  textLength: 0,
+  textLength: 0
 })
 
 const chatsStore = useChatsStore()
@@ -112,15 +116,16 @@ const checkUserId = computed(() => {
 onMounted(() => {
   ApiChat.getAnaliseChat(props.chat.id).then((res) => {
     if ('fileLength' in res && 'textLength' in res) {
-      console.log('res', res);
+      console.log('res', res)
       analiseData.value = res
+
       data.fileLength = res.fileLength
       data.textLength = res.textLength
     }
   })
 })
 
-const { chartData, options, chartKey } = useChartChat(data);
+const { chartData, options, chartKey } = useChartChat(data)
 
 const deleteCurrentChat = (id: number) => {
   chatsStore.removeChat(id)
@@ -133,5 +138,5 @@ const deleteCurrentChat = (id: number) => {
 </script>
 
 <style scoped>
-@import url('./style.module.scss');
+@import url('style.module.scss');
 </style>

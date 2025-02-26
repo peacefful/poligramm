@@ -45,19 +45,19 @@ export type TConfirmDeleteChat = {
   chatId: number
 }
 
-export type IAnaliseUserMessage = {
+export type TAnaliseUserMessage = {
   username: string
-  fileLength: number 
-  textLength:number
+  fileLength: number
+  textLength: number
 }
 
-export type IAnaliseChatOfMounth = {
+export type TAnaliseChatOfMounth = {
   mounthName: string
-  userAnaliseMessage?: IAnaliseUserMessage[]
+  userAnaliseMessage?: TAnaliseUserMessage[]
 }
 
 export type TAnaliseChat = {
-  analiseOfMounth?: IAnaliseChatOfMounth
-} & Pick<IAnaliseUserMessage, 'fileLength' | 'textLength'>
+  analiseOfMounth?: TAnaliseChatOfMounth
+} & Pick<TAnaliseUserMessage, 'fileLength' | 'textLength'>
 
-export type TAnaliseChatDiagram = Pick<IAnaliseUserMessage, 'fileLength' | 'textLength'>
+export type TAnaliseChatDiagram = Pick<TAnaliseUserMessage, 'fileLength' | 'textLength'>
