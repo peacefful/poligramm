@@ -14,7 +14,7 @@
     />
     <SendMessageButton />
   </form>
-</template> 
+</template>
 
 <script setup lang="ts">
 import { reactive, watch } from 'vue'
@@ -50,7 +50,7 @@ messagesStore.setMessagesData({
   file: '',
   username: usersStore.username,
   uuid: sendMessageFormProps.uuid,
-  adminId: sendMessageFormProps.adminId,
+  adminId: sendMessageFormProps.adminId
 })
 
 watch(sendMessageFormProps, () => {

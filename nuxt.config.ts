@@ -16,7 +16,8 @@ export default defineNuxtConfig({
     '@/widgets': resolve(__dirname, 'src/widgets'),
     '@/entities': resolve(__dirname, 'src/entities'),
     '@/features': resolve(__dirname, 'src/features'),
-    '@/shared': resolve(__dirname, 'src/shared')
+    '@/shared': resolve(__dirname, 'src/shared'),
+    '@public': resolve(__dirname, 'public')
   },
   dir: {
     layouts: resolve(__dirname, 'src/app/layouts')

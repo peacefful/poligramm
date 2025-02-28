@@ -34,3 +34,13 @@ provide('toggleBurgerMenu', { openBurgerMenu })
 <style scoped>
 @import url('style.module.scss');
 </style>
+
+<style scoped>
+main {
+  background: url('@public/images/bg-dark.jpeg') no-repeat center center;
+  background-size: cover; /* Растягивает изображение на всю область */
+  background-attachment: fixed; /* Фиксирует фон при прокрутке */
+  width: 100%;
+  min-height: 100vh;
+}
+</style>
