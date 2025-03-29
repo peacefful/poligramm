@@ -14,7 +14,7 @@
           <AddUsersIcon />
         </Button>
       </section>
-      <p class="h-[0.5px] mt-4 bg-[#1c1c1c]"></p>
+      <p class="h-[0.5px] mt-4 bg-[#1c1c1c]" />
       <section class="mt-12" v-if="analiseData?.chatTextLength">
         <h2 class="text-2xl">{{ t('analiseChat') }}:</h2>
         <div class="mt-4 grid grid-cols-3 gap-1">
@@ -33,13 +33,25 @@
         :analiseChatByMounth="analiseData.analiseOfMounth"
       />
     </section>
-    <section v-if="checkUserId" class="mt-auto ml-auto flex gap-2">
-      <Button @click="$emit('closeModal')" class="w-32" color="primary" :is-rounded-lg="true">
-        {{ t('close') }}
-      </Button>
-      <Button @click="openConfirmDeleteChat" class="w-32" color="danger" :is-rounded-lg="true">
-        {{ t('deleteChat') }}
-      </Button>
+    <section class="mt-auto ml-auto flex gap-2">
+      <template v-if="checkUserId">
+        <Button @click="$emit('closeModal')" class="w-32" color="primary" :is-rounded-lg="true">
+          {{ t('close') }}
+        </Button>
+        <Button @click="openConfirmDeleteChat" class="w-32" color="danger" :is-rounded-lg="true">
+          {{ t('deleteChat') }}
+        </Button>
+      </template>
+      <template v-else>
+        <Button
+          @click="deleteCurrentChat(chat.id)"
+          class="w-32"
+          color="danger"
+          :is-rounded-lg="true"
+        >
+          Покинуть чат
+        </Button>
+      </template>
     </section>
     <ConfirmDeleteChatModal
       :is-open-modal="isOpenConfirmDeleteChat"
@@ -127,7 +139,9 @@ onMounted(() => {
 const { chartData, options, chartKey } = useChartChat(data)
 
 const deleteCurrentChat = (id: number) => {
-  chatsStore.removeChat(id)
+  const currentLoginChat = useCookie('currentLoginChat')
+
+  chatsStore.removeChat(currentLoginChat.value ? +currentLoginChat.value : 0)
   userStore.deleteChat(id)
   // deleteChatByIndex({ chats: userStore.user.chats, id })
   if (userId?.value) userStore.getUser(+userId.value)

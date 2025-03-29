@@ -14,7 +14,7 @@
         <!-- <p class="text-lx">{{ lastMessage }}</p> -->
       </div>
     </section>
-    <p>{{ time }}</p>
+    <!-- <p>{{ time }}</p> -->
   </article>
 </template>
 

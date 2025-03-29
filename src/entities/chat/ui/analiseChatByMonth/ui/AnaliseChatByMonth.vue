@@ -12,6 +12,7 @@
 <script setup lang="ts">
 import { Table } from '@/shared/ui/table'
 import type { TAnaliseChatOfMounth } from '~/entities/chat'
+import { useI18n } from 'vue-i18n'
 
 type TAnaliseChatByMounth = {
   analiseChatByMounth: TAnaliseChatOfMounth[]
@@ -19,5 +20,7 @@ type TAnaliseChatByMounth = {
 
 defineProps<TAnaliseChatByMounth>()
 
-const rows = ['Имя', 'Файловые сообщения', 'Текстовые сообщения', 'Общее количество']
+const { t } = useI18n({ useScope: 'global' })
+
+const rows = [t('name'), t('filesMessages'), t('textsMessages'), t('quantity', 0)]
 </script>

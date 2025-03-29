@@ -43,7 +43,7 @@
   "incorrectesSurname": "Некорректная фамилия",
   "hasAccount": "Есть аккаунт?",
   "noChats": "Чатов пока нету",
-  "writeMessage": "Наберите сообщение...",
+  "writeMessage": "Сообщение...",
   "description": "Описание(необязательно)",
   "textMessage": "Текстовые сообщения",
   "files": "Файлы",
@@ -58,7 +58,7 @@
   "selectChat": "Выберите чат",
 
   "categories": "Категории",
-  "quantity": "Колличество",
+  "quantity": "Колличество | Общее колличество",
   "textsMessages": "Текстовые сообщения",
   "filesMessages": "Файловые сообщение",
 

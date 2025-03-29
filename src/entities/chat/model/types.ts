@@ -57,7 +57,7 @@ export type TAnaliseChatOfMounth = {
 }
 
 export type TAnaliseChat = {
-  analiseOfMounth?: TAnaliseChatOfMounth
+  analiseOfMounth?: TAnaliseChatOfMounth[]
   chatFileLength: number
   chatTextLength: number
 }

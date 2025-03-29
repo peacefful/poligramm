@@ -37,6 +37,7 @@ const usersStore = useUsersStore()
 const messagesStore = useMessagesStore()
 
 const userId = useCookie('userId')
+const username = useCookie('username').value || ''
 
 messagesStore.setMessagesData({
   userId: userId.value ? userId.value : null,
@@ -45,7 +46,7 @@ messagesStore.setMessagesData({
   sendTime: '',
   sendDate: '',
   file: '',
-  username: `${usersStore.user.name} ${usersStore.user.surname}`,
+  username,
   uuid: sendMessageFormProps.uuid,
   adminId: sendMessageFormProps.adminId
 })

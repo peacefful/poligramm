@@ -7,7 +7,7 @@ export const useUsersStore = defineStore('usersStore', {
     return {
       user: {} as TUserChat,
       users: [] as TUserChat[],
-      username: ''
+      username: useCookie('username').value || ''
     }
   },
   actions: {
@@ -22,10 +22,11 @@ export const useUsersStore = defineStore('usersStore', {
         if (res instanceof Error) return res.message
         this.user = res as TUserChat
         this.username = `${this.user.name} ${this.user.surname}`
+        useCookie('username').value = this.username
       })
     },
     deleteChat(id: number | null) {
-      return this.user.chats.filter(chat => chat.id !== id)
+      return this.user.chats.filter((chat) => chat.id !== id)
     }
   }
 })

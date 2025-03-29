@@ -18,7 +18,8 @@
             loginChat({
               id: chat.id,
               roomName: chat.roomName,
-              uuid: chat.uuid
+              uuid: chat.uuid,
+              adminId: chat.adminId
             })
           "
           :chatName="chat.roomName"
@@ -78,11 +79,17 @@ watch(
   }
 )
 
+const currentLoginChat = useCookie('currentLoginChat')
+
 const chatStore = useChatsStore()
 
 const loginChat = (loginChatData: TLoginChat) => {
   chatStore.setLoginChatData(loginChatData)
   const { roomName, id, uuid } = loginChatData
+
+  console.log('id', id)
+
+  currentLoginChat.value = id.toString()
 
   router.push({
     name: 'Chat',
