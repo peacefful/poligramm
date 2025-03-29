@@ -2,7 +2,7 @@ name: Sync to GitLab
 on:
   push:
     branches:
-      - main
+      - to-nuxt-chat
   workflow_dispatch:
 
 jobs:
