@@ -1,4 +1,5 @@
 import { jwtDecode } from 'jwt-decode'
+import type { RouteLocationNormalized } from 'vue-router'
 
 type TJwtDecode = {
   id: string

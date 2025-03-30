@@ -15,9 +15,11 @@ import { RegForm } from '@/features/auth'
 import { SwitcherLang } from '@/features/switcherLang'
 import { SwitchTheme } from '@/features/switchTheme'
 
+const { t } = useI18n({ useScope: 'global' })
+
 useSeoMeta({
-  title: 'Регистрация',
-  description: 'Регистрация новых пользователей',
+  title: () => t('signUp'),
+  description: () => t('registrationNewUsers')
 })
 </script>
 

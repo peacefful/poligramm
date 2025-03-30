@@ -78,5 +78,8 @@
   "november": "Қараша",
   "december": "Желтоқсан",
 
-  "logoutChat": "Чаттан кету"
+  "logoutChat": "Чаттан кету",
+  "selectChatFromList": "Тізімнен чатты таңдаңыз",
+
+  "authExistingUsers": "Қолданыстағы пайдаланушыларға рұқсат беру"
 }

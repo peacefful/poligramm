@@ -14,20 +14,17 @@
 import { LoginForm } from '@/features/auth'
 import { SwitcherLang } from '@/features/switcherLang'
 import { SwitchTheme } from '@/features/switchTheme'
-import dayjs from 'dayjs'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n({ useScope: 'global' })
 
 useSeoMeta({
-  title: 'Вход',
-  description: 'Авторизация существующих пользователей'
+  title: () => t('signIn'),
+  description: () => t('authExistingUsers')
 })
-
-console.log(dayjs().format('MMM'));
-
 </script>
 
 <style scoped>
-/* @import url('@/shared/assets/styles/auth-reg-layout.scss'); */
-
 .signin {
   @apply min-h-[95vh]
   flex

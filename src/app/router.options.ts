@@ -1,6 +1,10 @@
 import type { RouterConfig } from '@nuxt/schema'
 import { useValidToken } from '@/shared/lib/hooks'
 
+const checkRoute = (route: string) => {
+  if (useValidToken()) return navigateTo(route)
+}
+
 export default {
   routes: (_routes) => [
     {
@@ -10,7 +14,7 @@ export default {
       meta: {
         layout: 'default',
         middleware: function (to, from) {
-          if (useValidToken()) return navigateTo('/chats')
+          checkRoute('/chats')
         }
       }
     },
@@ -21,7 +25,7 @@ export default {
       meta: {
         layout: 'default',
         middleware: function (to, from) {
-          if (useValidToken()) return navigateTo('/chats')
+          checkRoute('/chats')
         }
       }
     },
@@ -32,7 +36,7 @@ export default {
       meta: {
         layout: 'custom',
         middleware: function (to, from) {
-          if (!useValidToken()) return navigateTo('/')
+          checkRoute('/')
         }
       }
     },
@@ -43,7 +47,7 @@ export default {
       meta: {
         layout: 'custom',
         middleware: function (to, from) {
-          if (!useValidToken()) return navigateTo('/')
+          checkRoute('/')
         }
       }
     },
@@ -54,7 +58,7 @@ export default {
       meta: {
         layout: 'default',
         middleware: function (to, from) {
-          if (!useValidToken()) return navigateTo('/')
+          checkRoute('/')
         }
       }
     }

@@ -30,14 +30,14 @@ import { Notification } from '@/entities/chat'
 import { useEnterChat } from '@/shared/lib/hooks'
 import { useCustomFetch } from '@/shared/api'
 import { Skeleton } from '~/shared/ui/skeleton'
-import { useI18n } from '#imports'
-
-useSeoMeta({
-  title: 'Список чатов',
-  description: 'Выбор чата из списка'
-})
+import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n({ useScope: 'global' })
+
+useSeoMeta({
+  title: () => t('chats'),
+  description: 'Выбор чата из списка'
+})
 
 const isInviteRoom = ref(false)
 const inviteChat = reactive({
