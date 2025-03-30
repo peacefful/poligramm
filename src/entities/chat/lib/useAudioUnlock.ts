@@ -6,7 +6,7 @@ export const useAudioUnlock = () => {
   const unlockAudio = () => {
     if (!isAudioUnlocked.value) {
       const audio = new Audio()
-      audio.play().catch(() => {}) // Пробуем запустить пустой звук
+      audio.play().catch(() => {})
       isAudioUnlocked.value = true
       document.removeEventListener('click', unlockAudio)
     }

@@ -68,14 +68,4 @@ SOCKETS.on('messageInvite', async (uuidRoom, titleRoom, userUuid, roomId, adminI
 })
 
 const { enterChat } = useEnterChat()
-
-// watch(
-//   () => props.isInviteRoom,
-//   (newValue) => {
-//     if (newValue) {
-//       const audio = new Audio('@public/sound/notification_sound.mp3')
-//       audio.play().catch((e) => console.error('Ошибка воспроизведения:', e))
-//     }
-//   }
-// )
 </script>
