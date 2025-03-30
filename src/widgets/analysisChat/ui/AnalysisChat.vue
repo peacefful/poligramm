@@ -49,7 +49,7 @@
           color="danger"
           :is-rounded-lg="true"
         >
-          Покинуть чат
+          {{ t('logoutChat') }}
         </Button>
       </template>
     </section>

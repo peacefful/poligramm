@@ -63,5 +63,20 @@
   "filesMessages": "Файловые сообщение",
 
   "notUsers": "Пользователей нету",
-  "notVerifyLoginOrPassword": "Не правильный логин или пароль"
+  "notVerifyLoginOrPassword": "Не правильный логин или пароль",
+
+  "january": "Январь",
+  "february": "Февраль",
+  "march": "Март",
+  "april": "Апрель",
+  "may": "Май",
+  "june": "Июнь",
+  "july": "Июль",
+  "august": "Август",
+  "september": "Сентябрь",
+  "october": "Октябрь",
+  "november": "Ноябрь",
+  "december": "Декабрь",
+
+  "logoutChat": "Покинуть чат"
 }

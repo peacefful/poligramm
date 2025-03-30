@@ -63,5 +63,20 @@
   "textsMessages": "Мәтіндік хабарламалар",
   "filesMessages": "Файлдық хабарламалар",
   "notUsers": "Пайдаланушылар жоқ",
-  "notVerifyLoginOrPassword": "Қате логин немесе пароль"
+  "notVerifyLoginOrPassword": "Қате логин немесе пароль",
+
+  "january": "Қаңтар",
+  "february": "Ақпан",
+  "march": "Наурыз",
+  "april": "Сәуір",
+  "may": "Мамыр",
+  "june": "Маусым",
+  "july": "Шілде",
+  "august": "Тамыз",
+  "september": "Қыркүйек",
+  "october": "Қазан",
+  "november": "Қараша",
+  "december": "Желтоқсан",
+
+  "logoutChat": "Чаттан кету"
 }
