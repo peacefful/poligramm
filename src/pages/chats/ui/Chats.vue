@@ -1,7 +1,7 @@
 <template>
   <MainLayout>
     <div class="min-h-screen flex justify-center items-center">
-      <div class="text-white rounded-md p-1 text-1xl bg-black">Выберите чат</div>
+      <div class="text-white rounded-md p-1 text-1xl bg-black">{{ t('selectChat') }}</div>
       <div v-if="isInviteRoom">
         <Notification
           :is-invite-room="isInviteRoom"
@@ -30,11 +30,14 @@ import { Notification } from '@/entities/chat'
 import { useEnterChat } from '@/shared/lib/hooks'
 import { useCustomFetch } from '@/shared/api'
 import { Skeleton } from '~/shared/ui/skeleton'
+import { useI18n } from '#imports'
 
 useSeoMeta({
   title: 'Список чатов',
   description: 'Выбор чата из списка'
 })
+
+const { t } = useI18n({ useScope: 'global' })
 
 const isInviteRoom = ref(false)
 const inviteChat = reactive({
@@ -65,4 +68,14 @@ SOCKETS.on('messageInvite', async (uuidRoom, titleRoom, userUuid, roomId, adminI
 })
 
 const { enterChat } = useEnterChat()
+
+// watch(
+//   () => props.isInviteRoom,
+//   (newValue) => {
+//     if (newValue) {
+//       const audio = new Audio('@public/sound/notification_sound.mp3')
+//       audio.play().catch((e) => console.error('Ошибка воспроизведения:', e))
+//     }
+//   }
+// )
 </script>
