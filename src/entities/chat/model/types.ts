@@ -58,6 +58,8 @@ export type TAnaliseChatOfMounth = {
 
 export type TAnaliseChat = {
   analiseOfMounth?: TAnaliseChatOfMounth
-} & Pick<TAnaliseUserMessage, 'fileLength' | 'textLength'>
+  chatFileLength: number
+  chatTextLength: number
+}
 
 export type TAnaliseChatDiagram = Pick<TAnaliseUserMessage, 'fileLength' | 'textLength'>

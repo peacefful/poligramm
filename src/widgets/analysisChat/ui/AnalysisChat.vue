@@ -15,15 +15,15 @@
         </Button>
       </section>
       <p class="h-[0.5px] mt-4 bg-[#1c1c1c]"></p>
-      <section class="mt-12" v-if="analiseData?.textLength">
+      <section class="mt-12" v-if="analiseData?.chatTextLength">
         <h2 class="text-2xl">{{ t('analiseChat') }}:</h2>
         <div class="mt-4 grid grid-cols-3 gap-1">
           <div>
             <Doughnut class="chart" :options="options" :data="chartData" :key="chartKey" />
           </div>
           <StatisticsTable
-            :file-length="analiseData.fileLength"
-            :text-length="analiseData.textLength"
+            :chat-file-length="analiseData.chatFileLength"
+            :chat-text-length="analiseData.chatTextLength"
           />
         </div>
       </section>
@@ -115,12 +115,11 @@ const checkUserId = computed(() => {
 
 onMounted(() => {
   ApiChat.getAnaliseChat(props.chat.id).then((res) => {
-    if ('fileLength' in res && 'textLength' in res) {
-      console.log('res', res)
+    if ('chatFileLength' in res && 'chatTextLength' in res) {
       analiseData.value = res
 
-      data.fileLength = res.fileLength
-      data.textLength = res.textLength
+      data.fileLength = res.chatFileLength
+      data.textLength = res.chatTextLength
     }
   })
 })

@@ -10,13 +10,13 @@
       <tr>
         <td class="table-cell">{{ t('textsMessages') }}</td>
         <td class="table-cell">
-          {{ textLength }}
+          {{ chatTextLength }}
         </td>
       </tr>
       <tr>
         <td class="table-cell">{{ t('filesMessages') }}</td>
         <td class="table-cell">
-          {{ fileLength }}
+          {{ chatFileLength }}
         </td>
       </tr>
     </tbody>

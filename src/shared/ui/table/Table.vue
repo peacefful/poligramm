@@ -1,13 +1,24 @@
 <template>
-  <table class="mt-2 w-[150%] border-collapse">
+  <table class="mt-2 w-[100%] border-collapse">
     <thead>
-      <tr v-for="(row, index) in rows" :key="index">
-        <th class="table-header">{{ row }}</th>
+      <tr>
+        <th v-for="(row, index) in rows" :key="index" class="table-header">{{ row }}</th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="(col, index) in cols" :key="index">
-        <td class="table-cell">{{ col }}</td>
+        <td class="table-cell">
+          {{ col.username }}
+        </td>
+        <td class="table-cell">
+          {{ col.userFileLength }}
+        </td>
+        <td class="table-cell">
+          {{ col.userTextLength }}
+        </td>
+        <td class="table-cell">
+          {{ col.userMessagesSum }}
+        </td>
       </tr>
     </tbody>
   </table>
@@ -16,7 +27,7 @@
 <script setup lang="ts">
 type TTable = {
   rows: string[]
-  cols: unknown[]
+  cols: Record<string, unknown>[]
 }
 
 defineProps<TTable>()

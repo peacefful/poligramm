@@ -17,14 +17,13 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, watch } from 'vue'
+import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { SendFileButton } from '@/features/chat'
 import { SendMessageButton } from '@/features/chat'
 import { useUsersStore } from '@/entities/user'
 import { ApiChat } from '@/entities/chat'
 import { useMessagesStore } from '@/entities/chat'
-import { useRoute } from 'vue-router'
 
 const sendMessageFormProps = defineProps<{
   uuid: string
@@ -39,8 +38,6 @@ const messagesStore = useMessagesStore()
 
 const userId = useCookie('userId')
 
-const route = useRoute()
-
 messagesStore.setMessagesData({
   userId: userId.value ? userId.value : null,
   chatId: sendMessageFormProps.chatId,
@@ -48,7 +45,7 @@ messagesStore.setMessagesData({
   sendTime: '',
   sendDate: '',
   file: '',
-  username: usersStore.username,
+  username: `${usersStore.user.name} ${usersStore.user.surname}`,
   uuid: sendMessageFormProps.uuid,
   adminId: sendMessageFormProps.adminId
 })
