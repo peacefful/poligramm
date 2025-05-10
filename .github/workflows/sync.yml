@@ -2,7 +2,7 @@ name: Sync to GitLab
 on:
   push:
     branches:
-      - to-nuxt-chat
+      - main
   workflow_dispatch:
 
 jobs:
@@ -17,6 +17,6 @@ jobs:
       - name: Push to GitLab
         run: |
           git remote add gitlab https://oauth2:${{ secrets.GITLAB_TOKEN }}@gitlab.com/Peacefull333/poligramm.git
-          git push --force gitlab to-nuxt-chat
+          git push --force gitlab main
         env:
           GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
