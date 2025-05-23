@@ -1,13 +1,17 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import {SOCKETS} from "~/shared/api";
+import { SOCKETS } from '~/shared/api'
+import { useUsersStore } from '~/entities/user'
 
 export const useEnterChat = () => {
   const router = useRouter()
 
-  const userId = useCookie('userId')
+  const userStore = useUsersStore()
 
+  const userId = useCookie('userId')
   const showChats = ref<boolean>(true)
+
+  console.log('userId useEnterChat', userId.value)
 
   const uuid = ref<string>('')
   const room = ref<string>('')
@@ -27,6 +31,18 @@ export const useEnterChat = () => {
     room.value = roomName
     chatId.value = roomId
 
+    SOCKETS.emit('saveChat', adminId, userId.value, uuid.value)
+
+    if (userId.value && Array.isArray(userStore.user.chats)) {
+      userStore.getUser(+userId.value)
+
+      console.log('userStore chats', userStore.user)
+
+      // const currentChat = userStore.user.chats.filter((chat) => chat.uuid === uuid.value)
+
+      // console.log('currentChat', currentChat)
+    }
+
     router.push({
       name: 'Chat',
       params: {
@@ -36,9 +52,9 @@ export const useEnterChat = () => {
       }
     })
 
-    SOCKETS.emit('saveChat', adminId, userId.value, uuid.value)
-
-    closeNotification ? closeNotification() : null
+    if (closeNotification) {
+      closeNotification()
+    }
   }
 
   return {

@@ -8,13 +8,17 @@ export const useChatsStore = defineStore('chatsStore', {
     return {
       chat: {} as TChat,
       chats: [] as TChat[],
-      currentSelectedChat: {} as TLoginChat
+      currentSelectedChat: {} as TLoginChat,
+      isAccessDenied: false
     }
   },
   actions: {
     getChat(id: number | string) {
       ApiChat.fetchChat(+id).then((res) => {
-        if (res instanceof Error) return res.message
+        if (res instanceof Error) {
+          this.isAccessDenied = true
+          return res.message
+        }
         this.chat = res as TChat
       })
     },

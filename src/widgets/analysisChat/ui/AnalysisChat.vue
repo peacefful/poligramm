@@ -87,6 +87,7 @@ import { useChartChat } from '~/entities/chat'
 import { StatisticsTable } from '~/entities/chat'
 import { ApiChat } from '~/entities/chat'
 import { AnaliseChatByMonth } from '~/entities/chat'
+import { SOCKETS } from '~/shared/api'
 
 const { t } = useI18n({ useScope: 'global' })
 
@@ -106,8 +107,10 @@ const {
 } = useToggleModal()
 
 const userId = useCookie('userId')
+const userUuid = useCookie('uuid')
 
 const router = useRouter()
+const route = useRoute()
 
 const analiseData = ref<TAnaliseChat>()
 
@@ -120,6 +123,13 @@ const chatsStore = useChatsStore()
 const userStore = useUsersStore()
 
 userStore.getUsers()
+
+const closeChatByUuid = () => {
+  SOCKETS.emit('closeChatByUuid', {
+    adminId: +props.chat.adminId,
+    userUuid: userUuid.value
+  })
+}
 
 const checkUserId = computed(() => {
   return userId.value && +userId.value === props.chat.userId
@@ -140,6 +150,8 @@ const { chartData, options, chartKey } = useChartChat(data)
 
 const deleteCurrentChat = (id: number) => {
   const currentLoginChat = useCookie('currentLoginChat')
+
+  closeChatByUuid()
 
   chatsStore.removeChat(currentLoginChat.value ? +currentLoginChat.value : 0)
   userStore.deleteChat(id)

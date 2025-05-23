@@ -15,7 +15,7 @@
               closeNotification
             )
           "
-          @close-notification="closeNotification"
+          @close-notification="logoutChat"
         />
       </div>
     </div>
@@ -48,7 +48,23 @@ const inviteChat = reactive({
   adminId: 0
 })
 
-const closeNotification = () => (isInviteRoom.value = false)
+const uuid = useCookie('uuid')
+
+const closeNotification = () => {
+  isInviteRoom.value = false
+}
+
+const closeChatByUuid = () => {
+  SOCKETS.emit('closeChatByUuid', {
+    chatId: inviteChat.roomId,
+    userUuid: uuid.value
+  })
+}
+
+const logoutChat = () => {
+  closeNotification()
+  closeChatByUuid()
+}
 
 const uuidUser = useCookie('uuid')
 

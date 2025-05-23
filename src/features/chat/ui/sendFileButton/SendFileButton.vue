@@ -28,9 +28,15 @@ const onFileChange = async (event: Event) => {
     if (uploadedFile) {
       currentFileUrl.value = await getFileView(uploadedFile?.$id)
       messagesStore.messagesData.file = currentFileUrl.value
-      messagesStore.messagesData.userId = +messagesStore.messagesData.userId
+      if (messagesStore.messagesData.userId != null) {
+        messagesStore.messagesData.userId = +messagesStore.messagesData.userId
+      }
 
-      sendMessage(messagesStore.messagesData, messagesStore.messagesData.chatId)
+      sendMessage(
+        messagesStore.messagesData,
+        messagesStore.messagesData.chatId,
+        messagesStore.messagesData.adminId
+      )
     }
   }
 }

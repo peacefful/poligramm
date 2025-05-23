@@ -1,6 +1,6 @@
 <template>
   <MainLayout>
-    <section v-if="chatStore?.chat" class="flex flex-col justify-between min-h-screen">
+    <section v-if="chatStore?.chat.id" class="flex flex-col justify-between min-h-screen">
       <ChatHeader @open-modal="openModal" :chat-name="chatStore?.chat?.roomName" />
       <div>
         <Messages
@@ -15,6 +15,12 @@
         />
       </div>
     </section>
+    <section
+      v-else-if="chatStore.isAccessDenied"
+      class="flex flex-col justify-center items-center min-h-screen"
+    >
+      <p class="text-white bg-black p-2 rounded-xl">Вы не имеете доступ к данному чату</p>
+    </section>
     <section v-else class="flex flex-col justify-center items-center min-h-screen">
       <p class="text-white bg-black p-2 rounded-xl">Чата был удален</p>
     </section>
@@ -25,7 +31,7 @@
       :is-invite-room="isInviteRoom"
       :chatTitle="inviteChat.title"
       @enter-chat="saveAndEnterChat"
-      @close-notification="closeNotification"
+      @close-notification="logoutChat"
     />
   </MainLayout>
 </template>
@@ -56,6 +62,8 @@ useSeoMeta({
 
 const { isOpenModal, closeModal, openModal } = useToggleModal()
 
+const userUuid = useCookie('uuid')
+
 const messagesStore = useMessagesStore()
 const chatStore = useChatsStore()
 
@@ -82,7 +90,19 @@ const inviteChat = reactive({
   adminId: 0
 })
 
+const closeChatByUuid = () => {
+  SOCKETS.emit('closeChatByUuid', {
+    adminId: inviteChat.adminId,
+    userUuid: userUuid.value
+  })
+}
+
 const closeNotification = () => (isInviteRoom.value = false)
+
+const logoutChat = () => {
+  closeNotification()
+  closeChatByUuid()
+}
 
 SOCKETS.emit('personalInvite', useCookie('uuid').value)
 

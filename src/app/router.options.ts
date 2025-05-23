@@ -36,7 +36,7 @@ export default {
       meta: {
         layout: 'custom',
         middleware: function (to, from) {
-          checkRoute('/')
+          if (!useValidToken()) return navigateTo('/')
         }
       }
     },
@@ -47,7 +47,7 @@ export default {
       meta: {
         layout: 'custom',
         middleware: function (to, from) {
-          checkRoute('/')
+          if (!useValidToken()) return navigateTo('/')
         }
       }
     },
