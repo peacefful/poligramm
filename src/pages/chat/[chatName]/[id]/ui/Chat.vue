@@ -25,7 +25,7 @@
       <p class="text-white bg-black p-2 rounded-xl">Чата был удален</p>
     </section>
     <Modal class="w-[1300px] h-[800px]" @close-modal="closeModal" :is-open-modal="isOpenModal">
-      <AnalysisChat @close-modal="closeModal" :chat="chatStore.chat" />
+      <AnalysisChat @close-modal="closeModal" :chat="chatStore.chat" :user-chat-id="userChatId" />
     </Modal>
     <Notification
       :is-invite-room="isInviteRoom"
@@ -119,7 +119,7 @@ SOCKETS.on('messageInvite', async (uuidRoom, titleRoom, userUuid, roomId, adminI
   }
 })
 
-const { enterChat } = useEnterChat()
+const { enterChat, userChatId } = useEnterChat()
 
 const saveAndEnterChat = () => {
   enterChat(

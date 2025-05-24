@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { ApiUser } from '@/entities/user'
 import { type TUserChat } from '@/entities/user'
+import { number } from 'yup'
 
 export const useUsersStore = defineStore('usersStore', {
   state: () => {

@@ -18,8 +18,6 @@ type TAnaliseChatByMounth = {
   analiseChatByMounth: TAnaliseChatOfMounth[]
 }
 
-console.log('333')
-
 defineProps<TAnaliseChatByMounth>()
 
 const { t } = useI18n({ useScope: 'global' })

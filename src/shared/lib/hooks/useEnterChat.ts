@@ -1,17 +1,17 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { SOCKETS } from '~/shared/api'
-import { useUsersStore } from '~/entities/user'
+import { useLoginChatState } from '~/entities/user/model/useLoginChatState'
 
 export const useEnterChat = () => {
   const router = useRouter()
 
-  const userStore = useUsersStore()
-
   const userId = useCookie('userId')
   const showChats = ref<boolean>(true)
 
-  console.log('userId useEnterChat', userId.value)
+  const userLoginChat = useLoginChatState()
+
+  const userLoginChatCookie = useCookie('userLoginChatCookie')
 
   const uuid = ref<string>('')
   const room = ref<string>('')
@@ -31,17 +31,12 @@ export const useEnterChat = () => {
     room.value = roomName
     chatId.value = roomId
 
-    SOCKETS.emit('saveChat', adminId, userId.value, uuid.value)
+    console.log('chatId.value', chatId.value)
 
-    if (userId.value && Array.isArray(userStore.user.chats)) {
-      userStore.getUser(+userId.value)
-
-      console.log('userStore chats', userStore.user)
-
-      // const currentChat = userStore.user.chats.filter((chat) => chat.uuid === uuid.value)
-
-      // console.log('currentChat', currentChat)
-    }
+    SOCKETS.emit('saveChat', adminId, userId.value, uuid.value, (response: { id: number }) => {
+      userLoginChat.value = response.id.toString()
+      userLoginChatCookie.value = response.id.toString()
+    })
 
     router.push({
       name: 'Chat',

@@ -49,7 +49,7 @@
           color="danger"
           :is-rounded-lg="true"
         >
-          {{ t('logoutChat') }}
+          {{ t('logoutChat') }} {{ userLoginChat }}
         </Button>
       </template>
     </section>
@@ -57,7 +57,7 @@
       :is-open-modal="isOpenConfirmDeleteChat"
       :chatId="chat.id"
       @closeModal="closeConfirmDeleteChat"
-      @deleteCurrentChat="deleteCurrentChat"
+      @deleteCurrentChat="deleteCurrentChatow"
     />
     <InviteUsers
       :is-open-add-user="isOpenAddUser"
@@ -88,10 +88,11 @@ import { StatisticsTable } from '~/entities/chat'
 import { ApiChat } from '~/entities/chat'
 import { AnaliseChatByMonth } from '~/entities/chat'
 import { SOCKETS } from '~/shared/api'
+import { useLoginChatState } from '~/entities/user/model/useLoginChatState'
 
 const { t } = useI18n({ useScope: 'global' })
 
-const props = defineProps<{ chat: TChat }>()
+const props = defineProps<{ chat: TChat; userChatId: number | null }>()
 defineEmits(['closeModal'])
 
 const {
@@ -110,7 +111,8 @@ const userId = useCookie('userId')
 const userUuid = useCookie('uuid')
 
 const router = useRouter()
-const route = useRoute()
+
+const userLoginChat = useLoginChatState()
 
 const analiseData = ref<TAnaliseChat>()
 
@@ -149,6 +151,25 @@ onMounted(() => {
 const { chartData, options, chartKey } = useChartChat(data)
 
 const deleteCurrentChat = (id: number) => {
+  const currentLoginChat = useCookie('currentLoginChat')
+
+  closeChatByUuid()
+
+  if (userLoginChat.value) {
+    chatsStore.removeChat(userLoginChat.value ? +userLoginChat.value : 0)
+    userStore.deleteChat(userLoginChat.value ? +userLoginChat.value : 0)
+  }
+  if (currentLoginChat.value) {
+    if (userId?.value) userStore.getUser(+userId.value)
+    chatsStore.removeChat(currentLoginChat.value ? +currentLoginChat.value : 0)
+    userStore.deleteChat(currentLoginChat.value ? +currentLoginChat.value : 0)
+  }
+
+  closeConfirmDeleteChat()
+  router.push('/chats')
+}
+
+const deleteCurrentChatow = (id: number) => {
   const currentLoginChat = useCookie('currentLoginChat')
 
   closeChatByUuid()
