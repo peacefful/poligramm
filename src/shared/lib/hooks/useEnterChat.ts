@@ -36,6 +36,8 @@ export const useEnterChat = () => {
     SOCKETS.emit('saveChat', adminId, userId.value, uuid.value, (response: { id: number }) => {
       userLoginChat.value = response.id.toString()
       userLoginChatCookie.value = response.id.toString()
+
+      console.log('userLoginChatCookie.value', userLoginChatCookie.value)
     })
 
     router.push({
