@@ -49,7 +49,7 @@
           color="danger"
           :is-rounded-lg="true"
         >
-          {{ t('logoutChat') }} {{ userLoginChat }}
+          {{ t('logoutChat') }}
         </Button>
       </template>
     </section>
