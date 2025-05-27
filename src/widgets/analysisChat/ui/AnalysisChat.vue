@@ -49,7 +49,7 @@
           color="danger"
           :is-rounded-lg="true"
         >
-          {{ t('logoutChat') }}
+          {{ t('logoutChat') }} {{ chatsStore.currentLoginChat }}
         </Button>
       </template>
     </section>
@@ -57,7 +57,7 @@
       :is-open-modal="isOpenConfirmDeleteChat"
       :chatId="chat.id"
       @closeModal="closeConfirmDeleteChat"
-      @deleteCurrentChat="deleteCurrentChatow"
+      @deleteCurrentChat="deleteCurrentChat"
     />
     <InviteUsers
       :is-open-add-user="isOpenAddUser"
@@ -92,7 +92,7 @@ import { useLoginChatState } from '~/entities/user/model/useLoginChatState'
 
 const { t } = useI18n({ useScope: 'global' })
 
-const props = defineProps<{ chat: TChat; userChatId: number | null }>()
+const props = defineProps<{ chat: TChat }>()
 defineEmits(['closeModal'])
 
 const {
@@ -153,25 +153,29 @@ const { chartData, options, chartKey } = useChartChat(data)
 const deleteCurrentChat = (id: number) => {
   const currentLoginChat = useCookie('currentLoginChat')
 
+  console.log('currentLoginChat', currentLoginChat.value)
+
   closeChatByUuid()
 
-  if (userLoginChat.value) {
-    chatsStore.removeChat(userLoginChat.value ? +userLoginChat.value : 0)
-    userStore.deleteChat(userLoginChat.value ? +userLoginChat.value : 0)
-  }
-  if (currentLoginChat.value) {
+  // if (userLoginChat.value) {
+  //   chatsStore.removeChat(userLoginChat.value ? +userLoginChat.value : 0)
+  //   userStore.deleteChat(userLoginChat.value ? +userLoginChat.value : 0)
+  // }
+  if (chatsStore.currentLoginChat) {
     if (userId?.value) userStore.getUser(+userId.value)
-    chatsStore.removeChat(currentLoginChat.value ? +currentLoginChat.value : 0)
-    userStore.deleteChat(currentLoginChat.value ? +currentLoginChat.value : 0)
+    chatsStore.removeChat(chatsStore.currentLoginChat)
+    // userStore.deleteChat(currentLoginChat.value ? +currentLoginChat.value : 0)
+    userStore.user.chats = userStore.user.chats.filter(
+      (chat) => chat.id !== chatsStore.currentLoginChat
+    )
   }
 
   closeConfirmDeleteChat()
   router.push('/chats')
 }
 
+const currentLoginChat = useCookie('currentLoginChat')
 const deleteCurrentChatow = (id: number) => {
-  const currentLoginChat = useCookie('currentLoginChat')
-
   closeChatByUuid()
 
   chatsStore.removeChat(currentLoginChat.value ? +currentLoginChat.value : 0)

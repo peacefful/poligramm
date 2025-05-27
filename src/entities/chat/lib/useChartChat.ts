@@ -12,9 +12,6 @@ export const useChartChat = (analiseData: IDiagramChat) => {
   const { t } = useI18n({ useScope: 'global' })
   ChartJS.register(Tooltip, Legend, ArcElement)
 
-  console.log('analiseData', analiseData);
-  
-
   const chartData = ref({
     labels: [t('textMessage'), t('files')],
     datasets: [

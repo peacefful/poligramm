@@ -1,7 +1,10 @@
 <template>
   <MainLayout>
+    <strong class="text-2xl">
+      {{ chatStore.chat.id }}
+    </strong>
     <section v-if="chatStore?.chat.id" class="flex flex-col justify-between min-h-screen">
-      <ChatHeader @open-modal="openModal" :chat-name="chatStore?.chat?.roomName" />
+      <ChatHeader @open-modal="getCurrentIdChat" :chat-name="chatStore?.chat?.roomName" />
       <div>
         <Messages
           v-for="(message, index) in messagesStore.getMessages(chatStore.chat.messages)"
@@ -25,7 +28,7 @@
       <p class="text-white bg-black p-2 rounded-xl">Чата был удален</p>
     </section>
     <Modal class="w-[1300px] h-[800px]" @close-modal="closeModal" :is-open-modal="isOpenModal">
-      <AnalysisChat @close-modal="closeModal" :chat="chatStore.chat" :user-chat-id="userChatId" />
+      <AnalysisChat @close-modal="closeModal" :chat="chatStore.chat" />
     </Modal>
     <Notification
       :is-invite-room="isInviteRoom"
@@ -51,6 +54,7 @@ import { Modal } from '@/shared/ui/modal'
 import { AnalysisChat } from '@/widgets/analysisChat'
 import { SOCKETS } from '@/shared/api'
 import { Notification } from '@/entities/chat'
+import { useUsersStore } from '~/entities/user'
 
 useCloseChat()
 
@@ -63,16 +67,37 @@ useSeoMeta({
 const { isOpenModal, closeModal, openModal } = useToggleModal()
 
 const userUuid = useCookie('uuid')
+const userId = useCookie('userId')
 
 const messagesStore = useMessagesStore()
 const chatStore = useChatsStore()
+const userStore = useUsersStore()
 
 const joinChat: TJoinChat = reactive({
   route: route.fullPath,
   getChat: chatStore.getChat
 })
 
+onMounted(() => {
+  userStore.getUser(userId.value ? +userId.value : 0)
+})
+
 let uuid: string = joinChatByRoute(joinChat)
+
+const getCurrentIdChat = () => {
+  const currentChat = userStore.user.chats.find((chat) => {
+    return chatStore.chat.uuid === uuid
+  })
+
+  setTimeout(() => {
+    console.log('currentChat', currentChat)
+    if (currentChat?.id) {
+      chatStore.setСurrentLoginChat(currentChat?.id)
+    }
+  }, 100)
+
+  openModal()
+}
 
 watch(route, () => {
   uuid = joinChatByRoute({
@@ -119,7 +144,7 @@ SOCKETS.on('messageInvite', async (uuidRoom, titleRoom, userUuid, roomId, adminI
   }
 })
 
-const { enterChat, userChatId } = useEnterChat()
+const { enterChat } = useEnterChat()
 
 const saveAndEnterChat = () => {
   enterChat(

@@ -9,7 +9,8 @@ export const useChatsStore = defineStore('chatsStore', {
       chat: {} as TChat,
       chats: [] as TChat[],
       currentSelectedChat: {} as TLoginChat,
-      isAccessDenied: false
+      isAccessDenied: false,
+      currentLoginChat: 0
     }
   },
   actions: {
@@ -29,6 +30,12 @@ export const useChatsStore = defineStore('chatsStore', {
       this.currentSelectedChat = chatData
       // this.getChat(chatData.id)
       return chatData
+    },
+    setСurrentLoginChat(value: number) {
+      this.currentLoginChat = value
+    },
+    getСurrentLoginChat() {
+      return this.currentLoginChat
     }
   }
 })

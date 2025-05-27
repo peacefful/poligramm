@@ -21,7 +21,7 @@
       </ToastMessage>
     </template>
     <template v-else>
-      <p class="font-bold text-[20px] text-center">{{t('notUsers')}}</p>
+      <p class="font-bold text-[20px] text-center">{{ t('notUsers') }}</p>
     </template>
   </Modal>
 </template>
@@ -48,10 +48,6 @@ const isSuccess = ref(false)
 
 const userId = useCookie('userId')
 const uuid = useCookie('uuid')
-
-onMounted(() => {
-  console.log(userId.value)
-})
 
 const inviteUsers = () => {
   if (userUuids.value.length) {
