@@ -93,6 +93,10 @@ const loginChat = (loginChatData: TLoginChat) => {
 
   // chatsStore.setСurrentLoginChat(id)
 
+  if (import.meta.client) {
+    localStorage.setItem('localeCurrentIdChat', id.toString())
+  }
+
   router.push({
     name: 'Chat',
     params: {
