@@ -81,5 +81,8 @@
   "logoutChat": "Покинуть чат",
   "selectChatFromList": "Выберите чат из списка",
   "authExistingUsers": "Авторизация существующих пользователей",
-  "registrationNewUsers": "Регистрация новых пользователей"
+  "registrationNewUsers": "Регистрация новых пользователей",
+
+  "notInviteChat": "Вы не имеете доступ к данному чату",
+  "deletChat": "Чат был удален"
 }

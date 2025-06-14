@@ -49,7 +49,7 @@
           color="danger"
           :is-rounded-lg="true"
         >
-          {{ t('logoutChat') }} {{ chatsStore.currentLoginChat }}
+          {{ t('logoutChat') }}
         </Button>
       </template>
     </section>
@@ -151,24 +151,14 @@ onMounted(() => {
 const { chartData, options, chartKey } = useChartChat(data)
 
 const deleteCurrentChat = (id: number) => {
-  const currentLoginChat = useCookie('currentLoginChat')
-
-  console.log('currentLoginChat', currentLoginChat.value)
+  const localeCurrentIdChat = localStorage.getItem('localeCurrentIdChat')
 
   closeChatByUuid()
 
-  // if (userLoginChat.value) {
-  //   chatsStore.removeChat(userLoginChat.value ? +userLoginChat.value : 0)
-  //   userStore.deleteChat(userLoginChat.value ? +userLoginChat.value : 0)
-  // }
-  if (chatsStore.currentLoginChat) {
-    if (userId?.value) userStore.getUser(+userId.value)
-    chatsStore.removeChat(chatsStore.currentLoginChat)
-    // userStore.deleteChat(currentLoginChat.value ? +currentLoginChat.value : 0)
-    userStore.user.chats = userStore.user.chats.filter(
-      (chat) => chat.id !== chatsStore.currentLoginChat
-    )
-  }
+  chatsStore.removeChat(localeCurrentIdChat ? +localeCurrentIdChat : 0)
+  userStore.user.chats.filter((chat) => chat.id !== id)
+
+  if (userId?.value) userStore.getUser(+userId.value)
 
   closeConfirmDeleteChat()
   router.push('/chats')

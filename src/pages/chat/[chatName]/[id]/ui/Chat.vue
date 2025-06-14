@@ -22,10 +22,10 @@
       v-else-if="chatStore.isAccessDenied"
       class="flex flex-col justify-center items-center min-h-screen"
     >
-      <p class="text-white bg-black p-2 rounded-xl">Вы не имеете доступ к данному чату</p>
+      <p class="text-white bg-black p-2 rounded-xl">{{ t('notInviteChat') }}</p>
     </section>
     <section v-else class="flex flex-col justify-center items-center min-h-screen">
-      <p class="text-white bg-black p-2 rounded-xl">Чата был удален</p>
+      <p class="text-white bg-black p-2 rounded-xl">{{ t('deletChat') }}</p>
     </section>
     <Modal class="w-[1300px] h-[800px]" @close-modal="closeModal" :is-open-modal="isOpenModal">
       <AnalysisChat @close-modal="closeModal" :chat="chatStore.chat" />
@@ -55,6 +55,7 @@ import { AnalysisChat } from '@/widgets/analysisChat'
 import { SOCKETS } from '@/shared/api'
 import { Notification } from '@/entities/chat'
 import { useUsersStore } from '~/entities/user'
+import { useI18n } from 'vue-i18n'
 
 useCloseChat()
 
@@ -63,6 +64,8 @@ const route = useRoute()
 useSeoMeta({
   title: typeof route.params.chatName === 'string' ? route.params.chatName : 'Чат'
 })
+
+const { t } = useI18n({ useScope: 'global' })
 
 const { isOpenModal, closeModal, openModal } = useToggleModal()
 
